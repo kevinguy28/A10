@@ -18,3 +18,5 @@ C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\A10.genruntimeconfig.ca
 C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\ref\A10.dll
 C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\A10.ownerHomeScreen.resources
 C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\A10.riderHomeScreen.resources
+C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\A10.devWindow.resources
+C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\A10.AccidentNotification.resources

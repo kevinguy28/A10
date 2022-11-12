@@ -26,6 +26,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ownerButton = New System.Windows.Forms.Button()
         Me.riderButton = New System.Windows.Forms.Button()
+        Me.devButton = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -67,6 +68,15 @@ Partial Class Form1
         Me.riderButton.Text = "Rider"
         Me.riderButton.UseVisualStyleBackColor = True
         '
+        'devButton
+        '
+        Me.devButton.Location = New System.Drawing.Point(229, 546)
+        Me.devButton.Name = "devButton"
+        Me.devButton.Size = New System.Drawing.Size(75, 23)
+        Me.devButton.TabIndex = 4
+        Me.devButton.Text = "Dev"
+        Me.devButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -74,12 +84,15 @@ Partial Class Form1
         Me.BackgroundImage = Global.A10.My.Resources.Resources.phone
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(369, 629)
+        Me.Controls.Add(Me.devButton)
         Me.Controls.Add(Me.riderButton)
         Me.Controls.Add(Me.ownerButton)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox1)
         Me.DoubleBuffered = True
+        Me.Location = New System.Drawing.Point(200, 200)
         Me.Name = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Form1"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -91,4 +104,5 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents ownerButton As Button
     Friend WithEvents riderButton As Button
+    Friend WithEvents devButton As Button
 End Class

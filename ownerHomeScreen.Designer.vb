@@ -23,16 +23,22 @@ Partial Class ownerHomeScreen
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.currentRideLabel = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.currentRidePicBox = New System.Windows.Forms.PictureBox()
         Me.myCarLabel = New System.Windows.Forms.Label()
         Me.scheduleLabel = New System.Windows.Forms.Label()
         Me.myCarPicBox = New System.Windows.Forms.PictureBox()
         Me.schedulePicBox = New System.Windows.Forms.PictureBox()
         Me.kuberLogo = New System.Windows.Forms.PictureBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.batteryPicBox = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.chatPicBox = New System.Windows.Forms.PictureBox()
+        Me.chatLabel = New System.Windows.Forms.Label()
+        CType(Me.currentRidePicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.myCarPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.schedulePicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.kuberLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.batteryPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chatPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'currentRideLabel
@@ -45,16 +51,16 @@ Partial Class ownerHomeScreen
         Me.currentRideLabel.TabIndex = 14
         Me.currentRideLabel.Text = "Current Ride"
         '
-        'PictureBox1
+        'currentRidePicBox
         '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox1.Image = Global.A10.My.Resources.Resources.path
-        Me.PictureBox1.Location = New System.Drawing.Point(77, 268)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(84, 90)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 13
-        Me.PictureBox1.TabStop = False
+        Me.currentRidePicBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.currentRidePicBox.Image = Global.A10.My.Resources.Resources.path
+        Me.currentRidePicBox.Location = New System.Drawing.Point(77, 269)
+        Me.currentRidePicBox.Name = "currentRidePicBox"
+        Me.currentRidePicBox.Size = New System.Drawing.Size(84, 90)
+        Me.currentRidePicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.currentRidePicBox.TabIndex = 13
+        Me.currentRidePicBox.TabStop = False
         '
         'myCarLabel
         '
@@ -108,6 +114,48 @@ Partial Class ownerHomeScreen
         Me.kuberLogo.TabIndex = 8
         Me.kuberLogo.TabStop = False
         '
+        'batteryPicBox
+        '
+        Me.batteryPicBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.batteryPicBox.Image = Global.A10.My.Resources.Resources.battery
+        Me.batteryPicBox.Location = New System.Drawing.Point(77, 391)
+        Me.batteryPicBox.Name = "batteryPicBox"
+        Me.batteryPicBox.Size = New System.Drawing.Size(84, 90)
+        Me.batteryPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.batteryPicBox.TabIndex = 23
+        Me.batteryPicBox.TabStop = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("SimSun-ExtB", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Location = New System.Drawing.Point(77, 375)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(95, 13)
+        Me.Label1.TabIndex = 24
+        Me.Label1.Text = "Car Battery"
+        '
+        'chatPicBox
+        '
+        Me.chatPicBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.chatPicBox.Image = Global.A10.My.Resources.Resources.chat
+        Me.chatPicBox.Location = New System.Drawing.Point(208, 269)
+        Me.chatPicBox.Name = "chatPicBox"
+        Me.chatPicBox.Size = New System.Drawing.Size(84, 90)
+        Me.chatPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.chatPicBox.TabIndex = 25
+        Me.chatPicBox.TabStop = False
+        '
+        'chatLabel
+        '
+        Me.chatLabel.AutoSize = True
+        Me.chatLabel.Font = New System.Drawing.Font("SimSun-ExtB", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.chatLabel.Location = New System.Drawing.Point(212, 253)
+        Me.chatLabel.Name = "chatLabel"
+        Me.chatLabel.Size = New System.Drawing.Size(39, 13)
+        Me.chatLabel.TabIndex = 26
+        Me.chatLabel.Text = "Chat"
+        '
         'ownerHomeScreen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -115,30 +163,42 @@ Partial Class ownerHomeScreen
         Me.BackgroundImage = Global.A10.My.Resources.Resources.phone
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(369, 629)
+        Me.Controls.Add(Me.chatLabel)
+        Me.Controls.Add(Me.chatPicBox)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.batteryPicBox)
         Me.Controls.Add(Me.currentRideLabel)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.currentRidePicBox)
         Me.Controls.Add(Me.myCarLabel)
         Me.Controls.Add(Me.scheduleLabel)
         Me.Controls.Add(Me.myCarPicBox)
         Me.Controls.Add(Me.schedulePicBox)
         Me.Controls.Add(Me.kuberLogo)
         Me.DoubleBuffered = True
+        Me.Location = New System.Drawing.Point(200, 200)
         Me.Name = "ownerHomeScreen"
-        Me.Text = "ownerHomeScreen"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
+        Me.Text = "Home Screen (Owner)"
+        CType(Me.currentRidePicBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.myCarPicBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.schedulePicBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.kuberLogo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.batteryPicBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chatPicBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents currentRideLabel As Label
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents currentRidePicBox As PictureBox
     Friend WithEvents myCarLabel As Label
     Friend WithEvents scheduleLabel As Label
     Friend WithEvents myCarPicBox As PictureBox
     Friend WithEvents schedulePicBox As PictureBox
     Friend WithEvents kuberLogo As PictureBox
+    Friend WithEvents batteryPicBox As PictureBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents chatPicBox As PictureBox
+    Friend WithEvents chatLabel As Label
 End Class
