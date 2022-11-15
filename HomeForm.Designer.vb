@@ -29,11 +29,11 @@ Partial Class HomeForm
         'kuberLogo
         '
         Me.kuberLogo.Image = Global.A10.My.Resources.Resources.kuber
-        Me.kuberLogo.Location = New System.Drawing.Point(162, 93)
+        Me.kuberLogo.Location = New System.Drawing.Point(164, 63)
         Me.kuberLogo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.kuberLogo.Name = "kuberLogo"
-        Me.kuberLogo.Size = New System.Drawing.Size(143, 83)
-        Me.kuberLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.kuberLogo.Size = New System.Drawing.Size(150, 100)
+        Me.kuberLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.kuberLogo.TabIndex = 9
         Me.kuberLogo.TabStop = False
         '
