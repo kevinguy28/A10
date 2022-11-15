@@ -23,7 +23,6 @@ Partial Class devWindow
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.accidentButton = New System.Windows.Forms.Button()
-        Me.intrusionButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'accidentButton
@@ -35,21 +34,11 @@ Partial Class devWindow
         Me.accidentButton.Text = "Accident"
         Me.accidentButton.UseVisualStyleBackColor = True
         '
-        'intrusionButton
-        '
-        Me.intrusionButton.Location = New System.Drawing.Point(12, 41)
-        Me.intrusionButton.Name = "intrusionButton"
-        Me.intrusionButton.Size = New System.Drawing.Size(75, 23)
-        Me.intrusionButton.TabIndex = 1
-        Me.intrusionButton.Text = "Intrusion"
-        Me.intrusionButton.UseVisualStyleBackColor = True
-        '
         'devWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(357, 489)
-        Me.Controls.Add(Me.intrusionButton)
         Me.Controls.Add(Me.accidentButton)
         Me.Location = New System.Drawing.Point(1170, 200)
         Me.Name = "devWindow"
@@ -60,5 +49,4 @@ Partial Class devWindow
     End Sub
 
     Friend WithEvents accidentButton As Button
-    Friend WithEvents intrusionButton As Button
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class intrusion
+Partial Class HomeForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,34 +22,19 @@ Partial Class intrusion
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'Label1
+        'HomeForm
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("SimSun-ExtB", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(62, 59)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(244, 24)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Intrusion Detected"
-        '
-        'intrusion
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.A10.My.Resources.Resources.phone
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(369, 629)
-        Me.Controls.Add(Me.Label1)
+        Me.ClientSize = New System.Drawing.Size(478, 944)
         Me.DoubleBuffered = True
-        Me.Name = "intrusion"
-        Me.Text = "intrusion"
+        Me.Name = "HomeForm"
+        Me.Text = "HomeForm"
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Label1 As Label
 End Class
