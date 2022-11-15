@@ -22,7 +22,20 @@ Partial Class HomeForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.kuberLogo = New System.Windows.Forms.PictureBox()
+        CType(Me.kuberLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'kuberLogo
+        '
+        Me.kuberLogo.Image = Global.A10.My.Resources.Resources.kuber
+        Me.kuberLogo.Location = New System.Drawing.Point(162, 93)
+        Me.kuberLogo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.kuberLogo.Name = "kuberLogo"
+        Me.kuberLogo.Size = New System.Drawing.Size(143, 83)
+        Me.kuberLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.kuberLogo.TabIndex = 9
+        Me.kuberLogo.TabStop = False
         '
         'HomeForm
         '
@@ -31,10 +44,14 @@ Partial Class HomeForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.phone
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(478, 944)
+        Me.Controls.Add(Me.kuberLogo)
         Me.DoubleBuffered = True
         Me.Name = "HomeForm"
         Me.Text = "HomeForm"
+        CType(Me.kuberLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
+
+    Friend WithEvents kuberLogo As PictureBox
 End Class
