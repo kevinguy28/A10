@@ -1,4 +1,8 @@
 ﻿Public Class DevForm
+    Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Me.CenterToScreen()
+    End Sub
+
     Private Sub btnScenario_Click(sender As Object, e As EventArgs) Handles _
         btnScenarioOne.Click, btnScenarioTwo.Click,
         btnScenarioThree.Click, btnScenarioFour.Click,
