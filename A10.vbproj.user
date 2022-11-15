@@ -7,7 +7,13 @@
     <Compile Update="devWindow.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="emergencyCallScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="intrusion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ownerHomeScreen.vb">

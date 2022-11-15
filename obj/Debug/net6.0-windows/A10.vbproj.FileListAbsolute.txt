@@ -20,3 +20,5 @@ C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\A10.ownerHomeScreen.res
 C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\A10.riderHomeScreen.resources
 C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\A10.devWindow.resources
 C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\A10.AccidentNotification.resources
+C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\A10.intrusion.resources
+C:\Users\mudKI\source\repos\A10\obj\Debug\net6.0-windows\A10.emergencyCallScreen.resources
