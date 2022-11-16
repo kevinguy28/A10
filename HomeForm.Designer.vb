@@ -89,7 +89,7 @@ Partial Class HomeForm
         '
         'btnChat
         '
-        Me.btnChat.BackgroundImage = Global.A10.My.Resources.Resources.chat
+        Me.btnChat.BackgroundImage = Global.A10.My.Resources.Resources.Chat
         Me.btnChat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnChat.FlatAppearance.BorderSize = 0
         Me.btnChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat

@@ -138,7 +138,7 @@ Partial Class ownerHomeScreen
         'chatPicBox
         '
         Me.chatPicBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.chatPicBox.Image = Global.A10.My.Resources.Resources.chat
+        Me.chatPicBox.Image = Global.A10.My.Resources.Resources.Chat
         Me.chatPicBox.Location = New System.Drawing.Point(208, 269)
         Me.chatPicBox.Name = "chatPicBox"
         Me.chatPicBox.Size = New System.Drawing.Size(84, 90)
