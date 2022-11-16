@@ -28,4 +28,20 @@ Public Class HomeForm
             Me.Location = New Point(Screen.PrimaryScreen.WorkingArea.Width - (Me.Width * 1.25), 0)
         End If
     End Sub
+
+    Private Sub btnCalendar_Click(sender As Object, e As EventArgs) Handles btnCalendar.Click
+
+    End Sub
+
+    Private Sub btnCar_Click(sender As Object, e As EventArgs) Handles btnCar.Click
+
+    End Sub
+
+    Private Sub btnMap_Click(sender As Object, e As EventArgs) Handles btnMap.Click
+
+    End Sub
+
+    Private Sub btnChat_Click(sender As Object, e As EventArgs) Handles btnChat.Click
+
+    End Sub
 End Class
