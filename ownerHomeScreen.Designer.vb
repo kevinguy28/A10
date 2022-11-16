@@ -107,7 +107,7 @@ Partial Class ownerHomeScreen
         'kuberLogo
         '
         Me.kuberLogo.Image = Global.A10.My.Resources.Resources.kuber
-        Me.kuberLogo.Location = New System.Drawing.Point(134, 54)
+        Me.kuberLogo.Location = New System.Drawing.Point(134, 55)
         Me.kuberLogo.Name = "kuberLogo"
         Me.kuberLogo.Size = New System.Drawing.Size(100, 50)
         Me.kuberLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
