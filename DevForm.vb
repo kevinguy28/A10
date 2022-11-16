@@ -9,6 +9,8 @@
         btnScenarioFive.Click, btnScenarioSix.Click
         Dim ownerWindow As New HomeForm("owner", CType(sender, Button).Tag)
         Dim riderWindow As New HomeForm("rider", CType(sender, Button).Tag)
+        ownerWindow.addOtherForm(riderWindow)
+        riderWindow.addOtherForm(ownerWindow)
         ownerWindow.Show()
         riderWindow.Show()
     End Sub

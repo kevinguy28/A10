@@ -3,6 +3,7 @@
 Public Class HomeForm
     Dim user As String
     Dim scenario As Integer
+    Dim otherForm As Form
 
     Public Sub New(user As String, scenario As Integer)
 
@@ -38,6 +39,10 @@ Public Class HomeForm
             Me.lblCar.Text = "My Ride"
         End If
 
+    End Sub
+
+    Public Sub addOtherForm(otherForm As Form)
+        Me.otherForm = otherForm
     End Sub
 
     Private Sub btnCalendar_Click(sender As Object, e As EventArgs) Handles btnCalendar.Click
