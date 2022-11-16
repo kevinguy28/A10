@@ -4,11 +4,14 @@ Public Class HomeForm
     Dim user As String
     Dim scenario As Integer
     Dim otherForm As Form
-    Dim parentForm As DevForm
+    Dim previousForm As DevForm
 
     Dim calendarForm As CalendarForm
+    Dim carForm As CarForm
+    Dim routeForm As RouteForm
+    Dim chatForm As ChatForm
 
-    Public Sub New(user As String, scenario As Integer, parentForm As DevForm)
+    Public Sub New(user As String, scenario As Integer, previousForm As DevForm)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -16,7 +19,7 @@ Public Class HomeForm
         ' Add any initialization after the InitializeComponent() call.
         Me.user = user
         Me.scenario = scenario
-        Me.parentForm = DevForm
+        Me.previousForm = DevForm
 
         If Me.user = "owner" Then
             Me.Text = "Car Owner Home"
@@ -55,9 +58,34 @@ Public Class HomeForm
     End Sub
 
     Public Sub closeChildrenForm()
+
         If (Me.calendarForm IsNot Nothing) Then
             Me.calendarForm.Close()
             Me.calendarForm = Nothing
+        End If
+
+        If (Me.carForm IsNot Nothing) Then
+            Me.carForm.Close()
+            Me.carForm = Nothing
+        End If
+
+        If (Me.routeForm IsNot Nothing) Then
+            Me.routeForm.Close()
+            Me.routeForm = Nothing
+        End If
+
+        If (Me.chatForm IsNot Nothing) Then
+            Me.chatForm.Close()
+            Me.chatForm = Nothing
+        End If
+
+    End Sub
+
+    Private Sub SetCurrentForm(form As Form)
+        If (user = "owner") Then
+            Me.previousForm.SetCurrentOwnerForm(form)
+        ElseIf (user = "rider") Then
+            Me.previousForm.SetCurrentRiderForm(form)
         End If
     End Sub
 
@@ -88,21 +116,31 @@ Public Class HomeForm
     ' --- Button Click ---
     ' --------------------
     Private Sub btnCalendar_Click(sender As Object, e As EventArgs) Handles btnCalendar.Click
-        Me.calendarForm = New CalendarForm(Me.user, Me.scenario, Me)
+        Me.calendarForm = New CalendarForm(Me.user, Me.scenario, Me, Me.previousForm)
         Me.Hide()
         Me.calendarForm.Show()
+        Me.SetCurrentForm(Me.calendarForm)
     End Sub
 
     Private Sub btnCar_Click(sender As Object, e As EventArgs) Handles btnCar.Click
-
+        Me.carForm = New CarForm(Me.user, Me.scenario, Me, Me.previousForm)
+        Me.Hide()
+        Me.carForm.Show()
+        Me.SetCurrentForm(Me.carForm)
     End Sub
 
     Private Sub btnRoute_Click(sender As Object, e As EventArgs) Handles btnRoute.Click
-
+        Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.previousForm)
+        Me.Hide()
+        Me.routeForm.Show()
+        Me.SetCurrentForm(Me.routeForm)
     End Sub
 
     Private Sub btnChat_Click(sender As Object, e As EventArgs) Handles btnChat.Click
-
+        Me.chatForm = New ChatForm(Me.user, Me.scenario, Me, Me.previousForm)
+        Me.Hide()
+        Me.chatForm.Show()
+        Me.SetCurrentForm(Me.chatForm)
     End Sub
 
     ' --------------------

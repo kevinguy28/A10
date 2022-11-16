@@ -7,6 +7,12 @@
     <Compile Update="CalendarForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="CarForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ChatForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DevForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -23,6 +29,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="riderHomeScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="RouteForm.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

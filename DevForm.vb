@@ -3,6 +3,9 @@
     Dim ownerWindow As HomeForm
     Dim riderWindow As HomeForm
 
+    Dim currentOwnerForm As Form
+    Dim currentRiderForm As Form
+
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.CenterToScreen()
     End Sub
@@ -28,4 +31,13 @@
         Me.ownerWindow.Show()
         Me.riderWindow.Show()
     End Sub
+
+    Public Sub SetCurrentOwnerForm(form As Form)
+        Me.currentOwnerForm = form
+    End Sub
+
+    Public Sub SetCurrentRiderForm(form As Form)
+        Me.currentRiderForm = form
+    End Sub
+
 End Class

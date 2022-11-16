@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class CalendarForm
+Partial Class CarForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -30,11 +30,12 @@ Partial Class CalendarForm
         '
         Me.lblTitle.BackColor = System.Drawing.Color.White
         Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblTitle.ForeColor = System.Drawing.SystemColors.ControlText
         Me.lblTitle.Location = New System.Drawing.Point(38, 77)
         Me.lblTitle.Name = "lblTitle"
         Me.lblTitle.Size = New System.Drawing.Size(402, 64)
         Me.lblTitle.TabIndex = 0
-        Me.lblTitle.Text = "Calendar"
+        Me.lblTitle.Text = "Car"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'btnHome
@@ -46,11 +47,11 @@ Partial Class CalendarForm
         Me.btnHome.Location = New System.Drawing.Point(202, 797)
         Me.btnHome.Name = "btnHome"
         Me.btnHome.Size = New System.Drawing.Size(75, 75)
-        Me.btnHome.TabIndex = 1
+        Me.btnHome.TabIndex = 2
         Me.btnHome.TabStop = False
         Me.btnHome.UseVisualStyleBackColor = True
         '
-        'CalendarForm
+        'CarForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -60,8 +61,8 @@ Partial Class CalendarForm
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
-        Me.Name = "CalendarForm"
-        Me.Text = "CalendarForm"
+        Me.Name = "CarForm"
+        Me.Text = "CarForm"
         Me.ResumeLayout(False)
 
     End Sub

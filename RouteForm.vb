@@ -1,4 +1,6 @@
-﻿Public Class CalendarForm
+﻿Imports Microsoft.VisualBasic.ApplicationServices
+Public Class RouteForm
+
     Dim user As String
     Dim scenario As Integer
     Dim previousForm As HomeForm
@@ -14,10 +16,9 @@
         Me.scenario = scenario
         Me.previousForm = previousForm
         Me.devForm = devForm
-
     End Sub
 
-    Private Sub CalendarForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub RouteForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.lblTitle.BackColor = Color.FromArgb(151, 203, 197)
         Me.lblTitle.ForeColor = Color.White
     End Sub
@@ -33,7 +34,7 @@
     ' ----------------
     ' --- Location ---
     ' ----------------
-    Private Sub CalendarForm_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
+    Private Sub RouteForm_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
         Me.SetLocation()
     End Sub
 
@@ -61,4 +62,5 @@
         Me.previousForm.Show()
         Me.SetCurrentForm(Me.previousForm)
     End Sub
+
 End Class
