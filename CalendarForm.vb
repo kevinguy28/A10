@@ -4,7 +4,9 @@
     Dim previousForm As HomeForm
     Dim devForm As DevForm
 
-    Public Sub New(user As String, scenario As Integer, previousForm As HomeForm, devForm As DevForm)
+    Dim month As String
+
+    Public Sub New(user As String, scenario As Integer, previousForm As HomeForm, devForm As DevForm, Optional month As String = "November")
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -14,12 +16,22 @@
         Me.scenario = scenario
         Me.previousForm = previousForm
         Me.devForm = devForm
+        Me.month = month
 
     End Sub
 
     Private Sub CalendarForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Title
         Me.lblTitle.BackColor = Color.FromArgb(151, 203, 197)
         Me.lblTitle.ForeColor = Color.White
+
+        ' Month
+        Me.UpdateMonth(Me.month)
+
+        ' Arrows
+        imgArrowLeft.Enabled = False
+        imgArrowRight.Enabled = True
+
     End Sub
 
     Private Sub SetCurrentForm(form As Form)
@@ -28,6 +40,12 @@
         ElseIf (user = "rider") Then
             Me.devForm.SetCurrentRiderForm(form)
         End If
+    End Sub
+
+    Private Sub UpdateMonth(newMonth As String)
+        Me.month = newMonth
+        Me.usrctrlMonth.SetMonth(Me.month)
+        Me.lblMonth.Text = Me.month & " 2022"
     End Sub
 
     ' ----------------
@@ -61,4 +79,47 @@
         Me.previousForm.Show()
         Me.SetCurrentForm(Me.previousForm)
     End Sub
+
+    ' -------------------
+    ' --- Arrow Click ---
+    ' -------------------
+    Private Sub imgArrowRight_Click(sender As Object, e As EventArgs) Handles imgArrowRight.Click
+        If Me.imgArrowRight.Enabled Then
+            Me.UpdateMonth("December")
+        End If
+
+        Me.imgArrowRight.Enabled = False
+        Me.imgArrowLeft.Enabled = True
+
+    End Sub
+
+    Private Sub imgArrowLeft_Click(sender As Object, e As EventArgs) Handles imgArrowLeft.Click
+        If Me.imgArrowLeft.Enabled Then
+            Me.UpdateMonth("November")
+        End If
+
+        Me.imgArrowRight.Enabled = True
+        Me.imgArrowLeft.Enabled = False
+    End Sub
+
+
+    ' -------------------
+    ' --- Arrow Hover ---
+    ' -------------------
+    Private Sub imgArrowRight_MouseEnter(sender As Object, e As EventArgs) Handles imgArrowRight.MouseEnter
+        Me.imgArrowRight.Image = My.Resources.ArrowRight___Hover
+    End Sub
+
+    Private Sub imgArrowRight_MouseLeave(sender As Object, e As EventArgs) Handles imgArrowRight.MouseLeave
+        Me.imgArrowRight.Image = My.Resources.ArrowRight
+    End Sub
+
+    Private Sub imgArrowLeft_MouseEnter(sender As Object, e As EventArgs) Handles imgArrowLeft.MouseEnter
+        Me.imgArrowLeft.Image = My.Resources.ArrowLeft___Hover
+    End Sub
+
+    Private Sub imgArrowLeft_MouseLeave(sender As Object, e As EventArgs) Handles imgArrowLeft.MouseLeave
+        Me.imgArrowLeft.Image = My.Resources.ArrowLeft
+    End Sub
+
 End Class

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class CalendarForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,10 +20,16 @@ Partial Class CalendarForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.btnHome = New System.Windows.Forms.Button()
+        Me.usrctrlMonth = New A10.CalendarMonthControl()
+        Me.lblMonth = New System.Windows.Forms.Label()
+        Me.imgArrowRight = New System.Windows.Forms.PictureBox()
+        Me.imgArrowLeft = New System.Windows.Forms.PictureBox()
+        CType(Me.imgArrowRight, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgArrowLeft, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblTitle
@@ -50,6 +56,44 @@ Partial Class CalendarForm
         Me.btnHome.TabStop = False
         Me.btnHome.UseVisualStyleBackColor = True
         '
+        'usrctrlMonth
+        '
+        Me.usrctrlMonth.Location = New System.Drawing.Point(44, 282)
+        Me.usrctrlMonth.Name = "usrctrlMonth"
+        Me.usrctrlMonth.Size = New System.Drawing.Size(390, 405)
+        Me.usrctrlMonth.TabIndex = 3
+        '
+        'lblMonth
+        '
+        Me.lblMonth.BackColor = System.Drawing.Color.White
+        Me.lblMonth.Font = New System.Drawing.Font("Segoe UI Semibold", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblMonth.Location = New System.Drawing.Point(44, 222)
+        Me.lblMonth.Name = "lblMonth"
+        Me.lblMonth.Size = New System.Drawing.Size(390, 45)
+        Me.lblMonth.TabIndex = 4
+        Me.lblMonth.Text = "Month"
+        Me.lblMonth.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'imgArrowRight
+        '
+        Me.imgArrowRight.Image = Global.A10.My.Resources.Resources.ArrowRight
+        Me.imgArrowRight.Location = New System.Drawing.Point(389, 222)
+        Me.imgArrowRight.Name = "imgArrowRight"
+        Me.imgArrowRight.Size = New System.Drawing.Size(45, 45)
+        Me.imgArrowRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.imgArrowRight.TabIndex = 5
+        Me.imgArrowRight.TabStop = False
+        '
+        'imgArrowLeft
+        '
+        Me.imgArrowLeft.Image = Global.A10.My.Resources.Resources.ArrowLeft
+        Me.imgArrowLeft.Location = New System.Drawing.Point(44, 222)
+        Me.imgArrowLeft.Name = "imgArrowLeft"
+        Me.imgArrowLeft.Size = New System.Drawing.Size(45, 45)
+        Me.imgArrowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.imgArrowLeft.TabIndex = 6
+        Me.imgArrowLeft.TabStop = False
+        '
         'CalendarForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
@@ -57,15 +101,25 @@ Partial Class CalendarForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(478, 944)
+        Me.Controls.Add(Me.imgArrowLeft)
+        Me.Controls.Add(Me.imgArrowRight)
+        Me.Controls.Add(Me.lblMonth)
+        Me.Controls.Add(Me.usrctrlMonth)
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
         Me.Name = "CalendarForm"
         Me.Text = "CalendarForm"
+        CType(Me.imgArrowRight, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.imgArrowLeft, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents lblTitle As Label
     Friend WithEvents btnHome As Button
+    Friend WithEvents usrctrlMonth As CalendarMonthControl
+    Friend WithEvents lblMonth As Label
+    Friend WithEvents imgArrowRight As PictureBox
+    Friend WithEvents imgArrowLeft As PictureBox
 End Class
