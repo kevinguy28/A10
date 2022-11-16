@@ -29,23 +29,23 @@ Partial Class HomeForm
         'kuberLogo
         '
         Me.kuberLogo.Image = Global.A10.My.Resources.Resources.kuber
-        Me.kuberLogo.Location = New System.Drawing.Point(115, 38)
+        Me.kuberLogo.Location = New System.Drawing.Point(164, 63)
+        Me.kuberLogo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.kuberLogo.Name = "kuberLogo"
-        Me.kuberLogo.Size = New System.Drawing.Size(105, 60)
+        Me.kuberLogo.Size = New System.Drawing.Size(150, 100)
         Me.kuberLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.kuberLogo.TabIndex = 9
         Me.kuberLogo.TabStop = False
         '
         'HomeForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.A10.My.Resources.Resources.phone
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(335, 566)
+        Me.ClientSize = New System.Drawing.Size(478, 944)
         Me.Controls.Add(Me.kuberLogo)
         Me.DoubleBuffered = True
-        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "HomeForm"
         Me.Text = "HomeForm"
         CType(Me.kuberLogo, System.ComponentModel.ISupportInitialize).EndInit()
