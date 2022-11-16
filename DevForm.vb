@@ -14,13 +14,15 @@
 
         ' If other windows are open, close them
         If (ownerWindow IsNot Nothing) Or (riderWindow IsNot Nothing) Then
+            Me.ownerWindow.closeChildrenForm()
+            Me.riderWindow.closeChildrenForm()
             Me.ownerWindow.Close()
             Me.riderWindow.Close()
         End If
 
         ' Open new windows
-        Me.ownerWindow = New HomeForm("owner", CType(sender, Button).Tag)
-        Me.riderWindow = New HomeForm("rider", CType(sender, Button).Tag)
+        Me.ownerWindow = New HomeForm("owner", CType(sender, Button).Tag, Me)
+        Me.riderWindow = New HomeForm("rider", CType(sender, Button).Tag, Me)
         Me.ownerWindow.addOtherForm(riderWindow)
         Me.riderWindow.addOtherForm(ownerWindow)
         Me.ownerWindow.Show()

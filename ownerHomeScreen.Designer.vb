@@ -160,7 +160,7 @@ Partial Class ownerHomeScreen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.A10.My.Resources.Resources.phone
+        Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(369, 629)
         Me.Controls.Add(Me.chatLabel)

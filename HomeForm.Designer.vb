@@ -171,7 +171,7 @@ Partial Class HomeForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.A10.My.Resources.Resources.phone
+        Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(478, 944)
         Me.Controls.Add(Me.lblName)

@@ -4,8 +4,11 @@ Public Class HomeForm
     Dim user As String
     Dim scenario As Integer
     Dim otherForm As Form
+    Dim parentForm As DevForm
 
-    Public Sub New(user As String, scenario As Integer)
+    Dim calendarForm As CalendarForm
+
+    Public Sub New(user As String, scenario As Integer, parentForm As DevForm)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -13,6 +16,7 @@ Public Class HomeForm
         ' Add any initialization after the InitializeComponent() call.
         Me.user = user
         Me.scenario = scenario
+        Me.parentForm = DevForm
 
         If Me.user = "owner" Then
             Me.Text = "Car Owner Home"
@@ -50,6 +54,13 @@ Public Class HomeForm
         Me.otherForm = otherForm
     End Sub
 
+    Public Sub closeChildrenForm()
+        If (Me.calendarForm IsNot Nothing) Then
+            Me.calendarForm.Close()
+            Me.calendarForm = Nothing
+        End If
+    End Sub
+
     ' ----------------
     ' --- Location ---
     ' ----------------
@@ -71,14 +82,15 @@ Public Class HomeForm
             Dim x = (fullScreen - ((halfScreen - halfDev) / 2)) - halfHome
             Me.Location = New Point(x, 0)
         End If
-
     End Sub
 
     ' --------------------
     ' --- Button Click ---
     ' --------------------
     Private Sub btnCalendar_Click(sender As Object, e As EventArgs) Handles btnCalendar.Click
-
+        Me.calendarForm = New CalendarForm(Me.user, Me.scenario, Me)
+        Me.Hide()
+        Me.calendarForm.Show()
     End Sub
 
     Private Sub btnCar_Click(sender As Object, e As EventArgs) Handles btnCar.Click
