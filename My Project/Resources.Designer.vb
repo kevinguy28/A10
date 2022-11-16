@@ -73,9 +73,29 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property Calendar() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Calendar", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Calender() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Calender", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property Car() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Car", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -106,6 +126,16 @@ Namespace My.Resources
         Friend ReadOnly Property kuber() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("kuber", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property Map() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Map", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

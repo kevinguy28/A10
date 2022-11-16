@@ -22,20 +22,72 @@ Partial Class HomeForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.kuberLogo = New System.Windows.Forms.PictureBox()
-        CType(Me.kuberLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.imgLogo = New System.Windows.Forms.PictureBox()
+        Me.btnCalendar = New System.Windows.Forms.Button()
+        Me.btnCar = New System.Windows.Forms.Button()
+        Me.btnMap = New System.Windows.Forms.Button()
+        Me.btnChat = New System.Windows.Forms.Button()
+        CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'kuberLogo
+        'imgLogo
         '
-        Me.kuberLogo.Image = Global.A10.My.Resources.Resources.kuber
-        Me.kuberLogo.Location = New System.Drawing.Point(164, 63)
-        Me.kuberLogo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.kuberLogo.Name = "kuberLogo"
-        Me.kuberLogo.Size = New System.Drawing.Size(150, 100)
-        Me.kuberLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.kuberLogo.TabIndex = 9
-        Me.kuberLogo.TabStop = False
+        Me.imgLogo.Image = Global.A10.My.Resources.Resources.kuber
+        Me.imgLogo.Location = New System.Drawing.Point(164, 63)
+        Me.imgLogo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.imgLogo.Name = "imgLogo"
+        Me.imgLogo.Size = New System.Drawing.Size(150, 100)
+        Me.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.imgLogo.TabIndex = 9
+        Me.imgLogo.TabStop = False
+        '
+        'btnCalendar
+        '
+        Me.btnCalendar.BackgroundImage = Global.A10.My.Resources.Resources.Calendar
+        Me.btnCalendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnCalendar.FlatAppearance.BorderSize = 0
+        Me.btnCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCalendar.Location = New System.Drawing.Point(71, 239)
+        Me.btnCalendar.Name = "btnCalendar"
+        Me.btnCalendar.Size = New System.Drawing.Size(150, 150)
+        Me.btnCalendar.TabIndex = 10
+        Me.btnCalendar.UseVisualStyleBackColor = True
+        '
+        'btnCar
+        '
+        Me.btnCar.BackgroundImage = Global.A10.My.Resources.Resources.Car
+        Me.btnCar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnCar.FlatAppearance.BorderSize = 0
+        Me.btnCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCar.Location = New System.Drawing.Point(257, 239)
+        Me.btnCar.Name = "btnCar"
+        Me.btnCar.Size = New System.Drawing.Size(150, 150)
+        Me.btnCar.TabIndex = 11
+        Me.btnCar.UseVisualStyleBackColor = True
+        '
+        'btnMap
+        '
+        Me.btnMap.BackgroundImage = Global.A10.My.Resources.Resources.Map
+        Me.btnMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnMap.FlatAppearance.BorderSize = 0
+        Me.btnMap.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMap.Location = New System.Drawing.Point(71, 425)
+        Me.btnMap.Name = "btnMap"
+        Me.btnMap.Size = New System.Drawing.Size(150, 150)
+        Me.btnMap.TabIndex = 12
+        Me.btnMap.UseVisualStyleBackColor = True
+        '
+        'btnChat
+        '
+        Me.btnChat.BackgroundImage = Global.A10.My.Resources.Resources.chat
+        Me.btnChat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnChat.FlatAppearance.BorderSize = 0
+        Me.btnChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnChat.Location = New System.Drawing.Point(257, 425)
+        Me.btnChat.Name = "btnChat"
+        Me.btnChat.Size = New System.Drawing.Size(150, 150)
+        Me.btnChat.TabIndex = 13
+        Me.btnChat.UseVisualStyleBackColor = True
         '
         'HomeForm
         '
@@ -44,14 +96,22 @@ Partial Class HomeForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.phone
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(478, 944)
-        Me.Controls.Add(Me.kuberLogo)
+        Me.Controls.Add(Me.btnChat)
+        Me.Controls.Add(Me.btnMap)
+        Me.Controls.Add(Me.btnCar)
+        Me.Controls.Add(Me.btnCalendar)
+        Me.Controls.Add(Me.imgLogo)
         Me.DoubleBuffered = True
         Me.Name = "HomeForm"
         Me.Text = "HomeForm"
-        CType(Me.kuberLogo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents kuberLogo As PictureBox
+    Friend WithEvents imgLogo As PictureBox
+    Friend WithEvents btnCalendar As Button
+    Friend WithEvents btnCar As Button
+    Friend WithEvents btnMap As Button
+    Friend WithEvents btnChat As Button
 End Class
