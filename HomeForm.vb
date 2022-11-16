@@ -22,11 +22,22 @@ Public Class HomeForm
     End Sub
 
     Private Sub HomeForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Location
         If Me.user = "owner" Then
             Me.Location = New Point(Me.Width * 0.25, 0)
         ElseIf Me.user = "rider" Then
             Me.Location = New Point(Screen.PrimaryScreen.WorkingArea.Width - (Me.Width * 1.25), 0)
         End If
+
+        ' Calendar and Car
+        If Me.user = "owner" Then
+            Me.lblCalendar.Text = "Schedule"
+            Me.lblCar.Text = "My Car"
+        ElseIf Me.user = "rider" Then
+            Me.lblCalendar.Text = "Booking"
+            Me.lblCar.Text = "My Ride"
+        End If
+
     End Sub
 
     Private Sub btnCalendar_Click(sender As Object, e As EventArgs) Handles btnCalendar.Click
@@ -37,7 +48,7 @@ Public Class HomeForm
 
     End Sub
 
-    Private Sub btnMap_Click(sender As Object, e As EventArgs) Handles btnMap.Click
+    Private Sub btnRoute_Click(sender As Object, e As EventArgs) Handles btnRoute.Click
 
     End Sub
 
