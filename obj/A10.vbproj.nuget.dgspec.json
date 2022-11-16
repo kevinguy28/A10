@@ -1,32 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\srish\\source\\repos\\CPS 613\\Final Project\\A10\\A10.vbproj": {}
+    "C:\\Users\\mudKI\\Source\\Repos\\a10_\\A10.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\srish\\source\\repos\\CPS 613\\Final Project\\A10\\A10.vbproj": {
+    "C:\\Users\\mudKI\\Source\\Repos\\a10_\\A10.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\srish\\source\\repos\\CPS 613\\Final Project\\A10\\A10.vbproj",
+        "projectUniqueName": "C:\\Users\\mudKI\\Source\\Repos\\a10_\\A10.vbproj",
         "projectName": "A10",
-        "projectPath": "C:\\Users\\srish\\source\\repos\\CPS 613\\Final Project\\A10\\A10.vbproj",
-        "packagesPath": "C:\\Users\\srish\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\srish\\source\\repos\\CPS 613\\Final Project\\A10\\obj\\",
+        "projectPath": "C:\\Users\\mudKI\\Source\\Repos\\a10_\\A10.vbproj",
+        "packagesPath": "C:\\Users\\mudKI\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mudKI\\Source\\Repos\\a10_\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\srish\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\mudKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
@@ -62,7 +57,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -22,6 +22,7 @@ Partial Class ownerHomeScreen
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.currentRideLabel = New System.Windows.Forms.Label()
         Me.currentRidePicBox = New System.Windows.Forms.PictureBox()
         Me.myCarLabel = New System.Windows.Forms.Label()
@@ -33,6 +34,7 @@ Partial Class ownerHomeScreen
         Me.Label1 = New System.Windows.Forms.Label()
         Me.chatPicBox = New System.Windows.Forms.PictureBox()
         Me.chatLabel = New System.Windows.Forms.Label()
+        Me.tmrAccident = New System.Windows.Forms.Timer(Me.components)
         CType(Me.currentRidePicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.myCarPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.schedulePicBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -201,4 +203,5 @@ Partial Class ownerHomeScreen
     Friend WithEvents Label1 As Label
     Friend WithEvents chatPicBox As PictureBox
     Friend WithEvents chatLabel As Label
+    Friend WithEvents tmrAccident As Timer
 End Class
