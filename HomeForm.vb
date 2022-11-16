@@ -24,10 +24,15 @@ Public Class HomeForm
 
     Private Sub HomeForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Location
+        Me.SetLocation()
+
+        ' Profile
         If Me.user = "owner" Then
-            Me.Location = New Point(Me.Width * 0.25, 0)
+            Me.imgAvatar.Image = My.Resources.OwnerProfile
+            Me.lblName.Text = "Jane Doe"
         ElseIf Me.user = "rider" Then
-            Me.Location = New Point(Screen.PrimaryScreen.WorkingArea.Width - (Me.Width * 1.25), 0)
+            Me.imgAvatar.Image = My.Resources.RiderProfile
+            Me.lblName.Text = "John Smith"
         End If
 
         ' Calendar and Car
@@ -60,4 +65,26 @@ Public Class HomeForm
     Private Sub btnChat_Click(sender As Object, e As EventArgs) Handles btnChat.Click
 
     End Sub
+
+    Private Sub HomeForm_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
+        Me.SetLocation()
+    End Sub
+
+    Private Sub SetLocation()
+        Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
+        Dim halfScreen = fullScreen / 2
+        Dim halfDev = DevForm.Width / 2
+        Dim halfHome = Me.Width / 2
+
+        If Me.user = "owner" Then
+            Dim x = ((halfScreen - halfDev) / 2) - halfHome
+            Me.Location = New Point(x, 0)
+
+        ElseIf Me.user = "rider" Then
+            Dim x = (fullScreen - ((halfScreen - halfDev) / 2)) - halfHome
+            Me.Location = New Point(x, 0)
+        End If
+
+    End Sub
+
 End Class
