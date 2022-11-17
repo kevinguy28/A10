@@ -32,7 +32,7 @@ Partial Class AccidentNotification
         '
         'lblAccident1
         '
-        Me.lblAccident1.AutoSize = True
+        Me.lblAccident1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblAccident1.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.lblAccident1.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblAccident1.Location = New System.Drawing.Point(102, 181)
@@ -40,6 +40,7 @@ Partial Class AccidentNotification
         Me.lblAccident1.Size = New System.Drawing.Size(263, 46)
         Me.lblAccident1.TabIndex = 7
         Me.lblAccident1.Text = "An accident has"
+        Me.lblAccident1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'denyButton
         '
@@ -85,7 +86,7 @@ Partial Class AccidentNotification
         '
         'lblAccident2
         '
-        Me.lblAccident2.AutoSize = True
+        Me.lblAccident2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblAccident2.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.lblAccident2.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblAccident2.Location = New System.Drawing.Point(109, 227)
@@ -93,6 +94,7 @@ Partial Class AccidentNotification
         Me.lblAccident2.Size = New System.Drawing.Size(249, 46)
         Me.lblAccident2.TabIndex = 9
         Me.lblAccident2.Text = "been detected!"
+        Me.lblAccident2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'AccidentNotification
         '

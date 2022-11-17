@@ -24,6 +24,7 @@ Partial Class CarForm
     Private Sub InitializeComponent()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.btnHome = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblTitle
@@ -52,6 +53,17 @@ Partial Class CarForm
         Me.btnHome.TabStop = False
         Me.btnHome.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.IndianRed
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Button1.Location = New System.Drawing.Point(24, 742)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(436, 65)
+        Me.Button1.TabIndex = 3
+        Me.Button1.Text = "Report an Emergency"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'CarForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -59,6 +71,7 @@ Partial Class CarForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
@@ -71,4 +84,5 @@ Partial Class CarForm
 
     Friend WithEvents lblTitle As Label
     Friend WithEvents btnHome As Button
+    Friend WithEvents Button1 As Button
 End Class

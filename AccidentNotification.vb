@@ -41,13 +41,18 @@
         riderEmergencyCallScreen.Show()
 
         Me.Close()
-        Me.Close()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Me.Close()
     End Sub
     Private Sub denyButton_Click(sender As Object, e As EventArgs) Handles denyButton.Click
+        Dim otherForm = Application.OpenForms.OfType(Of AccidentNotification)()(1)
+        otherForm.Close()
+        Dim ownerAccidentNotification As New AccidentNotification("owner", 2)
+        ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation, 0) : ownerAccidentNotification.confirmButton.Hide()
+        ownerAccidentNotification.denyButton.Hide() : ownerAccidentNotification.lblAccident1.Text = "The accident was" : ownerAccidentNotification.lblAccident2.Text = "a false alarm!"
+        ownerAccidentNotification.Label1.Text = "" : ownerAccidentNotification.Show()
         Me.Close()
     End Sub
 End Class
