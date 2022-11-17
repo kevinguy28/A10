@@ -35,9 +35,9 @@ Partial Class AccidentNotification
         Me.lblAccident1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblAccident1.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.lblAccident1.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblAccident1.Location = New System.Drawing.Point(102, 181)
+        Me.lblAccident1.Location = New System.Drawing.Point(29, 181)
         Me.lblAccident1.Name = "lblAccident1"
-        Me.lblAccident1.Size = New System.Drawing.Size(263, 46)
+        Me.lblAccident1.Size = New System.Drawing.Size(409, 46)
         Me.lblAccident1.TabIndex = 7
         Me.lblAccident1.Text = "An accident has"
         Me.lblAccident1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
