@@ -5,10 +5,11 @@
     Dim devForm As DevForm
     Dim dayForm As CalendarDayForm
 
-    Dim month As String
-    Dim monthInt As Integer
+    Dim currMonth As Date
+    Dim month As Integer
+    Dim year As Integer
 
-    Public Sub New(user As String, scenario As Integer, previousForm As HomeForm, devForm As DevForm, Optional month As String = "November")
+    Public Sub New(user As String, scenario As Integer, previousForm As HomeForm, devForm As DevForm, Optional month As Integer = 0, Optional year As Integer = 0)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -19,6 +20,16 @@
         Me.previousForm = previousForm
         Me.devForm = devForm
         Me.month = month
+        Me.year = year
+
+        Dim today = New Date.Now()
+        If Me.month = 0 Then
+            Me.month = today.Month
+        End If
+        If Me.year = 0 Then
+            Me.year = today.Year
+        End If
+        currMonth = New Date(Me.year, Me.month, 1)
 
     End Sub
 
@@ -29,11 +40,7 @@
 
         ' Month
         Me.usrctrlMonth.SetMonthForm(Me)
-        Me.UpdateMonth(Me.month)
-
-        ' Arrows
-        imgArrowLeft.Enabled = False
-        imgArrowRight.Enabled = True
+        Me.UpdateMonth(0)
 
     End Sub
 
@@ -54,22 +61,30 @@
     End Sub
 
     Public Sub DayClicked(day As Integer)
-        Me.dayForm = New CalendarDayForm(Me.user, Me.scenario, Me, Me.previousForm, Me.devForm, Me.monthInt, day)
+        Dim newDate = New Date(Me.year, Me.month, day)
+        Me.dayForm = New CalendarDayForm(Me.user, Me.scenario, Me, Me.previousForm, Me.devForm, newDate)
         Me.Hide()
         Me.dayForm.Show()
         Me.SetCurrentForm(Me.dayForm)
     End Sub
 
-    Private Sub UpdateMonth(newMonth As String)
-        Me.month = newMonth
-        If Me.month = "November" Then
-            Me.monthInt = 11
-        ElseIf Me.month = "December" Then
-            Me.monthInt = 12
+    Private Sub UpdateMonth(monthChange As Integer)
+        Dim newMonth = Me.month + monthChange
+        If newMonth = 0 Then
+            ' Previous year Dec
+            newMonth = 12
+            Me.year -= 1
+        ElseIf newMonth = 13 Then
+            ' Next year Jan
+            newMonth = 1
+            Me.year += 1
         End If
 
-        Me.usrctrlMonth.SetMonth(Me.month)
-        Me.lblMonth.Text = Me.month & " 2022"
+        Me.month = newMonth
+        currMonth = New Date(Me.year, Me.month, 1)
+
+        Me.usrctrlMonth.SetMonth(Me.currMonth)
+        Me.lblMonth.Text = Format(Me.currMonth, "MMMM yyyy")
     End Sub
 
     ' ----------------
@@ -96,8 +111,8 @@
     End Sub
 
     Private Sub CalendarForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Width = Me.devForm.GetWidth()
-        Me.Height = Me.devForm.GetHeight()
+        Me.Width = DevForm.GetWidth()
+        Me.Height = DevForm.GetHeight()
     End Sub
 
     ' ------------
@@ -122,21 +137,14 @@
     ' -------------------
     Private Sub imgArrowRight_Click(sender As Object, e As EventArgs) Handles imgArrowRight.Click
         If Me.imgArrowRight.Enabled Then
-            Me.UpdateMonth("December")
+            Me.UpdateMonth(1)
         End If
-
-        Me.imgArrowRight.Enabled = False
-        Me.imgArrowLeft.Enabled = True
-
     End Sub
 
     Private Sub imgArrowLeft_Click(sender As Object, e As EventArgs) Handles imgArrowLeft.Click
         If Me.imgArrowLeft.Enabled Then
-            Me.UpdateMonth("November")
+            Me.UpdateMonth(-1)
         End If
-
-        Me.imgArrowRight.Enabled = True
-        Me.imgArrowLeft.Enabled = False
     End Sub
 
 

@@ -5,11 +5,14 @@
     Dim previousForm As CalendarForm
     Dim homeForm As HomeForm
     Dim devForm As DevForm
-    Dim month As Integer
-    Dim day As Integer
-    Dim dayDate As Date
 
-    Public Sub New(user As String, scenario As Integer, previousForm As CalendarForm, homeForm As HomeForm, devForm As DevForm, Optional month As Integer = 11, Optional day As Integer = 1)
+    Dim currDay As Date
+
+    Dim day As Integer
+    Dim month As Integer
+    Dim year As Integer
+
+    Public Sub New(user As String, scenario As Integer, previousForm As CalendarForm, homeForm As HomeForm, devForm As DevForm, currDay As Date)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -20,10 +23,11 @@
         Me.previousForm = previousForm
         Me.homeForm = homeForm
         Me.devForm = devForm
-        Me.month = month
-        Me.day = day
+        Me.currDay = currDay
 
-        Me.dayDate = New Date(2022, month, day)
+        Me.day = Me.currDay.Day
+        Me.month = Me.currDay.Month
+        Me.year = Me.currDay.Year
 
     End Sub
 
@@ -33,10 +37,10 @@
         Me.lblTitle.ForeColor = Color.White
 
         ' Day Label
-        Me.lblDay.Text = Format(dayDate, "ddd d MMM yyyy")
+        Me.lblDay.Text = Format(Me.currDay, "ddd d MMM yyyy")
 
         ' Day Control
-        Me.usrctrlDay.SetDate(Me.day, Me.month)
+        Me.usrctrlDay.SetDate(Me.currDay)
 
     End Sub
 
@@ -76,8 +80,8 @@
     End Sub
 
     Private Sub CalendarDayForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Width = Me.devForm.GetWidth()
-        Me.Height = Me.devForm.GetHeight()
+        Me.Width = DevForm.GetWidth()
+        Me.Height = DevForm.GetHeight()
     End Sub
 
     ' ------------

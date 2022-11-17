@@ -1,8 +1,10 @@
 ﻿Public Class CalendarDayControl
 
     Dim timesLabels As Label()
+    Dim currDay As Date
     Dim today As Date
     Dim isToday As Boolean = False
+
     Private Sub CalendarDayControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Times Label
         Me.timesLabels = {
@@ -16,14 +18,18 @@
 
     End Sub
 
-    Public Sub SetDate(day As Integer, month As Integer)
+    Public Sub SetDate(newDate As Date)
+        Me.currDay = newDate
+
         ' Is selected date today
         today = New Date.Now()
-        If (today.Day = day) And (today.Month = month) Then
+        If (Me.today.Day = Me.currDay.Day) And
+            (Me.today.Month = Me.currDay.Month) And
+            (Me.today.Year = Me.currDay.Year) Then
             isToday = True
         End If
 
-        ' Current Time
+        ' If so, current time
         If isToday Then
             Me.timesLabels(today.Hour).BackColor = Color.FromArgb(151, 203, 197)
         End If
@@ -51,8 +57,8 @@
         lblSlot4pm.MouseLeave, lblSlot5pm.MouseLeave, lblSlot6pm.MouseLeave, lblSlot7pm.MouseLeave,
         lblSlot8pm.MouseLeave, lblSlot9pm.MouseLeave, lblSlot10pm.MouseLeave, lblSlot11pm.MouseLeave
 
-        If (isToday) And (CType(sender, Label) Is Me.timesLabels(today.Hour)) Then
-            Me.timesLabels(today.Hour).BackColor = Color.FromArgb(151, 203, 197)
+        If (isToday) And (CType(sender, Label) Is Me.timesLabels(Me.today.Hour)) Then
+            Me.timesLabels(Me.today.Hour).BackColor = Color.FromArgb(151, 203, 197)
         Else
             CType(sender, Label).BackColor = Color.White
         End If

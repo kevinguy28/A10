@@ -1,7 +1,10 @@
 ﻿Public Class CalendarMonthControl
 
-    Dim month As String
-    Dim monthInt As Integer
+    Dim currMonth As Date
+
+    Dim month As Integer
+    Dim year As Integer
+
     Dim todayLabel As Label
     Dim dayLabels As Label()
 
@@ -29,8 +32,10 @@
         }
     End Sub
 
-    Public Sub SetMonth(newMonth As String)
-        Me.month = newMonth
+    Public Sub SetMonth(newMonth As Date)
+        Me.currMonth = newMonth
+        Me.month = Me.currMonth.Month
+        Me.year = Me.currMonth.Year
         Me.LabelSetBlank()
         Me.LabelSetDays()
     End Sub
@@ -49,17 +54,10 @@
     End Sub
 
     Private Sub LabelSetDays()
-        If Me.month = "November" Then
-            Me.monthInt = 11
-        ElseIf Me.month = "December" Then
-            Me.monthInt = 12
-        End If
 
-        Dim dateOne As Date
-        dateOne = New Date(2022, Me.monthInt, 1, 0, 0, 0)
-
-        Dim startIndex As Integer = dateOne.DayOfWeek()
-        Dim endIndex As Integer = (Date.DaysInMonth(2022, Me.monthInt) - 1) + startIndex
+        ' Dim startIndex As Integer = dateOne.DayOfWeek()
+        Dim startIndex As Integer = Me.currMonth.DayOfWeek()
+        Dim endIndex As Integer = (Date.DaysInMonth(2022, Me.month) - 1) + startIndex
 
         Dim today As Date
         today = Date.Now()
@@ -70,7 +68,7 @@
             Me.dayLabels(index).Text = day.ToString()
 
             ' If today, then make background blue
-            If (today.Month = Me.monthInt) And (today.Day = day) Then
+            If (today.Month = Me.month) And (today.Day = day) And (today.Year = Me.year) Then
                 Me.todayLabel = Me.dayLabels(index)
                 Me.todayLabel.BackColor = Color.FromArgb(151, 203, 197)
             End If
