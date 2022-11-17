@@ -29,11 +29,12 @@ Partial Class ChatForm
         'lblTitle
         '
         Me.lblTitle.BackColor = System.Drawing.Color.White
-        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblTitle.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblTitle.Location = New System.Drawing.Point(38, 66)
+        Me.lblTitle.Location = New System.Drawing.Point(38, 77)
+        Me.lblTitle.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(402, 64)
+        Me.lblTitle.Size = New System.Drawing.Size(402, 65)
         Me.lblTitle.TabIndex = 1
         Me.lblTitle.Text = "Chat"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -44,23 +45,25 @@ Partial Class ChatForm
         Me.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnHome.FlatAppearance.BorderSize = 0
         Me.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHome.Location = New System.Drawing.Point(204, 711)
+        Me.btnHome.Location = New System.Drawing.Point(205, 812)
+        Me.btnHome.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnHome.Name = "btnHome"
-        Me.btnHome.Size = New System.Drawing.Size(70, 70)
+        Me.btnHome.Size = New System.Drawing.Size(75, 75)
         Me.btnHome.TabIndex = 3
         Me.btnHome.TabStop = False
         Me.btnHome.UseVisualStyleBackColor = True
         '
         'ChatForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(478, 844)
+        Me.ClientSize = New System.Drawing.Size(484, 961)
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "ChatForm"
         Me.Text = "ChatForm"
         Me.ResumeLayout(False)

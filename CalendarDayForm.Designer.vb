@@ -33,10 +33,11 @@ Partial Class CalendarDayForm
         'lblTitle
         '
         Me.lblTitle.BackColor = System.Drawing.Color.White
-        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblTitle.Location = New System.Drawing.Point(38, 66)
+        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblTitle.Location = New System.Drawing.Point(38, 77)
+        Me.lblTitle.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(402, 64)
+        Me.lblTitle.Size = New System.Drawing.Size(402, 65)
         Me.lblTitle.TabIndex = 1
         Me.lblTitle.Text = "Calendar"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -47,9 +48,9 @@ Partial Class CalendarDayForm
         Me.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnHome.FlatAppearance.BorderSize = 0
         Me.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHome.Location = New System.Drawing.Point(204, 711)
+        Me.btnHome.Location = New System.Drawing.Point(205, 812)
         Me.btnHome.Name = "btnHome"
-        Me.btnHome.Size = New System.Drawing.Size(70, 70)
+        Me.btnHome.Size = New System.Drawing.Size(75, 75)
         Me.btnHome.TabIndex = 2
         Me.btnHome.TabStop = False
         Me.btnHome.UseVisualStyleBackColor = True
@@ -72,6 +73,7 @@ Partial Class CalendarDayForm
         Me.usrctrlDay.AutoScroll = True
         Me.usrctrlDay.BackColor = System.Drawing.Color.White
         Me.usrctrlDay.Location = New System.Drawing.Point(60, 206)
+        Me.usrctrlDay.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.usrctrlDay.Name = "usrctrlDay"
         Me.usrctrlDay.Size = New System.Drawing.Size(359, 400)
         Me.usrctrlDay.TabIndex = 4
@@ -102,11 +104,11 @@ Partial Class CalendarDayForm
         '
         'CalendarDayForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(478, 844)
+        Me.ClientSize = New System.Drawing.Size(484, 961)
         Me.Controls.Add(Me.btnPlus)
         Me.Controls.Add(Me.lblDay)
         Me.Controls.Add(Me.usrctrlDay)
@@ -114,6 +116,7 @@ Partial Class CalendarDayForm
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "CalendarDayForm"
         Me.Text = "CalendarDayForm"
         Me.ResumeLayout(False)
