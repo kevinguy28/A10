@@ -36,10 +36,11 @@ Partial Class CalendarForm
         'lblTitle
         '
         Me.lblTitle.BackColor = System.Drawing.Color.White
-        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblTitle.Location = New System.Drawing.Point(38, 66)
+        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblTitle.Location = New System.Drawing.Point(38, 77)
+        Me.lblTitle.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(402, 64)
+        Me.lblTitle.Size = New System.Drawing.Size(402, 65)
         Me.lblTitle.TabIndex = 0
         Me.lblTitle.Text = "Calendar"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -50,16 +51,18 @@ Partial Class CalendarForm
         Me.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnHome.FlatAppearance.BorderSize = 0
         Me.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHome.Location = New System.Drawing.Point(204, 711)
+        Me.btnHome.Location = New System.Drawing.Point(205, 812)
         Me.btnHome.Name = "btnHome"
-        Me.btnHome.Size = New System.Drawing.Size(70, 70)
+        Me.btnHome.Size = New System.Drawing.Size(75, 75)
         Me.btnHome.TabIndex = 1
         Me.btnHome.TabStop = False
         Me.btnHome.UseVisualStyleBackColor = True
         '
         'usrctrlMonth
         '
-        Me.usrctrlMonth.Location = New System.Drawing.Point(44, 210)
+        Me.usrctrlMonth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.usrctrlMonth.Location = New System.Drawing.Point(44, 269)
+        Me.usrctrlMonth.Margin = New System.Windows.Forms.Padding(0)
         Me.usrctrlMonth.Name = "usrctrlMonth"
         Me.usrctrlMonth.Size = New System.Drawing.Size(390, 405)
         Me.usrctrlMonth.TabIndex = 3
@@ -67,8 +70,8 @@ Partial Class CalendarForm
         'lblMonth
         '
         Me.lblMonth.BackColor = System.Drawing.Color.White
-        Me.lblMonth.Font = New System.Drawing.Font("Segoe UI Semibold", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblMonth.Location = New System.Drawing.Point(44, 158)
+        Me.lblMonth.Font = New System.Drawing.Font("Segoe UI Semibold", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblMonth.Location = New System.Drawing.Point(44, 197)
         Me.lblMonth.Name = "lblMonth"
         Me.lblMonth.Size = New System.Drawing.Size(390, 45)
         Me.lblMonth.TabIndex = 4
@@ -78,7 +81,7 @@ Partial Class CalendarForm
         'imgArrowRight
         '
         Me.imgArrowRight.Image = Global.A10.My.Resources.Resources.ArrowRight
-        Me.imgArrowRight.Location = New System.Drawing.Point(389, 158)
+        Me.imgArrowRight.Location = New System.Drawing.Point(389, 197)
         Me.imgArrowRight.Name = "imgArrowRight"
         Me.imgArrowRight.Size = New System.Drawing.Size(45, 45)
         Me.imgArrowRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -88,7 +91,7 @@ Partial Class CalendarForm
         'imgArrowLeft
         '
         Me.imgArrowLeft.Image = Global.A10.My.Resources.Resources.ArrowLeft
-        Me.imgArrowLeft.Location = New System.Drawing.Point(44, 158)
+        Me.imgArrowLeft.Location = New System.Drawing.Point(44, 197)
         Me.imgArrowLeft.Name = "imgArrowLeft"
         Me.imgArrowLeft.Size = New System.Drawing.Size(45, 45)
         Me.imgArrowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -101,20 +104,20 @@ Partial Class CalendarForm
         Me.btnPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnPlus.FlatAppearance.BorderSize = 0
         Me.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPlus.Location = New System.Drawing.Point(364, 624)
+        Me.btnPlus.Location = New System.Drawing.Point(353, 694)
         Me.btnPlus.Name = "btnPlus"
-        Me.btnPlus.Size = New System.Drawing.Size(70, 70)
+        Me.btnPlus.Size = New System.Drawing.Size(75, 75)
         Me.btnPlus.TabIndex = 8
         Me.btnPlus.TabStop = False
         Me.btnPlus.UseVisualStyleBackColor = True
         '
         'CalendarForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(478, 844)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ClientSize = New System.Drawing.Size(484, 961)
         Me.Controls.Add(Me.btnPlus)
         Me.Controls.Add(Me.imgArrowLeft)
         Me.Controls.Add(Me.imgArrowRight)
@@ -123,6 +126,7 @@ Partial Class CalendarForm
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "CalendarForm"
         Me.Text = "CalendarForm"
         CType(Me.imgArrowRight, System.ComponentModel.ISupportInitialize).EndInit()
