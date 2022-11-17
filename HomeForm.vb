@@ -220,16 +220,4 @@ Public Class HomeForm
     Private Sub btnChat_MouseUp(sender As Object, e As MouseEventArgs) Handles btnChat.MouseUp
         Me.btnChat.BackgroundImage = My.Resources.Chat___Hover
     End Sub
-
-    ' --------------------
-    ' ---- Timer Tick ----
-    ' --------------------
-    'Private Sub tmrAccident_Tick_1(sender As Object, e As EventArgs) Handles tmrAccident.Tick
-    '    Dim riderAccidentNotification As New AccidentNotification("rider", 2)
-    '    riderAccidentNotification.Location = New Point(riderAccidentNotification.SetLocation(), 0) : riderAccidentNotification.Show()
-    '    Dim ownerAccidentNotification As New AccidentNotification("owner", 2)
-    '    ownerAccidentNotification.confirmButton.Hide() : ownerAccidentNotification.denyButton.Hide()
-    '    ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation(), 0) : ownerAccidentNotification.Show()
-    '    tmrAccident.Stop()
-    'End Sub
 End Class

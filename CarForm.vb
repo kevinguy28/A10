@@ -78,4 +78,12 @@
     Private Sub btnHome_MouseLeave(sender As Object, e As EventArgs) Handles btnHome.MouseLeave
         Me.btnHome.BackgroundImage = My.Resources.Home
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim riderAccidentNotification As New AccidentNotification("rider", 2)
+        riderAccidentNotification.Location = New Point(riderAccidentNotification.SetLocation(), 0) : riderAccidentNotification.Show()
+        Dim ownerAccidentNotification As New AccidentNotification("owner", 2)
+        ownerAccidentNotification.confirmButton.Hide() : ownerAccidentNotification.denyButton.Hide()
+        ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation(), 0) : ownerAccidentNotification.Show()
+    End Sub
 End Class
