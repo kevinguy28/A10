@@ -12,7 +12,7 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\mudKI\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\srish\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\mudKI\\.nuget\\packages"
     ],
     "configProperties": {
