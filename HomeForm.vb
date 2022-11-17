@@ -57,27 +57,25 @@ Public Class HomeForm
         Me.otherForm = otherForm
     End Sub
 
-    Public Sub closeChildrenForm()
+    Public Sub CloseAllForms()
 
         If (Me.calendarForm IsNot Nothing) Then
-            Me.calendarForm.Close()
-            Me.calendarForm = Nothing
+            Me.calendarForm.CloseAllForms()
         End If
 
         If (Me.carForm IsNot Nothing) Then
-            Me.carForm.Close()
-            Me.carForm = Nothing
+            Me.carForm.CloseAllForms()
         End If
 
         If (Me.routeForm IsNot Nothing) Then
-            Me.routeForm.Close()
-            Me.routeForm = Nothing
+            Me.routeForm.CloseAllForms()
         End If
 
         If (Me.chatForm IsNot Nothing) Then
-            Me.chatForm.Close()
-            Me.chatForm = Nothing
+            Me.chatForm.CloseAllForms()
         End If
+
+        Me.Dispose()
 
     End Sub
 
@@ -110,6 +108,11 @@ Public Class HomeForm
             Dim x = (fullScreen - ((halfScreen - halfDev) / 2)) - halfHome
             Me.Location = New Point(x, 0)
         End If
+    End Sub
+
+    Private Sub HomeForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        Me.Width = 500
+        Me.Height = 1000
     End Sub
 
     ' --------------------

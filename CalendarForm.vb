@@ -37,6 +37,14 @@
 
     End Sub
 
+    Public Sub CloseAllForms()
+        If (Me.dayForm IsNot Nothing) Then
+            Me.dayForm.CloseAllForms()
+        End If
+
+        Me.Dispose()
+    End Sub
+
     Private Sub SetCurrentForm(form As Form)
         If (user = "owner") Then
             Me.devForm.SetCurrentOwnerForm(form)

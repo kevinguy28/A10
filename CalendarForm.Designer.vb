@@ -59,7 +59,7 @@ Partial Class CalendarForm
         '
         'usrctrlMonth
         '
-        Me.usrctrlMonth.Location = New System.Drawing.Point(44, 282)
+        Me.usrctrlMonth.Location = New System.Drawing.Point(44, 269)
         Me.usrctrlMonth.Name = "usrctrlMonth"
         Me.usrctrlMonth.Size = New System.Drawing.Size(390, 405)
         Me.usrctrlMonth.TabIndex = 3
@@ -68,7 +68,7 @@ Partial Class CalendarForm
         '
         Me.lblMonth.BackColor = System.Drawing.Color.White
         Me.lblMonth.Font = New System.Drawing.Font("Segoe UI Semibold", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblMonth.Location = New System.Drawing.Point(44, 222)
+        Me.lblMonth.Location = New System.Drawing.Point(44, 197)
         Me.lblMonth.Name = "lblMonth"
         Me.lblMonth.Size = New System.Drawing.Size(390, 45)
         Me.lblMonth.TabIndex = 4
@@ -78,7 +78,7 @@ Partial Class CalendarForm
         'imgArrowRight
         '
         Me.imgArrowRight.Image = Global.A10.My.Resources.Resources.ArrowRight
-        Me.imgArrowRight.Location = New System.Drawing.Point(389, 222)
+        Me.imgArrowRight.Location = New System.Drawing.Point(389, 197)
         Me.imgArrowRight.Name = "imgArrowRight"
         Me.imgArrowRight.Size = New System.Drawing.Size(45, 45)
         Me.imgArrowRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -88,7 +88,7 @@ Partial Class CalendarForm
         'imgArrowLeft
         '
         Me.imgArrowLeft.Image = Global.A10.My.Resources.Resources.ArrowLeft
-        Me.imgArrowLeft.Location = New System.Drawing.Point(44, 222)
+        Me.imgArrowLeft.Location = New System.Drawing.Point(44, 197)
         Me.imgArrowLeft.Name = "imgArrowLeft"
         Me.imgArrowLeft.Size = New System.Drawing.Size(45, 45)
         Me.imgArrowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -101,7 +101,7 @@ Partial Class CalendarForm
         Me.btnPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnPlus.FlatAppearance.BorderSize = 0
         Me.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPlus.Location = New System.Drawing.Point(359, 699)
+        Me.btnPlus.Location = New System.Drawing.Point(353, 694)
         Me.btnPlus.Name = "btnPlus"
         Me.btnPlus.Size = New System.Drawing.Size(75, 75)
         Me.btnPlus.TabIndex = 8

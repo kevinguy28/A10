@@ -17,10 +17,8 @@
 
         ' If other windows are open, close them
         If (ownerWindow IsNot Nothing) Or (riderWindow IsNot Nothing) Then
-            Me.ownerWindow.closeChildrenForm()
-            Me.riderWindow.closeChildrenForm()
-            Me.ownerWindow.Close()
-            Me.riderWindow.Close()
+            Me.ownerWindow.CloseAllForms()
+            Me.riderWindow.CloseAllForms()
         End If
 
         ' Open new windows

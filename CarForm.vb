@@ -21,6 +21,10 @@
         Me.lblTitle.ForeColor = Color.White
     End Sub
 
+    Public Sub CloseAllForms()
+        Me.Dispose()
+    End Sub
+
     Private Sub SetCurrentForm(form As Form)
         If (user = "owner") Then
             Me.devForm.SetCurrentOwnerForm(form)
@@ -52,6 +56,11 @@
         End If
     End Sub
 
+    Private Sub CarForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        Me.Width = 500
+        Me.Height = 1000
+    End Sub
+
     ' ------------
     ' --- Home ---
     ' ------------
@@ -59,5 +68,14 @@
         Me.Close()
         Me.previousForm.Show()
         Me.SetCurrentForm(Me.previousForm)
+        Me.Dispose()
+    End Sub
+
+    Private Sub btnHome_MouseEnter(sender As Object, e As EventArgs) Handles btnHome.MouseEnter
+        Me.btnHome.BackgroundImage = My.Resources.Home___Hover
+    End Sub
+
+    Private Sub btnHome_MouseLeave(sender As Object, e As EventArgs) Handles btnHome.MouseLeave
+        Me.btnHome.BackgroundImage = My.Resources.Home
     End Sub
 End Class

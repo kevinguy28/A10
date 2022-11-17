@@ -40,6 +40,10 @@
 
     End Sub
 
+    Public Sub CloseAllForms()
+        Me.Dispose()
+    End Sub
+
     Private Sub SetCurrentForm(form As Form)
         If (user = "owner") Then
             Me.devForm.SetCurrentOwnerForm(form)
