@@ -51,10 +51,10 @@ Public Class HomeForm
             Me.lblCar.Text = "My Ride"
         End If
 
-        'If (scenario = 2) And Me.user = "rider" Then
-        '    tmrAccident.Interval = 1000
-        '    tmrAccident.Start()
-        'End If
+        If (scenario = 2) And Me.user = "rider" Then
+            tmrAccident.Interval = 1000
+            tmrAccident.Start()
+        End If
 
     End Sub
 
@@ -224,13 +224,12 @@ Public Class HomeForm
     ' --------------------
     ' ---- Timer Tick ----
     ' --------------------
-
-    'Private Sub tmrAccident_Tick(sender As Object, e As EventArgs)
-    '    Dim riderAccidentNotification As New AccidentNotification("rider", 2)
-    '    riderAccidentNotification.Location = New Point(riderAccidentNotification.SetLocation(), 0) : riderAccidentNotification.Show()
-    '    Dim ownerAccidentNotification As New AccidentNotification("owner", 2)
-    '    ownerAccidentNotification.confirmButton.Hide() : ownerAccidentNotification.denyButton.Hide()
-    '    ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation(), 0) : ownerAccidentNotification.Show()
-    '    tmrAccident.Stop()
-    'End Sub
+    Private Sub tmrAccident_Tick_1(sender As Object, e As EventArgs) Handles tmrAccident.Tick
+        Dim riderAccidentNotification As New AccidentNotification("rider", 2)
+        riderAccidentNotification.Location = New Point(riderAccidentNotification.SetLocation(), 0) : riderAccidentNotification.Show()
+        Dim ownerAccidentNotification As New AccidentNotification("owner", 2)
+        ownerAccidentNotification.confirmButton.Hide() : ownerAccidentNotification.denyButton.Hide()
+        ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation(), 0) : ownerAccidentNotification.Show()
+        tmrAccident.Stop()
+    End Sub
 End Class

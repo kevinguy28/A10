@@ -33,10 +33,9 @@
         ' Owners Accident Screen needs to be modified because Accident Notifaction is by default made with respect to riderHomeScreen
         Dim ownerAccidentNotification As New AccidentNotification("owner", 2)
         ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation, 0) : ownerAccidentNotification.confirmButton.Hide()
-        ownerAccidentNotification.denyButton.Hide() : ownerAccidentNotification.lblAccident1.Text = "Rider has Confirmed an Accident"
+        ownerAccidentNotification.denyButton.Hide() : ownerAccidentNotification.lblAccident1.Text = "Rider has Confirmed" : ownerAccidentNotification.lblAccident2.Text = "an Accident!"
 
-        ownerAccidentNotification.lblAccident1.Font = New Font("SimSun-ExtB", 9, FontStyle.Bold) : ownerAccidentNotification.Show()
-
+        ownerAccidentNotification.lblAccident1.Font = New Font("Segoe UI Semibold", 25, FontStyle.Bold) : ownerAccidentNotification.Show()
         ' Prompts emergency call screen on rider screen.
         Dim riderEmergencyCallScreen As New EmergencyContactForm("rider", 2) : riderEmergencyCallScreen.Location = New Point(riderEmergencyCallScreen.SetLocation, 0)
         riderEmergencyCallScreen.Show()
