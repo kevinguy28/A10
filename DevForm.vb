@@ -43,7 +43,7 @@
     End Function
 
     Public Shared Function GetHeight() As Integer
-        Return 900
+        Return 1000
     End Function
 
 End Class
