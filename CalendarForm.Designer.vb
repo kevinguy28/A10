@@ -72,6 +72,7 @@ Partial Class CalendarForm
         Me.lblMonth.BackColor = System.Drawing.Color.White
         Me.lblMonth.Font = New System.Drawing.Font("Segoe UI Semibold", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblMonth.Location = New System.Drawing.Point(44, 197)
+        Me.lblMonth.Margin = New System.Windows.Forms.Padding(0)
         Me.lblMonth.Name = "lblMonth"
         Me.lblMonth.Size = New System.Drawing.Size(390, 45)
         Me.lblMonth.TabIndex = 4
