@@ -187,6 +187,12 @@
   <data name="Calendar___Month" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Calendar - Month.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ArrowBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ArrowBack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArrowBack___Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ArrowBack - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ArrowLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ArrowLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -198,5 +204,17 @@
   </data>
   <data name="ArrowRight___Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ArrowRight - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Calendar___Day" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Calendar - Day.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Home___Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Home - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Plus___Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plus - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

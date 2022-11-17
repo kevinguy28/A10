@@ -3,8 +3,10 @@
     Dim scenario As Integer
     Dim previousForm As HomeForm
     Dim devForm As DevForm
+    Dim dayForm As CalendarDayForm
 
     Dim month As String
+    Dim monthInt As Integer
 
     Public Sub New(user As String, scenario As Integer, previousForm As HomeForm, devForm As DevForm, Optional month As String = "November")
 
@@ -26,6 +28,7 @@
         Me.lblTitle.ForeColor = Color.White
 
         ' Month
+        Me.usrctrlMonth.SetMonthForm(Me)
         Me.UpdateMonth(Me.month)
 
         ' Arrows
@@ -42,8 +45,21 @@
         End If
     End Sub
 
+    Public Sub DayClicked(day As Integer)
+        Me.dayForm = New CalendarDayForm(Me.user, Me.scenario, Me, Me.previousForm, Me.devForm, Me.monthInt, day)
+        Me.Hide()
+        Me.dayForm.Show()
+        Me.SetCurrentForm(Me.dayForm)
+    End Sub
+
     Private Sub UpdateMonth(newMonth As String)
         Me.month = newMonth
+        If Me.month = "November" Then
+            Me.monthInt = 11
+        ElseIf Me.month = "December" Then
+            Me.monthInt = 12
+        End If
+
         Me.usrctrlMonth.SetMonth(Me.month)
         Me.lblMonth.Text = Me.month & " 2022"
     End Sub
@@ -71,6 +87,11 @@
         End If
     End Sub
 
+    Private Sub CalendarForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        Me.Width = 500
+        Me.Height = 1000
+    End Sub
+
     ' ------------
     ' --- Home ---
     ' ------------
@@ -78,6 +99,14 @@
         Me.Close()
         Me.previousForm.Show()
         Me.SetCurrentForm(Me.previousForm)
+    End Sub
+
+    Private Sub btnHome_MouseEnter(sender As Object, e As EventArgs) Handles btnHome.MouseEnter
+        Me.btnHome.BackgroundImage = My.Resources.Home___Hover
+    End Sub
+
+    Private Sub btnHome_MouseLeave(sender As Object, e As EventArgs) Handles btnHome.MouseLeave
+        Me.btnHome.BackgroundImage = My.Resources.Home
     End Sub
 
     ' -------------------
@@ -120,6 +149,22 @@
 
     Private Sub imgArrowLeft_MouseLeave(sender As Object, e As EventArgs) Handles imgArrowLeft.MouseLeave
         Me.imgArrowLeft.Image = My.Resources.ArrowLeft
+    End Sub
+
+    ' ------------
+    ' --- Plus ---
+    ' ------------
+
+    Private Sub btnPlus_Click(sender As Object, e As EventArgs) Handles btnPlus.Click
+
+    End Sub
+
+    Private Sub btnPlus_MouseEnter(sender As Object, e As EventArgs) Handles btnPlus.MouseEnter
+        Me.btnPlus.BackgroundImage = My.Resources.Plus___Hover
+    End Sub
+
+    Private Sub btnPlus_MouseLeave(sender As Object, e As EventArgs) Handles btnPlus.MouseLeave
+        Me.btnPlus.BackgroundImage = My.Resources.Plus
     End Sub
 
 End Class

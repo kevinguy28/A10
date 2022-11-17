@@ -1,8 +1,12 @@
 ﻿Public Class CalendarMonthControl
 
     Dim month As String
+    Dim monthInt As Integer
     Dim todayLabel As Label
     Dim dayLabels As Label()
+
+    Dim monthForm As CalendarForm
+    Dim dayForm As CalendarDayForm
 
     Private Sub CalendarMonthControl_Load(sender As Object, e As EventArgs) Handles Me.Load
         ' Days of the Week
@@ -31,6 +35,10 @@
         Me.LabelSetDays()
     End Sub
 
+    Public Sub SetMonthForm(newForm As CalendarForm)
+        Me.monthForm = newForm
+    End Sub
+
     Private Sub LabelSetBlank()
         Me.todayLabel = Nothing
         For Each lblDay As Label In Me.dayLabels
@@ -41,18 +49,17 @@
     End Sub
 
     Private Sub LabelSetDays()
-        Dim monthInt As Integer = 0
         If Me.month = "November" Then
-            monthInt = 11
+            Me.monthInt = 11
         ElseIf Me.month = "December" Then
-            monthInt = 12
+            Me.monthInt = 12
         End If
 
         Dim dateOne As Date
-        dateOne = New Date(2022, monthInt, 1, 0, 0, 0)
+        dateOne = New Date(2022, Me.monthInt, 1, 0, 0, 0)
 
         Dim startIndex As Integer = dateOne.DayOfWeek()
-        Dim endIndex As Integer = (Date.DaysInMonth(2022, monthInt) - 1) + startIndex
+        Dim endIndex As Integer = (Date.DaysInMonth(2022, Me.monthInt) - 1) + startIndex
 
         Dim today As Date
         today = Date.Now()
@@ -63,7 +70,7 @@
             Me.dayLabels(index).Text = day.ToString()
 
             ' If today, then make background blue
-            If (today.Month = monthInt) And (today.Day = day) Then
+            If (today.Month = Me.monthInt) And (today.Day = day) Then
                 Me.todayLabel = Me.dayLabels(index)
                 Me.todayLabel.BackColor = Color.FromArgb(151, 203, 197)
             End If
@@ -102,4 +109,22 @@
         End If
 
     End Sub
+
+    ' -----------------------
+    ' --- Day Label Click ---
+    ' -----------------------
+
+    Private Sub lblDays_Click(sender As Object, e As EventArgs) Handles _
+        lblOneOne.Click, lblOneTwo.Click, lblOneThree.Click, lblOneFour.Click, lblOneFive.Click, lblOneSix.Click, lblOneSeven.Click,
+        lblTwoOne.Click, lblTwoTwo.Click, lblTwoThree.Click, lblTwoFour.Click, lblTwoFive.Click, lblTwoSix.Click, lblTwoSeven.Click,
+        lblThreeOne.Click, lblThreeTwo.Click, lblThreeThree.Click, lblThreeFour.Click, lblThreeFive.Click, lblThreeSix.Click, lblThreeSeven.Click,
+        lblFourOne.Click, lblFourTwo.Click, lblFourThree.Click, lblFourFour.Click, lblFourFive.Click, lblFourSix.Click, lblFourSeven.Click,
+        lblFiveOne.Click, lblFiveTwo.Click, lblFiveThree.Click, lblFiveFour.Click, lblFiveFive.Click, lblFiveSix.Click, lblFiveSeven.Click,
+        lblSixOne.Click, lblSixTwo.Click, lblSixThree.Click, lblSixFour.Click, lblSixFive.Click, lblSixSix.Click, lblSixSeven.Click
+
+        Me.monthForm.DayClicked(CType(sender, Label).Text)
+
+    End Sub
+
+
 End Class

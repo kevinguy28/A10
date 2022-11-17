@@ -49,3 +49,5 @@ C:\Users\srish\source\repos\CPS 613\Final Project\A10\obj\Debug\net6.0-windows\A
 C:\Users\srish\source\repos\CPS 613\Final Project\A10\obj\Debug\net6.0-windows\A10.RouteForm.resources
 C:\Users\srish\source\repos\CPS 613\Final Project\A10\obj\Debug\net6.0-windows\A10.ChatForm.resources
 C:\Users\srish\source\repos\CPS 613\Final Project\A10\obj\Debug\net6.0-windows\A10.CalendarMonthControl.resources
+C:\Users\srish\source\repos\CPS 613\Final Project\A10\obj\Debug\net6.0-windows\A10.CalendarDayForm.resources
+C:\Users\srish\source\repos\CPS 613\Final Project\A10\obj\Debug\net6.0-windows\A10.CalendarDayControl.resources

@@ -4,6 +4,12 @@
     <Compile Update="AccidentNotification.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="CalendarDayControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="CalendarDayForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CalendarForm.vb">
       <SubType>Form</SubType>
     </Compile>
