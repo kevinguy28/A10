@@ -84,11 +84,6 @@ C:\Users\mudKI\Source\Repos\copyofA10\obj\Debug\net6.0-windows\A10.genruntimecon
 C:\Users\mudKI\Source\Repos\copyofA10\obj\Debug\net6.0-windows\ref\A10.dll
 C:\Users\mudKI\Source\Repos\copyofA10\obj\Debug\net6.0-windows\A10.EmergencyContactForm.resources
 C:\Users\srish\source\repos\CPS 613\Final Project\A10\obj\Debug\net6.0-windows\A10.EmergencyContactForm.resources
-C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.exe
-C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.deps.json
-C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.runtimeconfig.json
-C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.dll
-C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.pdb
 C:\Users\mudKI\Source\Repos\A10_4\obj\Debug\net6.0-windows\A10.vbproj.AssemblyReference.cache
 C:\Users\mudKI\Source\Repos\A10_4\obj\Debug\net6.0-windows\A10.AccidentNotification.resources
 C:\Users\mudKI\Source\Repos\A10_4\obj\Debug\net6.0-windows\A10.CalendarDayControl.resources
@@ -114,5 +109,10 @@ C:\Users\mudKI\Source\Repos\A10_4\obj\Debug\net6.0-windows\A10.vbproj.CoreCompil
 C:\Users\mudKI\Source\Repos\A10_4\obj\Debug\net6.0-windows\A10.dll
 C:\Users\mudKI\Source\Repos\A10_4\obj\Debug\net6.0-windows\refint\A10.dll
 C:\Users\mudKI\Source\Repos\A10_4\obj\Debug\net6.0-windows\A10.pdb
+C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.exe
+C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.deps.json
+C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.runtimeconfig.json
+C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.dll
+C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.pdb
 C:\Users\mudKI\Source\Repos\A10_4\obj\Debug\net6.0-windows\A10.genruntimeconfig.cache
 C:\Users\mudKI\Source\Repos\A10_4\obj\Debug\net6.0-windows\ref\A10.dll

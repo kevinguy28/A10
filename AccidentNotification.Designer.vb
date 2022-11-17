@@ -28,8 +28,6 @@ Partial Class AccidentNotification
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.lblAccident2 = New System.Windows.Forms.Label()
-        Me.imgLogo = New System.Windows.Forms.PictureBox()
-        CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblAccident1
@@ -37,9 +35,9 @@ Partial Class AccidentNotification
         Me.lblAccident1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblAccident1.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.lblAccident1.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblAccident1.Location = New System.Drawing.Point(27, 358)
+        Me.lblAccident1.Location = New System.Drawing.Point(102, 181)
         Me.lblAccident1.Name = "lblAccident1"
-        Me.lblAccident1.Size = New System.Drawing.Size(412, 46)
+        Me.lblAccident1.Size = New System.Drawing.Size(263, 46)
         Me.lblAccident1.TabIndex = 7
         Me.lblAccident1.Text = "An accident has"
         Me.lblAccident1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -48,7 +46,7 @@ Partial Class AccidentNotification
         '
         Me.denyButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.denyButton.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.denyButton.Location = New System.Drawing.Point(268, 565)
+        Me.denyButton.Location = New System.Drawing.Point(268, 388)
         Me.denyButton.Name = "denyButton"
         Me.denyButton.Size = New System.Drawing.Size(132, 95)
         Me.denyButton.TabIndex = 6
@@ -59,7 +57,7 @@ Partial Class AccidentNotification
         '
         Me.confirmButton.BackColor = System.Drawing.Color.Red
         Me.confirmButton.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.confirmButton.Location = New System.Drawing.Point(67, 565)
+        Me.confirmButton.Location = New System.Drawing.Point(67, 388)
         Me.confirmButton.Name = "confirmButton"
         Me.confirmButton.Size = New System.Drawing.Size(132, 95)
         Me.confirmButton.TabIndex = 5
@@ -71,7 +69,7 @@ Partial Class AccidentNotification
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(138, 275)
+        Me.Label1.Location = New System.Drawing.Point(138, 98)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(190, 46)
         Me.Label1.TabIndex = 4
@@ -79,7 +77,7 @@ Partial Class AccidentNotification
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(196, 734)
+        Me.Button1.Location = New System.Drawing.Point(196, 557)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 8
@@ -91,22 +89,12 @@ Partial Class AccidentNotification
         Me.lblAccident2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblAccident2.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.lblAccident2.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblAccident2.Location = New System.Drawing.Point(109, 404)
+        Me.lblAccident2.Location = New System.Drawing.Point(109, 227)
         Me.lblAccident2.Name = "lblAccident2"
         Me.lblAccident2.Size = New System.Drawing.Size(249, 46)
         Me.lblAccident2.TabIndex = 9
         Me.lblAccident2.Text = "been detected!"
         Me.lblAccident2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'imgLogo
-        '
-        Me.imgLogo.Image = Global.A10.My.Resources.Resources.kuber
-        Me.imgLogo.Location = New System.Drawing.Point(133, 70)
-        Me.imgLogo.Name = "imgLogo"
-        Me.imgLogo.Size = New System.Drawing.Size(200, 150)
-        Me.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.imgLogo.TabIndex = 10
-        Me.imgLogo.TabStop = False
         '
         'AccidentNotification
         '
@@ -115,7 +103,6 @@ Partial Class AccidentNotification
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(466, 952)
-        Me.Controls.Add(Me.imgLogo)
         Me.Controls.Add(Me.lblAccident2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lblAccident1)
@@ -127,7 +114,6 @@ Partial Class AccidentNotification
         Me.Name = "AccidentNotification"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "AccidentNotification"
-        CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -139,5 +125,4 @@ Partial Class AccidentNotification
     Friend WithEvents Label1 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents lblAccident2 As Label
-    Friend WithEvents imgLogo As PictureBox
 End Class

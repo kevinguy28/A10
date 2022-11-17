@@ -55,13 +55,13 @@ Partial Class CarForm
         '
         'Button1
         '
-        Me.Button1.BackColor = System.Drawing.Color.Firebrick
+        Me.Button1.BackColor = System.Drawing.Color.IndianRed
         Me.Button1.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button1.Location = New System.Drawing.Point(24, 752)
+        Me.Button1.Location = New System.Drawing.Point(24, 742)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(436, 55)
+        Me.Button1.Size = New System.Drawing.Size(436, 65)
         Me.Button1.TabIndex = 3
-        Me.Button1.Text = "Report an Accident"
+        Me.Button1.Text = "Report an Emergency"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'CarForm

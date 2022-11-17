@@ -61,9 +61,9 @@ Partial Class CalendarDayForm
         Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnBack.FlatAppearance.BorderSize = 0
         Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBack.Location = New System.Drawing.Point(38, 724)
+        Me.btnBack.Location = New System.Drawing.Point(38, 824)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(45, 45)
+        Me.btnBack.Size = New System.Drawing.Size(50, 50)
         Me.btnBack.TabIndex = 3
         Me.btnBack.TabStop = False
         Me.btnBack.UseVisualStyleBackColor = True
@@ -72,8 +72,8 @@ Partial Class CalendarDayForm
         '
         Me.usrctrlDay.AutoScroll = True
         Me.usrctrlDay.BackColor = System.Drawing.Color.White
-        Me.usrctrlDay.Location = New System.Drawing.Point(60, 206)
-        Me.usrctrlDay.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.usrctrlDay.Location = New System.Drawing.Point(60, 273)
+        Me.usrctrlDay.Margin = New System.Windows.Forms.Padding(2)
         Me.usrctrlDay.Name = "usrctrlDay"
         Me.usrctrlDay.Size = New System.Drawing.Size(359, 400)
         Me.usrctrlDay.TabIndex = 4
@@ -81,8 +81,9 @@ Partial Class CalendarDayForm
         'lblDay
         '
         Me.lblDay.BackColor = System.Drawing.Color.White
-        Me.lblDay.Font = New System.Drawing.Font("Segoe UI Semibold", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblDay.Location = New System.Drawing.Point(44, 158)
+        Me.lblDay.Font = New System.Drawing.Font("Segoe UI Semibold", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblDay.Location = New System.Drawing.Point(44, 197)
+        Me.lblDay.Margin = New System.Windows.Forms.Padding(0)
         Me.lblDay.Name = "lblDay"
         Me.lblDay.Size = New System.Drawing.Size(390, 45)
         Me.lblDay.TabIndex = 6
@@ -95,9 +96,9 @@ Partial Class CalendarDayForm
         Me.btnPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnPlus.FlatAppearance.BorderSize = 0
         Me.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPlus.Location = New System.Drawing.Point(364, 624)
+        Me.btnPlus.Location = New System.Drawing.Point(353, 694)
         Me.btnPlus.Name = "btnPlus"
-        Me.btnPlus.Size = New System.Drawing.Size(70, 70)
+        Me.btnPlus.Size = New System.Drawing.Size(75, 75)
         Me.btnPlus.TabIndex = 7
         Me.btnPlus.TabStop = False
         Me.btnPlus.UseVisualStyleBackColor = True

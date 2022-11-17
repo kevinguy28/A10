@@ -80,6 +80,7 @@ Partial Class CalendarDayControl
         Me.imgSchedule.BackColor = System.Drawing.Color.White
         Me.imgSchedule.Image = Global.A10.My.Resources.Resources.Calendar___Day
         Me.imgSchedule.Location = New System.Drawing.Point(57, 10)
+        Me.imgSchedule.Margin = New System.Windows.Forms.Padding(0)
         Me.imgSchedule.Name = "imgSchedule"
         Me.imgSchedule.Size = New System.Drawing.Size(276, 1550)
         Me.imgSchedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -89,6 +90,7 @@ Partial Class CalendarDayControl
         'lblTime12amA
         '
         Me.lblTime12amA.AutoSize = True
+        Me.lblTime12amA.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime12amA.Location = New System.Drawing.Point(0, 0)
         Me.lblTime12amA.Name = "lblTime12amA"
         Me.lblTime12amA.Size = New System.Drawing.Size(57, 25)
@@ -98,6 +100,7 @@ Partial Class CalendarDayControl
         'lblTime1am
         '
         Me.lblTime1am.AutoSize = True
+        Me.lblTime1am.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime1am.Location = New System.Drawing.Point(10, 63)
         Me.lblTime1am.Name = "lblTime1am"
         Me.lblTime1am.Size = New System.Drawing.Size(47, 25)
@@ -107,6 +110,7 @@ Partial Class CalendarDayControl
         'lblTime2am
         '
         Me.lblTime2am.AutoSize = True
+        Me.lblTime2am.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime2am.Location = New System.Drawing.Point(10, 127)
         Me.lblTime2am.Name = "lblTime2am"
         Me.lblTime2am.Size = New System.Drawing.Size(47, 25)
@@ -116,6 +120,7 @@ Partial Class CalendarDayControl
         'lblTime3am
         '
         Me.lblTime3am.AutoSize = True
+        Me.lblTime3am.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime3am.Location = New System.Drawing.Point(10, 192)
         Me.lblTime3am.Name = "lblTime3am"
         Me.lblTime3am.Size = New System.Drawing.Size(47, 25)
@@ -125,6 +130,7 @@ Partial Class CalendarDayControl
         'lblTime4am
         '
         Me.lblTime4am.AutoSize = True
+        Me.lblTime4am.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime4am.Location = New System.Drawing.Point(10, 256)
         Me.lblTime4am.Name = "lblTime4am"
         Me.lblTime4am.Size = New System.Drawing.Size(47, 25)
@@ -134,6 +140,7 @@ Partial Class CalendarDayControl
         'lblTime5am
         '
         Me.lblTime5am.AutoSize = True
+        Me.lblTime5am.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime5am.Location = New System.Drawing.Point(10, 321)
         Me.lblTime5am.Name = "lblTime5am"
         Me.lblTime5am.Size = New System.Drawing.Size(47, 25)
@@ -143,6 +150,7 @@ Partial Class CalendarDayControl
         'lblTime6am
         '
         Me.lblTime6am.AutoSize = True
+        Me.lblTime6am.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime6am.Location = New System.Drawing.Point(10, 384)
         Me.lblTime6am.Name = "lblTime6am"
         Me.lblTime6am.Size = New System.Drawing.Size(47, 25)
@@ -152,6 +160,7 @@ Partial Class CalendarDayControl
         'lblTime7am
         '
         Me.lblTime7am.AutoSize = True
+        Me.lblTime7am.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime7am.Location = New System.Drawing.Point(10, 449)
         Me.lblTime7am.Name = "lblTime7am"
         Me.lblTime7am.Size = New System.Drawing.Size(47, 25)
@@ -161,6 +170,7 @@ Partial Class CalendarDayControl
         'lblTime8am
         '
         Me.lblTime8am.AutoSize = True
+        Me.lblTime8am.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime8am.Location = New System.Drawing.Point(10, 512)
         Me.lblTime8am.Name = "lblTime8am"
         Me.lblTime8am.Size = New System.Drawing.Size(47, 25)
@@ -170,6 +180,7 @@ Partial Class CalendarDayControl
         'lblTime9am
         '
         Me.lblTime9am.AutoSize = True
+        Me.lblTime9am.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime9am.Location = New System.Drawing.Point(10, 576)
         Me.lblTime9am.Name = "lblTime9am"
         Me.lblTime9am.Size = New System.Drawing.Size(47, 25)
@@ -179,6 +190,7 @@ Partial Class CalendarDayControl
         'lblTime10am
         '
         Me.lblTime10am.AutoSize = True
+        Me.lblTime10am.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime10am.Location = New System.Drawing.Point(0, 641)
         Me.lblTime10am.Name = "lblTime10am"
         Me.lblTime10am.Size = New System.Drawing.Size(57, 25)
@@ -188,6 +200,7 @@ Partial Class CalendarDayControl
         'lblTime11am
         '
         Me.lblTime11am.AutoSize = True
+        Me.lblTime11am.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime11am.Location = New System.Drawing.Point(0, 703)
         Me.lblTime11am.Name = "lblTime11am"
         Me.lblTime11am.Size = New System.Drawing.Size(57, 25)
@@ -197,6 +210,7 @@ Partial Class CalendarDayControl
         'lblTime12pm
         '
         Me.lblTime12pm.AutoSize = True
+        Me.lblTime12pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime12pm.Location = New System.Drawing.Point(-2, 767)
         Me.lblTime12pm.Name = "lblTime12pm"
         Me.lblTime12pm.Size = New System.Drawing.Size(59, 25)
@@ -206,6 +220,7 @@ Partial Class CalendarDayControl
         'lblTime1pm
         '
         Me.lblTime1pm.AutoSize = True
+        Me.lblTime1pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime1pm.Location = New System.Drawing.Point(8, 832)
         Me.lblTime1pm.Name = "lblTime1pm"
         Me.lblTime1pm.Size = New System.Drawing.Size(49, 25)
@@ -215,6 +230,7 @@ Partial Class CalendarDayControl
         'lblTime2pm
         '
         Me.lblTime2pm.AutoSize = True
+        Me.lblTime2pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime2pm.Location = New System.Drawing.Point(8, 896)
         Me.lblTime2pm.Name = "lblTime2pm"
         Me.lblTime2pm.Size = New System.Drawing.Size(49, 25)
@@ -224,6 +240,7 @@ Partial Class CalendarDayControl
         'lblTime3pm
         '
         Me.lblTime3pm.AutoSize = True
+        Me.lblTime3pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime3pm.Location = New System.Drawing.Point(8, 961)
         Me.lblTime3pm.Name = "lblTime3pm"
         Me.lblTime3pm.Size = New System.Drawing.Size(49, 25)
@@ -233,6 +250,7 @@ Partial Class CalendarDayControl
         'lblTime4pm
         '
         Me.lblTime4pm.AutoSize = True
+        Me.lblTime4pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime4pm.Location = New System.Drawing.Point(8, 1026)
         Me.lblTime4pm.Name = "lblTime4pm"
         Me.lblTime4pm.Size = New System.Drawing.Size(49, 25)
@@ -242,6 +260,7 @@ Partial Class CalendarDayControl
         'lblTime5pm
         '
         Me.lblTime5pm.AutoSize = True
+        Me.lblTime5pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime5pm.Location = New System.Drawing.Point(8, 1091)
         Me.lblTime5pm.Name = "lblTime5pm"
         Me.lblTime5pm.Size = New System.Drawing.Size(49, 25)
@@ -251,6 +270,7 @@ Partial Class CalendarDayControl
         'lblTime6pm
         '
         Me.lblTime6pm.AutoSize = True
+        Me.lblTime6pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime6pm.Location = New System.Drawing.Point(8, 1154)
         Me.lblTime6pm.Name = "lblTime6pm"
         Me.lblTime6pm.Size = New System.Drawing.Size(49, 25)
@@ -260,6 +280,7 @@ Partial Class CalendarDayControl
         'lblTime7pm
         '
         Me.lblTime7pm.AutoSize = True
+        Me.lblTime7pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime7pm.Location = New System.Drawing.Point(8, 1219)
         Me.lblTime7pm.Name = "lblTime7pm"
         Me.lblTime7pm.Size = New System.Drawing.Size(49, 25)
@@ -269,6 +290,7 @@ Partial Class CalendarDayControl
         'lblTime8pm
         '
         Me.lblTime8pm.AutoSize = True
+        Me.lblTime8pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime8pm.Location = New System.Drawing.Point(8, 1283)
         Me.lblTime8pm.Name = "lblTime8pm"
         Me.lblTime8pm.Size = New System.Drawing.Size(49, 25)
@@ -278,6 +300,7 @@ Partial Class CalendarDayControl
         'lblTime9pm
         '
         Me.lblTime9pm.AutoSize = True
+        Me.lblTime9pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime9pm.Location = New System.Drawing.Point(8, 1346)
         Me.lblTime9pm.Name = "lblTime9pm"
         Me.lblTime9pm.Size = New System.Drawing.Size(49, 25)
@@ -287,6 +310,7 @@ Partial Class CalendarDayControl
         'lblTime10pm
         '
         Me.lblTime10pm.AutoSize = True
+        Me.lblTime10pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime10pm.Location = New System.Drawing.Point(-2, 1412)
         Me.lblTime10pm.Name = "lblTime10pm"
         Me.lblTime10pm.Size = New System.Drawing.Size(59, 25)
@@ -296,6 +320,7 @@ Partial Class CalendarDayControl
         'lblTime11pm
         '
         Me.lblTime11pm.AutoSize = True
+        Me.lblTime11pm.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime11pm.Location = New System.Drawing.Point(-2, 1475)
         Me.lblTime11pm.Name = "lblTime11pm"
         Me.lblTime11pm.Size = New System.Drawing.Size(59, 25)
@@ -305,6 +330,7 @@ Partial Class CalendarDayControl
         'lblTime12amB
         '
         Me.lblTime12amB.AutoSize = True
+        Me.lblTime12amB.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTime12amB.Location = New System.Drawing.Point(0, 1539)
         Me.lblTime12amB.Name = "lblTime12amB"
         Me.lblTime12amB.Size = New System.Drawing.Size(57, 25)
@@ -530,7 +556,7 @@ Partial Class CalendarDayControl
         '
         'CalendarDayControl
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.White
@@ -584,8 +610,9 @@ Partial Class CalendarDayControl
         Me.Controls.Add(Me.lblTime1am)
         Me.Controls.Add(Me.lblTime12amA)
         Me.Controls.Add(Me.imgSchedule)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "CalendarDayControl"
-        Me.Size = New System.Drawing.Size(324, 1534)
+        Me.Size = New System.Drawing.Size(351, 1560)
         CType(Me.imgSchedule, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
