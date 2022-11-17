@@ -83,3 +83,4 @@ C:\Users\mudKI\Source\Repos\copyofA10\obj\Debug\net6.0-windows\A10.pdb
 C:\Users\mudKI\Source\Repos\copyofA10\obj\Debug\net6.0-windows\A10.genruntimeconfig.cache
 C:\Users\mudKI\Source\Repos\copyofA10\obj\Debug\net6.0-windows\ref\A10.dll
 C:\Users\mudKI\Source\Repos\copyofA10\obj\Debug\net6.0-windows\A10.EmergencyContactForm.resources
+C:\Users\srish\source\repos\CPS 613\Final Project\A10\obj\Debug\net6.0-windows\A10.EmergencyContactForm.resources

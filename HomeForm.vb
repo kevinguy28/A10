@@ -19,7 +19,7 @@ Public Class HomeForm
         ' Add any initialization after the InitializeComponent() call.
         Me.user = user
         Me.scenario = scenario
-        Me.previousForm = DevForm
+        Me.previousForm = previousForm
 
         If Me.user = "owner" Then
             Me.Text = "Car Owner Home"
@@ -51,10 +51,10 @@ Public Class HomeForm
             Me.lblCar.Text = "My Ride"
         End If
 
-        If (scenario = 2) And Me.user = "rider" Then
-            tmrAccident.Interval = 1000
-            tmrAccident.Start()
-        End If
+        'If (scenario = 2) And Me.user = "rider" Then
+        '    tmrAccident.Interval = 1000
+        '    tmrAccident.Start()
+        'End If
 
     End Sub
 
@@ -116,8 +116,8 @@ Public Class HomeForm
     End Sub
 
     Private Sub HomeForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Width = 500
-        Me.Height = 1000
+        Me.Width = DevForm.GetWidth()
+        Me.Height = DevForm.GetHeight()
     End Sub
 
     ' --------------------
@@ -225,12 +225,12 @@ Public Class HomeForm
     ' ---- Timer Tick ----
     ' --------------------
 
-    Private Sub tmrAccident_Tick(sender As Object, e As EventArgs) Handles tmrAccident.Tick
-        Dim riderAccidentNotification As New AccidentNotification("rider", 2)
-        riderAccidentNotification.Location = New Point(riderAccidentNotification.SetLocation(), 0) : riderAccidentNotification.Show()
-        Dim ownerAccidentNotification As New AccidentNotification("owner", 2)
-        ownerAccidentNotification.confirmButton.Hide() : ownerAccidentNotification.denyButton.Hide()
-        ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation(), 0) : ownerAccidentNotification.Show()
-        tmrAccident.Stop()
-    End Sub
+    'Private Sub tmrAccident_Tick(sender As Object, e As EventArgs)
+    '    Dim riderAccidentNotification As New AccidentNotification("rider", 2)
+    '    riderAccidentNotification.Location = New Point(riderAccidentNotification.SetLocation(), 0) : riderAccidentNotification.Show()
+    '    Dim ownerAccidentNotification As New AccidentNotification("owner", 2)
+    '    ownerAccidentNotification.confirmButton.Hide() : ownerAccidentNotification.denyButton.Hide()
+    '    ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation(), 0) : ownerAccidentNotification.Show()
+    '    tmrAccident.Stop()
+    'End Sub
 End Class

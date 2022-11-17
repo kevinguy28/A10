@@ -57,8 +57,8 @@
     End Sub
 
     Private Sub CarForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Width = 500
-        Me.Height = 1000
+        Me.Width = Me.devForm.GetWidth()
+        Me.Height = Me.devForm.GetHeight()
     End Sub
 
     ' ------------

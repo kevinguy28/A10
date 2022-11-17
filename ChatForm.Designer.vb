@@ -31,7 +31,7 @@ Partial Class ChatForm
         Me.lblTitle.BackColor = System.Drawing.Color.White
         Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblTitle.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblTitle.Location = New System.Drawing.Point(38, 78)
+        Me.lblTitle.Location = New System.Drawing.Point(38, 66)
         Me.lblTitle.Name = "lblTitle"
         Me.lblTitle.Size = New System.Drawing.Size(402, 64)
         Me.lblTitle.TabIndex = 1
@@ -44,9 +44,9 @@ Partial Class ChatForm
         Me.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnHome.FlatAppearance.BorderSize = 0
         Me.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHome.Location = New System.Drawing.Point(202, 797)
+        Me.btnHome.Location = New System.Drawing.Point(204, 711)
         Me.btnHome.Name = "btnHome"
-        Me.btnHome.Size = New System.Drawing.Size(75, 75)
+        Me.btnHome.Size = New System.Drawing.Size(70, 70)
         Me.btnHome.TabIndex = 3
         Me.btnHome.TabStop = False
         Me.btnHome.UseVisualStyleBackColor = True
@@ -56,8 +56,8 @@ Partial Class ChatForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(478, 944)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(478, 844)
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
