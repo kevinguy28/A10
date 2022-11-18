@@ -25,6 +25,7 @@ Partial Class CarForm
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.btnHome = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnCarFeatures = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblTitle
@@ -64,6 +65,16 @@ Partial Class CarForm
         Me.Button1.Text = "Report an Emergency"
         Me.Button1.UseVisualStyleBackColor = False
         '
+        'btnCarFeatures
+        '
+        Me.btnCarFeatures.BackgroundImage = Global.A10.My.Resources.Resources.fan_neutral
+        Me.btnCarFeatures.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnCarFeatures.Location = New System.Drawing.Point(68, 258)
+        Me.btnCarFeatures.Name = "btnCarFeatures"
+        Me.btnCarFeatures.Size = New System.Drawing.Size(150, 150)
+        Me.btnCarFeatures.TabIndex = 4
+        Me.btnCarFeatures.UseVisualStyleBackColor = True
+        '
         'CarForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -71,6 +82,7 @@ Partial Class CarForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.btnCarFeatures)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.lblTitle)
@@ -85,4 +97,5 @@ Partial Class CarForm
     Friend WithEvents lblTitle As Label
     Friend WithEvents btnHome As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents btnCarFeatures As Button
 End Class
