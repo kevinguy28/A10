@@ -116,3 +116,5 @@ C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.dll
 C:\Users\mudKI\Source\Repos\A10_4\bin\Debug\net6.0-windows\A10.pdb
 C:\Users\mudKI\Source\Repos\A10_4\obj\Debug\net6.0-windows\A10.genruntimeconfig.cache
 C:\Users\mudKI\Source\Repos\A10_4\obj\Debug\net6.0-windows\ref\A10.dll
+C:\Users\mudKI\source\repos\A10_4\obj\Debug\net6.0-windows\A10.CalendarBookingControl.resources
+C:\Users\mudKI\source\repos\A10_4\obj\Debug\net6.0-windows\A10.CalendarBookingForm.resources

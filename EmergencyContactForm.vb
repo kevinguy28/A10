@@ -1,14 +1,23 @@
 ﻿Public Class EmergencyContactForm
     Dim user As String
     Dim scenario As Integer
-    Public Sub New(user As String, scenario As Integer)
+    Dim devForm As DevForm
+    Dim previousForm As AccidentNotification
+    Public Sub New(user As String, scenario As Integer, previousForm As AccidentNotification, devForm As DevForm)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Me.user = user
-        Me.scenario = scenario
+        Me.user = user : Me.scenario = scenario : Me.devForm = devForm : Me.previousForm = previousForm
+    End Sub
+
+    Private Sub SetCurrentForm(form As Form)
+        If (user = "owner") Then
+            Me.devForm.SetCurrentOwnerForm(form)
+        ElseIf (user = "rider") Then
+            Me.devForm.SetCurrentRiderForm(form)
+        End If
     End Sub
 
     Function SetLocation()
@@ -30,6 +39,8 @@
     End Sub
 
     Private Sub endCall_Click(sender As Object, e As EventArgs) Handles endCallPicBox.Click, noCallPicBox.Click
-        Me.Close()
+        Me.Close() : Me.previousForm.previousForm.Show()
+        Me.SetCurrentForm(Me.previousForm.previousForm)
+        Me.Dispose()
     End Sub
 End Class
