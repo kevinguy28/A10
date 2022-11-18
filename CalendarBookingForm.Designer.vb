@@ -68,10 +68,16 @@ Partial Class CalendarBookingForm
         '
         'usrctrlBooking
         '
+        Me.usrctrlBooking.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.usrctrlBooking.AutoScroll = True
         Me.usrctrlBooking.BackColor = System.Drawing.Color.White
-        Me.usrctrlBooking.Location = New System.Drawing.Point(37, 172)
+        Me.usrctrlBooking.Location = New System.Drawing.Point(24, 172)
+        Me.usrctrlBooking.MaximumSize = New System.Drawing.Size(410, 632)
+        Me.usrctrlBooking.MinimumSize = New System.Drawing.Size(435, 632)
         Me.usrctrlBooking.Name = "usrctrlBooking"
-        Me.usrctrlBooking.Size = New System.Drawing.Size(410, 632)
+        Me.usrctrlBooking.Size = New System.Drawing.Size(435, 632)
         Me.usrctrlBooking.TabIndex = 5
         '
         'CalendarBookingForm

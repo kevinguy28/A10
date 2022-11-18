@@ -102,7 +102,7 @@
         End If
 
         Me.month = newMonth
-        currMonth = New Date(Me.year, Me.month, 1)
+        Me.currMonth = New Date(Me.year, Me.month, 1)
 
         Me.usrctrlMonth.SetMonth(Me.currMonth)
         Me.lblMonth.Text = Format(Me.currMonth, "MMMM yyyy")

@@ -9,6 +9,7 @@
     Dim dayLabels As Label()
 
     Dim monthForm As CalendarForm
+    Dim bookingForm As CalendarBookingControl
     Dim dayForm As CalendarDayForm
 
     Private Sub CalendarMonthControl_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -20,7 +21,26 @@
             weekLbl.BackColor = Color.FromArgb(151, 203, 197)
             weekLbl.ForeColor = Color.White
         Next
+    End Sub
 
+    Public Sub SetMonth(newMonth As Date)
+        Me.currMonth = newMonth
+        Me.month = Me.currMonth.Month
+        Me.year = Me.currMonth.Year
+        Me.CreateLabelArray()
+        Me.LabelSetBlank()
+        Me.LabelSetDays()
+    End Sub
+
+    Public Sub SetMonthForm(newForm As CalendarForm)
+        Me.monthForm = newForm
+    End Sub
+
+    Public Sub SetBookingForm(newForm As CalendarBookingControl)
+        Me.bookingForm = newForm
+    End Sub
+
+    Private Sub CreateLabelArray()
         ' DayLabels
         Me.dayLabels = {
             Me.lblOneOne, Me.lblOneTwo, Me.lblOneThree, Me.lblOneFour, Me.lblOneFive, Me.lblOneSix, Me.lblOneSeven,
@@ -30,18 +50,6 @@
             Me.lblFiveOne, Me.lblFiveTwo, Me.lblFiveThree, Me.lblFiveFour, Me.lblFiveFive, Me.lblFiveSix, Me.lblFiveSeven,
             Me.lblSixOne, Me.lblSixTwo, Me.lblSixThree, Me.lblSixFour, Me.lblSixFive, Me.lblSixSix, Me.lblSixSeven
         }
-    End Sub
-
-    Public Sub SetMonth(newMonth As Date)
-        Me.currMonth = newMonth
-        Me.month = Me.currMonth.Month
-        Me.year = Me.currMonth.Year
-        Me.LabelSetBlank()
-        Me.LabelSetDays()
-    End Sub
-
-    Public Sub SetMonthForm(newForm As CalendarForm)
-        Me.monthForm = newForm
     End Sub
 
     Private Sub LabelSetBlank()
@@ -120,7 +128,11 @@
         lblFiveOne.Click, lblFiveTwo.Click, lblFiveThree.Click, lblFiveFour.Click, lblFiveFive.Click, lblFiveSix.Click, lblFiveSeven.Click,
         lblSixOne.Click, lblSixTwo.Click, lblSixThree.Click, lblSixFour.Click, lblSixFive.Click, lblSixSix.Click, lblSixSeven.Click
 
-        Me.monthForm.DayClicked(CType(sender, Label).Text)
+        If Me.monthForm IsNot Nothing Then
+            Me.monthForm.DayClicked(CType(sender, Label).Text)
+        ElseIf Me.bookingForm IsNot Nothing Then
+            Me.bookingForm.DayClicked(CType(sender, Label).Text)
+        End If
 
     End Sub
 
