@@ -81,8 +81,8 @@ Public Class CalendarBookingControl
         Me.lblDate.Text = "Date"
         Me.lblDate.TextAlign = ContentAlignment.MiddleCenter
         Me.lblDate.Font = headingFont
+        Me.lblDate.Size = New Size(Me.Width - 25, 45)
         Me.lblDate.AutoSize = False
-        Me.lblDate.Height = 45
         Me.lblDate.Margin = New Padding(padding.Left / 2, padding.Top, padding.Bottom, padding.Right)
 
         ' lblDatePrompt

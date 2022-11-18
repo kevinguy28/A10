@@ -13,6 +13,8 @@
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
+
+        'App Form
         Me.user = user
         Me.scenario = scenario
         Me.previousWindow = previousForm
@@ -21,7 +23,7 @@
     End Sub
 
     Private Sub CarForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Add Title, Home and Back buttons
+        ' Add Title and Home button
         Me.SetBackground()
         Me.CreateTitleLabel("Car")
         Me.CreateHomeButton()
