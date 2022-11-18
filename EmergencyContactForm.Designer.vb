@@ -36,7 +36,7 @@ Partial Class EmergencyContactForm
         'endCallPicBox
         '
         Me.endCallPicBox.Image = Global.A10.My.Resources.Resources.endCall
-        Me.endCallPicBox.Location = New System.Drawing.Point(199, 442)
+        Me.endCallPicBox.Location = New System.Drawing.Point(206, 442)
         Me.endCallPicBox.Name = "endCallPicBox"
         Me.endCallPicBox.Size = New System.Drawing.Size(73, 84)
         Me.endCallPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -47,7 +47,7 @@ Partial Class EmergencyContactForm
         'noCallPicBox
         '
         Me.noCallPicBox.Image = Global.A10.My.Resources.Resources.nocall
-        Me.noCallPicBox.Location = New System.Drawing.Point(295, 442)
+        Me.noCallPicBox.Location = New System.Drawing.Point(302, 442)
         Me.noCallPicBox.Name = "noCallPicBox"
         Me.noCallPicBox.Size = New System.Drawing.Size(73, 84)
         Me.noCallPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -57,7 +57,7 @@ Partial Class EmergencyContactForm
         'callPicBox
         '
         Me.callPicBox.Image = Global.A10.My.Resources.Resources._call
-        Me.callPicBox.Location = New System.Drawing.Point(103, 442)
+        Me.callPicBox.Location = New System.Drawing.Point(110, 442)
         Me.callPicBox.Name = "callPicBox"
         Me.callPicBox.Size = New System.Drawing.Size(73, 84)
         Me.callPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -69,9 +69,9 @@ Partial Class EmergencyContactForm
         Me.label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.label3.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.label3.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.label3.Location = New System.Drawing.Point(98, 278)
+        Me.label3.Location = New System.Drawing.Point(104, 282)
         Me.label3.Name = "label3"
-        Me.label3.Size = New System.Drawing.Size(258, 58)
+        Me.label3.Size = New System.Drawing.Size(276, 58)
         Me.label3.TabIndex = 14
         Me.label3.Text = "Services?"
         Me.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -81,9 +81,9 @@ Partial Class EmergencyContactForm
         Me.label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.label2.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.label2.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.label2.Location = New System.Drawing.Point(72, 221)
+        Me.label2.Location = New System.Drawing.Point(72, 225)
         Me.label2.Name = "label2"
-        Me.label2.Size = New System.Drawing.Size(323, 57)
+        Me.label2.Size = New System.Drawing.Size(341, 57)
         Me.label2.TabIndex = 13
         Me.label2.Text = "Call Emergency"
         Me.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -91,10 +91,10 @@ Partial Class EmergencyContactForm
         'label1
         '
         Me.label1.AutoSize = True
-        Me.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.label1.BackColor = System.Drawing.Color.Transparent
         Me.label1.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.label1.ForeColor = System.Drawing.Color.Red
-        Me.label1.Location = New System.Drawing.Point(200, 145)
+        Me.label1.Location = New System.Drawing.Point(209, 88)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(67, 46)
         Me.label1.TabIndex = 12
@@ -104,9 +104,9 @@ Partial Class EmergencyContactForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone
+        Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(466, 952)
+        Me.ClientSize = New System.Drawing.Size(484, 961)
         Me.Controls.Add(Me.endCallPicBox)
         Me.Controls.Add(Me.noCallPicBox)
         Me.Controls.Add(Me.callPicBox)

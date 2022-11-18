@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class CarForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,11 +20,13 @@ Partial Class CarForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.btnHome = New System.Windows.Forms.Button()
+        Me.btnEmergency = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnCarFeatures = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblTitle
@@ -53,16 +55,26 @@ Partial Class CarForm
         Me.btnHome.TabStop = False
         Me.btnHome.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnEmergency
         '
-        Me.Button1.BackColor = System.Drawing.Color.IndianRed
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button1.Location = New System.Drawing.Point(24, 742)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(436, 65)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "Report an Emergency"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnEmergency.BackColor = System.Drawing.Color.IndianRed
+        Me.btnEmergency.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnEmergency.Location = New System.Drawing.Point(24, 742)
+        Me.btnEmergency.Name = "btnEmergency"
+        Me.btnEmergency.Size = New System.Drawing.Size(436, 65)
+        Me.btnEmergency.TabIndex = 3
+        Me.btnEmergency.Text = "Report an Emergency"
+        Me.btnEmergency.UseVisualStyleBackColor = False
+        '
+        'btnCarFeatures
+        '
+        Me.btnCarFeatures.BackgroundImage = Global.A10.My.Resources.Resources.fan_neutral
+        Me.btnCarFeatures.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnCarFeatures.Location = New System.Drawing.Point(68, 258)
+        Me.btnCarFeatures.Name = "btnCarFeatures"
+        Me.btnCarFeatures.Size = New System.Drawing.Size(150, 150)
+        Me.btnCarFeatures.TabIndex = 4
+        Me.btnCarFeatures.UseVisualStyleBackColor = True
         '
         'CarForm
         '
@@ -71,7 +83,9 @@ Partial Class CarForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.btnCarFeatures)
         Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnEmergency)
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
@@ -85,4 +99,6 @@ Partial Class CarForm
     Friend WithEvents lblTitle As Label
     Friend WithEvents btnHome As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents btnCarFeatures As Button
+    Friend WithEvents btnEmergency As Button
 End Class
