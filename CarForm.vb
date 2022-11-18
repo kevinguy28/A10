@@ -8,6 +8,8 @@
     Public ownerAccidentNotification As AccidentNotification
     Public riderAccidentNotification As AccidentNotification
 
+    Dim carFeatures As carFeaturesForm
+
     Public Sub New(user As String, scenario As Integer, previousForm As HomeForm, devForm As DevForm)
 
         ' This call is required by the designer.
@@ -97,6 +99,11 @@
 
     Private Sub btnCarFeatures_Click(sender As Object, e As EventArgs) Handles btnCarFeatures.Click
         ' car features form opens up here
+        carFeatures = New carFeaturesForm
+        Me.Hide()
+        carFeatures.Show()
+
+
     End Sub
 
     Private Sub btnCarFeatures_MouseDown(sender As Object, e As MouseEventArgs) Handles btnCarFeatures.MouseDown
