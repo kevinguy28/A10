@@ -94,4 +94,21 @@
         Me.SetCurrentForm(Me.ownerAccidentNotification) : Me.ownerAccidentNotification.btnConfirm.Visible = True
         Me.ownerAccidentNotification.confirmButton.Hide() : Me.ownerAccidentNotification.denyButton.Hide()
     End Sub
+
+    Private Sub btnCarFeatures_Click(sender As Object, e As EventArgs) Handles btnCarFeatures.Click
+        ' car features form opens up here
+    End Sub
+
+    Private Sub btnCarFeatures_MouseDown(sender As Object, e As MouseEventArgs) Handles btnCarFeatures.MouseDown
+        btnCarFeatures.BackgroundImage = My.Resources.fan_press
+    End Sub
+
+    Private Sub btnCarFeatures_MouseEnter(sender As Object, e As EventArgs) Handles btnCarFeatures.MouseEnter
+        btnCarFeatures.BackgroundImage = My.Resources.fan_hover
+    End Sub
+
+    Private Sub btnCarFeatures_MouseLeave(sender As Object, e As EventArgs) Handles btnCarFeatures.MouseLeave
+        btnCarFeatures.BackgroundImage = My.Resources.fan_neutral
+
+    End Sub
 End Class
