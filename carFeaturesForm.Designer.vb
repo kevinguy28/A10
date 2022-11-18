@@ -139,6 +139,7 @@ Partial Class CarFeaturesForm
         Me.lblFanStrengthNumber.Name = "lblFanStrengthNumber"
         Me.lblFanStrengthNumber.Size = New System.Drawing.Size(24, 32)
         Me.lblFanStrengthNumber.TabIndex = 9
+        Me.lblFanStrengthNumber.Tag = "1"
         Me.lblFanStrengthNumber.Text = "1"
         '
         'Label2
@@ -160,7 +161,6 @@ Partial Class CarFeaturesForm
         Me.btnAirIntakeDown.Name = "btnAirIntakeDown"
         Me.btnAirIntakeDown.Size = New System.Drawing.Size(50, 50)
         Me.btnAirIntakeDown.TabIndex = 11
-        Me.btnAirIntakeDown.Text = "Button1"
         Me.btnAirIntakeDown.UseVisualStyleBackColor = True
         '
         'btnAirIntakeUp
@@ -171,7 +171,6 @@ Partial Class CarFeaturesForm
         Me.btnAirIntakeUp.Name = "btnAirIntakeUp"
         Me.btnAirIntakeUp.Size = New System.Drawing.Size(50, 50)
         Me.btnAirIntakeUp.TabIndex = 12
-        Me.btnAirIntakeUp.Text = "Button2"
         Me.btnAirIntakeUp.UseVisualStyleBackColor = True
         '
         'Label3
@@ -183,6 +182,7 @@ Partial Class CarFeaturesForm
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(24, 32)
         Me.Label3.TabIndex = 13
+        Me.Label3.Tag = "1"
         Me.Label3.Text = "1"
         '
         'CarFeaturesForm
