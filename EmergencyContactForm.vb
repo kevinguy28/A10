@@ -43,4 +43,5 @@
         Me.SetCurrentForm(Me.previousForm.previousForm)
         Me.Dispose()
     End Sub
+
 End Class

@@ -10,6 +10,7 @@
 
     Protected WithEvents btnHome As Button
     Protected WithEvents btnBack As Button
+    Protected WithEvents btnPlus As Button
 
     ' -----------------
     ' --- Functions ---
@@ -69,7 +70,6 @@
         Me.btnHome.Size = New Size(75, 75)
         Me.btnHome.Location = New Point(205, 812)
         Me.btnHome.UseVisualStyleBackColor = True
-        Me.btnHome.Show()
     End Sub
 
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
@@ -100,7 +100,6 @@
         Me.btnBack.Size = New Size(50, 50)
         Me.btnBack.Location = New Point(38, 824)
         Me.btnBack.UseVisualStyleBackColor = True
-        Me.btnBack.Show()
     End Sub
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
@@ -116,6 +115,32 @@
 
     Private Sub btnBack_MouseLeave(sender As Object, e As EventArgs) Handles btnBack.MouseLeave
         Me.btnBack.BackgroundImage = My.Resources.ArrowBack
+    End Sub
+
+    ' ------------
+    ' --- Plus ---
+    ' ------------
+    Protected Sub CreatePlusButton()
+        Me.btnPlus = New Button
+        Me.btnPlus.TabStop = False
+        Me.btnPlus.BackgroundImage = My.Resources.Plus
+        Me.btnPlus.BackgroundImageLayout = ImageLayout.Zoom
+        Me.btnPlus.FlatStyle = FlatStyle.Flat
+        Me.btnPlus.FlatAppearance.BorderSize = 0
+        Me.btnPlus.Size = New Size(75, 75)
+        Me.btnPlus.Location = New Point(353, 694)
+        Me.btnPlus.UseVisualStyleBackColor = True
+    End Sub
+
+    Protected Overridable Sub btnPlus_Click(sender As Object, e As EventArgs) Handles btnPlus.Click
+    End Sub
+
+    Private Sub btnPlus_MouseEnter(sender As Object, e As EventArgs) Handles btnPlus.MouseEnter
+        Me.btnPlus.BackgroundImage = My.Resources.Plus___Hover
+    End Sub
+
+    Private Sub btnPlus_MouseLeave(sender As Object, e As EventArgs) Handles btnPlus.MouseLeave
+        Me.btnPlus.BackgroundImage = My.Resources.Plus
     End Sub
 
 End Class

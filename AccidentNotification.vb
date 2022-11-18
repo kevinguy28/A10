@@ -7,7 +7,7 @@
     ' Child
     Public emergencyContactForm As EmergencyContactForm
 
-    Public Sub New(user As String, scenario As Integer, previousForm As CarForm, devForm As DevForm)
+    Public Sub New(user As String, scenario As Integer, devForm As DevForm)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -44,11 +44,11 @@
 
     Private Sub confirmButton_Click(sender As Object, e As EventArgs) Handles confirmButton.Click
         'Rider Accident Notification
-        Me.emergencyContactForm = New EmergencyContactForm("rider", 2, Me, devForm) : Me.Hide()
+        Me.emergencyContactForm = New EmergencyContactForm("rider", Me.scenario, Me, Me.devForm) : Me.Hide()
         Me.emergencyContactForm.Show() : Me.emergencyContactForm.Location = New Point(Me.emergencyContactForm.SetLocation(), 0)
         Me.SetCurrentForm(Me.emergencyContactForm)
         'Owner Accident Notification
-        Dim ownerAccidentNotification As New AccidentNotification("owner", 2, previousForm, devForm) : ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation, 0)
+        Dim ownerAccidentNotification As New AccidentNotification("owner", Me.scenario, Me.devForm) : ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation, 0)
         ownerAccidentNotification.confirmButton.Hide() : ownerAccidentNotification.denyButton.Hide() : ownerAccidentNotification.lblAccident1.Text = "The accident was" : ownerAccidentNotification.lblAccident2.Text = "confirmed!"
         ownerAccidentNotification.btnConfirm.Visible = True : ownerAccidentNotification.Show() : Me.SetCurrentForm(Me.previousForm)
         Me.Dispose()
@@ -57,7 +57,7 @@
 
     Private Sub denyButton_Click(sender As Object, e As EventArgs) Handles denyButton.Click
         Me.previousForm.Show() : Me.previousForm.ownerAccidentNotification.Close()
-        Dim ownerAccidentNotification As New AccidentNotification("owner", 2, previousForm, devForm) : ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation, 0)
+        Dim ownerAccidentNotification As New AccidentNotification("owner", Me.scenario, Me.devForm) : ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation, 0)
         ownerAccidentNotification.confirmButton.Hide() : ownerAccidentNotification.denyButton.Hide() : ownerAccidentNotification.lblAccident1.Text = "The accident was" : ownerAccidentNotification.lblAccident2.Text = "reported false!"
         ownerAccidentNotification.btnConfirm.Visible = True : ownerAccidentNotification.Show() : Me.SetCurrentForm(Me.previousForm)
         Me.Dispose()
@@ -75,4 +75,5 @@
         Me.Close()
         Me.SetCurrentForm(Me.previousForm)
     End Sub
+
 End Class

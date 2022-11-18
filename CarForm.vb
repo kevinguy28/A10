@@ -85,11 +85,11 @@
 
     Private Sub btnEmergency_Click(sender As Object, e As EventArgs) Handles btnEmergency.Click
         'Rider Accident Notification
-        Me.riderAccidentNotification = New AccidentNotification("rider", 2, Me, devForm) : Me.Hide()
+        Me.riderAccidentNotification = New AccidentNotification("rider", 2, Me.devForm) : Me.Hide()
         Me.riderAccidentNotification.Show() : Me.riderAccidentNotification.Location = New Point(riderAccidentNotification.SetLocation(), 0)
         Me.SetCurrentForm(Me.riderAccidentNotification)
         ' Owner Accident Notification
-        Me.ownerAccidentNotification = New AccidentNotification("owner", 2, Me, devForm)
+        Me.ownerAccidentNotification = New AccidentNotification("owner", 2, Me.devForm)
         Me.ownerAccidentNotification.Show() : Me.ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation(), 0)
         Me.SetCurrentForm(Me.ownerAccidentNotification) : Me.ownerAccidentNotification.btnConfirm.Visible = True
         Me.ownerAccidentNotification.confirmButton.Hide() : Me.ownerAccidentNotification.denyButton.Hide()
