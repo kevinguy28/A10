@@ -102,8 +102,8 @@ Public Class HomeForm
     Private Sub SetLocation()
         Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
         Dim halfScreen = fullScreen / 2
-        Dim halfDev = DevForm.Width / 2
-        Dim halfHome = Me.Width / 2
+        Dim halfDev = DevForm.GetDevWidth() / 2
+        Dim halfHome = DevForm.GetFormWidth() / 2
 
         If Me.user = "owner" Then
             Dim x = ((halfScreen - halfDev) / 2) - halfHome
@@ -116,8 +116,8 @@ Public Class HomeForm
     End Sub
 
     Private Sub HomeForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Width = DevForm.GetWidth()
-        Me.Height = DevForm.GetHeight()
+        Me.Width = DevForm.GetFormWidth()
+        Me.Height = DevForm.GetFormHeight()
     End Sub
 
     ' --------------------

@@ -1,4 +1,6 @@
 ﻿Public Class CalendarForm
+    Inherits AppForm
+
     'Parent
     Dim user As String
     Dim scenario As Integer
@@ -132,8 +134,8 @@
     End Sub
 
     Private Sub CalendarForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Width = DevForm.GetWidth()
-        Me.Height = DevForm.GetHeight()
+        Me.Width = DevForm.GetFormWidth()
+        Me.Height = DevForm.GetFormHeight()
     End Sub
 
     ' ------------

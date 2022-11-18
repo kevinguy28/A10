@@ -38,12 +38,16 @@
         Me.currentRiderForm = form
     End Sub
 
-    Public Shared Function GetWidth() As Integer
+    Public Shared Function GetFormWidth() As Integer
         Return 500
     End Function
 
-    Public Shared Function GetHeight() As Integer
+    Public Shared Function GetFormHeight() As Integer
         Return 1000
+    End Function
+
+    Public Shared Function GetDevWidth() As Integer
+        Return DevForm.Width
     End Function
 
 End Class

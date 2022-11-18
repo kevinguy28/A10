@@ -45,8 +45,8 @@ Public Class RouteForm
     Private Sub SetLocation()
         Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
         Dim halfScreen = fullScreen / 2
-        Dim halfDev = devForm.Width / 2
-        Dim halfForm = Me.Width / 2
+        Dim halfDev = DevForm.GetDevWidth() / 2
+        Dim halfForm = DevForm.GetFormWidth() / 2
 
         If Me.user = "owner" Then
             Dim x = ((halfScreen - halfDev) / 2) - halfForm
@@ -59,8 +59,8 @@ Public Class RouteForm
     End Sub
 
     Private Sub RouteForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Width = Me.devForm.GetWidth()
-        Me.Height = Me.devForm.GetHeight()
+        Me.Width = DevForm.GetFormWidth()
+        Me.Height = DevForm.GetFormHeight()
     End Sub
 
     ' ------------

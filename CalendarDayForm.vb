@@ -87,8 +87,8 @@
     End Sub
 
     Private Sub CalendarDayForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Width = DevForm.GetWidth()
-        Me.Height = DevForm.GetHeight()
+        Me.Width = DevForm.GetFormWidth()
+        Me.Height = DevForm.GetFormHeight()
     End Sub
 
     ' ------------
