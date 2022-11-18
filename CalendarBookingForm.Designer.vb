@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class CalendarDayForm
+Partial Class CalendarBookingForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -25,9 +25,7 @@ Partial Class CalendarDayForm
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.btnHome = New System.Windows.Forms.Button()
         Me.btnBack = New System.Windows.Forms.Button()
-        Me.usrctrlDay = New A10.CalendarDayControl()
-        Me.lblDay = New System.Windows.Forms.Label()
-        Me.btnPlus = New System.Windows.Forms.Button()
+        Me.usrctrlBooking = New A10.CalendarBookingControl()
         Me.SuspendLayout()
         '
         'lblTitle
@@ -39,7 +37,7 @@ Partial Class CalendarDayForm
         Me.lblTitle.Name = "lblTitle"
         Me.lblTitle.Size = New System.Drawing.Size(402, 65)
         Me.lblTitle.TabIndex = 1
-        Me.lblTitle.Text = "Calendar"
+        Me.lblTitle.Text = "Booking"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'btnHome
@@ -64,62 +62,32 @@ Partial Class CalendarDayForm
         Me.btnBack.Location = New System.Drawing.Point(38, 824)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(50, 50)
-        Me.btnBack.TabIndex = 3
+        Me.btnBack.TabIndex = 4
         Me.btnBack.TabStop = False
         Me.btnBack.UseVisualStyleBackColor = True
         '
-        'usrctrlDay
+        'usrctrlBooking
         '
-        Me.usrctrlDay.AutoScroll = True
-        Me.usrctrlDay.BackColor = System.Drawing.Color.White
-        Me.usrctrlDay.Location = New System.Drawing.Point(60, 273)
-        Me.usrctrlDay.Margin = New System.Windows.Forms.Padding(2)
-        Me.usrctrlDay.Name = "usrctrlDay"
-        Me.usrctrlDay.Size = New System.Drawing.Size(359, 400)
-        Me.usrctrlDay.TabIndex = 4
+        Me.usrctrlBooking.BackColor = System.Drawing.Color.White
+        Me.usrctrlBooking.Location = New System.Drawing.Point(37, 172)
+        Me.usrctrlBooking.Name = "usrctrlBooking"
+        Me.usrctrlBooking.Size = New System.Drawing.Size(410, 632)
+        Me.usrctrlBooking.TabIndex = 5
         '
-        'lblDay
-        '
-        Me.lblDay.BackColor = System.Drawing.Color.White
-        Me.lblDay.Font = New System.Drawing.Font("Segoe UI Semibold", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblDay.Location = New System.Drawing.Point(47, 197)
-        Me.lblDay.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblDay.Name = "lblDay"
-        Me.lblDay.Size = New System.Drawing.Size(390, 45)
-        Me.lblDay.TabIndex = 6
-        Me.lblDay.Text = "Day"
-        Me.lblDay.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'btnPlus
-        '
-        Me.btnPlus.BackgroundImage = Global.A10.My.Resources.Resources.Plus
-        Me.btnPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnPlus.FlatAppearance.BorderSize = 0
-        Me.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPlus.Location = New System.Drawing.Point(353, 694)
-        Me.btnPlus.Name = "btnPlus"
-        Me.btnPlus.Size = New System.Drawing.Size(75, 75)
-        Me.btnPlus.TabIndex = 7
-        Me.btnPlus.TabStop = False
-        Me.btnPlus.UseVisualStyleBackColor = True
-        '
-        'CalendarDayForm
+        'CalendarBookingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
-        Me.Controls.Add(Me.btnPlus)
-        Me.Controls.Add(Me.lblDay)
-        Me.Controls.Add(Me.usrctrlDay)
+        Me.Controls.Add(Me.usrctrlBooking)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
-        Me.Margin = New System.Windows.Forms.Padding(2)
-        Me.Name = "CalendarDayForm"
-        Me.Text = "CalendarDayForm"
+        Me.Name = "CalendarBookingForm"
+        Me.Text = "CalendarBookingForm"
         Me.ResumeLayout(False)
 
     End Sub
@@ -127,7 +95,5 @@ Partial Class CalendarDayForm
     Friend WithEvents lblTitle As Label
     Friend WithEvents btnHome As Button
     Friend WithEvents btnBack As Button
-    Friend WithEvents usrctrlDay As CalendarDayControl
-    Friend WithEvents lblDay As Label
-    Friend WithEvents btnPlus As Button
+    Friend WithEvents usrctrlBooking As CalendarBookingControl
 End Class

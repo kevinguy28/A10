@@ -1,18 +1,14 @@
-﻿Public Class CalendarDayForm
+﻿Public Class CalendarBookingForm
 
     Dim user As String
     Dim scenario As Integer
-    Dim previousForm As CalendarForm
+    Dim previousForm As Form
     Dim homeForm As HomeForm
     Dim devForm As DevForm
 
-    Dim currDay As Date
+    Dim currTime As Date
 
-    Dim day As Integer
-    Dim month As Integer
-    Dim year As Integer
-
-    Public Sub New(user As String, scenario As Integer, previousForm As CalendarForm, homeForm As HomeForm, devForm As DevForm, currDay As Date)
+    Public Sub New(user As String, scenario As Integer, previousForm As Form, homeForm As HomeForm, devForm As DevForm, currTime As Date, trigger As String)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -23,15 +19,11 @@
         Me.previousForm = previousForm
         Me.homeForm = homeForm
         Me.devForm = devForm
-        Me.currDay = currDay
-
-        Me.day = Me.currDay.Day
-        Me.month = Me.currDay.Month
-        Me.year = Me.currDay.Year
-
+        Me.currTime = currTime
+        Me.usrctrlBooking.Setup(Me.currTime, trigger, Me)
     End Sub
 
-    Private Sub CalendarDayForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub CalendarBookingForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Form
         If Me.user = "owner" Then
             Me.Text = "Car Owner Scheduling"
@@ -42,13 +34,6 @@
         ' Title
         Me.lblTitle.BackColor = Color.FromArgb(151, 203, 197)
         Me.lblTitle.ForeColor = Color.White
-
-        ' Day Label
-        Me.lblDay.Text = Format(Me.currDay, "ddd d MMM yyyy")
-
-        ' Day Control
-        Me.usrctrlDay.SetDate(Me.currDay)
-
     End Sub
 
     Public Sub CloseAllForms()
@@ -63,10 +48,15 @@
         End If
     End Sub
 
+    ' -----------------
+    ' --- Functions ---
+    ' -----------------
+
+
     ' ----------------
     ' --- Location ---
     ' ----------------
-    Private Sub CalendarDayForm_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
+    Private Sub CalendarForm_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
         Me.SetLocation()
     End Sub
 
@@ -86,7 +76,7 @@
         End If
     End Sub
 
-    Private Sub CalendarDayForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+    Private Sub CalendarForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         Me.Width = DevForm.GetWidth()
         Me.Height = DevForm.GetHeight()
     End Sub
@@ -96,8 +86,8 @@
     ' ------------
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
         Me.Close()
-        Me.homeForm.Show()
-        Me.SetCurrentForm(Me.homeForm)
+        Me.previousForm.Show()
+        Me.SetCurrentForm(Me.previousForm)
         Me.Dispose()
     End Sub
 
@@ -112,7 +102,6 @@
     ' ------------
     ' --- Back ---
     ' ------------
-
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Me.Close()
         Me.previousForm.Show()
@@ -126,22 +115,6 @@
 
     Private Sub btnBack_MouseLeave(sender As Object, e As EventArgs) Handles btnBack.MouseLeave
         Me.btnBack.BackgroundImage = My.Resources.ArrowBack
-    End Sub
-
-    ' ------------
-    ' --- Plus ---
-    ' ------------
-
-    Private Sub btnPlus_Click(sender As Object, e As EventArgs) Handles btnPlus.Click
-
-    End Sub
-
-    Private Sub btnPlus_MouseEnter(sender As Object, e As EventArgs) Handles btnPlus.MouseEnter
-        Me.btnPlus.BackgroundImage = My.Resources.Plus___Hover
-    End Sub
-
-    Private Sub btnPlus_MouseLeave(sender As Object, e As EventArgs) Handles btnPlus.MouseLeave
-        Me.btnPlus.BackgroundImage = My.Resources.Plus
     End Sub
 
 End Class

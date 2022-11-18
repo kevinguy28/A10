@@ -37,7 +37,7 @@ Partial Class CalendarForm
         '
         Me.lblTitle.BackColor = System.Drawing.Color.White
         Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblTitle.Location = New System.Drawing.Point(38, 77)
+        Me.lblTitle.Location = New System.Drawing.Point(41, 77)
         Me.lblTitle.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTitle.Name = "lblTitle"
         Me.lblTitle.Size = New System.Drawing.Size(402, 65)
@@ -71,7 +71,7 @@ Partial Class CalendarForm
         '
         Me.lblMonth.BackColor = System.Drawing.Color.White
         Me.lblMonth.Font = New System.Drawing.Font("Segoe UI Semibold", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblMonth.Location = New System.Drawing.Point(44, 197)
+        Me.lblMonth.Location = New System.Drawing.Point(47, 197)
         Me.lblMonth.Margin = New System.Windows.Forms.Padding(0)
         Me.lblMonth.Name = "lblMonth"
         Me.lblMonth.Size = New System.Drawing.Size(390, 45)
@@ -82,7 +82,7 @@ Partial Class CalendarForm
         'imgArrowRight
         '
         Me.imgArrowRight.Image = Global.A10.My.Resources.Resources.ArrowRight
-        Me.imgArrowRight.Location = New System.Drawing.Point(389, 197)
+        Me.imgArrowRight.Location = New System.Drawing.Point(392, 197)
         Me.imgArrowRight.Name = "imgArrowRight"
         Me.imgArrowRight.Size = New System.Drawing.Size(45, 45)
         Me.imgArrowRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -92,7 +92,7 @@ Partial Class CalendarForm
         'imgArrowLeft
         '
         Me.imgArrowLeft.Image = Global.A10.My.Resources.Resources.ArrowLeft
-        Me.imgArrowLeft.Location = New System.Drawing.Point(44, 197)
+        Me.imgArrowLeft.Location = New System.Drawing.Point(47, 197)
         Me.imgArrowLeft.Name = "imgArrowLeft"
         Me.imgArrowLeft.Size = New System.Drawing.Size(45, 45)
         Me.imgArrowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -117,7 +117,7 @@ Partial Class CalendarForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
         Me.Controls.Add(Me.btnPlus)
         Me.Controls.Add(Me.imgArrowLeft)

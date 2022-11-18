@@ -1,10 +1,14 @@
 ﻿Public Class CalendarForm
+    'Parent
     Dim user As String
     Dim scenario As Integer
     Dim previousForm As HomeForm
     Dim devForm As DevForm
+    'Children
     Dim dayForm As CalendarDayForm
+    Dim bookingForm As CalendarBookingForm
 
+    'Variables
     Dim currMonth As Date
     Dim month As Integer
     Dim year As Integer
@@ -34,6 +38,13 @@
     End Sub
 
     Private Sub CalendarForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Form
+        If Me.user = "owner" Then
+            Me.Text = "Car Owner Scheduling"
+        ElseIf Me.user = "rider" Then
+            Me.Text = "Car Rider Booking"
+        End If
+
         ' Title
         Me.lblTitle.BackColor = Color.FromArgb(151, 203, 197)
         Me.lblTitle.ForeColor = Color.White
@@ -49,6 +60,13 @@
             Me.dayForm.CloseAllForms()
         End If
 
+        If (Me.bookingForm IsNot Nothing) Then
+            Me.bookingForm.CloseAllForms()
+        End If
+
+        ' For Saadia~
+        ' Please copy+paste the bookingForm if-statement and adjust it to your scheduling form
+
         Me.Dispose()
     End Sub
 
@@ -60,6 +78,9 @@
         End If
     End Sub
 
+    ' -----------------
+    ' --- Functions ---
+    ' -----------------
     Public Sub DayClicked(day As Integer)
         Dim newDate = New Date(Me.year, Me.month, day)
         Me.dayForm = New CalendarDayForm(Me.user, Me.scenario, Me, Me.previousForm, Me.devForm, newDate)
@@ -122,6 +143,7 @@
         Me.Close()
         Me.previousForm.Show()
         Me.SetCurrentForm(Me.previousForm)
+        Me.Dispose()
     End Sub
 
     Private Sub btnHome_MouseEnter(sender As Object, e As EventArgs) Handles btnHome.MouseEnter
@@ -173,6 +195,16 @@
 
     Private Sub btnPlus_Click(sender As Object, e As EventArgs) Handles btnPlus.Click
 
+        If Me.user = "rider" Then
+            Me.bookingForm = New CalendarBookingForm(Me.user, Me.scenario, Me, Me.previousForm, Me.devForm, Me.currMonth, "MonthPlus")
+            Me.Hide()
+            Me.bookingForm.Show()
+            Me.SetCurrentForm(Me.bookingForm)
+
+        ElseIf Me.user = "owner" Then
+            ' For Saadia!
+
+        End If
     End Sub
 
     Private Sub btnPlus_MouseEnter(sender As Object, e As EventArgs) Handles btnPlus.MouseEnter
