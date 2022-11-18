@@ -1,6 +1,4 @@
-﻿Imports System.Reflection.Emit
-
-Public Class CalendarBookingControl
+﻿Public Class CalendarBookingControl
 
     Dim previousForm As Form
 
