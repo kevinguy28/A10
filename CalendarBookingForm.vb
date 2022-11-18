@@ -26,20 +26,25 @@
             Me.Text = "Car Rider Booking"
         End If
 
-        ' Title
-        Me.lblTitle.BackColor = Color.FromArgb(151, 203, 197)
-        Me.lblTitle.ForeColor = Color.White
-
-        ' Add Home and Back buttons
+        ' Add Title, Home and Back buttons
+        Me.SetBackground()
+        Me.CreateTitleLabel("Booking")
         Me.CreateHomeButton()
-        Me.Controls.Add(Me.btnHome)
         Me.CreateBackButton()
+        Me.Controls.Add(Me.lblTitle)
+        Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.btnBack)
     End Sub
 
     Public Overrides Sub CloseAllForms()
         ' If your form opens a new form (not home or back buttons, but creates a new one)
-        ' Then you need 
+        ' Then you need to create a globabl variable for each child.
+        ' See CalendarForm for an example.
+        ' Over here, you call the following for each child:
+        'If (Me.childForm IsNot Nothing) Then
+        '    Me.childForm.CloseAllForms()
+        'End If
+        ' See CalendarForm for example
 
         Me.Dispose()
     End Sub

@@ -22,21 +22,8 @@ Partial Class CalendarBookingForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.lblTitle = New System.Windows.Forms.Label()
         Me.usrctrlBooking = New A10.CalendarBookingControl()
         Me.SuspendLayout()
-        '
-        'lblTitle
-        '
-        Me.lblTitle.BackColor = System.Drawing.Color.White
-        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblTitle.Location = New System.Drawing.Point(41, 77)
-        Me.lblTitle.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(402, 65)
-        Me.lblTitle.TabIndex = 1
-        Me.lblTitle.Text = "Booking"
-        Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'usrctrlBooking
         '
@@ -60,14 +47,11 @@ Partial Class CalendarBookingForm
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
         Me.Controls.Add(Me.usrctrlBooking)
-        Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
         Me.Name = "CalendarBookingForm"
         Me.Text = "CalendarBookingForm"
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents lblTitle As Label
     Friend WithEvents usrctrlBooking As CalendarBookingControl
 End Class

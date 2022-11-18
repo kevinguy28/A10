@@ -1,4 +1,4 @@
-﻿Public MustInherit Class AppForm
+﻿Public Class AppForm
     Inherits System.Windows.Forms.Form
 
     Protected user As String
@@ -8,6 +8,7 @@
     Protected homeWindow As HomeForm
     Protected devWindow As DevForm
 
+    Protected WithEvents lblTitle As Label
     Protected WithEvents btnHome As Button
     Protected WithEvents btnBack As Button
     Protected WithEvents btnPlus As Button
@@ -31,7 +32,7 @@
     ' ----------------
     ' --- Location ---
     ' ----------------
-    Private Sub CalendarForm_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
+    Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
         Me.SetLocation()
     End Sub
 
@@ -51,9 +52,34 @@
         End If
     End Sub
 
-    Private Sub CalendarForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+    Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         Me.Width = DevForm.GetFormWidth()
         Me.Height = DevForm.GetFormHeight()
+    End Sub
+
+    ' ------------------
+    ' --- Background ---
+    ' ------------------
+    Protected Sub SetBackground()
+        Me.BackgroundImage = My.Resources.Phone___Form
+        Me.BackgroundImageLayout = ImageLayout.Stretch
+    End Sub
+
+    ' -------------
+    ' --- Title ---
+    ' -------------
+    Protected Sub CreateTitleLabel(titleText As String)
+        Me.lblTitle = New Label
+        Me.lblTitle.Text = titleText
+        Me.lblTitle.Font = New Font("Segoe UI Semibold", 36.0!, FontStyle.Bold, GraphicsUnit.Point)
+        Me.lblTitle.Size = New Size(402, 65)
+        Me.lblTitle.Location = New Point(41, 77)
+        Me.lblTitle.Margin = New Padding(0)
+        Me.lblTitle.Size = New Size(402, 65)
+        Me.lblTitle.TabIndex = 0
+        Me.lblTitle.TextAlign = ContentAlignment.TopCenter
+        Me.lblTitle.BackColor = Color.FromArgb(151, 203, 197)
+        Me.lblTitle.ForeColor = Color.White
     End Sub
 
     ' ------------
