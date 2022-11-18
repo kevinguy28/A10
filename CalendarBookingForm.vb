@@ -9,11 +9,14 @@
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
+
+        ' AppForm Variables
         Me.user = user
         Me.scenario = scenario
         Me.previousWindow = previousForm
         Me.homeWindow = homeForm
         Me.devWindow = devForm
+
         Me.currTime = currTime
         Me.usrctrlBooking.Setup(Me.currTime, trigger, Me)
     End Sub
@@ -36,17 +39,16 @@
         Me.Controls.Add(Me.btnBack)
     End Sub
 
-    Public Overrides Sub CloseAllForms()
-        ' If your form opens a new form (not home or back buttons, but creates a new one)
+    Public Overrides Sub CloseAllChildren()
+        ' If your form opens a new form (not home or back buttons, or notifications, but creates a new one)
         ' Then you need to create a globabl variable for each child.
-        ' See CalendarForm for an example.
+        ' See HomeForm for an example.
         ' Over here, you call the following for each child:
-        'If (Me.childForm IsNot Nothing) Then
-        '    Me.childForm.CloseAllForms()
-        'End If
-        ' See CalendarForm for example
-
-        Me.Dispose()
+        '       If (Me.childForm IsNot Nothing) Then
+        '          Me.childForm.CloseAllForms()
+        '       End If
+        ' See HomeForm for example
+        ' If you don't have any children forms, then you can ignore this
     End Sub
 
 End Class

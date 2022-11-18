@@ -22,41 +22,13 @@ Partial Class CalendarForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.lblTitle = New System.Windows.Forms.Label()
-        Me.btnHome = New System.Windows.Forms.Button()
         Me.usrctrlMonth = New A10.CalendarMonthControl()
         Me.lblMonth = New System.Windows.Forms.Label()
         Me.imgArrowRight = New System.Windows.Forms.PictureBox()
         Me.imgArrowLeft = New System.Windows.Forms.PictureBox()
-        Me.btnPlus = New System.Windows.Forms.Button()
         CType(Me.imgArrowRight, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgArrowLeft, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'lblTitle
-        '
-        Me.lblTitle.BackColor = System.Drawing.Color.White
-        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblTitle.Location = New System.Drawing.Point(41, 77)
-        Me.lblTitle.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(402, 65)
-        Me.lblTitle.TabIndex = 0
-        Me.lblTitle.Text = "Calendar"
-        Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'btnHome
-        '
-        Me.btnHome.BackgroundImage = Global.A10.My.Resources.Resources.Home
-        Me.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnHome.FlatAppearance.BorderSize = 0
-        Me.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHome.Location = New System.Drawing.Point(205, 812)
-        Me.btnHome.Name = "btnHome"
-        Me.btnHome.Size = New System.Drawing.Size(75, 75)
-        Me.btnHome.TabIndex = 1
-        Me.btnHome.TabStop = False
-        Me.btnHome.UseVisualStyleBackColor = True
         '
         'usrctrlMonth
         '
@@ -99,19 +71,6 @@ Partial Class CalendarForm
         Me.imgArrowLeft.TabIndex = 6
         Me.imgArrowLeft.TabStop = False
         '
-        'btnPlus
-        '
-        Me.btnPlus.BackgroundImage = Global.A10.My.Resources.Resources.Plus
-        Me.btnPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnPlus.FlatAppearance.BorderSize = 0
-        Me.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPlus.Location = New System.Drawing.Point(353, 694)
-        Me.btnPlus.Name = "btnPlus"
-        Me.btnPlus.Size = New System.Drawing.Size(75, 75)
-        Me.btnPlus.TabIndex = 8
-        Me.btnPlus.TabStop = False
-        Me.btnPlus.UseVisualStyleBackColor = True
-        '
         'CalendarForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -119,13 +78,10 @@ Partial Class CalendarForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
-        Me.Controls.Add(Me.btnPlus)
         Me.Controls.Add(Me.imgArrowLeft)
         Me.Controls.Add(Me.imgArrowRight)
         Me.Controls.Add(Me.lblMonth)
         Me.Controls.Add(Me.usrctrlMonth)
-        Me.Controls.Add(Me.btnHome)
-        Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "CalendarForm"
@@ -135,12 +91,8 @@ Partial Class CalendarForm
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents lblTitle As Label
-    Friend WithEvents btnHome As Button
     Friend WithEvents usrctrlMonth As CalendarMonthControl
     Friend WithEvents lblMonth As Label
     Friend WithEvents imgArrowRight As PictureBox
     Friend WithEvents imgArrowLeft As PictureBox
-    Friend WithEvents btnPlus As Button
 End Class

@@ -1,12 +1,6 @@
 ﻿Public Class CalendarForm
     Inherits AppForm
 
-    'Parent
-    Dim user As String
-    Dim scenario As Integer
-    Dim previousForm As HomeForm
-    Dim devForm As DevForm
-
     'Children
     Dim dayForm As CalendarDayForm
     Dim bookingForm As CalendarBookingForm
@@ -22,10 +16,15 @@
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
+
+        ' AppForm Variables
         Me.user = user
         Me.scenario = scenario
-        Me.previousForm = previousForm
-        Me.devForm = devForm
+        Me.previousWindow = previousForm
+        Me.homeWindow = previousForm
+        Me.devWindow = devForm
+
+        ' Date Variables
         Me.month = month
         Me.year = year
 
@@ -48,9 +47,14 @@
             Me.Text = "Car Rider Booking"
         End If
 
-        ' Title
-        Me.lblTitle.BackColor = Color.FromArgb(151, 203, 197)
-        Me.lblTitle.ForeColor = Color.White
+        ' Title, Home, and Plus
+        Me.SetBackground()
+        Me.CreateTitleLabel("Calendar")
+        Me.CreateHomeButton()
+        Me.CreatePlusButton()
+        Me.Controls.Add(Me.lblTitle)
+        Me.Controls.Add(Me.btnHome)
+        Me.Controls.Add(Me.btnPlus)
 
         ' Month
         Me.usrctrlMonth.SetMonthForm(Me)
@@ -58,7 +62,7 @@
 
     End Sub
 
-    Public Sub CloseAllForms()
+    Public Overrides Sub CloseAllChildren()
         If (Me.dayForm IsNot Nothing) Then
             Me.dayForm.CloseAllForms()
         End If
@@ -70,15 +74,6 @@
         ' For Saadia~
         ' Please copy+paste the bookingForm if-statement and adjust it to your scheduling form
 
-        Me.Dispose()
-    End Sub
-
-    Private Sub SetCurrentForm(form As Form)
-        If (user = "owner") Then
-            Me.devForm.SetCurrentOwnerForm(form)
-        ElseIf (user = "rider") Then
-            Me.devForm.SetCurrentRiderForm(form)
-        End If
     End Sub
 
     ' -----------------
@@ -86,7 +81,7 @@
     ' -----------------
     Public Sub DayClicked(day As Integer)
         Dim newDate = New Date(Me.year, Me.month, day)
-        Me.dayForm = New CalendarDayForm(Me.user, Me.scenario, Me, Me.previousForm, Me.devForm, newDate)
+        Me.dayForm = New CalendarDayForm(Me.user, Me.scenario, Me, Me.previousWindow, Me.devWindow, newDate)
         Me.Hide()
         Me.dayForm.Show()
         Me.SetCurrentForm(Me.dayForm)
@@ -109,52 +104,6 @@
 
         Me.usrctrlMonth.SetMonth(Me.currMonth)
         Me.lblMonth.Text = Format(Me.currMonth, "MMMM yyyy")
-    End Sub
-
-    ' ----------------
-    ' --- Location ---
-    ' ----------------
-    Private Sub CalendarForm_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
-        Me.SetLocation()
-    End Sub
-
-    Private Sub SetLocation()
-        Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
-        Dim halfScreen = fullScreen / 2
-        Dim halfDev = devForm.Width / 2
-        Dim halfForm = Me.Width / 2
-
-        If Me.user = "owner" Then
-            Dim x = ((halfScreen - halfDev) / 2) - halfForm
-            Me.Location = New Point(x, 0)
-
-        ElseIf Me.user = "rider" Then
-            Dim x = (fullScreen - ((halfScreen - halfDev) / 2)) - halfForm
-            Me.Location = New Point(x, 0)
-        End If
-    End Sub
-
-    Private Sub CalendarForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Width = DevForm.GetFormWidth()
-        Me.Height = DevForm.GetFormHeight()
-    End Sub
-
-    ' ------------
-    ' --- Home ---
-    ' ------------
-    Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
-        Me.Close()
-        Me.previousForm.Show()
-        Me.SetCurrentForm(Me.previousForm)
-        Me.Dispose()
-    End Sub
-
-    Private Sub btnHome_MouseEnter(sender As Object, e As EventArgs) Handles btnHome.MouseEnter
-        Me.btnHome.BackgroundImage = My.Resources.Home___Hover
-    End Sub
-
-    Private Sub btnHome_MouseLeave(sender As Object, e As EventArgs) Handles btnHome.MouseLeave
-        Me.btnHome.BackgroundImage = My.Resources.Home
     End Sub
 
     ' -------------------
@@ -195,11 +144,10 @@
     ' ------------
     ' --- Plus ---
     ' ------------
-
-    Private Sub btnPlus_Click(sender As Object, e As EventArgs) Handles btnPlus.Click
+    Protected Overrides Sub btnPlus_Click(sender As Object, e As EventArgs)
 
         If Me.user = "rider" Then
-            Me.bookingForm = New CalendarBookingForm(Me.user, Me.scenario, Me, Me.previousForm, Me.devForm, Me.currMonth, "MonthPlus")
+            Me.bookingForm = New CalendarBookingForm(Me.user, Me.scenario, Me, Me.previousWindow, Me.devWindow, Me.currMonth, "MonthPlus")
             Me.Hide()
             Me.bookingForm.Show()
             Me.SetCurrentForm(Me.bookingForm)
@@ -208,14 +156,6 @@
             ' For Saadia!
 
         End If
-    End Sub
-
-    Private Sub btnPlus_MouseEnter(sender As Object, e As EventArgs) Handles btnPlus.MouseEnter
-        Me.btnPlus.BackgroundImage = My.Resources.Plus___Hover
-    End Sub
-
-    Private Sub btnPlus_MouseLeave(sender As Object, e As EventArgs) Handles btnPlus.MouseLeave
-        Me.btnPlus.BackgroundImage = My.Resources.Plus
     End Sub
 
 End Class

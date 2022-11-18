@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class CarForm
-    Inherits System.Windows.Forms.Form
+    Inherits AppForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -22,38 +22,9 @@ Partial Class CarForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.lblTitle = New System.Windows.Forms.Label()
-        Me.btnHome = New System.Windows.Forms.Button()
         Me.btnEmergency = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.btnCarFeatures = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'lblTitle
-        '
-        Me.lblTitle.BackColor = System.Drawing.Color.White
-        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblTitle.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblTitle.Location = New System.Drawing.Point(38, 77)
-        Me.lblTitle.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(402, 65)
-        Me.lblTitle.TabIndex = 0
-        Me.lblTitle.Text = "Car"
-        Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'btnHome
-        '
-        Me.btnHome.BackgroundImage = Global.A10.My.Resources.Resources.Home
-        Me.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnHome.FlatAppearance.BorderSize = 0
-        Me.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHome.Location = New System.Drawing.Point(205, 812)
-        Me.btnHome.Name = "btnHome"
-        Me.btnHome.Size = New System.Drawing.Size(75, 75)
-        Me.btnHome.TabIndex = 2
-        Me.btnHome.TabStop = False
-        Me.btnHome.UseVisualStyleBackColor = True
         '
         'btnEmergency
         '
@@ -84,10 +55,7 @@ Partial Class CarForm
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
         Me.Controls.Add(Me.btnCarFeatures)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnEmergency)
-        Me.Controls.Add(Me.btnHome)
-        Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "CarForm"
@@ -95,10 +63,6 @@ Partial Class CarForm
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents lblTitle As Label
-    Friend WithEvents btnHome As Button
-    Friend WithEvents Button1 As Button
     Friend WithEvents btnCarFeatures As Button
     Friend WithEvents btnEmergency As Button
 End Class

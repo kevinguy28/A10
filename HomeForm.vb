@@ -1,17 +1,16 @@
-﻿Imports System.IO
+﻿Public Class HomeForm
+    Inherits AppForm
 
-Public Class HomeForm
-    Dim user As String
-    Dim scenario As Integer
-    Dim otherForm As Form
-    Dim previousForm As DevForm
+    ' Sibling
+    Dim otherForm As HomeForm
 
+    ' Children
     Dim calendarForm As CalendarForm
     Dim carForm As CarForm
     Dim routeForm As RouteForm
     Dim chatForm As ChatForm
 
-    Public Sub New(user As String, scenario As Integer, previousForm As DevForm)
+    Public Sub New(user As String, scenario As Integer, devForm As DevForm)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -19,7 +18,7 @@ Public Class HomeForm
         ' Add any initialization after the InitializeComponent() call.
         Me.user = user
         Me.scenario = scenario
-        Me.previousForm = previousForm
+        Me.devWindow = devForm
 
         If Me.user = "owner" Then
             Me.Text = "Car Owner Home"
@@ -30,8 +29,6 @@ Public Class HomeForm
     End Sub
 
     Private Sub HomeForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Location
-        Me.SetLocation()
 
         ' Profile
         If Me.user = "owner" Then
@@ -51,18 +48,13 @@ Public Class HomeForm
             Me.lblCar.Text = "My Ride"
         End If
 
-        'If (scenario = 2) And Me.user = "rider" Then
-        '    tmrAccident.Interval = 1000
-        '    tmrAccident.Start()
-        'End If
-
     End Sub
 
-    Public Sub addOtherForm(otherForm As Form)
+    Public Sub addOtherForm(otherForm As HomeForm)
         Me.otherForm = otherForm
     End Sub
 
-    Public Sub CloseAllForms()
+    Public Overrides Sub CloseAllChildren()
 
         If (Me.calendarForm IsNot Nothing) Then
             Me.calendarForm.CloseAllForms()
@@ -80,72 +72,34 @@ Public Class HomeForm
             Me.chatForm.CloseAllForms()
         End If
 
-        Me.Dispose()
-
-    End Sub
-
-    Private Sub SetCurrentForm(form As Form)
-        If (user = "owner") Then
-            Me.previousForm.SetCurrentOwnerForm(form)
-        ElseIf (user = "rider") Then
-            Me.previousForm.SetCurrentRiderForm(form)
-        End If
-    End Sub
-
-    ' ----------------
-    ' --- Location ---
-    ' ----------------
-    Private Sub HomeForm_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
-        Me.SetLocation()
-    End Sub
-
-    Private Sub SetLocation()
-        Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
-        Dim halfScreen = fullScreen / 2
-        Dim halfDev = DevForm.GetDevWidth() / 2
-        Dim halfHome = DevForm.GetFormWidth() / 2
-
-        If Me.user = "owner" Then
-            Dim x = ((halfScreen - halfDev) / 2) - halfHome
-            Me.Location = New Point(x, 0)
-
-        ElseIf Me.user = "rider" Then
-            Dim x = (fullScreen - ((halfScreen - halfDev) / 2)) - halfHome
-            Me.Location = New Point(x, 0)
-        End If
-    End Sub
-
-    Private Sub HomeForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Width = DevForm.GetFormWidth()
-        Me.Height = DevForm.GetFormHeight()
     End Sub
 
     ' --------------------
     ' --- Button Click ---
     ' --------------------
     Private Sub btnCalendar_Click(sender As Object, e As EventArgs) Handles btnCalendar.Click
-        Me.calendarForm = New CalendarForm(Me.user, Me.scenario, Me, Me.previousForm)
+        Me.calendarForm = New CalendarForm(Me.user, Me.scenario, Me, Me.devWindow)
         Me.Hide()
         Me.calendarForm.Show()
         Me.SetCurrentForm(Me.calendarForm)
     End Sub
 
     Private Sub btnCar_Click(sender As Object, e As EventArgs) Handles btnCar.Click
-        Me.carForm = New CarForm(Me.user, Me.scenario, Me, Me.previousForm)
+        Me.carForm = New CarForm(Me.user, Me.scenario, Me, Me.devWindow)
         Me.Hide()
         Me.carForm.Show()
         Me.SetCurrentForm(Me.carForm)
     End Sub
 
     Private Sub btnRoute_Click(sender As Object, e As EventArgs) Handles btnRoute.Click
-        Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.previousForm)
+        Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow)
         Me.Hide()
         Me.routeForm.Show()
         Me.SetCurrentForm(Me.routeForm)
     End Sub
 
     Private Sub btnChat_Click(sender As Object, e As EventArgs) Handles btnChat.Click
-        Me.chatForm = New ChatForm(Me.user, Me.scenario, Me, Me.previousForm)
+        Me.chatForm = New ChatForm(Me.user, Me.scenario, Me, Me.devWindow)
         Me.Hide()
         Me.chatForm.Show()
         Me.SetCurrentForm(Me.chatForm)

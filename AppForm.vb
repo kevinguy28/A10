@@ -17,11 +17,16 @@
     ' --- Functions ---
     ' -----------------
 
+    Public Overridable Sub CloseAllChildren()
+
+    End Sub
+
     Public Overridable Sub CloseAllForms()
+        Me.CloseAllChildren()
         Me.Dispose()
     End Sub
 
-    Private Sub SetCurrentForm(form As Form)
+    Protected Sub SetCurrentForm(form As Form)
         If (user = "owner") Then
             Me.devWindow.SetCurrentOwnerForm(form)
         ElseIf (user = "rider") Then
@@ -32,11 +37,11 @@
     ' ----------------
     ' --- Location ---
     ' ----------------
-    Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
+    Protected Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
         Me.SetLocation()
     End Sub
 
-    Private Sub SetLocation()
+    Protected Sub SetLocation()
         Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
         Dim halfScreen = fullScreen / 2
         Dim halfDev = DevForm.GetDevWidth() / 2
@@ -52,7 +57,7 @@
         End If
     End Sub
 
-    Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+    Protected Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         Me.Width = DevForm.GetFormWidth()
         Me.Height = DevForm.GetFormHeight()
     End Sub
@@ -98,18 +103,18 @@
         Me.btnHome.UseVisualStyleBackColor = True
     End Sub
 
-    Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
+    Protected Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
         Me.Close()
-        Me.previousWindow.Show()
-        Me.SetCurrentForm(Me.previousWindow)
-        Me.Dispose()
+        Me.homeWindow.Show()
+        Me.SetCurrentForm(Me.homeWindow)
+        Me.homeWindow.CloseAllChildren()
     End Sub
 
-    Private Sub btnHome_MouseEnter(sender As Object, e As EventArgs) Handles btnHome.MouseEnter
+    Protected Sub btnHome_MouseEnter(sender As Object, e As EventArgs) Handles btnHome.MouseEnter
         Me.btnHome.BackgroundImage = My.Resources.Home___Hover
     End Sub
 
-    Private Sub btnHome_MouseLeave(sender As Object, e As EventArgs) Handles btnHome.MouseLeave
+    Protected Sub btnHome_MouseLeave(sender As Object, e As EventArgs) Handles btnHome.MouseLeave
         Me.btnHome.BackgroundImage = My.Resources.Home
     End Sub
 
@@ -128,18 +133,18 @@
         Me.btnBack.UseVisualStyleBackColor = True
     End Sub
 
-    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+    Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Me.Close()
         Me.previousWindow.Show()
         Me.SetCurrentForm(Me.previousWindow)
         Me.Dispose()
     End Sub
 
-    Private Sub btnBack_MouseEnter(sender As Object, e As EventArgs) Handles btnBack.MouseEnter
+    Protected Sub btnBack_MouseEnter(sender As Object, e As EventArgs) Handles btnBack.MouseEnter
         Me.btnBack.BackgroundImage = My.Resources.ArrowBack___Hover
     End Sub
 
-    Private Sub btnBack_MouseLeave(sender As Object, e As EventArgs) Handles btnBack.MouseLeave
+    Protected Sub btnBack_MouseLeave(sender As Object, e As EventArgs) Handles btnBack.MouseLeave
         Me.btnBack.BackgroundImage = My.Resources.ArrowBack
     End Sub
 
@@ -161,11 +166,11 @@
     Protected Overridable Sub btnPlus_Click(sender As Object, e As EventArgs) Handles btnPlus.Click
     End Sub
 
-    Private Sub btnPlus_MouseEnter(sender As Object, e As EventArgs) Handles btnPlus.MouseEnter
+    Protected Sub btnPlus_MouseEnter(sender As Object, e As EventArgs) Handles btnPlus.MouseEnter
         Me.btnPlus.BackgroundImage = My.Resources.Plus___Hover
     End Sub
 
-    Private Sub btnPlus_MouseLeave(sender As Object, e As EventArgs) Handles btnPlus.MouseLeave
+    Protected Sub btnPlus_MouseLeave(sender As Object, e As EventArgs) Handles btnPlus.MouseLeave
         Me.btnPlus.BackgroundImage = My.Resources.Plus
     End Sub
 
