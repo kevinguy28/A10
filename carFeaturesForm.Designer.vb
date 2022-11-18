@@ -35,7 +35,7 @@ Partial Class CarFeaturesForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnAirIntakeDown = New System.Windows.Forms.Button()
         Me.btnAirIntakeUp = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblAirIntakeNumber = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'btnToggleWindows
@@ -173,17 +173,17 @@ Partial Class CarFeaturesForm
         Me.btnAirIntakeUp.TabIndex = 12
         Me.btnAirIntakeUp.UseVisualStyleBackColor = True
         '
-        'Label3
+        'lblAirIntakeNumber
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.White
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label3.Location = New System.Drawing.Point(352, 436)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(24, 32)
-        Me.Label3.TabIndex = 13
-        Me.Label3.Tag = "1"
-        Me.Label3.Text = "1"
+        Me.lblAirIntakeNumber.AutoSize = True
+        Me.lblAirIntakeNumber.BackColor = System.Drawing.Color.White
+        Me.lblAirIntakeNumber.Font = New System.Drawing.Font("Segoe UI Semibold", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblAirIntakeNumber.Location = New System.Drawing.Point(352, 436)
+        Me.lblAirIntakeNumber.Name = "lblAirIntakeNumber"
+        Me.lblAirIntakeNumber.Size = New System.Drawing.Size(24, 32)
+        Me.lblAirIntakeNumber.TabIndex = 13
+        Me.lblAirIntakeNumber.Tag = "1"
+        Me.lblAirIntakeNumber.Text = "1"
         '
         'CarFeaturesForm
         '
@@ -192,7 +192,7 @@ Partial Class CarFeaturesForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(484, 961)
-        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.lblAirIntakeNumber)
         Me.Controls.Add(Me.btnAirIntakeUp)
         Me.Controls.Add(Me.btnAirIntakeDown)
         Me.Controls.Add(Me.Label2)
@@ -227,5 +227,5 @@ Partial Class CarFeaturesForm
     Friend WithEvents Label2 As Label
     Friend WithEvents btnAirIntakeDown As Button
     Friend WithEvents btnAirIntakeUp As Button
-    Friend WithEvents Label3 As Label
+    Friend WithEvents lblAirIntakeNumber As Label
 End Class
