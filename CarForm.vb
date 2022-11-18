@@ -8,7 +8,7 @@
     Public ownerAccidentNotification As AccidentNotification
     Public riderAccidentNotification As AccidentNotification
 
-    Dim carFeatures As carFeaturesForm
+    Dim carFeatures As CarFeaturesForm
 
     Public Sub New(user As String, scenario As Integer, previousForm As HomeForm, devForm As DevForm)
 
@@ -99,7 +99,7 @@
 
     Private Sub btnCarFeatures_Click(sender As Object, e As EventArgs) Handles btnCarFeatures.Click
         ' car features form opens up here
-        carFeatures = New carFeaturesForm
+        carFeatures = New CarFeaturesForm
         Me.Hide()
         carFeatures.Show()
 

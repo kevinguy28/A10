@@ -1,4 +1,4 @@
-﻿Public Class carFeaturesForm
+﻿Public Class CarFeaturesForm
 
     Private Sub btnToggleWindows_Click(sender As Object, e As EventArgs) Handles btnToggleWindows.Click
         If btnToggleWindows.Tag = 1 Then
