@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class CalendarBookingForm
     Inherits AppForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class CalendarBookingForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.usrctrlBooking = New A10.CalendarBookingControl()
         Me.SuspendLayout()
@@ -33,10 +33,10 @@ Partial Class CalendarBookingForm
         Me.usrctrlBooking.AutoScroll = True
         Me.usrctrlBooking.BackColor = System.Drawing.Color.White
         Me.usrctrlBooking.Location = New System.Drawing.Point(24, 172)
-        Me.usrctrlBooking.MaximumSize = New System.Drawing.Size(410, 632)
-        Me.usrctrlBooking.MinimumSize = New System.Drawing.Size(435, 632)
+        Me.usrctrlBooking.MaximumSize = New System.Drawing.Size(410, 631)
+        Me.usrctrlBooking.MinimumSize = New System.Drawing.Size(435, 631)
         Me.usrctrlBooking.Name = "usrctrlBooking"
-        Me.usrctrlBooking.Size = New System.Drawing.Size(435, 632)
+        Me.usrctrlBooking.Size = New System.Drawing.Size(435, 631)
         Me.usrctrlBooking.TabIndex = 5
         '
         'CalendarBookingForm

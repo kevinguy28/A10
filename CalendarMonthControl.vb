@@ -131,7 +131,7 @@
         If Me.monthForm IsNot Nothing Then
             Me.monthForm.DayClicked(CType(sender, Label).Text)
         ElseIf Me.bookingForm IsNot Nothing Then
-            Me.bookingForm.DayClicked(CType(sender, Label).Text)
+            Me.bookingForm.DayClicked(CType(sender, Label).Text, Me)
         End If
 
     End Sub
