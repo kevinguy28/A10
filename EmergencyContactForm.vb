@@ -3,7 +3,7 @@
     Dim scenario As Integer
     Dim devForm As DevForm
     Dim previousForm As AccidentNotification
-    Public Sub New(user As String, scenario As Integer, previousForm As AccidentNotification, devForm As DevForm)
+    Public Sub New(user As String, scenario As Integer, devForm As DevForm, previousForm As AccidentNotification)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -39,8 +39,8 @@
     End Sub
 
     Private Sub endCall_Click(sender As Object, e As EventArgs) Handles endCallPicBox.Click, noCallPicBox.Click
-        Me.Close() : Me.previousForm.previousForm.Show()
-        Me.SetCurrentForm(Me.previousForm.previousForm)
+        Me.Close()
+        Me.previousForm.previousForm.Show()
         Me.Dispose()
     End Sub
 
