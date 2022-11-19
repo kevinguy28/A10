@@ -12,14 +12,6 @@
         Me.user = user : Me.scenario = scenario : Me.devForm = devForm : Me.previousForm = previousForm
     End Sub
 
-    Private Sub SetCurrentForm(form As Form)
-        If (user = "owner") Then
-            Me.devForm.SetCurrentOwnerForm(form)
-        ElseIf (user = "rider") Then
-            Me.devForm.SetCurrentRiderForm(form)
-        End If
-    End Sub
-
     Function SetLocation()
         Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
         Dim halfScreen = fullScreen / 2

@@ -55,17 +55,6 @@
         Me.emergencyContactForm = New EmergencyContactForm("rider", 2, devForm, Me)
         Me.emergencyContactForm.Show()
         Me.emergencyContactForm.Location = New Point(Me.emergencyContactForm.SetLocation(), 2)
-
-        ''Rider Accident Notification
-        'Me.emergencyContactForm = New EmergencyContactForm("rider", Me.scenario, Me, Me.devForm) : Me.Hide()
-        'Me.emergencyContactForm.Show() : Me.emergencyContactForm.Location = New Point(Me.emergencyContactForm.SetLocation(), 0)
-        'Me.SetCurrentForm(Me.emergencyContactForm)
-        ''Owner Accident Notification
-        'Dim ownerAccidentNotification As New AccidentNotification("owner", Me.scenario, Me.devForm) : ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation, 0)
-        'ownerAccidentNotification.confirmButton.Hide() : ownerAccidentNotification.denyButton.Hide() : ownerAccidentNotification.lblAccident1.Text = "The accident was" : ownerAccidentNotification.lblAccident2.Text = "confirmed!"
-        'ownerAccidentNotification.btnConfirm.Visible = True : ownerAccidentNotification.Show() : Me.SetCurrentForm()
-        'Me.Dispose()
-        'Me.Close()
     End Sub
 
     ' Goes back to previous rider CarForm, shows new rider notfication
@@ -76,13 +65,6 @@
         Me.ownerAccidentForm.denyButton.Visible = False : Me.ownerAccidentForm.confirmButton.Visible = False : Me.ownerAccidentForm.btnConfirm.Visible = True
         Me.ownerAccidentForm.lblAccident1.Text = "The accident was a" : Me.ownerAccidentForm.lblAccident2.Text = "false alarm!"
         Me.ownerAccidentForm.Show()
-    End Sub
-
-    Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
-        'Me.Close()
-        'Me.previousForm.Show()
-        'Me.SetCurrentForm(Me.previousForm)
-        'Me.Dispose()
     End Sub
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
