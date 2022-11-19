@@ -40,13 +40,17 @@ Partial Class CarFeaturesForm
         '
         'btnToggleWindows
         '
+        Me.btnToggleWindows.BackColor = System.Drawing.Color.White
         Me.btnToggleWindows.BackgroundImage = Global.A10.My.Resources.Resources.toggle_off
         Me.btnToggleWindows.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnToggleWindows.Location = New System.Drawing.Point(296, 205)
+        Me.btnToggleWindows.FlatAppearance.BorderSize = 0
+        Me.btnToggleWindows.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnToggleWindows.Location = New System.Drawing.Point(317, 205)
         Me.btnToggleWindows.Name = "btnToggleWindows"
         Me.btnToggleWindows.Size = New System.Drawing.Size(96, 78)
         Me.btnToggleWindows.TabIndex = 0
-        Me.btnToggleWindows.UseVisualStyleBackColor = True
+        Me.btnToggleWindows.TabStop = False
+        Me.btnToggleWindows.UseVisualStyleBackColor = False
         '
         'lblCarFeatures
         '
@@ -82,6 +86,7 @@ Partial Class CarFeaturesForm
         'lblInsideTemp
         '
         Me.lblInsideTemp.AutoSize = True
+        Me.lblInsideTemp.BackColor = System.Drawing.Color.White
         Me.lblInsideTemp.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblInsideTemp.Location = New System.Drawing.Point(67, 641)
         Me.lblInsideTemp.Name = "lblInsideTemp"
@@ -92,6 +97,7 @@ Partial Class CarFeaturesForm
         'lblInsideTempValue
         '
         Me.lblInsideTempValue.AutoSize = True
+        Me.lblInsideTempValue.BackColor = System.Drawing.Color.White
         Me.lblInsideTempValue.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblInsideTempValue.Location = New System.Drawing.Point(351, 641)
         Me.lblInsideTempValue.Name = "lblInsideTempValue"
@@ -112,32 +118,41 @@ Partial Class CarFeaturesForm
         '
         'btnFanStrengthDown
         '
+        Me.btnFanStrengthDown.BackColor = System.Drawing.Color.White
         Me.btnFanStrengthDown.BackgroundImage = Global.A10.My.Resources.Resources.arrow_down_neutral
         Me.btnFanStrengthDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnFanStrengthDown.Location = New System.Drawing.Point(296, 337)
+        Me.btnFanStrengthDown.FlatAppearance.BorderSize = 0
+        Me.btnFanStrengthDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFanStrengthDown.Location = New System.Drawing.Point(266, 337)
         Me.btnFanStrengthDown.Name = "btnFanStrengthDown"
         Me.btnFanStrengthDown.Size = New System.Drawing.Size(50, 50)
         Me.btnFanStrengthDown.TabIndex = 7
-        Me.btnFanStrengthDown.UseVisualStyleBackColor = True
+        Me.btnFanStrengthDown.TabStop = False
+        Me.btnFanStrengthDown.UseVisualStyleBackColor = False
         '
         'btnFanStrengthUp
         '
+        Me.btnFanStrengthUp.BackColor = System.Drawing.Color.White
         Me.btnFanStrengthUp.BackgroundImage = Global.A10.My.Resources.Resources.arrow_up_neutral
         Me.btnFanStrengthUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnFanStrengthUp.Location = New System.Drawing.Point(390, 337)
+        Me.btnFanStrengthUp.FlatAppearance.BorderSize = 0
+        Me.btnFanStrengthUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFanStrengthUp.Location = New System.Drawing.Point(379, 337)
         Me.btnFanStrengthUp.Name = "btnFanStrengthUp"
         Me.btnFanStrengthUp.Size = New System.Drawing.Size(50, 50)
         Me.btnFanStrengthUp.TabIndex = 8
-        Me.btnFanStrengthUp.UseVisualStyleBackColor = True
+        Me.btnFanStrengthUp.TabStop = False
+        Me.btnFanStrengthUp.UseVisualStyleBackColor = False
         '
         'lblFanStrengthNumber
         '
         Me.lblFanStrengthNumber.AutoSize = True
         Me.lblFanStrengthNumber.BackColor = System.Drawing.Color.White
-        Me.lblFanStrengthNumber.Font = New System.Drawing.Font("Segoe UI Semibold", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblFanStrengthNumber.Location = New System.Drawing.Point(352, 341)
+        Me.lblFanStrengthNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblFanStrengthNumber.Font = New System.Drawing.Font("Segoe UI Semibold", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblFanStrengthNumber.Location = New System.Drawing.Point(332, 340)
         Me.lblFanStrengthNumber.Name = "lblFanStrengthNumber"
-        Me.lblFanStrengthNumber.Size = New System.Drawing.Size(24, 32)
+        Me.lblFanStrengthNumber.Size = New System.Drawing.Size(32, 43)
         Me.lblFanStrengthNumber.TabIndex = 9
         Me.lblFanStrengthNumber.Tag = "1"
         Me.lblFanStrengthNumber.Text = "1"
@@ -155,32 +170,41 @@ Partial Class CarFeaturesForm
         '
         'btnAirIntakeDown
         '
+        Me.btnAirIntakeDown.BackColor = System.Drawing.Color.White
         Me.btnAirIntakeDown.BackgroundImage = Global.A10.My.Resources.Resources.arrow_down_neutral
         Me.btnAirIntakeDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAirIntakeDown.Location = New System.Drawing.Point(296, 432)
+        Me.btnAirIntakeDown.FlatAppearance.BorderSize = 0
+        Me.btnAirIntakeDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAirIntakeDown.Location = New System.Drawing.Point(266, 432)
         Me.btnAirIntakeDown.Name = "btnAirIntakeDown"
         Me.btnAirIntakeDown.Size = New System.Drawing.Size(50, 50)
         Me.btnAirIntakeDown.TabIndex = 11
-        Me.btnAirIntakeDown.UseVisualStyleBackColor = True
+        Me.btnAirIntakeDown.TabStop = False
+        Me.btnAirIntakeDown.UseVisualStyleBackColor = False
         '
         'btnAirIntakeUp
         '
+        Me.btnAirIntakeUp.BackColor = System.Drawing.Color.White
         Me.btnAirIntakeUp.BackgroundImage = Global.A10.My.Resources.Resources.arrow_up_neutral
         Me.btnAirIntakeUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAirIntakeUp.Location = New System.Drawing.Point(390, 432)
+        Me.btnAirIntakeUp.FlatAppearance.BorderSize = 0
+        Me.btnAirIntakeUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAirIntakeUp.Location = New System.Drawing.Point(382, 432)
         Me.btnAirIntakeUp.Name = "btnAirIntakeUp"
         Me.btnAirIntakeUp.Size = New System.Drawing.Size(50, 50)
         Me.btnAirIntakeUp.TabIndex = 12
-        Me.btnAirIntakeUp.UseVisualStyleBackColor = True
+        Me.btnAirIntakeUp.TabStop = False
+        Me.btnAirIntakeUp.UseVisualStyleBackColor = False
         '
         'lblAirIntakeNumber
         '
         Me.lblAirIntakeNumber.AutoSize = True
         Me.lblAirIntakeNumber.BackColor = System.Drawing.Color.White
-        Me.lblAirIntakeNumber.Font = New System.Drawing.Font("Segoe UI Semibold", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblAirIntakeNumber.Location = New System.Drawing.Point(352, 436)
+        Me.lblAirIntakeNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblAirIntakeNumber.Font = New System.Drawing.Font("Segoe UI Semibold", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblAirIntakeNumber.Location = New System.Drawing.Point(332, 436)
         Me.lblAirIntakeNumber.Name = "lblAirIntakeNumber"
-        Me.lblAirIntakeNumber.Size = New System.Drawing.Size(24, 32)
+        Me.lblAirIntakeNumber.Size = New System.Drawing.Size(32, 43)
         Me.lblAirIntakeNumber.TabIndex = 13
         Me.lblAirIntakeNumber.Tag = "1"
         Me.lblAirIntakeNumber.Text = "1"
