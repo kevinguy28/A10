@@ -6,6 +6,8 @@
     Public riderAccidentNotification As AccidentNotification
 
     Dim carFeatures As CarFeaturesForm
+    Dim carMedia As CarMediaForm
+
 
     Public Sub New(user As String, scenario As Integer, previousForm As HomeForm, devForm As DevForm)
 
@@ -69,4 +71,26 @@
         btnCarFeatures.BackgroundImage = My.Resources.fan_neutral
 
     End Sub
+
+    '-------------------
+    '-----Car Media-----
+    '-------------------
+
+    Private Sub btnCarMedia_Click(sender As Object, e As EventArgs) Handles btnCarMedia.Click
+        btnCarMedia.BackgroundImage = My.Resources.car_media_press
+        Me.carMedia = New CarMediaForm
+        Me.carMedia.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub btnCarMedia_MouseEnter(sender As Object, e As EventArgs) Handles btnCarMedia.MouseEnter
+        btnCarMedia.BackgroundImage = My.Resources.car_media_hover
+
+    End Sub
+
+    Private Sub btnCarMedia_MouseLeave(sender As Object, e As EventArgs) Handles btnCarMedia.MouseLeave
+        btnCarMedia.BackgroundImage = My.Resources.car_media_neutral
+
+    End Sub
+
 End Class
