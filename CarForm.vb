@@ -1,10 +1,15 @@
-﻿Public Class CarForm
+﻿Imports System.Text
+
+Public Class CarForm
     Inherits AppForm
 
     ' Children
+    ' Emergency
     Public ownerAccidentNotification As AccidentNotification
     Public riderAccidentNotification As AccidentNotification
-
+    ' Car Diagnostic
+    Dim carDiagnostic As CarDiagnosticForm
+    '
     Dim carFeatures As CarFeaturesForm
     Dim carMedia As CarMediaForm
 
@@ -93,4 +98,10 @@
 
     End Sub
 
+    Private Sub btnDiagnostic_Click(sender As Object, e As EventArgs) Handles btnDiagnostic.Click
+        Me.Hide()
+        Me.carDiagnostic = New CarDiagnosticForm("owner", 2, Me, Me.homeWindow, Me.devWindow)
+        Me.carDiagnostic.Show()
+        Me.SetCurrentForm(Me.carDiagnostic)
+    End Sub
 End Class

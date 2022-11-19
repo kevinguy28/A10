@@ -25,6 +25,7 @@ Partial Class CarForm
         Me.btnEmergency = New System.Windows.Forms.Button()
         Me.btnCarFeatures = New System.Windows.Forms.Button()
         Me.btnCarMedia = New System.Windows.Forms.Button()
+        Me.btnDiagnostic = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnEmergency
@@ -58,6 +59,16 @@ Partial Class CarForm
         Me.btnCarMedia.TabIndex = 5
         Me.btnCarMedia.UseVisualStyleBackColor = True
         '
+        'btnDiagnostic
+        '
+        Me.btnDiagnostic.BackgroundImage = Global.A10.My.Resources.Resources.car1
+        Me.btnDiagnostic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnDiagnostic.Location = New System.Drawing.Point(68, 441)
+        Me.btnDiagnostic.Name = "btnDiagnostic"
+        Me.btnDiagnostic.Size = New System.Drawing.Size(150, 150)
+        Me.btnDiagnostic.TabIndex = 6
+        Me.btnDiagnostic.UseVisualStyleBackColor = True
+        '
         'CarForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -65,6 +76,7 @@ Partial Class CarForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.btnDiagnostic)
         Me.Controls.Add(Me.btnCarMedia)
         Me.Controls.Add(Me.btnCarFeatures)
         Me.Controls.Add(Me.btnEmergency)
@@ -78,4 +90,5 @@ Partial Class CarForm
     Friend WithEvents btnCarFeatures As Button
     Friend WithEvents btnEmergency As Button
     Friend WithEvents btnCarMedia As Button
+    Friend WithEvents btnDiagnostic As Button
 End Class
