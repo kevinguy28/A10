@@ -181,13 +181,13 @@ Public Class AppForm
     ' ------------------
     ' --- Dim Screen ---
     ' ------------------
-    Protected Sub CreateDimOverlay()
+    Public Sub CreateDimOverlay()
         dimOverlay = New Panel
         dimOverlay.BackgroundImageLayout = ImageLayout.None
         dimOverlay.Visible = False
     End Sub
 
-    Protected Sub DimScreen()
+    Public Sub DimScreen()
         Dim clientBitmap As New Bitmap(Me.ClientSize.Width, Me.ClientSize.Height)
         Using bitmap As New Bitmap(DevForm.GetFormWidth, DevForm.GetFormHeight)
             Me.DrawToBitmap(bitmap, New Rectangle(Point.Empty, New Drawing.Size(DevForm.GetFormWidth, DevForm.GetFormHeight)))
@@ -208,7 +208,7 @@ Public Class AppForm
         dimOverlay.Visible = True
     End Sub
 
-    Protected Sub UnDimScreen()
+    Public Sub UnDimScreen()
         Me.dimOverlay.Visible = False
     End Sub
 
