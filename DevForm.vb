@@ -3,8 +3,8 @@
     Dim ownerWindow As HomeForm
     Dim riderWindow As HomeForm
 
-    Dim currentOwnerForm As Form
-    Dim currentRiderForm As Form
+    Dim currentOwnerForm As AppForm
+    Dim currentRiderForm As AppForm
 
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.CenterToScreen()
@@ -30,11 +30,11 @@
         Me.riderWindow.Show()
     End Sub
 
-    Public Sub SetCurrentOwnerForm(form As Form)
+    Public Sub SetCurrentOwnerForm(form As AppForm)
         Me.currentOwnerForm = form
     End Sub
 
-    Public Sub SetCurrentRiderForm(form As Form)
+    Public Sub SetCurrentRiderForm(form As AppForm)
         Me.currentRiderForm = form
     End Sub
 
@@ -49,5 +49,30 @@
     Public Shared Function GetDevWidth() As Integer
         Return DevForm.Width
     End Function
+
+    ' --------------
+    ' --- Popups ---
+    ' --------------
+    Public Sub OpenPopup(user As String, popup As Form)
+        Select Case user
+            Case "owner"
+                currentOwnerForm.CreateDimOverlay()
+                currentOwnerForm.DimScreen()
+            Case "rider"
+                currentRiderForm.CreateDimOverlay()
+                currentRiderForm.DimScreen()
+        End Select
+        popup.Show()
+        popup.TopMost = True
+    End Sub
+
+    Public Sub ClosePopup(user As String)
+        Select Case user
+            Case "owner"
+                currentOwnerForm.UnDimScreen()
+            Case "rider"
+                currentRiderForm.UnDimScreen()
+        End Select
+    End Sub
 
 End Class
