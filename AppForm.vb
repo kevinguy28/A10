@@ -1,4 +1,7 @@
-﻿Public Class AppForm
+﻿Imports System.Drawing.Imaging
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Status
+
+Public Class AppForm
     Inherits System.Windows.Forms.Form
 
     Protected user As String
@@ -12,6 +15,7 @@
     Protected WithEvents btnHome As Button
     Protected WithEvents btnBack As Button
     Protected WithEvents btnPlus As Button
+    Protected dimOverlay As Panel
 
     ' -----------------
     ' --- Functions ---
@@ -172,6 +176,40 @@
 
     Protected Sub btnPlus_MouseLeave(sender As Object, e As EventArgs) Handles btnPlus.MouseLeave
         Me.btnPlus.BackgroundImage = My.Resources.Plus
+    End Sub
+
+    ' ------------------
+    ' --- Dim Screen ---
+    ' ------------------
+    Protected Sub CreateDimOverlay()
+        dimOverlay = New Panel
+        dimOverlay.BackgroundImageLayout = ImageLayout.None
+        dimOverlay.Visible = False
+    End Sub
+
+    Protected Sub DimScreen()
+        Dim clientBitmap As New Bitmap(Me.ClientSize.Width, Me.ClientSize.Height)
+        Using bitmap As New Bitmap(DevForm.GetFormWidth, DevForm.GetFormHeight)
+            Me.DrawToBitmap(bitmap, New Rectangle(Point.Empty, New Drawing.Size(DevForm.GetFormWidth, DevForm.GetFormHeight)))
+            Dim pointToClient As Point = Me.PointToClient(Me.Location)
+            Using grphcs As Graphics = Graphics.FromImage(clientBitmap)
+                grphcs.DrawImage(bitmap, pointToClient.X, pointToClient.Y, bitmap.Width, bitmap.Height)
+            End Using
+        End Using
+
+        Using g As Graphics = Graphics.FromImage(clientBitmap), brush As New SolidBrush(Color.FromArgb(128, Color.Black))
+            g.FillRectangle(brush, 0, 0, clientBitmap.Width, clientBitmap.Height)
+        End Using
+
+        If dimOverlay.BackgroundImage IsNot Nothing Then dimOverlay.BackgroundImage.Dispose()
+        dimOverlay.BackgroundImage = clientBitmap
+        dimOverlay.Bounds = New Rectangle(0, 0, Me.ClientSize.Width, Me.ClientSize.Height)
+        dimOverlay.BringToFront()
+        dimOverlay.Visible = True
+    End Sub
+
+    Protected Sub UnDimScreen()
+        Me.dimOverlay.Visible = False
     End Sub
 
 End Class

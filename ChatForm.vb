@@ -23,7 +23,19 @@
         Me.CreateHomeButton()
         Me.Controls.Add(Me.lblTitle)
         Me.Controls.Add(Me.btnHome)
+
     End Sub
 
+    Private Sub btnDim_Click(sender As Object, e As EventArgs) Handles btnDim.Click
+        If Me.dimOverlay Is Nothing Then
+            Me.CreateDimOverlay()
+            Me.Controls.Add(Me.dimOverlay)
+        End If
+        Me.DimScreen()
+        Me.btnUndim.BringToFront()
+    End Sub
 
+    Private Sub btnUndim_Click(sender As Object, e As EventArgs) Handles btnUndim.Click
+        Me.UnDimScreen()
+    End Sub
 End Class

@@ -22,12 +22,23 @@ Public Class CalendarBookingControl
     Dim addedHeight = 300
 
     ' Controls
-    Dim lblDate As Label
-    Dim lblDatePrompt As Label
-    Dim txtDate As TextBox
-    Dim WithEvents btnDateSelect As Button
 
-    Dim showMonths As Boolean
+    ' Start
+    Dim lblStart As Label
+
+    Dim lblDateStartPrompt As Label
+    Dim txtDateStart As TextBox
+    Dim WithEvents btnDateStartSelect As Button
+
+    Dim lblTimeStartPrompt As Label
+    Dim WithEvents txtTimeHour As TextBox
+    Dim lblTimeColon As Label
+    Dim WithEvents txtTimeMinute As TextBox
+
+    Dim lblStartConfirm As Label
+
+    ' Month
+    Dim showMonthsStart As Boolean
     Dim lblMonth As Label
     Dim WithEvents imgArrowLeft As PictureBox
     Dim WithEvents imgArrowRight As PictureBox
@@ -37,7 +48,7 @@ Public Class CalendarBookingControl
         ' Vertical scroll bar is around 25 pixels
         ' Form white area is 435, 632 pixels
         ' User Control width - scroll bar (to make space for it) = 410
-        Me.showMonths = False
+        Me.showMonthsStart = False
     End Sub
 
     ' -----------------
@@ -67,47 +78,89 @@ Public Class CalendarBookingControl
             Me.daySet = True
         End If
 
-        Me.CreateDate()
+        Me.CreateStart()
         Me.CreateMonths()
         Me.AddControls()
 
     End Sub
 
-    Private Sub CreateDate()
-        Dim padding = New Padding(25, 5, 0, 5)
+    Private Sub CreateStart()
+        Dim leftPadding = New Padding(25, 5, 0, 5)
+        Dim sidePadding = New Padding(5, 5, 0, 5)
 
-        ' lblDate
-        Me.lblDate = New Label()
-        Me.lblDate.Text = "Date"
-        Me.lblDate.TextAlign = ContentAlignment.MiddleCenter
-        Me.lblDate.Font = headingFont
-        Me.lblDate.Size = New Size(Me.Width - 25, 45)
-        Me.lblDate.AutoSize = False
-        Me.lblDate.Margin = New Padding(padding.Left / 2, padding.Top, padding.Bottom, padding.Right)
+        ' lblStart
+        Me.lblStart = New Label()
+        Me.lblStart.Text = "Date"
+        Me.lblStart.TextAlign = ContentAlignment.MiddleCenter
+        Me.lblStart.Font = headingFont
+        Me.lblStart.Size = New Size(Me.Width - 25, 45)
+        Me.lblStart.AutoSize = False
+        Me.lblStart.Margin = New Padding(leftPadding.Left / 2, padding.Top, padding.Bottom, padding.Right)
 
-        ' lblDatePrompt
-        Me.lblDatePrompt = New Label
-        Me.lblDatePrompt.Text = "Select the date you want to book a car:"
-        Me.lblDatePrompt.Font = bodyFont
-        Me.lblDatePrompt.AutoSize = True
-        Me.lblDatePrompt.Margin = padding
+        ' lblDateStartPrompt
+        Me.lblDateStartPrompt = New Label
+        Me.lblDateStartPrompt.Text = "Select the start date of your car booking:"
+        Me.lblDateStartPrompt.Font = bodyFont
+        Me.lblDateStartPrompt.AutoSize = True
+        Me.lblDateStartPrompt.Margin = leftPadding
 
-        ' txtDate
-        Me.txtDate = New TextBox
-        Me.txtDate.Multiline = False
-        Me.txtDate.Enabled = False
-        Me.txtDate.Font = bodyFont
-        'Me.txtDate.Width = Me.Width * 0.7
-        Me.txtDate.Width = 300
-        Me.txtDate.Text = Format(Me.currTime, "dddd d MMMM yyyy")
-        Me.txtDate.Margin = padding
+        ' txtDateStart
+        Me.txtDateStart = New TextBox
+        Me.txtDateStart.Multiline = False
+        Me.txtDateStart.Enabled = False
+        Me.txtDateStart.Font = bodyFont
+        Me.txtDateStart.Width = 300
+        Me.txtDateStart.Text = Format(Me.currTime, "dddd d MMMM yyyy")
+        Me.txtDateStart.Margin = leftPadding
 
-        ' btnDateSelect
-        Me.btnDateSelect = New Button
-        Me.btnDateSelect.Text = "Select"
-        Me.btnDateSelect.Font = bodyFont
-        Me.btnDateSelect.Height = Me.txtDate.Height
-        Me.btnDateSelect.Margin = New Padding(padding.Top, padding.Top, padding.Bottom, padding.Right)
+        ' btnDateStartSelect
+        Me.btnDateStartSelect = New Button
+        Me.btnDateStartSelect.Text = "Select"
+        Me.btnDateStartSelect.Font = bodyFont
+        Me.btnDateStartSelect.Height = Me.txtDateStart.Height
+        Me.btnDateStartSelect.Margin = sidePadding
+
+        'Dim lblTimeStartPrompt As Label
+        'Dim txtTimeHour As TextBox
+        'Dim lblTimeColon As Label
+        'Dim txtTimeMinute As TextBox
+        'Dim lblStartConfirm As Label
+
+        ' lblTimeStartPrompt
+        Me.lblDateStartPrompt = New Label
+        Me.lblDateStartPrompt.Text = "Select the start time of your car booking:"
+        Me.lblDateStartPrompt.Font = bodyFont
+        Me.lblDateStartPrompt.AutoSize = True
+        Me.lblDateStartPrompt.Margin = leftPadding
+
+        ' txtTimeHour
+        Me.txtTimeHour = New TextBox
+        Me.txtTimeHour.Multiline = False
+        Me.txtTimeHour.Font = bodyFont
+        Me.txtTimeHour.Width = 100
+        Me.txtTimeHour.Margin = leftPadding
+
+        ' lblTimeColon
+        Me.lblDateStartPrompt = New Label
+        Me.lblDateStartPrompt.Text = ":"
+        Me.lblDateStartPrompt.Font = bodyFont
+        Me.lblDateStartPrompt.AutoSize = True
+        Me.lblDateStartPrompt.Margin = sidePadding
+
+        ' txtTimeMinute
+        Me.txtTimeMinute = New TextBox
+        Me.txtTimeMinute.Multiline = False
+        Me.txtTimeMinute.Font = bodyFont
+        Me.txtTimeMinute.Width = 100
+        Me.txtTimeMinute.Margin = sidePadding
+
+        ' lblStartConfirm
+        Me.lblDateStartPrompt = New Label
+        Me.lblDateStartPrompt.Text = "Select the start time of your car booking:"
+        Me.lblDateStartPrompt.Font = bodyFont
+        Me.lblDateStartPrompt.AutoSize = True
+        Me.lblDateStartPrompt.Margin = leftPadding
+
 
     End Sub
 
@@ -150,19 +203,22 @@ Public Class CalendarBookingControl
         Me.SuspendLayout()
         Me.flPanel.Controls.Clear()
 
-        Me.flPanel.Controls.Add(Me.lblDate)
-        Me.flPanel.Controls.Add(Me.lblDatePrompt)
-        Me.flPanel.SetFlowBreak(Me.lblDatePrompt, True)
-        Me.flPanel.Controls.Add(Me.txtDate)
-        Me.flPanel.Controls.Add(Me.btnDateSelect)
-        Me.flPanel.SetFlowBreak(Me.btnDateSelect, True)
+        Me.flPanel.Controls.Add(Me.lblStart)
+        Me.flPanel.Controls.Add(Me.lblDateStartPrompt)
+        Me.flPanel.SetFlowBreak(Me.lblDateStartPrompt, True)
+        Me.flPanel.Controls.Add(Me.txtDateStart)
+        Me.flPanel.Controls.Add(Me.btnDateStartSelect)
+        Me.flPanel.SetFlowBreak(Me.btnDateStartSelect, True)
 
-        If showMonths Then
+        If showMonthsStart Then
             Me.flPanel.Controls.Add(Me.imgArrowLeft)
             Me.flPanel.Controls.Add(Me.lblMonth)
             Me.flPanel.Controls.Add(Me.imgArrowRight)
             Me.flPanel.Controls.Add(Me.usrctrlMonth)
         End If
+
+        Me.flPanel.Controls.Add(Me.lblTimeStartPrompt)
+        Me.flPanel.SetFlowBreak(Me.lblTimeStartPrompt, True)
 
         Me.flPanel.ResumeLayout(True)
         Me.ResumeLayout(True)
@@ -171,11 +227,11 @@ Public Class CalendarBookingControl
     Public Sub DayClicked(day As Integer)
         Dim newDate = New Date(Me.year, Me.month, day)
         Me.currTime = newDate
-        Me.txtDate.Text = Format(Me.currTime, "dddd d MMMM yyyy")
-        Me.showMonths = False
+        Me.txtDateStart.Text = Format(Me.currTime, "dddd d MMMM yyyy")
+        Me.showMonthsStart = False
         Me.Height = Me.Height - addedHeight
         Me.flPanel.Height = Me.flPanel.Height - addedHeight
-        Me.btnDateSelect.Enabled = True
+        Me.btnDateStartSelect.Enabled = True
         Me.AddControls()
     End Sub
 
@@ -206,9 +262,9 @@ Public Class CalendarBookingControl
     ' -------------------
     ' --- Date Select ---
     ' -------------------
-    Private Sub btnDateSelect_Click(sender As Object, e As EventArgs) Handles btnDateSelect.Click
-        Me.showMonths = True
-        Me.btnDateSelect.Enabled = False
+    Private Sub btnDateSelect_Click(sender As Object, e As EventArgs) Handles btnDateStartSelect.Click
+        Me.showMonthsStart = True
+        Me.btnDateStartSelect.Enabled = False
         Me.Height = Me.Height + addedHeight
         Me.flPanel.Height = Me.flPanel.Height + addedHeight
         Me.AddControls()
