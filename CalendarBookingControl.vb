@@ -25,30 +25,44 @@ Public Class CalendarBookingControl
     Dim endMonth As Integer
     Dim endYear As Integer
 
+    ' Height Change
+    Dim addedHeight = 472
+
+    ' Border Change
+    Dim bdrTopHghtChanged = False
+    Dim bdrBotHghtChanged = False
+    Dim bdrBotPosnChanged = False
 
     ' Fonts
     Dim headingFont = New Font("Segoe UI Semibold", 24, FontStyle.Bold)
     Dim bodyFont = New Font("Segoe UI", 14)
-    Dim bodyBoldFont = New Font("Segoe UI", 14, FontStyle.Bold)
+    Dim bodyBoldFont = New Font("Segoe UI Semibold", 14, FontStyle.Bold)
     Dim timeFont = New Font("Segoe UI Semibold", 22, FontStyle.Bold)
 
     ' Size
-    Dim timeSize As New Size(55, 40)
-    Dim colonSize As New Size(20, 40)
-    Dim amPmSize As New Size(65, 40)
+    Dim headingSize = New Size(435 - 40, 50)
+    Dim timeSize = New Size(55, 40)
+    Dim colonSize = New Size(20, 40)
+    Dim amPmSize = New Size(65, 40)
 
     ' Colour
     Dim colourHover = Color.FromArgb(127, 242, 229)
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
     Dim colourPressed = Color.FromArgb(120, 145, 141)
+    Dim colourWhite = Color.White
 
+    ' Padding                     (l, t, r, b)
+    Dim leftPadding = New Padding(25, 5, 0, 5)
+    Dim sidePadding = New Padding(5, 5, 0, 5)
+    Dim noPadding = New Padding(0, 0, 0, 0)
+    Dim headingPadding = New Padding(leftPadding.Left / 2, 50, 0, 3)
 
-    ' Height Change
-    Dim addedHeight = 510
+    ' TextAlign
+    Dim headingTextAlign = ContentAlignment.TopCenter
 
-    ' Controls
+    ' === Controls ===
 
-    ' Start
+    ' --- Start ---
     Dim lblStart As Label
 
     Dim lblDateStartPrompt As Label
@@ -71,7 +85,7 @@ Public Class CalendarBookingControl
     Dim lblStartConfirmPrompt As Label
     Dim lblStartConfirmDate As Label
 
-    ' End
+    ' --- End ---
     Dim lblEnd As Label
 
     Dim lblDateEndPrompt As Label
@@ -94,25 +108,37 @@ Public Class CalendarBookingControl
     Dim lblEndConfirmPrompt As Label
     Dim lblEndConfirmDate As Label
 
-    ' Start Month
+    ' --- Start Month ---
     Dim showMonthsStart As Boolean
     Dim lblStartMonth As Label
     Dim WithEvents imgStartArrowLeft As PictureBox
     Dim WithEvents imgStartArrowRight As PictureBox
     Dim usrctrlStartMonth As CalendarMonthControl
 
-    ' End Month
+    ' --- End Month ----
     Dim showMonthsEnd As Boolean
     Dim lblEndMonth As Label
     Dim WithEvents imgEndArrowLeft As PictureBox
     Dim WithEvents imgEndArrowRight As PictureBox
     Dim usrctrlEndMonth As CalendarMonthControl
 
+    '' --- Car ---
+    'Dim lblCar As Label
+
+    'Dim lblCarPrompt As Label
+    'Dim lstvwSelected As ListView
+    'Dim WithEvents btnCarSelect As Button
+
+    'Dim lstvwCar As ListView
+
+    ' --- Next ---
+
     Private Sub CalendarBookingControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Vertical scroll bar is around 25 pixels
         ' Form white area is 435, 632 pixels
         ' User Control width - scroll bar (to make space for it) = 410
         Me.showMonthsStart = False
+        Me.showMonthsEnd = False
     End Sub
 
     ' -----------------
@@ -120,6 +146,7 @@ Public Class CalendarBookingControl
     ' -----------------
 
     Public Sub Setup(currTime As Date, trigger As String, previousForm As Form)
+        'Dim initialAddedHeight = 1000
         Dim initialAddedHeight = 300
         Me.Height = Me.Height + initialAddedHeight
         Me.flPanel.Height = Me.flPanel.Height + initialAddedHeight
@@ -160,26 +187,51 @@ Public Class CalendarBookingControl
         Me.CreateEndMonths()
         Me.AddControls()
 
+        ' Border
+        Dim borderSize = New Size(10, 392)
+        Dim top = 50
+        Dim btm = 492
+        Dim lft = 10
+        Dim rgt = 400
+
+        Me.lblStartLeft.BringToFront()
+        Me.lblStartLeft.BackColor = colourNeutral
+        Me.lblStartLeft.Location = New Point(lft, top)
+        Me.lblStartLeft.Size = borderSize
+
+        Me.lblStartRight.BringToFront()
+        Me.lblStartRight.BackColor = colourNeutral
+        Me.lblStartRight.Location = New Point(rgt, top)
+        Me.lblStartRight.Size = borderSize
+
+        Me.lblEndLeft.BringToFront()
+        Me.lblEndLeft.BackColor = colourNeutral
+        Me.lblEndLeft.Location = New Point(lft, btm)
+        Me.lblEndLeft.Size = borderSize
+
+        Me.lblEndRight.BringToFront()
+        Me.lblEndRight.BackColor = colourNeutral
+        Me.lblEndRight.Location = New Point(rgt, btm)
+        Me.lblEndRight.Size = borderSize
+
+
     End Sub
 
     Private Sub CreateStart()
-        Dim leftPadding = New Padding(25, 5, 0, 5)
-        Dim sidePadding = New Padding(5, 5, 0, 5)
-        Dim noPadding = New Padding(0, 0, 0, 0)
-        '                            (l, t, r, b)
-
         ' lblStart
         Me.lblStart = New Label()
         Me.lblStart.Text = "Start"
-        Me.lblStart.TextAlign = ContentAlignment.TopCenter
+        Me.lblStart.TextAlign = headingTextAlign
         Me.lblStart.Font = headingFont
-        Me.lblStart.Size = New Size(Me.Width - 40, 50)
+        Me.lblStart.Size = headingSize
         Me.lblStart.AutoSize = False
-        Me.lblStart.Margin = New Padding(leftPadding.Left / 2, 50, Padding.Bottom, Padding.Right)
+        Me.lblStart.Margin = headingPadding
         Me.lblStart.BackColor = colourNeutral
-        Me.lblStart.ForeColor = Color.White
+        Me.lblStart.ForeColor = colourWhite
 
-        ' Date
+        ' --- Date ---
+        Dim txtPad = 5
+        Dim txtBor = 15
 
         ' lblDateStartPrompt
         Me.lblDateStartPrompt = New Label
@@ -193,9 +245,9 @@ Public Class CalendarBookingControl
         Me.txtDateStart.Multiline = False
         Me.txtDateStart.Enabled = False
         Me.txtDateStart.Font = bodyFont
-        Me.txtDateStart.Width = 300
+        Me.txtDateStart.Width = 300 - txtPad - txtBor
         Me.txtDateStart.Text = Format(Me.startTime, "dddd d MMMM yyyy")
-        Me.txtDateStart.Margin = leftPadding
+        Me.txtDateStart.Margin = New Padding(25 + txtPad, 5, 0, 5)
 
         ' btnDateStartSelect
         Me.btnDateStartSelect = New Button
@@ -209,7 +261,7 @@ Public Class CalendarBookingControl
         Me.btnDateStartSelect.FlatAppearance.BorderSize = 0
         Me.btnDateStartSelect.Margin = sidePadding
 
-        'Time
+        ' --- Time: Labels ---
 
         ' lblTimeStartPrompt
         Me.lblTimeStartPrompt = New Label
@@ -259,6 +311,8 @@ Public Class CalendarBookingControl
         Me.lblStartTimeColon.AutoSize = False
         Me.lblStartTimeColon.Margin = noPadding
 
+        ' --- Time: Arrows ---
+
         ' imgStartHourUp
         Me.imgStartHourUp = New PictureBox
         Me.imgStartHourUp.Size = New Size(45, 45)
@@ -301,9 +355,10 @@ Public Class CalendarBookingControl
         Me.imgStartAmPmDown.SizeMode = PictureBoxSizeMode.Zoom
         Me.imgStartAmPmDown.Margin = New Padding(colonSize.Width + 10, 8, 0, 5)
 
+        ' --- Time: Confirm ---
+
         ' lblStartConfirmPrompt
         Me.lblStartConfirmPrompt = New Label
-        'Me.lblStartConfirmPrompt.Text = Me.lblStartConfirmPrompt.Height
         Me.lblStartConfirmPrompt.Text = "Your booking will start on"
         Me.lblStartConfirmPrompt.TextAlign = ContentAlignment.MiddleCenter
         Me.lblStartConfirmPrompt.Font = bodyFont
@@ -313,8 +368,7 @@ Public Class CalendarBookingControl
 
         ' lblStartConfirmDate
         Me.lblStartConfirmDate = New Label
-        'Me.lblStartConfirmDate.Text = Me.lblStartConfirmDate.Height
-        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbNewLine & "at " & Format(Me.startTime, "hh:mm tt")
+        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.startTime, "hh:mm tt")
         Me.lblStartConfirmDate.TextAlign = ContentAlignment.MiddleCenter
         Me.lblStartConfirmDate.Font = bodyBoldFont
         Me.lblStartConfirmDate.Size = New Size(Me.Width - 40, 55)
@@ -326,23 +380,20 @@ Public Class CalendarBookingControl
     End Sub
 
     Private Sub CreateEnd()
-        Dim leftPadding = New Padding(25, 5, 0, 5)
-        Dim sidePadding = New Padding(5, 5, 0, 5)
-        Dim noPadding = New Padding(0, 0, 0, 0)
-        '                            (l, t, r, b)
-
         ' lblEnd
         Me.lblEnd = New Label()
         Me.lblEnd.Text = "End"
-        Me.lblEnd.TextAlign = ContentAlignment.TopCenter
+        Me.lblEnd.TextAlign = headingTextAlign
         Me.lblEnd.Font = headingFont
-        Me.lblEnd.Size = New Size(Me.Width - 40, 50)
+        Me.lblEnd.Size = headingSize
         Me.lblEnd.AutoSize = False
-        Me.lblEnd.Margin = New Padding(leftPadding.Left / 2, 50, Padding.Bottom, Padding.Right)
+        Me.lblEnd.Margin = headingPadding
         Me.lblEnd.BackColor = colourNeutral
-        Me.lblEnd.ForeColor = Color.White
+        Me.lblEnd.ForeColor = colourWhite
 
-        ' Date
+        ' --- Date ---
+        Dim txtPad = 5
+        Dim txtBor = 15
 
         ' lblDateEndPrompt
         Me.lblDateEndPrompt = New Label
@@ -356,9 +407,9 @@ Public Class CalendarBookingControl
         Me.txtDateEnd.Multiline = False
         Me.txtDateEnd.Enabled = False
         Me.txtDateEnd.Font = bodyFont
-        Me.txtDateEnd.Width = 300
+        Me.txtDateEnd.Width = 300 - txtPad - txtBor
         Me.txtDateEnd.Text = Format(Me.endTime, "dddd d MMMM yyyy")
-        Me.txtDateEnd.Margin = leftPadding
+        Me.txtDateEnd.Margin = New Padding(25 + txtPad, 5, 0, 5)
 
         ' btnDateEndSelect
         Me.btnDateEndSelect = New Button
@@ -372,7 +423,7 @@ Public Class CalendarBookingControl
         Me.btnDateEndSelect.FlatAppearance.BorderSize = 0
         Me.btnDateEndSelect.Margin = sidePadding
 
-        'Time
+        ' --- Time: Labels ---
 
         ' lblTimeEndPrompt
         Me.lblTimeEndPrompt = New Label
@@ -422,6 +473,8 @@ Public Class CalendarBookingControl
         Me.lblEndTimeColon.AutoSize = False
         Me.lblEndTimeColon.Margin = noPadding
 
+        ' --- Time: Arrows ---
+
         ' imgEndHourUp
         Me.imgEndHourUp = New PictureBox
         Me.imgEndHourUp.Size = New Size(45, 45)
@@ -464,9 +517,10 @@ Public Class CalendarBookingControl
         Me.imgEndAmPmDown.SizeMode = PictureBoxSizeMode.Zoom
         Me.imgEndAmPmDown.Margin = New Padding(colonSize.Width + 10, 8, 0, 5)
 
+        ' --- Time: Confirm ---
+
         ' lblEndConfirmPrompt
         Me.lblEndConfirmPrompt = New Label
-        'Me.lblEndConfirmPrompt.Text = Me.lblEndConfirmPrompt.Height
         Me.lblEndConfirmPrompt.Text = "Your booking will end on"
         Me.lblEndConfirmPrompt.TextAlign = ContentAlignment.MiddleCenter
         Me.lblEndConfirmPrompt.Font = bodyFont
@@ -476,8 +530,7 @@ Public Class CalendarBookingControl
 
         ' lblEndConfirmDate
         Me.lblEndConfirmDate = New Label
-        'Me.lblEndConfirmDate.Text = Me.lblEndConfirmDate.Height
-        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbNewLine & "at " & Format(Me.endTime, "hh:mm tt")
+        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.endTime, "hh:mm tt")
         Me.lblEndConfirmDate.TextAlign = ContentAlignment.MiddleCenter
         Me.lblEndConfirmDate.Font = bodyBoldFont
         Me.lblEndConfirmDate.Size = New Size(Me.Width - 40, 55)
@@ -488,15 +541,16 @@ Public Class CalendarBookingControl
     End Sub
 
     Private Sub CreateStartMonths()
+        '                          l, t, r, b
         Dim padding = New Padding(0, 20, 0, 20)
-        Dim leftPadding = New Padding(25, padding.Top, padding.Bottom, padding.Right)
+        Dim leftMonthPadding = New Padding(25, 20, 0, 20)
 
         ' imgStartArrowLeft
         Me.imgStartArrowLeft = New PictureBox
         Me.imgStartArrowLeft.Size = New Size(45, 45)
         Me.imgStartArrowLeft.Image = My.Resources.ArrowLeft
         Me.imgStartArrowLeft.SizeMode = PictureBoxSizeMode.Zoom
-        Me.imgStartArrowLeft.Margin = leftPadding
+        Me.imgStartArrowLeft.Margin = leftMonthPadding
 
         ' lblStartMonth
         Me.lblStartMonth = New Label
@@ -504,7 +558,7 @@ Public Class CalendarBookingControl
         Me.lblStartMonth.TextAlign = ContentAlignment.MiddleCenter
         Me.lblStartMonth.Font = headingFont
         Me.lblStartMonth.AutoSize = False
-        Me.lblStartMonth.Size = New Size(410 - ((Me.imgStartArrowLeft.Width * 2) + 55), Me.imgStartArrowLeft.Height)
+        Me.lblStartMonth.Size = New Size(410 - ((Me.imgStartArrowLeft.Width * 2) + 40), Me.imgStartArrowLeft.Height)
         Me.lblStartMonth.Margin = padding
 
         ' imgStartArrowRight
@@ -517,20 +571,24 @@ Public Class CalendarBookingControl
         ' usrctrlStartMonth
         Me.usrctrlStartMonth = New CalendarMonthControl()
         Me.usrctrlStartMonth.SetBookingForm(Me)
+        Me.usrctrlStartMonth.SetMin(New Date.Now())
         Me.usrctrlStartMonth.SetMonth(Me.startTime)
-        Me.usrctrlStartMonth.Margin = New Padding(14, padding.Right, padding.Right, padding.Bottom)
+        Me.usrctrlStartMonth.Margin = New Padding(28, 0, 0, 10)
+        Me.usrctrlStartMonth.Size = New Size(Me.usrctrlStartMonth.Width - 28, Me.usrctrlStartMonth.Height - 28)
+
     End Sub
 
     Private Sub CreateEndMonths()
+        '                          l, t, r, b
         Dim padding = New Padding(0, 20, 0, 20)
-        Dim leftPadding = New Padding(25, padding.Top, padding.Bottom, padding.Right)
+        Dim leftMonthPadding = New Padding(25, 20, 0, 20)
 
         ' imgEndArrowLeft
         Me.imgEndArrowLeft = New PictureBox
         Me.imgEndArrowLeft.Size = New Size(45, 45)
         Me.imgEndArrowLeft.Image = My.Resources.ArrowLeft
         Me.imgEndArrowLeft.SizeMode = PictureBoxSizeMode.Zoom
-        Me.imgEndArrowLeft.Margin = leftPadding
+        Me.imgEndArrowLeft.Margin = leftMonthPadding
 
         ' lblEndMonth
         Me.lblEndMonth = New Label
@@ -538,7 +596,7 @@ Public Class CalendarBookingControl
         Me.lblEndMonth.TextAlign = ContentAlignment.MiddleCenter
         Me.lblEndMonth.Font = headingFont
         Me.lblEndMonth.AutoSize = False
-        Me.lblEndMonth.Size = New Size(410 - ((Me.imgEndArrowLeft.Width * 2) + 55), Me.imgEndArrowLeft.Height)
+        Me.lblEndMonth.Size = New Size(410 - ((Me.imgEndArrowLeft.Width * 2) + 40), Me.imgEndArrowLeft.Height)
         Me.lblEndMonth.Margin = padding
 
         ' imgEndArrowRight
@@ -551,9 +609,40 @@ Public Class CalendarBookingControl
         ' usrctrlEndMonth
         Me.usrctrlEndMonth = New CalendarMonthControl()
         Me.usrctrlEndMonth.SetBookingForm(Me)
+        Me.usrctrlEndMonth.SetMin(New Date.Now().AddHours(1))
         Me.usrctrlEndMonth.SetMonth(Me.endTime)
-        Me.usrctrlEndMonth.Margin = New Padding(14, padding.Right, padding.Right, padding.Bottom)
+        Me.usrctrlEndMonth.Margin = New Padding(28, 0, 0, 10)
+        Me.usrctrlEndMonth.Size = New Size(Me.usrctrlEndMonth.Width - 28, Me.usrctrlEndMonth.Height - 28)
     End Sub
+
+    'Private Sub CreateCar()
+    '    'Dim lblCar As Label
+
+    '    'Dim lblCarPrompt As Label
+    '    'Dim lstvwSelected As ListView
+    '    'Dim WithEvents btnCarSelect As Button
+
+    '    'Dim lstvwCar As ListView
+
+    '    ' lblCar
+    '    Me.lblCar = New Label()
+    '    Me.lblCar.Text = "Car"
+    '    Me.lblCar.TextAlign = headingTextAlign
+    '    Me.lblCar.Font = headingFont
+    '    Me.lblCar.Size = headingSize
+    '    Me.lblCar.AutoSize = False
+    '    Me.lblCar.Margin = headingPadding
+    '    Me.lblCar.BackColor = colourNeutral
+    '    Me.lblCar.ForeColor = colourWhite
+
+    '    ' lblCarPrompt
+    '    Me.lblCarPrompt = New Label
+    '    Me.lblCarPrompt.Text = "Select a car to book:"
+    '    Me.lblCarPrompt.Font = bodyFont
+    '    Me.lblCarPrompt.AutoSize = True
+    '    Me.lblCarPrompt.Margin = leftPadding
+
+    'End Sub
 
     Private Sub AddControls()
         Me.SuspendLayout()
@@ -644,19 +733,99 @@ Public Class CalendarBookingControl
         Me.ResumeLayout(True)
     End Sub
 
+    ' -----------------
+    ' --- Functions ---
+    ' -----------------
+    Private Sub UpdateFormSize(change As Integer)
+        Dim changeHeight = addedHeight * change
+
+        Me.Height += changeHeight
+        Me.flPanel.Height += changeHeight
+
+        Dim topHchanged = False
+        Dim botPchanged = False
+        Dim botHchanged = False
+
+        If showMonthsStart Then
+            If Not bdrTopHghtChanged Then topHchanged = True
+            If Not bdrBotPosnChanged Then botPchanged = True
+        Else
+            If bdrTopHghtChanged Then topHchanged = True
+            If bdrBotPosnChanged Then botPchanged = True
+        End If
+
+        If showMonthsEnd Then
+            If Not bdrBotHghtChanged Then botHchanged = True
+        Else
+            If bdrBotHghtChanged Then botHchanged = True
+        End If
+
+        'Top Height
+        If topHchanged Then
+            Me.lblStartLeft.Height += changeHeight
+            Me.lblStartRight.Height += changeHeight
+            bdrTopHghtChanged = Not bdrTopHghtChanged
+        End If
+
+        ' Bottom Position
+        If botPchanged Then
+            Me.lblEndLeft.Top += changeHeight
+            Me.lblEndRight.Top += changeHeight
+            bdrBotPosnChanged = Not bdrBotPosnChanged
+        End If
+
+        ' Bottom Height
+        If botHchanged Then
+            Me.lblEndLeft.Height += changeHeight
+            Me.lblEndRight.Height += changeHeight
+            bdrBotHghtChanged = Not bdrBotHghtChanged
+        End If
+
+    End Sub
+
+    Private Sub UpdateStartTimeVar()
+        Me.startMinute = Me.startTime.Minute
+        Me.startHour = Me.startTime.Hour
+        Me.startDay = Me.startTime.Day
+        Me.startMonth = Me.startTime.Month
+        Me.startYear = Me.startTime.Year
+    End Sub
+
+    Private Sub UpdateEndTimeVar()
+        If Not changedEndTime Then
+            Me.endTime = startTime.AddHours(1)
+        End If
+        Me.endMinute = Me.endTime.Minute
+        Me.endHour = Me.endTime.Hour
+        Me.endDay = Me.endTime.Day
+        Me.endMonth = Me.endTime.Month
+        Me.endYear = Me.endTime.Year
+    End Sub
+
     Private Sub UpdateLabels()
         Me.txtDateStart.Text = Format(Me.startTime, "dddd d MMMM yyyy")
         Me.lblHourStart.Text = Format(Me.startTime, "hh")
         Me.lblMinuteStart.Text = Format(Me.startTime, "mm")
         Me.lblAmPmStart.Text = Format(Me.startTime, "tt").ToLower
-        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbNewLine & "at " & Format(Me.startTime, "hh:mm tt")
+        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.startTime, "hh:mm tt")
 
         Me.txtDateEnd.Text = Format(Me.endTime, "dddd d MMMM yyyy")
         Me.lblHourEnd.Text = Format(Me.endTime, "hh")
         Me.lblMinuteEnd.Text = Format(Me.endTime, "mm")
         Me.lblAmPmEnd.Text = Format(Me.endTime, "tt").ToLower
-        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbNewLine & "at " & Format(Me.endTime, "hh:mm tt")
+        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.endTime, "hh:mm tt")
     End Sub
+
+    Private Function GetMinDate(dateOne As Date)
+        Dim dateTwo = New Date.Now()
+
+        ' dateOne is earlier than dateTwo
+        If dateOne.CompareTo(dateTwo) < 0 Then
+            Return dateTwo
+        Else
+            Return dateOne
+        End If
+    End Function
 
     ' ----------------------
     ' --- Calendar Month ---
@@ -666,11 +835,10 @@ Public Class CalendarBookingControl
         If (curCtrl Is Me.usrctrlStartMonth) Then
             Dim newDate = New Date(Me.startYear, Me.startMonth, day, Me.startHour, Me.startMinute, 0)
             Me.startTime = newDate
-            If Not changedEndTime Then Me.endTime = startTime.AddHours(1)
+            Me.UpdateEndTimeVar()
 
             Me.showMonthsStart = False
-            Me.Height = Me.Height - addedHeight
-            Me.flPanel.Height = Me.flPanel.Height - addedHeight
+            Me.usrctrlEndMonth.SetMin(Me.GetMinDate(Me.startTime.AddHours(1)))
 
             Me.btnDateStartSelect.Enabled = True
             Me.btnDateStartSelect.BackColor = colourNeutral
@@ -680,50 +848,29 @@ Public Class CalendarBookingControl
             Me.endTime = newDate
 
             Me.showMonthsEnd = False
-            Me.Height = Me.Height - addedHeight
-            Me.flPanel.Height = Me.flPanel.Height - addedHeight
 
             Me.btnDateEndSelect.Enabled = True
             Me.btnDateEndSelect.BackColor = colourNeutral
 
         End If
 
+        Me.UpdateFormSize(-1)
         Me.UpdateLabels()
         Me.AddControls()
     End Sub
 
     Private Sub UpdateMonth(monthChange As Integer, time As String)
         If time = "start" Then
-            Dim newMonth = Me.startMonth + monthChange
-            If newMonth = 0 Then
-                ' Previous year Dec
-                newMonth = 12
-                Me.startYear -= 1
-            ElseIf newMonth = 13 Then
-                ' Next year Jan
-                newMonth = 1
-                Me.startYear += 1
-            End If
-
-            Me.startMonth = newMonth
-            Me.startTime = New Date(Me.startYear, Me.startMonth, 1, Me.startHour, Me.startMinute, 0)
+            Me.startTime = Me.startTime.AddMonths(monthChange)
+            Me.UpdateStartTimeVar()
 
             Me.usrctrlStartMonth.SetMonth(Me.startTime)
             Me.lblStartMonth.Text = Format(Me.startTime, "MMMM yyyy")
-        ElseIf time = "end" Then
-            Dim newMonth = Me.endMonth + monthChange
-            If newMonth = 0 Then
-                ' Previous year Dec
-                newMonth = 12
-                Me.endYear -= 1
-            ElseIf newMonth = 13 Then
-                ' Next year Jan
-                newMonth = 1
-                Me.endYear += 1
-            End If
 
-            Me.endMonth = newMonth
-            Me.endTime = New Date(Me.endYear, Me.endMonth, 1, Me.endHour, Me.endMinute, 0)
+        ElseIf time = "end" Then
+            Me.changedEndTime = True
+            Me.endTime = Me.endTime.AddMonths(monthChange)
+            Me.UpdateEndTimeVar()
 
             Me.usrctrlEndMonth.SetMonth(Me.endTime)
             Me.lblEndMonth.Text = Format(Me.endTime, "MMMM yyyy")
@@ -749,7 +896,7 @@ Public Class CalendarBookingControl
 
             Me.startMinute = newMinute
             Me.startTime = New Date(Me.startYear, Me.startMonth, Me.startDay, Me.startHour, Me.startMinute, 0)
-            If Not changedEndTime Then Me.endTime = startTime.AddHours(1)
+            Me.UpdateEndTimeVar()
             changedStartTime = True
 
         ElseIf time = "end" Then
@@ -778,28 +925,25 @@ Public Class CalendarBookingControl
             If newHour <= -1 Then
                 ' Jump Forward
                 newHour = 23
-                Me.startMinute = 59
             ElseIf newHour >= 24 Then
                 ' Jump Back
                 newHour = 0
-                Me.startMinute = 0
             End If
 
             Me.startHour = newHour
             Me.startTime = New Date(Me.startYear, Me.startMonth, Me.startDay, Me.startHour, Me.startMinute, 0)
-            If Not changedEndTime Then Me.endTime = startTime.AddHours(1)
+            Me.UpdateEndTimeVar()
             changedStartTime = True
+            Me.usrctrlEndMonth.SetMin(Me.GetMinDate(Me.startTime.AddHours(1)))
 
         ElseIf time = "end" Then
             Dim newHour = Me.endHour + hourChange
             If newHour <= -1 Then
                 ' Jump Forward
                 newHour = 23
-                Me.endMinute = 59
             ElseIf newHour >= 24 Then
                 ' Jump Back
                 newHour = 0
-                Me.endMinute = 0
             End If
 
             Me.endHour = newHour
@@ -830,8 +974,7 @@ Public Class CalendarBookingControl
 
         End If
 
-        Me.Height = Me.Height + addedHeight
-        Me.flPanel.Height = Me.flPanel.Height + addedHeight
+        Me.UpdateFormSize(1)
         Me.AddControls()
     End Sub
 

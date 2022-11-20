@@ -1,37 +1,37 @@
 ﻿Public Class CalendarMonthControl
 
     Dim currMonth As Date
+    Dim minDay As Date
 
     Dim month As Integer
-    Dim year As Integer
+    Dim year As Integer = -1
 
     Dim todayLabel As Label
+    Dim weekLables As Label()
     Dim dayLabels As Label()
 
     Dim monthForm As CalendarForm
     Dim bookingForm As CalendarBookingControl
-    Dim dayForm As CalendarDayForm
 
     Private Sub CalendarMonthControl_Load(sender As Object, e As EventArgs) Handles Me.Load
         ' Days of the Week
-        Dim daysOfTheWeekLabel = New Label() {Me.lblSunday, Me.lblMonday,
-            Me.lblTuesday, Me.lblWednesday, Me.lblThursday,
-            Me.lblFriday, Me.lblSaturday}
-        For Each weekLbl As Label In daysOfTheWeekLabel
+        If Me.weekLables Is Nothing Then Me.CreateWeekArray()
+        For Each weekLbl As Label In Me.weekLables
             weekLbl.BackColor = Color.FromArgb(151, 203, 197)
             weekLbl.ForeColor = Color.White
         Next
+
+        ' Properties
+        Me.AutoSize = True
+        Me.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        Me.MinimumSize = New Size(10, 10)
+
+
     End Sub
 
-    Public Sub SetMonth(newMonth As Date)
-        Me.currMonth = newMonth
-        Me.month = Me.currMonth.Month
-        Me.year = Me.currMonth.Year
-        Me.CreateLabelArray()
-        Me.LabelSetBlank()
-        Me.LabelSetDays()
-    End Sub
-
+    ' -------------
+    ' --- Setup ---
+    ' -------------
     Public Sub SetMonthForm(newForm As CalendarForm)
         Me.monthForm = newForm
     End Sub
@@ -40,6 +40,34 @@
         Me.bookingForm = newForm
     End Sub
 
+    Public Sub SetMin(newMin As Date)
+        Me.minDay = newMin
+
+        ' If currMonth set
+        If Me.year > -1 Then
+            Me.SetMonth(Me.currMonth)
+        End If
+    End Sub
+
+    Public Sub SetMonth(newMonth As Date)
+        Me.currMonth = newMonth
+        Me.month = Me.currMonth.Month
+        Me.year = Me.currMonth.Year
+
+        If Me.dayLabels Is Nothing Then Me.CreateLabelArray()
+        Me.LabelSetBlank()
+        Me.LabelSetDays()
+    End Sub
+
+    ' -----------------
+    ' --- Functions ---
+    ' -----------------
+
+    Private Sub CreateWeekArray()
+        Me.weekLables = New Label() {Me.lblSunday, Me.lblMonday,
+            Me.lblTuesday, Me.lblWednesday, Me.lblThursday,
+            Me.lblFriday, Me.lblSaturday}
+    End Sub
     Private Sub CreateLabelArray()
         ' DayLabels
         Me.dayLabels = {
@@ -56,6 +84,7 @@
         Me.todayLabel = Nothing
         For Each lblDay As Label In Me.dayLabels
             lblDay.Enabled = False
+            lblDay.ForeColor = Color.FromKnownColor(KnownColor.ControlText)
             lblDay.BackColor = Color.White
             lblDay.Text = ""
         Next
@@ -72,12 +101,28 @@
 
         Dim day As Integer = 1
         For index As Integer = startIndex To endIndex
-            Me.dayLabels(index).Enabled = True
-            Me.dayLabels(index).Text = day.ToString()
+            Dim currLabel = Me.dayLabels(index)
+
+            ' Check if more then minDay
+            Dim currDay = New Date(Me.year, Me.month, day, 23, 59, 59)
+            ' -Num = curDay earlier than minDay
+            '    0 = curDay same      as minDay
+            ' +Num = curDay later   than minDay
+
+            ' currDay is earlier than minDay, grey out
+            If currDay.CompareTo(Me.minDay) < 0 Then
+                currLabel.ForeColor = Color.Gray
+
+            Else
+                ' Else, enable
+                currLabel.Enabled = True
+
+            End If
+            currLabel.Text = day.ToString()
 
             ' If today, then make background blue
             If (today.Month = Me.month) And (today.Day = day) And (today.Year = Me.year) Then
-                Me.todayLabel = Me.dayLabels(index)
+                Me.todayLabel = currLabel
                 Me.todayLabel.BackColor = Color.FromArgb(151, 203, 197)
             End If
 
@@ -136,5 +181,32 @@
 
     End Sub
 
+    ' --------------
+    ' --- Resize ---
+    ' --------------
 
+    Private Sub CalendarMonthControl_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        Me.imgMonth.Size = Me.Size
+
+        If Me.weekLables Is Nothing Then Me.CreateWeekArray()
+        If Me.dayLabels Is Nothing Then Me.CreateLabelArray()
+
+        Dim origWidth = 390
+        Dim origHeight = 405
+        Dim ratioWidth = Me.Width / origWidth
+        Dim ratioHeight = Me.Height / origHeight
+
+        Dim newFont = New Font("Segoe UI", 18 - 1)
+
+        For Each weekLbl As Label In Me.weekLables
+            weekLbl.Size = New Size(Math.Ceiling(weekLbl.Width * ratioWidth), Math.Ceiling(weekLbl.Height * ratioHeight))
+            weekLbl.Location = New Point(Math.Floor(weekLbl.Left * ratioWidth), Math.Floor(weekLbl.Top * ratioHeight))
+        Next
+
+        For Each dayLbl As Label In Me.dayLabels
+            dayLbl.Font = newFont
+            dayLbl.Size = New Size(Math.Ceiling(dayLbl.Width * ratioWidth), Math.Floor(dayLbl.Height * ratioHeight))
+            dayLbl.Location = New Point(Math.Floor(dayLbl.Left * ratioWidth), Math.Floor(dayLbl.Top * ratioHeight))
+        Next
+    End Sub
 End Class

@@ -80,7 +80,7 @@ Partial Class CalendarMonthControl
         Me.lblOneSeven.BackColor = System.Drawing.Color.White
         Me.lblOneSeven.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblOneSeven.Location = New System.Drawing.Point(343, 71)
-        Me.lblOneSeven.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblOneSeven.Margin = New System.Windows.Forms.Padding(0)
         Me.lblOneSeven.Name = "lblOneSeven"
         Me.lblOneSeven.Size = New System.Drawing.Size(40, 41)
         Me.lblOneSeven.TabIndex = 31
@@ -92,7 +92,7 @@ Partial Class CalendarMonthControl
         Me.lblOneSix.BackColor = System.Drawing.Color.White
         Me.lblOneSix.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblOneSix.Location = New System.Drawing.Point(288, 71)
-        Me.lblOneSix.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblOneSix.Margin = New System.Windows.Forms.Padding(0)
         Me.lblOneSix.Name = "lblOneSix"
         Me.lblOneSix.Size = New System.Drawing.Size(40, 41)
         Me.lblOneSix.TabIndex = 30
@@ -104,7 +104,7 @@ Partial Class CalendarMonthControl
         Me.lblOneFive.BackColor = System.Drawing.Color.White
         Me.lblOneFive.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblOneFive.Location = New System.Drawing.Point(232, 71)
-        Me.lblOneFive.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblOneFive.Margin = New System.Windows.Forms.Padding(0)
         Me.lblOneFive.Name = "lblOneFive"
         Me.lblOneFive.Size = New System.Drawing.Size(40, 41)
         Me.lblOneFive.TabIndex = 29
@@ -116,7 +116,7 @@ Partial Class CalendarMonthControl
         Me.lblOneFour.BackColor = System.Drawing.Color.White
         Me.lblOneFour.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblOneFour.Location = New System.Drawing.Point(176, 71)
-        Me.lblOneFour.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblOneFour.Margin = New System.Windows.Forms.Padding(0)
         Me.lblOneFour.Name = "lblOneFour"
         Me.lblOneFour.Size = New System.Drawing.Size(40, 41)
         Me.lblOneFour.TabIndex = 28
@@ -128,7 +128,7 @@ Partial Class CalendarMonthControl
         Me.lblOneThree.BackColor = System.Drawing.Color.White
         Me.lblOneThree.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblOneThree.Location = New System.Drawing.Point(119, 71)
-        Me.lblOneThree.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblOneThree.Margin = New System.Windows.Forms.Padding(0)
         Me.lblOneThree.Name = "lblOneThree"
         Me.lblOneThree.Size = New System.Drawing.Size(40, 41)
         Me.lblOneThree.TabIndex = 27
@@ -140,7 +140,7 @@ Partial Class CalendarMonthControl
         Me.lblOneTwo.BackColor = System.Drawing.Color.White
         Me.lblOneTwo.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblOneTwo.Location = New System.Drawing.Point(64, 71)
-        Me.lblOneTwo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblOneTwo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblOneTwo.Name = "lblOneTwo"
         Me.lblOneTwo.Size = New System.Drawing.Size(40, 41)
         Me.lblOneTwo.TabIndex = 26
@@ -152,7 +152,7 @@ Partial Class CalendarMonthControl
         Me.lblOneOne.BackColor = System.Drawing.Color.White
         Me.lblOneOne.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblOneOne.Location = New System.Drawing.Point(8, 71)
-        Me.lblOneOne.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblOneOne.Margin = New System.Windows.Forms.Padding(0)
         Me.lblOneOne.Name = "lblOneOne"
         Me.lblOneOne.Size = New System.Drawing.Size(40, 41)
         Me.lblOneOne.TabIndex = 25
@@ -161,12 +161,11 @@ Partial Class CalendarMonthControl
         '
         'lblSaturday
         '
-        Me.lblSaturday.AutoSize = True
         Me.lblSaturday.Font = New System.Drawing.Font("Segoe UI Semibold", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblSaturday.Location = New System.Drawing.Point(343, 10)
-        Me.lblSaturday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblSaturday.Margin = New System.Windows.Forms.Padding(0)
         Me.lblSaturday.Name = "lblSaturday"
-        Me.lblSaturday.Size = New System.Drawing.Size(34, 41)
+        Me.lblSaturday.Size = New System.Drawing.Size(40, 41)
         Me.lblSaturday.TabIndex = 24
         Me.lblSaturday.Text = "S"
         Me.lblSaturday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -175,7 +174,7 @@ Partial Class CalendarMonthControl
         '
         Me.lblFriday.Font = New System.Drawing.Font("Segoe UI Semibold", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblFriday.Location = New System.Drawing.Point(288, 10)
-        Me.lblFriday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFriday.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFriday.Name = "lblFriday"
         Me.lblFriday.Size = New System.Drawing.Size(40, 41)
         Me.lblFriday.TabIndex = 23
@@ -186,7 +185,7 @@ Partial Class CalendarMonthControl
         '
         Me.lblThursday.Font = New System.Drawing.Font("Segoe UI Semibold", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblThursday.Location = New System.Drawing.Point(232, 10)
-        Me.lblThursday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblThursday.Margin = New System.Windows.Forms.Padding(0)
         Me.lblThursday.Name = "lblThursday"
         Me.lblThursday.Size = New System.Drawing.Size(40, 41)
         Me.lblThursday.TabIndex = 22
@@ -197,7 +196,7 @@ Partial Class CalendarMonthControl
         '
         Me.lblWednesday.Font = New System.Drawing.Font("Segoe UI Semibold", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblWednesday.Location = New System.Drawing.Point(176, 10)
-        Me.lblWednesday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblWednesday.Margin = New System.Windows.Forms.Padding(0)
         Me.lblWednesday.Name = "lblWednesday"
         Me.lblWednesday.Size = New System.Drawing.Size(40, 41)
         Me.lblWednesday.TabIndex = 21
@@ -208,7 +207,7 @@ Partial Class CalendarMonthControl
         '
         Me.lblTuesday.Font = New System.Drawing.Font("Segoe UI Semibold", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblTuesday.Location = New System.Drawing.Point(119, 10)
-        Me.lblTuesday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTuesday.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTuesday.Name = "lblTuesday"
         Me.lblTuesday.Size = New System.Drawing.Size(40, 41)
         Me.lblTuesday.TabIndex = 20
@@ -219,7 +218,7 @@ Partial Class CalendarMonthControl
         '
         Me.lblMonday.Font = New System.Drawing.Font("Segoe UI Semibold", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblMonday.Location = New System.Drawing.Point(64, 10)
-        Me.lblMonday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblMonday.Margin = New System.Windows.Forms.Padding(0)
         Me.lblMonday.Name = "lblMonday"
         Me.lblMonday.Size = New System.Drawing.Size(40, 41)
         Me.lblMonday.TabIndex = 19
@@ -230,7 +229,7 @@ Partial Class CalendarMonthControl
         '
         Me.lblSunday.Font = New System.Drawing.Font("Segoe UI Semibold", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblSunday.Location = New System.Drawing.Point(8, 10)
-        Me.lblSunday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblSunday.Margin = New System.Windows.Forms.Padding(0)
         Me.lblSunday.Name = "lblSunday"
         Me.lblSunday.Size = New System.Drawing.Size(40, 41)
         Me.lblSunday.TabIndex = 18
@@ -239,6 +238,9 @@ Partial Class CalendarMonthControl
         '
         'imgMonth
         '
+        Me.imgMonth.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.imgMonth.Image = Global.A10.My.Resources.Resources.Calendar___Month
         Me.imgMonth.Location = New System.Drawing.Point(0, 0)
         Me.imgMonth.Margin = New System.Windows.Forms.Padding(0)
@@ -253,7 +255,7 @@ Partial Class CalendarMonthControl
         Me.lblTwoSeven.BackColor = System.Drawing.Color.White
         Me.lblTwoSeven.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTwoSeven.Location = New System.Drawing.Point(343, 128)
-        Me.lblTwoSeven.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTwoSeven.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTwoSeven.Name = "lblTwoSeven"
         Me.lblTwoSeven.Size = New System.Drawing.Size(40, 41)
         Me.lblTwoSeven.TabIndex = 38
@@ -265,7 +267,7 @@ Partial Class CalendarMonthControl
         Me.lblTwoSix.BackColor = System.Drawing.Color.White
         Me.lblTwoSix.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTwoSix.Location = New System.Drawing.Point(288, 128)
-        Me.lblTwoSix.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTwoSix.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTwoSix.Name = "lblTwoSix"
         Me.lblTwoSix.Size = New System.Drawing.Size(40, 41)
         Me.lblTwoSix.TabIndex = 37
@@ -277,7 +279,7 @@ Partial Class CalendarMonthControl
         Me.lblTwoFive.BackColor = System.Drawing.Color.White
         Me.lblTwoFive.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTwoFive.Location = New System.Drawing.Point(232, 128)
-        Me.lblTwoFive.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTwoFive.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTwoFive.Name = "lblTwoFive"
         Me.lblTwoFive.Size = New System.Drawing.Size(40, 41)
         Me.lblTwoFive.TabIndex = 36
@@ -289,7 +291,7 @@ Partial Class CalendarMonthControl
         Me.lblTwoFour.BackColor = System.Drawing.Color.White
         Me.lblTwoFour.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTwoFour.Location = New System.Drawing.Point(176, 128)
-        Me.lblTwoFour.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTwoFour.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTwoFour.Name = "lblTwoFour"
         Me.lblTwoFour.Size = New System.Drawing.Size(40, 41)
         Me.lblTwoFour.TabIndex = 35
@@ -301,7 +303,7 @@ Partial Class CalendarMonthControl
         Me.lblTwoThree.BackColor = System.Drawing.Color.White
         Me.lblTwoThree.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTwoThree.Location = New System.Drawing.Point(119, 128)
-        Me.lblTwoThree.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTwoThree.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTwoThree.Name = "lblTwoThree"
         Me.lblTwoThree.Size = New System.Drawing.Size(40, 41)
         Me.lblTwoThree.TabIndex = 34
@@ -313,7 +315,7 @@ Partial Class CalendarMonthControl
         Me.lblTwoTwo.BackColor = System.Drawing.Color.White
         Me.lblTwoTwo.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTwoTwo.Location = New System.Drawing.Point(64, 128)
-        Me.lblTwoTwo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTwoTwo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTwoTwo.Name = "lblTwoTwo"
         Me.lblTwoTwo.Size = New System.Drawing.Size(40, 41)
         Me.lblTwoTwo.TabIndex = 33
@@ -325,7 +327,7 @@ Partial Class CalendarMonthControl
         Me.lblTwoOne.BackColor = System.Drawing.Color.White
         Me.lblTwoOne.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTwoOne.Location = New System.Drawing.Point(8, 128)
-        Me.lblTwoOne.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTwoOne.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTwoOne.Name = "lblTwoOne"
         Me.lblTwoOne.Size = New System.Drawing.Size(40, 41)
         Me.lblTwoOne.TabIndex = 32
@@ -337,7 +339,7 @@ Partial Class CalendarMonthControl
         Me.lblThreeSeven.BackColor = System.Drawing.Color.White
         Me.lblThreeSeven.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblThreeSeven.Location = New System.Drawing.Point(343, 185)
-        Me.lblThreeSeven.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblThreeSeven.Margin = New System.Windows.Forms.Padding(0)
         Me.lblThreeSeven.Name = "lblThreeSeven"
         Me.lblThreeSeven.Size = New System.Drawing.Size(40, 41)
         Me.lblThreeSeven.TabIndex = 45
@@ -349,7 +351,7 @@ Partial Class CalendarMonthControl
         Me.lblThreeSix.BackColor = System.Drawing.Color.White
         Me.lblThreeSix.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblThreeSix.Location = New System.Drawing.Point(288, 185)
-        Me.lblThreeSix.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblThreeSix.Margin = New System.Windows.Forms.Padding(0)
         Me.lblThreeSix.Name = "lblThreeSix"
         Me.lblThreeSix.Size = New System.Drawing.Size(40, 41)
         Me.lblThreeSix.TabIndex = 44
@@ -361,7 +363,7 @@ Partial Class CalendarMonthControl
         Me.lblThreeFive.BackColor = System.Drawing.Color.White
         Me.lblThreeFive.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblThreeFive.Location = New System.Drawing.Point(232, 185)
-        Me.lblThreeFive.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblThreeFive.Margin = New System.Windows.Forms.Padding(0)
         Me.lblThreeFive.Name = "lblThreeFive"
         Me.lblThreeFive.Size = New System.Drawing.Size(40, 41)
         Me.lblThreeFive.TabIndex = 43
@@ -373,7 +375,7 @@ Partial Class CalendarMonthControl
         Me.lblThreeFour.BackColor = System.Drawing.Color.White
         Me.lblThreeFour.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblThreeFour.Location = New System.Drawing.Point(176, 185)
-        Me.lblThreeFour.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblThreeFour.Margin = New System.Windows.Forms.Padding(0)
         Me.lblThreeFour.Name = "lblThreeFour"
         Me.lblThreeFour.Size = New System.Drawing.Size(40, 41)
         Me.lblThreeFour.TabIndex = 42
@@ -385,7 +387,7 @@ Partial Class CalendarMonthControl
         Me.lblThreeThree.BackColor = System.Drawing.Color.White
         Me.lblThreeThree.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblThreeThree.Location = New System.Drawing.Point(119, 185)
-        Me.lblThreeThree.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblThreeThree.Margin = New System.Windows.Forms.Padding(0)
         Me.lblThreeThree.Name = "lblThreeThree"
         Me.lblThreeThree.Size = New System.Drawing.Size(40, 41)
         Me.lblThreeThree.TabIndex = 41
@@ -397,7 +399,7 @@ Partial Class CalendarMonthControl
         Me.lblThreeTwo.BackColor = System.Drawing.Color.White
         Me.lblThreeTwo.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblThreeTwo.Location = New System.Drawing.Point(64, 185)
-        Me.lblThreeTwo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblThreeTwo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblThreeTwo.Name = "lblThreeTwo"
         Me.lblThreeTwo.Size = New System.Drawing.Size(40, 41)
         Me.lblThreeTwo.TabIndex = 40
@@ -409,7 +411,7 @@ Partial Class CalendarMonthControl
         Me.lblThreeOne.BackColor = System.Drawing.Color.White
         Me.lblThreeOne.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblThreeOne.Location = New System.Drawing.Point(8, 185)
-        Me.lblThreeOne.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblThreeOne.Margin = New System.Windows.Forms.Padding(0)
         Me.lblThreeOne.Name = "lblThreeOne"
         Me.lblThreeOne.Size = New System.Drawing.Size(40, 41)
         Me.lblThreeOne.TabIndex = 39
@@ -421,7 +423,7 @@ Partial Class CalendarMonthControl
         Me.lblFourSeven.BackColor = System.Drawing.Color.White
         Me.lblFourSeven.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFourSeven.Location = New System.Drawing.Point(343, 242)
-        Me.lblFourSeven.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFourSeven.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFourSeven.Name = "lblFourSeven"
         Me.lblFourSeven.Size = New System.Drawing.Size(40, 41)
         Me.lblFourSeven.TabIndex = 52
@@ -433,7 +435,7 @@ Partial Class CalendarMonthControl
         Me.lblFourSix.BackColor = System.Drawing.Color.White
         Me.lblFourSix.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFourSix.Location = New System.Drawing.Point(288, 242)
-        Me.lblFourSix.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFourSix.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFourSix.Name = "lblFourSix"
         Me.lblFourSix.Size = New System.Drawing.Size(40, 41)
         Me.lblFourSix.TabIndex = 51
@@ -445,7 +447,7 @@ Partial Class CalendarMonthControl
         Me.lblFourFive.BackColor = System.Drawing.Color.White
         Me.lblFourFive.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFourFive.Location = New System.Drawing.Point(232, 242)
-        Me.lblFourFive.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFourFive.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFourFive.Name = "lblFourFive"
         Me.lblFourFive.Size = New System.Drawing.Size(40, 41)
         Me.lblFourFive.TabIndex = 50
@@ -457,7 +459,7 @@ Partial Class CalendarMonthControl
         Me.lblFourFour.BackColor = System.Drawing.Color.White
         Me.lblFourFour.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFourFour.Location = New System.Drawing.Point(176, 242)
-        Me.lblFourFour.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFourFour.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFourFour.Name = "lblFourFour"
         Me.lblFourFour.Size = New System.Drawing.Size(40, 41)
         Me.lblFourFour.TabIndex = 49
@@ -469,7 +471,7 @@ Partial Class CalendarMonthControl
         Me.lblFourThree.BackColor = System.Drawing.Color.White
         Me.lblFourThree.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFourThree.Location = New System.Drawing.Point(119, 242)
-        Me.lblFourThree.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFourThree.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFourThree.Name = "lblFourThree"
         Me.lblFourThree.Size = New System.Drawing.Size(40, 41)
         Me.lblFourThree.TabIndex = 48
@@ -481,7 +483,7 @@ Partial Class CalendarMonthControl
         Me.lblFourTwo.BackColor = System.Drawing.Color.White
         Me.lblFourTwo.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFourTwo.Location = New System.Drawing.Point(64, 242)
-        Me.lblFourTwo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFourTwo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFourTwo.Name = "lblFourTwo"
         Me.lblFourTwo.Size = New System.Drawing.Size(40, 41)
         Me.lblFourTwo.TabIndex = 47
@@ -493,7 +495,7 @@ Partial Class CalendarMonthControl
         Me.lblFourOne.BackColor = System.Drawing.Color.White
         Me.lblFourOne.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFourOne.Location = New System.Drawing.Point(8, 242)
-        Me.lblFourOne.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFourOne.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFourOne.Name = "lblFourOne"
         Me.lblFourOne.Size = New System.Drawing.Size(40, 41)
         Me.lblFourOne.TabIndex = 46
@@ -505,7 +507,7 @@ Partial Class CalendarMonthControl
         Me.lblFiveSeven.BackColor = System.Drawing.Color.White
         Me.lblFiveSeven.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFiveSeven.Location = New System.Drawing.Point(343, 299)
-        Me.lblFiveSeven.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFiveSeven.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFiveSeven.Name = "lblFiveSeven"
         Me.lblFiveSeven.Size = New System.Drawing.Size(40, 41)
         Me.lblFiveSeven.TabIndex = 59
@@ -517,7 +519,7 @@ Partial Class CalendarMonthControl
         Me.lblFiveSix.BackColor = System.Drawing.Color.White
         Me.lblFiveSix.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFiveSix.Location = New System.Drawing.Point(288, 299)
-        Me.lblFiveSix.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFiveSix.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFiveSix.Name = "lblFiveSix"
         Me.lblFiveSix.Size = New System.Drawing.Size(40, 41)
         Me.lblFiveSix.TabIndex = 58
@@ -529,7 +531,7 @@ Partial Class CalendarMonthControl
         Me.lblFiveFive.BackColor = System.Drawing.Color.White
         Me.lblFiveFive.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFiveFive.Location = New System.Drawing.Point(232, 299)
-        Me.lblFiveFive.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFiveFive.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFiveFive.Name = "lblFiveFive"
         Me.lblFiveFive.Size = New System.Drawing.Size(40, 41)
         Me.lblFiveFive.TabIndex = 57
@@ -541,7 +543,7 @@ Partial Class CalendarMonthControl
         Me.lblFiveFour.BackColor = System.Drawing.Color.White
         Me.lblFiveFour.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFiveFour.Location = New System.Drawing.Point(176, 299)
-        Me.lblFiveFour.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFiveFour.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFiveFour.Name = "lblFiveFour"
         Me.lblFiveFour.Size = New System.Drawing.Size(40, 41)
         Me.lblFiveFour.TabIndex = 56
@@ -553,7 +555,7 @@ Partial Class CalendarMonthControl
         Me.lblFiveThree.BackColor = System.Drawing.Color.White
         Me.lblFiveThree.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFiveThree.Location = New System.Drawing.Point(119, 299)
-        Me.lblFiveThree.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFiveThree.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFiveThree.Name = "lblFiveThree"
         Me.lblFiveThree.Size = New System.Drawing.Size(40, 41)
         Me.lblFiveThree.TabIndex = 55
@@ -565,7 +567,7 @@ Partial Class CalendarMonthControl
         Me.lblFiveTwo.BackColor = System.Drawing.Color.White
         Me.lblFiveTwo.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFiveTwo.Location = New System.Drawing.Point(64, 299)
-        Me.lblFiveTwo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFiveTwo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFiveTwo.Name = "lblFiveTwo"
         Me.lblFiveTwo.Size = New System.Drawing.Size(40, 41)
         Me.lblFiveTwo.TabIndex = 54
@@ -577,7 +579,7 @@ Partial Class CalendarMonthControl
         Me.lblFiveOne.BackColor = System.Drawing.Color.White
         Me.lblFiveOne.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblFiveOne.Location = New System.Drawing.Point(8, 299)
-        Me.lblFiveOne.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblFiveOne.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFiveOne.Name = "lblFiveOne"
         Me.lblFiveOne.Size = New System.Drawing.Size(40, 41)
         Me.lblFiveOne.TabIndex = 53
@@ -589,7 +591,7 @@ Partial Class CalendarMonthControl
         Me.lblSixSeven.BackColor = System.Drawing.Color.White
         Me.lblSixSeven.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblSixSeven.Location = New System.Drawing.Point(343, 356)
-        Me.lblSixSeven.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblSixSeven.Margin = New System.Windows.Forms.Padding(0)
         Me.lblSixSeven.Name = "lblSixSeven"
         Me.lblSixSeven.Size = New System.Drawing.Size(40, 41)
         Me.lblSixSeven.TabIndex = 66
@@ -601,7 +603,7 @@ Partial Class CalendarMonthControl
         Me.lblSixSix.BackColor = System.Drawing.Color.White
         Me.lblSixSix.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblSixSix.Location = New System.Drawing.Point(288, 356)
-        Me.lblSixSix.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblSixSix.Margin = New System.Windows.Forms.Padding(0)
         Me.lblSixSix.Name = "lblSixSix"
         Me.lblSixSix.Size = New System.Drawing.Size(40, 41)
         Me.lblSixSix.TabIndex = 65
@@ -613,7 +615,7 @@ Partial Class CalendarMonthControl
         Me.lblSixFive.BackColor = System.Drawing.Color.White
         Me.lblSixFive.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblSixFive.Location = New System.Drawing.Point(232, 356)
-        Me.lblSixFive.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblSixFive.Margin = New System.Windows.Forms.Padding(0)
         Me.lblSixFive.Name = "lblSixFive"
         Me.lblSixFive.Size = New System.Drawing.Size(40, 41)
         Me.lblSixFive.TabIndex = 64
@@ -625,7 +627,7 @@ Partial Class CalendarMonthControl
         Me.lblSixFour.BackColor = System.Drawing.Color.White
         Me.lblSixFour.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblSixFour.Location = New System.Drawing.Point(176, 356)
-        Me.lblSixFour.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblSixFour.Margin = New System.Windows.Forms.Padding(0)
         Me.lblSixFour.Name = "lblSixFour"
         Me.lblSixFour.Size = New System.Drawing.Size(40, 41)
         Me.lblSixFour.TabIndex = 63
@@ -637,7 +639,7 @@ Partial Class CalendarMonthControl
         Me.lblSixThree.BackColor = System.Drawing.Color.White
         Me.lblSixThree.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblSixThree.Location = New System.Drawing.Point(119, 356)
-        Me.lblSixThree.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblSixThree.Margin = New System.Windows.Forms.Padding(0)
         Me.lblSixThree.Name = "lblSixThree"
         Me.lblSixThree.Size = New System.Drawing.Size(40, 41)
         Me.lblSixThree.TabIndex = 62
@@ -649,7 +651,7 @@ Partial Class CalendarMonthControl
         Me.lblSixTwo.BackColor = System.Drawing.Color.White
         Me.lblSixTwo.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblSixTwo.Location = New System.Drawing.Point(64, 356)
-        Me.lblSixTwo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblSixTwo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblSixTwo.Name = "lblSixTwo"
         Me.lblSixTwo.Size = New System.Drawing.Size(40, 41)
         Me.lblSixTwo.TabIndex = 61
@@ -661,7 +663,7 @@ Partial Class CalendarMonthControl
         Me.lblSixOne.BackColor = System.Drawing.Color.White
         Me.lblSixOne.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblSixOne.Location = New System.Drawing.Point(8, 356)
-        Me.lblSixOne.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblSixOne.Margin = New System.Windows.Forms.Padding(0)
         Me.lblSixOne.Name = "lblSixOne"
         Me.lblSixOne.Size = New System.Drawing.Size(40, 41)
         Me.lblSixOne.TabIndex = 60
@@ -672,6 +674,8 @@ Partial Class CalendarMonthControl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSize = True
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.Controls.Add(Me.lblSixSeven)
         Me.Controls.Add(Me.lblSixSix)
@@ -728,7 +732,6 @@ Partial Class CalendarMonthControl
         Me.Size = New System.Drawing.Size(390, 405)
         CType(Me.imgMonth, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
