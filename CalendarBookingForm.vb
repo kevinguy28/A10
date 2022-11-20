@@ -1,6 +1,9 @@
 ﻿Public Class CalendarBookingForm
     Inherits AppForm
 
+    ' Children
+    Dim carSelectForm As CalendarCarSelectForm
+
     Dim currTime As Date
 
     Public Sub New(user As String, scenario As Integer, previousForm As AppForm, homeForm As HomeForm, devForm As DevForm, currTime As Date, trigger As String)
@@ -49,6 +52,18 @@
         '       End If
         ' See HomeForm for example
         ' If you don't have any children forms, then you can ignore this
+
+        If (Me.carSelectForm IsNot Nothing) Then
+            Me.carSelectForm.CloseAllForms()
+        End If
+
+    End Sub
+
+    Public Sub NextClicked(dateStart As Date, dateEnd As Date)
+        Me.carSelectForm = New CalendarCarSelectForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, dateStart, dateEnd)
+        Me.Hide()
+        Me.carSelectForm.Show()
+        Me.SetCurrentForm(Me.carSelectForm)
     End Sub
 
     Public Function GetLblError()

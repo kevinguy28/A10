@@ -38,6 +38,10 @@ Public Class CalendarBookingControl
     Dim shaking = False
     Dim lblError As Label
 
+    ' MouseHold
+    Dim mouseHoldSec = 0
+    Dim mouseHoldImg As PictureBox
+
     ' Fonts
     Dim headingFont = New Font("Segoe UI Semibold", 24, FontStyle.Bold)
     Dim bodyFont = New Font("Segoe UI", 14)
@@ -129,17 +133,6 @@ Public Class CalendarBookingControl
 
     ' --- Next ---
     Dim WithEvents btnNext As Button
-
-    '' --- Car ---
-    'Dim lblCar As Label
-
-    'Dim lblCarPrompt As Label
-    'Dim lstvwSelected As ListView
-    'Dim WithEvents btnCarSelect As Button
-
-    'Dim lstvwCar As ListView
-
-    ' --- Next ---
 
     Private Sub CalendarBookingControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Vertical scroll bar is around 25 pixels
@@ -380,7 +373,7 @@ Public Class CalendarBookingControl
 
         ' lblStartConfirmDate
         Me.lblStartConfirmDate = New Label
-        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.startTime, "hh:mm tt")
+        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.startTime, "h:mm tt")
         Me.lblStartConfirmDate.TextAlign = ContentAlignment.MiddleCenter
         Me.lblStartConfirmDate.Font = bodyBoldFont
         Me.lblStartConfirmDate.Size = New Size(Me.Width - 40, 55)
@@ -542,7 +535,7 @@ Public Class CalendarBookingControl
 
         ' lblEndConfirmDate
         Me.lblEndConfirmDate = New Label
-        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.endTime, "hh:mm tt")
+        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.endTime, "h:mm tt")
         Me.lblEndConfirmDate.TextAlign = ContentAlignment.MiddleCenter
         Me.lblEndConfirmDate.Font = bodyBoldFont
         Me.lblEndConfirmDate.Size = New Size(Me.Width - 40, 55)
@@ -640,37 +633,7 @@ Public Class CalendarBookingControl
         Me.btnNext.FlatAppearance.BorderSize = 0
         Me.btnNext.Size = New Size(300, 60)
         Me.btnNext.Margin = New Padding(((Me.Width - Me.btnNext.Width) / 2) - 10, 50, 0, 0)
-        'Me.btnNext.Padding = New Padding(0, 0, 0, 10)
     End Sub
-
-    'Private Sub CreateCar()
-    '    'Dim lblCar As Label
-
-    '    'Dim lblCarPrompt As Label
-    '    'Dim lstvwSelected As ListView
-    '    'Dim WithEvents btnCarSelect As Button
-
-    '    'Dim lstvwCar As ListView
-
-    '    ' lblCar
-    '    Me.lblCar = New Label()
-    '    Me.lblCar.Text = "Car"
-    '    Me.lblCar.TextAlign = headingTextAlign
-    '    Me.lblCar.Font = headingFont
-    '    Me.lblCar.Size = headingSize
-    '    Me.lblCar.AutoSize = False
-    '    Me.lblCar.Margin = headingPadding
-    '    Me.lblCar.BackColor = colourNeutral
-    '    Me.lblCar.ForeColor = colourWhite
-
-    '    ' lblCarPrompt
-    '    Me.lblCarPrompt = New Label
-    '    Me.lblCarPrompt.Text = "Select a car to book:"
-    '    Me.lblCarPrompt.Font = bodyFont
-    '    Me.lblCarPrompt.AutoSize = True
-    '    Me.lblCarPrompt.Margin = leftPadding
-
-    'End Sub
 
     Private Sub AddControls()
         Me.SuspendLayout()
@@ -836,13 +799,13 @@ Public Class CalendarBookingControl
         Me.lblHourStart.Text = Format(Me.startTime, "hh")
         Me.lblMinuteStart.Text = Format(Me.startTime, "mm")
         Me.lblAmPmStart.Text = Format(Me.startTime, "tt").ToLower
-        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.startTime, "hh:mm tt")
+        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.startTime, "h:mm tt")
 
         Me.txtDateEnd.Text = Format(Me.endTime, "dddd d MMMM yyyy")
         Me.lblHourEnd.Text = Format(Me.endTime, "hh")
         Me.lblMinuteEnd.Text = Format(Me.endTime, "mm")
         Me.lblAmPmEnd.Text = Format(Me.endTime, "tt").ToLower
-        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.endTime, "hh:mm tt")
+        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.endTime, "h:mm tt")
     End Sub
 
     Private Function GetMinDate(dateOne As Date)
@@ -915,39 +878,43 @@ Public Class CalendarBookingControl
     ' -------------------
 
     Private Sub UpdateMinute(minuteChange As Integer, time As String)
+        Dim hourChng = 0
+
         If time = "start" Then
             Dim newMinute = Me.startMinute + minuteChange
             If newMinute <= -1 Then
                 ' Minus hour
-                newMinute = 59
-                Me.UpdateHour(-1, time)
+                newMinute = newMinute + 60
+                hourChng = -1
             ElseIf newMinute >= 60 Then
                 ' Plus Hour
-                newMinute = 0
-                Me.UpdateHour(1, time)
+                newMinute = newMinute - 60
+                hourChng = 1
             End If
 
             Me.startMinute = newMinute
             Me.startTime = New Date(Me.startYear, Me.startMonth, Me.startDay, Me.startHour, Me.startMinute, 0)
             Me.UpdateEndTimeVar()
             changedStartTime = True
-
         ElseIf time = "end" Then
             Dim newMinute = Me.endMinute + minuteChange
             If newMinute <= -1 Then
                 ' Minus hour
-                newMinute = 59
-                Me.UpdateHour(-1, time)
+                newMinute = newMinute + 60
+                hourChng = -1
             ElseIf newMinute >= 60 Then
                 ' Plus Hour
-                newMinute = 0
-                Me.UpdateHour(1, time)
+                newMinute = newMinute - 60
+                hourChng = 1
             End If
 
             Me.endMinute = newMinute
             Me.endTime = New Date(Me.endYear, Me.endMonth, Me.endDay, Me.endHour, Me.endMinute, 0)
             changedEndTime = True
+        End If
 
+        If hourChng <> 0 Then
+            Me.UpdateHour(hourChng, time)
         End If
 
         Me.UpdateLabels()
@@ -1130,6 +1097,70 @@ Public Class CalendarBookingControl
         End If
     End Sub
 
+    ' -----------------------
+    ' --- Time Arrow Hold ---
+    ' -----------------------
+
+    Private Sub imgTime_MouseDown(sender As Object, e As MouseEventArgs) Handles _
+        imgStartHourUp.MouseDown, imgStartMinuteUp.MouseDown, imgStartHourDown.MouseDown, imgStartMinuteDown.MouseDown,
+        imgEndHourUp.MouseDown, imgEndMinuteUp.MouseDown, imgEndHourDown.MouseDown, imgEndMinuteDown.MouseDown
+
+        Me.mouseHoldSec = 0
+        Me.mouseHoldImg = CType(sender, PictureBox)
+        Me.tmrMouseHold.Start()
+
+        'Me.imgTime_Click(sender, e)
+    End Sub
+
+    Private Sub imgTime_MouseUp(sender As Object, e As MouseEventArgs) Handles _
+        imgStartHourUp.MouseUp, imgStartMinuteUp.MouseUp, imgStartHourDown.MouseUp, imgStartMinuteDown.MouseUp,
+        imgEndHourUp.MouseUp, imgEndMinuteUp.MouseUp, imgEndHourDown.MouseUp, imgEndMinuteDown.MouseUp
+
+        Me.mouseHoldSec = 0
+        Me.mouseHoldImg = Nothing
+        Me.tmrMouseHold.Stop()
+    End Sub
+
+    Private Sub tmrMouseHold_Tick(sender As Object, e As EventArgs) Handles tmrMouseHold.Tick
+        If Me.mouseHoldSec = 30 Then
+            Me.mouseHoldSec = 0
+
+            Dim imgCur = Me.mouseHoldImg, PictureBox
+            Dim hourChng = 6
+            Dim minChng = 10
+
+            If (imgCur Is imgStartHourUp) Then
+                Me.UpdateHour(hourChng, "start")
+
+            ElseIf (imgCur Is imgStartMinuteUp) Then
+                Me.UpdateMinute(minChng, "start")
+
+            ElseIf (imgCur Is imgStartHourDown) Then
+                Me.UpdateHour(-hourChng, "start")
+
+            ElseIf (imgCur Is imgStartMinuteDown) Then
+                Me.UpdateMinute(-minChng, "start")
+
+
+            ElseIf (imgCur Is imgEndHourUp) Then
+                Me.UpdateHour(hourChng, "end")
+
+            ElseIf (imgCur Is imgEndMinuteUp) Then
+                Me.UpdateMinute(minChng, "end")
+
+            ElseIf (imgCur Is imgEndHourDown) Then
+                Me.UpdateHour(-hourChng, "end")
+
+            ElseIf (imgCur Is imgEndMinuteDown) Then
+                Me.UpdateMinute(-minChng, "end")
+
+            End If
+
+        Else
+            Me.mouseHoldSec += 1
+        End If
+    End Sub
+
     ' ------------------------
     ' --- Time Arrow Hover ---
     ' ------------------------
@@ -1194,6 +1225,7 @@ Public Class CalendarBookingControl
 
         Next
 
+        ' If error
         If (errorMsg <> "") And (Me.shaking = False) Then
             Me.lblError.Visible = True
             Me.lblError.BringToFront()
@@ -1202,7 +1234,11 @@ Public Class CalendarBookingControl
             Me.shaking = True
             Dim t1 As Thread = New Thread(New ThreadStart(AddressOf Me.ShakeErrorMessage))
             t1.Start()
+            Exit Sub
         End If
+
+        'If not error
+        Me.previousForm.NextClicked(startTime, endTime)
 
     End Sub
 
@@ -1233,9 +1269,6 @@ Public Class CalendarBookingControl
         'Dim shakeArr() = {2, 2, 2, 2, 2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 2, 2, 2, 2, 2}
         Dim shakeArr() = {1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1}
 
-        'Dim t1 As Thread = New Thread(New ThreadStart(AddressOf Me.ShakeWait))
-        't1.Start()
-
         ' Shake
         For fullShake As Integer = 0 To 3
 
@@ -1246,9 +1279,6 @@ Public Class CalendarBookingControl
                 Else
                     lblError.Left += shakeArr(moveIndex)
                 End If
-
-                'Location
-
 
                 'Wait
                 If lblError.InvokeRequired Then
@@ -1282,6 +1312,5 @@ Public Class CalendarBookingControl
         End If
 
     End Sub
-
 
 End Class

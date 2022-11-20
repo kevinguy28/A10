@@ -28,7 +28,7 @@ Partial Class CalendarBookingControl
         Me.lblEndLeft = New System.Windows.Forms.Label()
         Me.lblStartRight = New System.Windows.Forms.Label()
         Me.lblStartLeft = New System.Windows.Forms.Label()
-        Me.tmrShake = New System.Windows.Forms.Timer(Me.components)
+        Me.tmrMouseHold = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'flPanel
@@ -71,9 +71,9 @@ Partial Class CalendarBookingControl
         Me.lblStartLeft.Size = New System.Drawing.Size(5, 50)
         Me.lblStartLeft.TabIndex = 0
         '
-        'tmrShake
+        'tmrMouseHold
         '
-        Me.tmrShake.Interval = 50
+        Me.tmrMouseHold.Interval = 10
         '
         'CalendarBookingControl
         '
@@ -96,5 +96,5 @@ Partial Class CalendarBookingControl
     Friend WithEvents lblStartRight As Label
     Friend WithEvents lblEndLeft As Label
     Friend WithEvents lblEndRight As Label
-    Friend WithEvents tmrShake As Timer
+    Friend WithEvents tmrMouseHold As Timer
 End Class
