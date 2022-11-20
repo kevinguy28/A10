@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class CalendarBookingControl
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,20 +20,23 @@ Partial Class CalendarBookingControl
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.flPanel = New System.Windows.Forms.FlowLayoutPanel()
         Me.lblEndRight = New System.Windows.Forms.Label()
         Me.lblEndLeft = New System.Windows.Forms.Label()
         Me.lblStartRight = New System.Windows.Forms.Label()
         Me.lblStartLeft = New System.Windows.Forms.Label()
+        Me.tmrShake = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'flPanel
         '
-        Me.flPanel.Location = New System.Drawing.Point(0, 0)
+        Me.flPanel.Location = New System.Drawing.Point(310, 0)
+        Me.flPanel.Margin = New System.Windows.Forms.Padding(0)
         Me.flPanel.Name = "flPanel"
-        Me.flPanel.Size = New System.Drawing.Size(410, 632)
+        Me.flPanel.Size = New System.Drawing.Size(100, 100)
         Me.flPanel.TabIndex = 7
         '
         'lblEndRight
@@ -68,6 +71,10 @@ Partial Class CalendarBookingControl
         Me.lblStartLeft.Size = New System.Drawing.Size(5, 50)
         Me.lblStartLeft.TabIndex = 0
         '
+        'tmrShake
+        '
+        Me.tmrShake.Interval = 50
+        '
         'CalendarBookingControl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -89,4 +96,5 @@ Partial Class CalendarBookingControl
     Friend WithEvents lblStartRight As Label
     Friend WithEvents lblEndLeft As Label
     Friend WithEvents lblEndRight As Label
+    Friend WithEvents tmrShake As Timer
 End Class

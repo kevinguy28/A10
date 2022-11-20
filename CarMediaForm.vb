@@ -40,10 +40,11 @@ Public Class CarMediaForm
 
 
     Private Sub btnVolumeUp_MouseEnter(sender As Object, e As EventArgs) Handles btnVolumeUp.MouseEnter
+        btnVolumeUp.BackColor = Color.White
         btnVolumeUp.BackgroundImage = My.Resources.arrow_up_hover
     End Sub
 
-    Private Sub btnVolumeUp_Leave(sender As Object, e As EventArgs) Handles btnVolumeUp.Leave
+    Private Sub btnVolumeUp_Leave(sender As Object, e As EventArgs) Handles btnVolumeUp.MouseLeave
         btnVolumeUp.BackgroundImage = My.Resources.arrow_up_neutral
     End Sub
 

@@ -10,7 +10,7 @@
 
         ' Add any initialization after the InitializeComponent() call.
 
-        ' AppForm Variables
+        ' AppForm
         Me.user = user
         Me.scenario = scenario
         Me.previousWindow = previousForm
@@ -50,5 +50,9 @@
         ' See HomeForm for example
         ' If you don't have any children forms, then you can ignore this
     End Sub
+
+    Public Function GetLblError()
+        Return Me.lblError
+    End Function
 
 End Class

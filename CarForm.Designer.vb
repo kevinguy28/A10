@@ -41,32 +41,44 @@ Partial Class CarForm
         '
         'btnCarFeatures
         '
+        Me.btnCarFeatures.BackColor = System.Drawing.Color.White
         Me.btnCarFeatures.BackgroundImage = Global.A10.My.Resources.Resources.fan_neutral
         Me.btnCarFeatures.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnCarFeatures.FlatAppearance.BorderSize = 0
+        Me.btnCarFeatures.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCarFeatures.Location = New System.Drawing.Point(68, 258)
         Me.btnCarFeatures.Name = "btnCarFeatures"
         Me.btnCarFeatures.Size = New System.Drawing.Size(150, 150)
         Me.btnCarFeatures.TabIndex = 4
+        Me.btnCarFeatures.TabStop = False
         Me.btnCarFeatures.UseVisualStyleBackColor = True
         '
         'btnCarMedia
         '
+        Me.btnCarMedia.BackColor = System.Drawing.Color.White
         Me.btnCarMedia.BackgroundImage = Global.A10.My.Resources.Resources.car_media_neutral
         Me.btnCarMedia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnCarMedia.FlatAppearance.BorderSize = 0
+        Me.btnCarMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCarMedia.Location = New System.Drawing.Point(268, 258)
         Me.btnCarMedia.Name = "btnCarMedia"
         Me.btnCarMedia.Size = New System.Drawing.Size(150, 150)
         Me.btnCarMedia.TabIndex = 5
+        Me.btnCarMedia.TabStop = False
         Me.btnCarMedia.UseVisualStyleBackColor = True
         '
         'btnDiagnostic
         '
+        Me.btnDiagnostic.BackColor = System.Drawing.Color.White
         Me.btnDiagnostic.BackgroundImage = Global.A10.My.Resources.Resources.car1
         Me.btnDiagnostic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnDiagnostic.FlatAppearance.BorderSize = 0
+        Me.btnDiagnostic.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDiagnostic.Location = New System.Drawing.Point(68, 441)
         Me.btnDiagnostic.Name = "btnDiagnostic"
         Me.btnDiagnostic.Size = New System.Drawing.Size(150, 150)
         Me.btnDiagnostic.TabIndex = 6
+        Me.btnDiagnostic.TabStop = False
         Me.btnDiagnostic.UseVisualStyleBackColor = True
         '
         'CarForm

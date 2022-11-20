@@ -50,7 +50,7 @@ Partial Class CarFeaturesForm
         Me.btnToggleWindows.Size = New System.Drawing.Size(96, 78)
         Me.btnToggleWindows.TabIndex = 0
         Me.btnToggleWindows.TabStop = False
-        Me.btnToggleWindows.UseVisualStyleBackColor = False
+        Me.btnToggleWindows.UseVisualStyleBackColor = True
         '
         'lblCarFeatures
         '

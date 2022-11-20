@@ -55,8 +55,11 @@ Partial Class CarMediaForm
         '
         'btnVolumeDown
         '
+        Me.btnVolumeDown.BackColor = System.Drawing.Color.White
         Me.btnVolumeDown.BackgroundImage = Global.A10.My.Resources.Resources.arrow_down_neutral
         Me.btnVolumeDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnVolumeDown.FlatAppearance.BorderSize = 0
+        Me.btnVolumeDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVolumeDown.Location = New System.Drawing.Point(246, 371)
         Me.btnVolumeDown.Name = "btnVolumeDown"
         Me.btnVolumeDown.Size = New System.Drawing.Size(50, 50)
@@ -65,8 +68,11 @@ Partial Class CarMediaForm
         '
         'btnVolumeUp
         '
+        Me.btnVolumeUp.BackColor = System.Drawing.Color.White
         Me.btnVolumeUp.BackgroundImage = Global.A10.My.Resources.Resources.arrow_up_neutral
         Me.btnVolumeUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnVolumeUp.FlatAppearance.BorderSize = 0
+        Me.btnVolumeUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVolumeUp.Location = New System.Drawing.Point(356, 371)
         Me.btnVolumeUp.Name = "btnVolumeUp"
         Me.btnVolumeUp.Size = New System.Drawing.Size(50, 50)
@@ -86,8 +92,11 @@ Partial Class CarMediaForm
         '
         'btnSpeakersToggle
         '
+        Me.btnSpeakersToggle.BackColor = System.Drawing.Color.White
         Me.btnSpeakersToggle.BackgroundImage = Global.A10.My.Resources.Resources.toggle_on
         Me.btnSpeakersToggle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnSpeakersToggle.FlatAppearance.BorderSize = 0
+        Me.btnSpeakersToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSpeakersToggle.Location = New System.Drawing.Point(310, 265)
         Me.btnSpeakersToggle.Name = "btnSpeakersToggle"
         Me.btnSpeakersToggle.Size = New System.Drawing.Size(96, 78)

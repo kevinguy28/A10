@@ -1,11 +1,12 @@
 ﻿Imports System.Drawing.Imaging
 Imports System.Drawing.Printing
 Imports System.Text.RegularExpressions
+Imports System.Threading
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock
 
 Public Class CalendarBookingControl
 
-    Dim previousForm As Form
+    Dim previousForm As CalendarBookingForm
 
     Dim startTime As Date
     Dim endTime As Date
@@ -32,6 +33,10 @@ Public Class CalendarBookingControl
     Dim bdrTopHghtChanged = False
     Dim bdrBotHghtChanged = False
     Dim bdrBotPosnChanged = False
+
+    ' Shake
+    Dim shaking = False
+    Dim lblError As Label
 
     ' Fonts
     Dim headingFont = New Font("Segoe UI Semibold", 24, FontStyle.Bold)
@@ -122,6 +127,9 @@ Public Class CalendarBookingControl
     Dim WithEvents imgEndArrowRight As PictureBox
     Dim usrctrlEndMonth As CalendarMonthControl
 
+    ' --- Next ---
+    Dim WithEvents btnNext As Button
+
     '' --- Car ---
     'Dim lblCar As Label
 
@@ -145,13 +153,16 @@ Public Class CalendarBookingControl
     ' --- Functions ---
     ' -----------------
 
-    Public Sub Setup(currTime As Date, trigger As String, previousForm As Form)
-        'Dim initialAddedHeight = 1000
-        Dim initialAddedHeight = 300
+    Public Sub Setup(currTime As Date, trigger As String, previousForm As CalendarBookingForm)
+        Me.flPanel.Location = New Point(0, 0)
+        Me.flPanel.Size = New Size(410, 632)
+
+        Dim initialAddedHeight = 410
         Me.Height = Me.Height + initialAddedHeight
         Me.flPanel.Height = Me.flPanel.Height + initialAddedHeight
 
         Me.previousForm = previousForm
+        Me.lblError = Me.previousForm.GetLblError()
 
         Me.startTime = currTime
         Me.endTime = Me.startTime.AddHours(1)
@@ -185,6 +196,7 @@ Public Class CalendarBookingControl
         Me.CreateEnd()
         Me.CreateStartMonths()
         Me.CreateEndMonths()
+        Me.CreateNext()
         Me.AddControls()
 
         ' Border
@@ -615,6 +627,22 @@ Public Class CalendarBookingControl
         Me.usrctrlEndMonth.Size = New Size(Me.usrctrlEndMonth.Width - 28, Me.usrctrlEndMonth.Height - 28)
     End Sub
 
+    Private Sub CreateNext()
+        'btnNext
+        Me.btnNext = New Button
+        Me.btnNext.Text = "Next"
+        Me.btnNext.Font = headingFont
+        Me.btnNext.TextAlign = headingTextAlign
+        Me.btnNext.BackColor = colourNeutral
+        Me.btnNext.ForeColor = Color.White
+        Me.btnNext.TabStop = False
+        Me.btnNext.FlatStyle = FlatStyle.Flat
+        Me.btnNext.FlatAppearance.BorderSize = 0
+        Me.btnNext.Size = New Size(300, 60)
+        Me.btnNext.Margin = New Padding(((Me.Width - Me.btnNext.Width) / 2) - 10, 50, 0, 0)
+        'Me.btnNext.Padding = New Padding(0, 0, 0, 10)
+    End Sub
+
     'Private Sub CreateCar()
     '    'Dim lblCar As Label
 
@@ -728,6 +756,7 @@ Public Class CalendarBookingControl
         Me.flPanel.Controls.Add(Me.lblEndConfirmDate)
         Me.flPanel.SetFlowBreak(Me.lblEndConfirmDate, True)
 
+        Me.flPanel.Controls.Add(Me.btnNext)
 
         Me.flPanel.ResumeLayout(True)
         Me.ResumeLayout(True)
@@ -792,7 +821,7 @@ Public Class CalendarBookingControl
     End Sub
 
     Private Sub UpdateEndTimeVar()
-        If Not changedEndTime Then
+        If changedEndTime = False Then
             Me.endTime = startTime.AddHours(1)
         End If
         Me.endMinute = Me.endTime.Minute
@@ -835,6 +864,7 @@ Public Class CalendarBookingControl
         If (curCtrl Is Me.usrctrlStartMonth) Then
             Dim newDate = New Date(Me.startYear, Me.startMonth, day, Me.startHour, Me.startMinute, 0)
             Me.startTime = newDate
+            Me.UpdateStartTimeVar()
             Me.UpdateEndTimeVar()
 
             Me.showMonthsStart = False
@@ -846,6 +876,9 @@ Public Class CalendarBookingControl
         ElseIf (curCtrl Is Me.usrctrlEndMonth) Then
             Dim newDate = New Date(Me.endYear, Me.endMonth, day, Me.endHour, Me.endMinute, 0)
             Me.endTime = newDate
+            Me.changedEndTime = True
+            Me.UpdateEndTimeVar()
+
 
             Me.showMonthsEnd = False
 
@@ -1137,5 +1170,118 @@ Public Class CalendarBookingControl
 
         End If
     End Sub
+
+    ' -------------------
+    ' --- Next Button ---
+    ' -------------------
+    Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
+        Dim errorMsg = ""
+
+        ' Singular loop to get out of, if match condition
+        For x As Integer = 0 To 1
+
+            ' End time before start time
+            If endTime.CompareTo(Me.startTime) < 0 Then
+                errorMsg = "Error: End time is before start time"
+                Exit For
+            End If
+
+            ' Start time passed
+            If startTime.CompareTo(New Date.Now()) < 0 Then
+                errorMsg = "Error: Start time has already passed"
+                Exit For
+            End If
+
+        Next
+
+        If (errorMsg <> "") And (Me.shaking = False) Then
+            Me.lblError.Visible = True
+            Me.lblError.BringToFront()
+            Me.lblError.Text = errorMsg
+            Me.lblError.Location = New Point((Me.previousForm.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)
+            Me.shaking = True
+            Dim t1 As Thread = New Thread(New ThreadStart(AddressOf Me.ShakeErrorMessage))
+            t1.Start()
+        End If
+
+    End Sub
+
+    Private Sub btnNext_MouseEnter(sender As Object, e As EventArgs) Handles btnNext.MouseEnter
+        CType(sender, Button).BackColor = colourHover
+    End Sub
+
+    Private Sub btnNext_MouseLeave(sender As Object, e As EventArgs) Handles btnNext.MouseLeave
+        CType(sender, Button).BackColor = colourNeutral
+    End Sub
+
+    ' -------------
+    ' --- Shake ---
+    ' -------------
+
+    Private Sub ShakeErrorMessage()
+        ''                 |           plus           |                 minus                 |                 minus                 |            plus             |
+        ''                 1, 2, 3, 4, 5, 6, 7, 8, 9,10,  9,  8,  7,  6,  5,  4,  3,  2,  1,  0, -1, -2, -3, -4, -5, -6, -7, -8, -9,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1, 0
+        'Dim shakeArr() = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+        'Dim shakeArr() = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
+        'Dim shakeArr() = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
+        'Dim shakeArr() = {5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5}
+        'Dim shakeArr() = {10, -10, 10, -10, 10, -10, 10, -10, 10, -10, 10, -10, 10, -10, 10, -10}
+        'Dim shakeArr() = {25, -25, 25, -25, 25, -25, 25, -25, 25, -25, 25, -25, 25, -25, 25, -25}
+        ''                 |    plus    |       minus       |       minus       |     plus     |
+        ''                  2  4  6  8  10  8   6   4   2   0  -2  -4  -6  -8  -10-8 -6 -4  -2 0
+        ''                 1  3  5  7  9   9   7   5   3   1  -1  -3  -5  -7  -9 -9 -7,-5,-3,-1,
+        'Dim shakeArr() = {2, 2, 2, 2, 2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 2, 2, 2, 2, 2}
+        Dim shakeArr() = {1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1}
+
+        'Dim t1 As Thread = New Thread(New ThreadStart(AddressOf Me.ShakeWait))
+        't1.Start()
+
+        ' Shake
+        For fullShake As Integer = 0 To 3
+
+            For moveIndex As Integer = 0 To shakeArr.Length() - 1
+                'Move
+                If lblError.InvokeRequired Then
+                    lblError.Invoke(Sub() lblError.Left += shakeArr(moveIndex))
+                Else
+                    lblError.Left += shakeArr(moveIndex)
+                End If
+
+                'Location
+
+
+                'Wait
+                If lblError.InvokeRequired Then
+                    lblError.Invoke(Sub() Me.lblError.Refresh())
+                Else
+                    Me.lblError.Refresh()
+                End If
+                Threading.Thread.Sleep(10)
+            Next
+
+        Next
+
+        ' Pause
+        For pause As Integer = 0 To 150
+
+            'Wait
+            If lblError.InvokeRequired Then
+                lblError.Invoke(Sub() Me.lblError.Refresh())
+            Else
+                Me.lblError.Refresh()
+            End If
+            Threading.Thread.Sleep(10)
+
+        Next
+
+        Me.shaking = False
+        If lblError.InvokeRequired Then
+            lblError.Invoke(Sub() Me.lblError.Visible = False)
+        Else
+            Me.lblError.Visible = False
+        End If
+
+    End Sub
+
 
 End Class
