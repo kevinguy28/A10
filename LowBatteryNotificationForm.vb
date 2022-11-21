@@ -1,14 +1,15 @@
 ﻿Public Class LowBatteryNotificationForm
     Dim user As String
     Dim scenario As Integer
+    Dim otherForm As HomeForm
 
-    Public Sub New(user As String, scenario As Integer)
+    Public Sub New(user As String, scenario As Integer, otherForm As HomeForm)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Me.user = user : Me.scenario = scenario
+        Me.user = user : Me.scenario = scenario : Me.otherForm = otherForm
     End Sub
 
     Public Sub setLocation()
@@ -26,9 +27,15 @@
             Me.Location = New Point(x, 0)
         End If
     End Sub
+    Private Sub btnEnd_Click(sender As Object, e As EventArgs) Handles btnEnd.Click
+        Dim chooseStation As New ChooseStationForm(Me.user, Me.scenario, Me.otherForm) : chooseStation.setLocation()
+        chooseStation.Show()
+        Me.Close()
+    End Sub
 
     Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
-        Dim chooseStation As New ChooseStationForm(Me.user, Me.scenario) : chooseStation.setLocation()
+        Dim chooseStation As New ChooseStationForm("owner", Me.scenario, Me.otherForm) : chooseStation.setLocation()
+        chooseStation.lblTitle.Text = "Please choose a station to reroute to. Your bill will be adjusted accordingly."
         chooseStation.Show()
         Me.Close()
     End Sub

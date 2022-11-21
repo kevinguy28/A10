@@ -49,7 +49,7 @@
         End If
 
         If Me.scenario = 4 And Me.user = "rider" Then
-            Dim lowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario) : lowBatteryNotification.setLocation()
+            Dim lowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario, Me.otherForm) : lowBatteryNotification.setLocation()
             Me.Hide()
             lowBatteryNotification.TopMost = True : lowBatteryNotification.Show()
         End If

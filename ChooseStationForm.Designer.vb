@@ -33,7 +33,7 @@ Partial Class ChooseStationForm
         Me.rb6 = New System.Windows.Forms.RadioButton()
         Me.rb1 = New System.Windows.Forms.RadioButton()
         Me.pbMap = New System.Windows.Forms.PictureBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblTitle = New System.Windows.Forms.Label()
         CType(Me.pbMap, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -75,7 +75,7 @@ Partial Class ChooseStationForm
         Me.lblCarPosition.AutoSize = True
         Me.lblCarPosition.BackColor = System.Drawing.Color.Yellow
         Me.lblCarPosition.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblCarPosition.Location = New System.Drawing.Point(234, 337)
+        Me.lblCarPosition.Location = New System.Drawing.Point(222, 341)
         Me.lblCarPosition.Name = "lblCarPosition"
         Me.lblCarPosition.Size = New System.Drawing.Size(41, 21)
         Me.lblCarPosition.TabIndex = 26
@@ -156,7 +156,7 @@ Partial Class ChooseStationForm
         'pbMap
         '
         Me.pbMap.BackColor = System.Drawing.Color.Transparent
-        Me.pbMap.Image = Global.A10.My.Resources.Resources.the_map
+        Me.pbMap.Image = Global.A10.My.Resources.Resources.the_map_rb1
         Me.pbMap.Location = New System.Drawing.Point(32, 170)
         Me.pbMap.Name = "pbMap"
         Me.pbMap.Size = New System.Drawing.Size(421, 310)
@@ -164,16 +164,18 @@ Partial Class ChooseStationForm
         Me.pbMap.TabIndex = 19
         Me.pbMap.TabStop = False
         '
-        'Label1
+        'lblTitle
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(105, 85)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(276, 46)
-        Me.Label1.TabIndex = 18
-        Me.Label1.Text = "Choose a station"
+        Me.lblTitle.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblTitle.BackColor = System.Drawing.Color.Transparent
+        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblTitle.Location = New System.Drawing.Point(43, 48)
+        Me.lblTitle.Name = "lblTitle"
+        Me.lblTitle.Size = New System.Drawing.Size(398, 119)
+        Me.lblTitle.TabIndex = 18
+        Me.lblTitle.Text = "The rider has ended their ride. Choose a station to send your car to for a refuel" &
+    "."
+        Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ChooseStationForm
         '
@@ -193,7 +195,7 @@ Partial Class ChooseStationForm
         Me.Controls.Add(Me.rb6)
         Me.Controls.Add(Me.rb1)
         Me.Controls.Add(Me.pbMap)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
         Me.Name = "ChooseStationForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
@@ -215,5 +217,5 @@ Partial Class ChooseStationForm
     Friend WithEvents rb6 As RadioButton
     Friend WithEvents rb1 As RadioButton
     Friend WithEvents pbMap As PictureBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblTitle As Label
 End Class

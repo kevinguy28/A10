@@ -3,13 +3,14 @@
 Public Class ChooseStationForm
     Dim user As String
     Dim scenario As Integer
-    Public Sub New(user As String, scenario As Integer)
+    Dim otherForm As HomeForm
+    Public Sub New(user As String, scenario As Integer, otherForm As HomeForm)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Me.user = user : Me.scenario = scenario
+        Me.user = user : Me.scenario = scenario : Me.otherForm = otherForm
     End Sub
 
     Public Sub setLocation()
@@ -44,5 +45,28 @@ Public Class ChooseStationForm
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
         Me.Close()
+    End Sub
+
+    Private Sub rb1_Click(sender As Object, e As EventArgs) Handles rb1.Click
+        Me.pbMap.Image = My.Resources.the_map_rb1
+    End Sub
+
+    Private Sub rb2_Click(sender As Object, e As EventArgs) Handles rb2.Click
+        Me.pbMap.Image = My.Resources.the_map_rb2
+    End Sub
+    Private Sub rb3_Click(sender As Object, e As EventArgs) Handles rb3.Click
+        Me.pbMap.Image = My.Resources.the_map_rb3
+    End Sub
+
+    Private Sub rb4_Click(sender As Object, e As EventArgs) Handles rb4.Click
+        Me.pbMap.Image = My.Resources.the_map_rb4
+    End Sub
+
+    Private Sub rb5_Click(sender As Object, e As EventArgs) Handles rb5.Click
+        Me.pbMap.Image = My.Resources.the_map_rb5
+    End Sub
+
+    Private Sub rb6_Click(sender As Object, e As EventArgs) Handles rb6.Click
+        Me.pbMap.Image = My.Resources.the_map_rb6
     End Sub
 End Class
