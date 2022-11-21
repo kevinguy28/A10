@@ -1,8 +1,13 @@
-﻿Public Class CalendarCarSelectForm
+﻿Imports System.Diagnostics.Contracts
+
+Public Class CalendarCarSelectForm
     Inherits AppForm
 
     Dim dateStart As Date
     Dim dateEnd As Date
+
+    Dim carAvailability As List(Of UserCalendarEvent)
+    Dim itemList As List(Of CarListControl)
 
     Public Sub New(user As String, scenario As Integer, previousForm As AppForm, HomeForm As HomeForm, DevForm As DevForm, dateStart As Date, dateEnd As Date)
 
@@ -36,7 +41,34 @@
         Me.Label1.Text = Format(dateStart, "dddd d MMMM yyyy hh:mm:ss tt")
         Me.Label2.Text = Format(dateEnd, "dddd d MMMM yyyy hh:mm:ss tt")
 
+        ' Availability
+        Me.carAvailability = Me.devWindow.GetAvailability(Me.dateStart, Me.dateEnd)
+
+        ' Panel
+        Me.PopulatePanelView()
+
     End Sub
+
+    Private Sub PopulatePanelView()
+
+        Me.itemList = New List(Of CarListControl)
+
+        For Each carAvblty As UserCalendarEvent In Me.carAvailability
+            Dim itm As CarListControl
+            itm = New CarListControl(carAvblty, Me)
+            Me.itemList.Add(itm)
+            Me.flPanel.Controls.Add(itm)
+        Next
+
+    End Sub
+
+    Public Sub ControlClicked(itm As CarListControl)
+        For Each ctrl As CarListControl In Me.itemList
+            ctrl.DeselectItem()
+        Next
+        itm.SelectItem()
+    End Sub
+
 
     '' --- Car ---
     'Dim lblCar As Label

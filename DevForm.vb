@@ -1,4 +1,5 @@
 ﻿Imports System.Threading
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
 Public Class DevForm
 
@@ -98,7 +99,6 @@ Public Class DevForm
                 'newEnd later then oldStart
                 'newEnd earlier than oldEnd
                 If Me.LaterThan(newEnd, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) AndAlso (oldCar = carName) Then
-
                     conflict = True
                     Exit For
                 End If
@@ -150,6 +150,30 @@ Public Class DevForm
 
     Private Function LaterThan(dateOne As Date, dateTwo As Date)
         Return (dateOne.CompareTo(dateTwo) >= 0)
+    End Function
+
+    Public Function GetAvailability(startDate As Date, endDate As Date)
+        Dim newStart = startDate
+        Dim newEnd = endDate
+
+        Dim allAvblty As List(Of UserCalendarEvent) = New List(Of UserCalendarEvent)()
+
+        ' Check if already exists
+        For Each cldrEvent As UserCalendarEvent In Me.ownerAvailabilityList
+
+            Dim oldStart = cldrEvent.GetStartDate()
+            Dim oldEnd = cldrEvent.GetEndDate()
+
+            ' New | ⬛⬛⬛⬛ |
+            ' Old |  ⬛⬛  |
+            'newStart later than oldStart
+            'newEnd earlier than oldEnd
+            If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                allAvblty.Add(cldrEvent)
+            End If
+        Next
+
+        Return allAvblty
     End Function
 
     ' --------------

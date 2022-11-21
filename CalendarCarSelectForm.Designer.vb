@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class CalendarCarSelectForm
     Inherits AppForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,18 +20,17 @@ Partial Class CalendarCarSelectForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.flPanel = New System.Windows.Forms.FlowLayoutPanel()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(96, 229)
+        Me.Label1.Location = New System.Drawing.Point(45, 182)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(41, 15)
         Me.Label1.TabIndex = 0
@@ -40,19 +39,19 @@ Partial Class CalendarCarSelectForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(92, 276)
+        Me.Label2.Location = New System.Drawing.Point(45, 197)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(41, 15)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Label2"
         '
-        'PictureBox1
+        'flPanel
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(84, 413)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(100, 50)
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
+        Me.flPanel.BackColor = System.Drawing.Color.White
+        Me.flPanel.Location = New System.Drawing.Point(42, 241)
+        Me.flPanel.Name = "flPanel"
+        Me.flPanel.Size = New System.Drawing.Size(400, 400)
+        Me.flPanel.TabIndex = 2
         '
         'CalendarCarSelectForm
         '
@@ -61,13 +60,12 @@ Partial Class CalendarCarSelectForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.flPanel)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.DoubleBuffered = True
         Me.Name = "CalendarCarSelectForm"
         Me.Text = "CalendarCarSelect"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -75,5 +73,5 @@ Partial Class CalendarCarSelectForm
 
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents flPanel As FlowLayoutPanel
 End Class
