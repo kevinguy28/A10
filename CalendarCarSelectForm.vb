@@ -16,13 +16,14 @@ Public Class CalendarCarSelectForm
     Dim selectedEvent As UserCalendarEvent
 
     Dim bookingEvent As UserCalendarEvent
+    Dim previousEvent As UserCalendarEvent
 
     ' Children
     Dim confirmForm As CalendarCarConfirmForm
 
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
 
-    Public Sub New(user As String, scenario As Integer, previousForm As AppForm, HomeForm As HomeForm, DevForm As DevForm, dateStart As Date, dateEnd As Date)
+    Public Sub New(user As String, scenario As Integer, previousForm As AppForm, HomeForm As HomeForm, DevForm As DevForm, dateStart As Date, dateEnd As Date, Optional previousEvent As UserCalendarEvent = Nothing)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -35,6 +36,9 @@ Public Class CalendarCarSelectForm
         Me.previousWindow = previousForm
         Me.homeWindow = HomeForm
         Me.devWindow = DevForm
+
+        ' Previous Event
+        Me.previousEvent = previousEvent
 
         ' Date
         Me.dateStart = dateStart
@@ -70,14 +74,12 @@ Public Class CalendarCarSelectForm
         End If
 
         ' Setup
-        If Not avbltyExists Then
-            Me.lblTop.Visible = False
-            Me.lblLeft.Visible = False
-            Me.lblRight.Visible = False
-            Me.lblBottom.Visible = False
-        End If
         Me.lblName.Text = ""
         Me.lblCar.Text = ""
+        Me.lblTop.Visible = False
+        Me.lblLeft.Visible = False
+        Me.lblRight.Visible = False
+        Me.lblBottom.Visible = False
         Me.btnBook.BackColor = colourNeutral
         Me.lblTop.BackColor = colourNeutral
         Me.lblLeft.BackColor = colourNeutral
@@ -103,7 +105,13 @@ Public Class CalendarCarSelectForm
         For Each ctrl As CarListControl In Me.itemList
             ctrl.DeselectItem()
         Next
+        'Make controls visable
         Me.btnBook.Enabled = True
+        Me.lblTop.Visible = True
+        Me.lblLeft.Visible = True
+        Me.lblRight.Visible = True
+        Me.lblBottom.Visible = True
+
         itm.SelectItem()
         Me.selectedItem = itm
         Me.selectedEvent = itm.GetEvent()
@@ -126,10 +134,14 @@ Public Class CalendarCarSelectForm
     End Sub
 
     Public Sub ConfirmClicked()
-        Me.devWindow.AddBooking(Me.bookingEvent.GetProfilePicture, Me.bookingEvent.GetName, Me.bookingEvent.GetUserType,
-                                Me.bookingEvent.GetCar, Me.bookingEvent.GetColour, Me.bookingEvent.GetRatingInt,
-                                Me.bookingEvent.GetStartDate, Me.bookingEvent.GetEndDate,
-                                Me.bookingEvent.GetCarOwnerName, Me.bookingEvent.GetCarOwnerProfilePicture)
+        ' Remove previous booking if there
+        If Me.previousEvent IsNot Nothing Then
+            Me.devWindow.RemoveBooking(Me.previousEvent)
+        End If
+
+        'Add booking
+        Me.devWindow.AddBooking(Me.bookingEvent)
+
         Me.Close()
         Me.homeWindow.Show()
         Me.SetCurrentForm(Me.homeWindow)

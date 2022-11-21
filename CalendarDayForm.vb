@@ -2,10 +2,7 @@
     Inherits AppForm
 
     Dim currDay As Date
-
-    Dim day As Integer
-    Dim month As Integer
-    Dim year As Integer
+    Dim userEvent As UserCalendarEvent
 
     'Children
     Dim bookingForm As CalendarBookingForm
@@ -27,9 +24,6 @@
 
         ' Date
         Me.currDay = currDay
-        Me.day = Me.currDay.Day
-        Me.month = Me.currDay.Month
-        Me.year = Me.currDay.Year
 
     End Sub
 
@@ -79,16 +73,17 @@
 
     End Sub
 
-    Public Sub TimeSlotClicked(timeDate As Date)
+    Public Sub TimeSlotClicked(timeDate As Date, Optional userEvent As UserCalendarEvent = Nothing)
+        Me.userEvent = userEvent
 
         If Me.user = "rider" Then
-            Me.bookingForm = New CalendarBookingForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, timeDate, "DaySlot")
+            Me.bookingForm = New CalendarBookingForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, timeDate, "DaySlot", Me.userEvent)
             Me.Hide()
             Me.bookingForm.Show()
             Me.SetCurrentForm(Me.bookingForm)
 
         ElseIf Me.user = "owner" Then
-            Me.schedulingForm = New CalendarSchedulingForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, timeDate, "DaySlot")
+            'Me.schedulingForm = New CalendarSchedulingForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, timeDate, "DaySlot", Me.userEvent)
             Me.Hide()
             Me.schedulingForm.Show()
             Me.SetCurrentForm(Me.schedulingForm)

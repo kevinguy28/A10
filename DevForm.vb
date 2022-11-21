@@ -160,6 +160,10 @@ Public Class DevForm
         Return (dateOne.CompareTo(dateTwo) >= 0)
     End Function
 
+    Public Sub RemoveAvailability(availability As UserCalendarEvent)
+        Me.ownerAvailabilityList.Remove(availability)
+    End Sub
+
     Public Function GetAvailability(startDate As Date, endDate As Date)
         Dim newStart = startDate
         Dim newEnd = endDate
@@ -184,14 +188,68 @@ Public Class DevForm
         Return allAvblty
     End Function
 
-    Public Sub AddBooking(profilePicture As Image, userName As String, userType As String, carName As String, carColour As String, userRating As Integer, startDate As Date, endDate As Date, carOwnerName As String, carOwnerProfilePicture As Image)
-        Dim booking = New UserCalendarEvent(profilePicture, userName, userType, carName, carColour, userRating, startDate, endDate)
-        booking.OwnerFound(carOwnerName, carOwnerProfilePicture)
+    Public Function GetOwnerFirstAvailability(startDate As Date, endDate As Date)
+        Dim newStart = startDate
+        Dim newEnd = endDate
+        Dim availability As UserCalendarEvent
 
+        ' Check if already exists
+        For Each cldrEvent As UserCalendarEvent In Me.ownerAvailabilityList
+
+            ' If user has schedule
+            If cldrEvent.GetName() = "Jane Doe" Then
+
+                Dim oldStart = cldrEvent.GetStartDate()
+                Dim oldEnd = cldrEvent.GetEndDate()
+
+                ' New |  ⬛⬛  |
+                ' Old | ⬛⬛⬛⬛ |
+                'newStart earlier than oldStart
+                'newEnd earlier than oldEnd
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    availability = cldrEvent
+                    Exit For
+                End If
+            End If
+        Next
+
+        Return availability
+    End Function
+
+    Public Function isOwnerAvailable(startDate As Date, endDate As Date)
+        Dim newStart = startDate
+        Dim newEnd = endDate
+        Dim available = False
+
+        ' Check if already exists
+        For Each cldrEvent As UserCalendarEvent In Me.ownerAvailabilityList
+
+            ' If user has schedule
+            If cldrEvent.GetName() = "Jane Doe" Then
+
+                Dim oldStart = cldrEvent.GetStartDate()
+                Dim oldEnd = cldrEvent.GetEndDate()
+
+                ' New |  ⬛⬛  |
+                ' Old | ⬛⬛⬛⬛ |
+                'newStart earlier than oldStart
+                'newEnd earlier than oldEnd
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    available = True
+                    Exit For
+                End If
+
+            End If
+        Next
+
+        Return available
+    End Function
+
+    Public Sub AddBooking(booking As UserCalendarEvent)
         For Each ownerEvent As UserCalendarEvent In Me.ownerAvailabilityList
 
-            If ownerEvent.GetName = carOwnerName AndAlso ownerEvent.GetCar = carColour _
-                AndAlso Me.EarlierThan(startDate, ownerEvent.GetStartDate) AndAlso Me.EarlierThan(endDate, ownerEvent.GetEndDate) Then
+            If ownerEvent.GetName = booking.GetCarOwnerName AndAlso ownerEvent.GetCar = booking.GetColour _
+                AndAlso Me.LaterThan(booking.GetStartDate, ownerEvent.GetStartDate) AndAlso Me.EarlierThan(booking.GetEndDate, ownerEvent.GetEndDate) Then
 
                 ownerEvent.RiderFound("John Smith", My.Resources.RiderProfile)
                 Exit For
@@ -199,6 +257,20 @@ Public Class DevForm
         Next
 
         Me.riderBookingList.Add(booking)
+    End Sub
+
+    Public Sub RemoveBooking(booking As UserCalendarEvent)
+        For Each ownerEvent As UserCalendarEvent In Me.ownerAvailabilityList
+
+            If ownerEvent.GetName = booking.GetCarOwnerName AndAlso ownerEvent.GetCar = booking.GetColour _
+                AndAlso Me.LaterThan(booking.GetStartDate, ownerEvent.GetStartDate) AndAlso Me.EarlierThan(booking.GetEndDate, ownerEvent.GetEndDate) Then
+
+                ownerEvent.RiderRemove()
+                Exit For
+            End If
+        Next
+
+        Me.riderBookingList.Remove(booking)
     End Sub
 
     Public Function GetBooking(startDate As Date, endDate As Date)
@@ -225,34 +297,32 @@ Public Class DevForm
         Return allBkng
     End Function
 
-    Public Function isOwnerAvailable(startDate As Date, endDate As Date)
+    Public Function GetRiderFirstBooking(startDate As Date, endDate As Date)
         Dim newStart = startDate
         Dim newEnd = endDate
-        Dim available = False
+        Dim booking As UserCalendarEvent
 
         ' Check if already exists
-        For Each cldrEvent As UserCalendarEvent In Me.ownerAvailabilityList
+        For Each cldrEvent As UserCalendarEvent In Me.riderBookingList
 
             ' If user has schedule
-            If cldrEvent.GetName() = "Jane Doe" Then
+            If cldrEvent.GetName() = "John Smith" Then
 
                 Dim oldStart = cldrEvent.GetStartDate()
                 Dim oldEnd = cldrEvent.GetEndDate()
-                Dim oldCar = cldrEvent.GetCar()
 
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |
                 'newStart earlier than oldStart
                 'newEnd earlier than oldEnd
                 If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
-                    available = True
+                    booking = cldrEvent
                     Exit For
                 End If
-
             End If
         Next
 
-        Return available
+        Return booking
     End Function
 
     Public Function isRiderBooked(startDate As Date, endDate As Date)
@@ -268,7 +338,6 @@ Public Class DevForm
 
                 Dim oldStart = cldrEvent.GetStartDate()
                 Dim oldEnd = cldrEvent.GetEndDate()
-                Dim oldCar = cldrEvent.GetCar()
 
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |

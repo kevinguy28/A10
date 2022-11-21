@@ -35,9 +35,19 @@
         Me.carOwnerProfilePic = carOwnerProfilePic
     End Sub
 
+    Public Sub OwnerRemove()
+        Me.carOwnerName = ""
+        Me.carOwnerProfilePic = Nothing
+    End Sub
+
     Public Sub RiderFound(carRiderName As String, carRiderProfilePic As Image)
         Me.carRiderName = carRiderName
         Me.carOwnerProfilePic = carRiderProfilePic
+    End Sub
+
+    Public Sub RiderRemove()
+        Me.carRiderName = ""
+        Me.carOwnerProfilePic = Nothing
     End Sub
 
     Public Function GetProfilePicture()

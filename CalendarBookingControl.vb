@@ -1,12 +1,10 @@
-﻿Imports System.Drawing.Imaging
-Imports System.Drawing.Printing
-Imports System.Text.RegularExpressions
-Imports System.Threading
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock
+﻿Imports System.Threading
 
 Public Class CalendarBookingControl
 
     Dim previousForm As CalendarBookingForm
+
+    Dim userEvent As UserCalendarEvent
 
     Dim startTime As Date
     Dim endTime As Date
@@ -146,7 +144,7 @@ Public Class CalendarBookingControl
     ' --- Functions ---
     ' -----------------
 
-    Public Sub Setup(currTime As Date, trigger As String, previousForm As CalendarBookingForm)
+    Public Sub Setup(currTime As Date, trigger As String, previousForm As CalendarBookingForm, userEvent As UserCalendarEvent)
         Me.flPanel.Location = New Point(0, 0)
         Me.flPanel.Size = New Size(410, 632)
 
@@ -157,8 +155,13 @@ Public Class CalendarBookingControl
         Me.previousForm = previousForm
         Me.lblError = Me.previousForm.GetLblError()
 
-        Me.startTime = currTime
-        Me.endTime = Me.startTime.AddHours(1)
+        If userEvent Is Nothing Then
+            Me.startTime = currTime
+            Me.endTime = Me.startTime.AddHours(1)
+        Else
+            Me.startTime = userEvent.GetStartDate
+            Me.endTime = userEvent.GetEndDate
+        End If
 
         Me.startMinute = 0
         Me.startMonth = Me.startTime.Month

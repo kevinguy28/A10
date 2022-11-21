@@ -81,32 +81,32 @@ Partial Class CalendarCarConfirmForm
         'lblFromPrompt
         '
         Me.lblFromPrompt.AutoSize = True
-        Me.lblFromPrompt.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblFromPrompt.Location = New System.Drawing.Point(12, 120)
+        Me.lblFromPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblFromPrompt.Location = New System.Drawing.Point(9, 120)
         Me.lblFromPrompt.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFromPrompt.Name = "lblFromPrompt"
-        Me.lblFromPrompt.Size = New System.Drawing.Size(55, 25)
+        Me.lblFromPrompt.Size = New System.Drawing.Size(47, 21)
         Me.lblFromPrompt.TabIndex = 14
         Me.lblFromPrompt.Text = "from:"
         '
         'lblToPrompt
         '
         Me.lblToPrompt.AutoSize = True
-        Me.lblToPrompt.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblToPrompt.Location = New System.Drawing.Point(34, 145)
+        Me.lblToPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblToPrompt.Location = New System.Drawing.Point(29, 141)
         Me.lblToPrompt.Margin = New System.Windows.Forms.Padding(0)
         Me.lblToPrompt.Name = "lblToPrompt"
-        Me.lblToPrompt.Size = New System.Drawing.Size(33, 25)
+        Me.lblToPrompt.Size = New System.Drawing.Size(27, 21)
         Me.lblToPrompt.TabIndex = 13
         Me.lblToPrompt.Text = "to:"
         '
         'lblTime
         '
-        Me.lblTime.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTime.Location = New System.Drawing.Point(67, 120)
+        Me.lblTime.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblTime.Location = New System.Drawing.Point(56, 120)
         Me.lblTime.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTime.Name = "lblTime"
-        Me.lblTime.Size = New System.Drawing.Size(228, 50)
+        Me.lblTime.Size = New System.Drawing.Size(239, 42)
         Me.lblTime.TabIndex = 12
         Me.lblTime.Text = "lblTime"
         '
@@ -155,7 +155,7 @@ Partial Class CalendarCarConfirmForm
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = False
         '
-        'CalendarCarConfirm
+        'CalendarCarConfirmForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -170,7 +170,7 @@ Partial Class CalendarCarConfirmForm
         Me.Controls.Add(Me.lblName)
         Me.Controls.Add(Me.imgProfilePicture)
         Me.Controls.Add(Me.lblTitle)
-        Me.Name = "CalendarCarConfirm"
+        Me.Name = "CalendarCarConfirmForm"
         Me.Text = "Car Rider Booking"
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

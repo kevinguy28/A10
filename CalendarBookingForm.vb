@@ -5,8 +5,9 @@
     Dim carSelectForm As CalendarCarSelectForm
 
     Dim currTime As Date
+    Dim userEvent As UserCalendarEvent
 
-    Public Sub New(user As String, scenario As Integer, previousForm As AppForm, homeForm As HomeForm, devForm As DevForm, currTime As Date, trigger As String)
+    Public Sub New(user As String, scenario As Integer, previousForm As AppForm, homeForm As HomeForm, devForm As DevForm, currTime As Date, trigger As String, Optional userEvent As UserCalendarEvent = Nothing)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -21,7 +22,8 @@
         Me.devWindow = devForm
 
         Me.currTime = currTime
-        Me.usrctrlBooking.Setup(Me.currTime, trigger, Me)
+        Me.userEvent = userEvent
+        Me.usrctrlBooking.Setup(Me.currTime, trigger, Me, Me.userEvent)
     End Sub
 
     Private Sub CalendarBookingForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load

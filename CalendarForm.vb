@@ -60,6 +60,7 @@
 
         ' Month
         Me.usrctrlMonth.SetMonthForm(Me)
+        Me.usrctrlMonth.SetMin(New Date.Now())
         Me.UpdateMonth(0)
 
     End Sub

@@ -132,6 +132,7 @@ Partial Class CalendarCarSelectForm
         Me.btnBook.FlatAppearance.BorderSize = 0
         Me.btnBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBook.Font = New System.Drawing.Font("Segoe UI Semibold", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnBook.ForeColor = System.Drawing.Color.White
         Me.btnBook.Location = New System.Drawing.Point(92, 732)
         Me.btnBook.Name = "btnBook"
         Me.btnBook.Size = New System.Drawing.Size(300, 60)

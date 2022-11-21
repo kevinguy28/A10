@@ -8,8 +8,6 @@
 
     Dim hourEventList As List(Of Label)
 
-    'Dim usrEventList As List(Of UserCalendarEvent)
-
     Dim colourHover = Color.FromArgb(127, 242, 229)
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
     Dim colourPressed = Color.FromArgb(120, 145, 141)
@@ -113,15 +111,25 @@
         lblSlot4pm.Click, lblSlot5pm.Click, lblSlot6pm.Click, lblSlot7pm.Click,
         lblSlot8pm.Click, lblSlot9pm.Click, lblSlot10pm.Click, lblSlot11pm.Click
 
-        For index As Integer = 0 To Me.timesLabels.Length - 1
+        Dim hourInt = Array.IndexOf(Me.timesLabels, CType(sender, Label))
 
-            If Me.timesLabels(index) Is sender Then
-                Dim timeDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, index, 0, 0)
-                Me.previousForm.TimeSlotClicked(timeDate)
-                Exit For
-            End If
+        If Me.hourEventList.Contains(CType(sender, Label)) Then
+            Dim startDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourInt, 0, 0)
+            Dim endDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourInt + 1, 0, 0)
+            Dim userEvent As UserCalendarEvent
+            Select Case Me.user
+                Case "owner"
+                    userEvent = Me.devWindow.GetOwnerFirstAvailability(startDate, endDate)
+                Case "rider"
+                    userEvent = Me.devWindow.GetRiderFirstBooking(startDate, endDate)
+            End Select
+            Me.previousForm.TimeSlotClicked(startDate, userEvent)
+        Else
+            Dim timeDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourInt, 0, 0)
+            Me.previousForm.TimeSlotClicked(timeDate)
+        End If
 
-        Next
+
 
     End Sub
 
