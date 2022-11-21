@@ -423,6 +423,26 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property diagnostic3() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("diagnostic3", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property diagnostic4() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("diagnostic4", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property endCall() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("endCall", resourceCulture)
@@ -476,6 +496,16 @@ Namespace My.Resources
         Friend ReadOnly Property Home___Hover() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Home___Hover", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property keypad() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("keypad", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

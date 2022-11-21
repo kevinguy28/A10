@@ -4,6 +4,8 @@
     'Children
     Dim dayForm As CalendarDayForm
     Dim bookingForm As CalendarBookingForm
+    Dim schedulingForm As CalendarSchedulingForm
+
 
     'Variables
     Dim currMonth As Date
@@ -153,8 +155,11 @@
             Me.SetCurrentForm(Me.bookingForm)
 
         ElseIf Me.user = "owner" Then
-            ' For Saadia!
-
+            ' For Saadia
+            Me.schedulingForm = New CalendarSchedulingForm(Me.user, Me.scenario, Me, Me.previousWindow, Me.devWindow, Me.currMonth, "MonthPlus")
+            Me.Hide()
+            Me.schedulingForm.Show()
+            Me.SetCurrentForm(Me.schedulingForm )
         End If
     End Sub
 
