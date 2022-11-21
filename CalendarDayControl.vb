@@ -1,6 +1,20 @@
 ﻿Public Class CalendarDayControl
 
     Dim previousForm As CalendarDayForm
+    Dim devWindow As DevForm
+
+    Dim user As String
+    Dim scenario As Integer
+
+    Dim hourEventList As List(Of Label)
+
+    'Dim usrEventList As List(Of UserCalendarEvent)
+
+    Dim colourHover = Color.FromArgb(127, 242, 229)
+    Dim colourNeutral = Color.FromArgb(151, 203, 197)
+    Dim colourPressed = Color.FromArgb(120, 145, 141)
+    Dim colourGreen = Color.FromArgb(148, 255, 155)
+
     Dim timesLabels As Label()
     Dim currDay As Date
     Dim today As Date
@@ -23,6 +37,15 @@
         Me.previousForm = parentForm
     End Sub
 
+    Public Sub SetDevForm(devForm As DevForm)
+        Me.devWindow = devForm
+    End Sub
+
+    Public Sub SetVariables(user As String, scenario As Integer)
+        Me.user = user
+        Me.scenario = scenario
+    End Sub
+
     Public Sub SetDate(newDate As Date)
         Me.currDay = newDate
 
@@ -38,9 +61,45 @@
         If isToday Then
             Me.timesLabels(today.Hour).BackColor = Color.FromArgb(151, 203, 197)
         End If
+
+        If user = "owner" Then
+            Me.SetAvailabileSlots()
+        ElseIf user = "rider" Then
+            Me.SetBookedSlots()
+        End If
     End Sub
 
-    'TimeSlotClicked
+    Private Sub SetAvailabileSlots()
+        Me.hourEventList = New List(Of Label)
+
+        For hourIndex As Integer = 0 To 23
+            Dim lblHour = Me.timesLabels(hourIndex)
+            Dim startDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourIndex, 0, 0)
+            Dim endDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourIndex, 59, 59)
+
+            If Me.devWindow.isOwnerAvailable(startDate, endDate) Then
+                lblHour.Text = "Available"
+                lblHour.BackColor = colourGreen
+                Me.hourEventList.Add(lblHour)
+            End If
+        Next
+    End Sub
+
+    Private Sub SetBookedSlots()
+        Me.hourEventList = New List(Of Label)
+
+        For hourIndex As Integer = 0 To 23
+            Dim lblHour = Me.timesLabels(hourIndex)
+            Dim startDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourIndex, 0, 0)
+            Dim endDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourIndex, 59, 59)
+
+            If Me.devWindow.isRiderBooked(startDate, endDate) Then
+                lblHour.Text = "Booked"
+                lblHour.BackColor = colourGreen
+                Me.hourEventList.Add(lblHour)
+            End If
+        Next
+    End Sub
 
     ' -----------------------
     ' --- Day Label Click ---
@@ -93,6 +152,10 @@
         Else
             CType(sender, Label).BackColor = Color.White
         End If
+
+        For Each hourEvent As Label In Me.hourEventList
+            hourEvent.BackColor = colourGreen
+        Next
     End Sub
 
 End Class

@@ -43,16 +43,6 @@
     End Sub
 
     Public Overrides Sub CloseAllChildren()
-        ' If your form opens a new form (not home or back buttons, or notifications, but creates a new one)
-        ' Then you need to create a globabl variable for each child.
-        ' See HomeForm for an example.
-        ' Over here, you call the following for each child:
-        '       If (Me.childForm IsNot Nothing) Then
-        '          Me.childForm.CloseAllForms()
-        '       End If
-        ' See HomeForm for example
-        ' If you don't have any children forms, then you can ignore this
-
         If (Me.carSelectForm IsNot Nothing) Then
             Me.carSelectForm.CloseAllForms()
         End If

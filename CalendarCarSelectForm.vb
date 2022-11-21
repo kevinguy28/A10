@@ -10,8 +10,15 @@ Public Class CalendarCarSelectForm
     Dim carAvailability As List(Of UserCalendarEvent)
     Dim itemList As List(Of CarListControl)
 
+    Dim avbltyExists = False
+
     Dim selectedItem As CarListControl
     Dim selectedEvent As UserCalendarEvent
+
+    Dim bookingEvent As UserCalendarEvent
+
+    ' Children
+    Dim confirmForm As CalendarCarConfirmForm
 
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
 
@@ -50,17 +57,32 @@ Public Class CalendarCarSelectForm
 
         ' Availability
         Me.carAvailability = Me.devWindow.GetAvailability(Me.dateStart, Me.dateEnd)
+        If Me.carAvailability.Count <> 0 Then
+            Me.avbltyExists = True
+        End If
 
         ' Panel
-        Me.PopulatePanelView()
+        If avbltyExists Then
+            Me.PopulatePanelView()
+        Else
+            Me.lblNoAvblty.Top = Me.flPanel.Top + 10
+            Me.lblNoAvblty.Visible = True
+        End If
 
         ' Setup
+        If Not avbltyExists Then
+            Me.lblTop.Visible = False
+            Me.lblLeft.Visible = False
+            Me.lblRight.Visible = False
+            Me.lblBottom.Visible = False
+        End If
         Me.lblName.Text = ""
         Me.lblCar.Text = ""
         Me.btnBook.BackColor = colourNeutral
         Me.lblTop.BackColor = colourNeutral
         Me.lblLeft.BackColor = colourNeutral
         Me.lblRight.BackColor = colourNeutral
+        Me.lblBottom.BackColor = colourNeutral
 
     End Sub
 
@@ -81,56 +103,46 @@ Public Class CalendarCarSelectForm
         For Each ctrl As CarListControl In Me.itemList
             ctrl.DeselectItem()
         Next
+        Me.btnBook.Enabled = True
         itm.SelectItem()
         Me.selectedItem = itm
         Me.selectedEvent = itm.GetEvent()
 
-        Me.lblPrompt.Visible = True
         Me.imgProfilePicture.Image = Me.selectedEvent.GetProfilePicture()
 
         Me.lblName.Text = Me.selectedEvent.GetName()
         Me.lblCar.Text = Me.selectedEvent.GetColour & " " & Me.selectedEvent.GetCar()
+    End Sub
+
+    Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
+        Me.bookingEvent = New UserCalendarEvent(My.Resources.RiderProfile, "John Smith", "rider",
+                                                Me.selectedEvent.GetCar, Me.selectedEvent.GetColour, Me.selectedEvent.GetRatingInt,
+                                                dateStart, dateEnd)
+        Me.bookingEvent.OwnerFound(Me.selectedEvent.GetName, Me.selectedEvent.GetProfilePicture)
+
+        Me.confirmForm = New CalendarCarConfirmForm(Me.bookingEvent, Me, Me.user, Me.devWindow)
+
+        Me.devWindow.OpenPopup(Me.user, Me.confirmForm)
+    End Sub
+
+    Public Sub ConfirmClicked()
+        Me.devWindow.AddBooking(Me.bookingEvent.GetProfilePicture, Me.bookingEvent.GetName, Me.bookingEvent.GetUserType,
+                                Me.bookingEvent.GetCar, Me.bookingEvent.GetColour, Me.bookingEvent.GetRatingInt,
+                                Me.bookingEvent.GetStartDate, Me.bookingEvent.GetEndDate,
+                                Me.bookingEvent.GetCarOwnerName, Me.bookingEvent.GetCarOwnerProfilePicture)
+        Me.Close()
+        Me.homeWindow.Show()
+        Me.SetCurrentForm(Me.homeWindow)
+        Me.homeWindow.CloseAllChildren()
+    End Sub
+
+    Public Sub CancelClicked()
 
     End Sub
 
-
-    '' --- Car ---
-    'Dim lblCar As Label
-
-    'Dim lblCarPrompt As Label
-    'Dim lstvwSelected As ListView
-    'Dim WithEvents btnCarSelect As Button
-
-    'Dim lstvwCar As ListView
-
-    'Private Sub CreateCar()
-    '    'Dim lblCar As Label
-
-    '    'Dim lblCarPrompt As Label
-    '    'Dim lstvwSelected As ListView
-    '    'Dim WithEvents btnCarSelect As Button
-
-    '    'Dim lstvwCar As ListView
-
-    '    ' lblCar
-    '    Me.lblCar = New Label()
-    '    Me.lblCar.Text = "Car"
-    '    Me.lblCar.TextAlign = headingTextAlign
-    '    Me.lblCar.Font = headingFont
-    '    Me.lblCar.Size = headingSize
-    '    Me.lblCar.AutoSize = False
-    '    Me.lblCar.Margin = headingPadding
-    '    Me.lblCar.BackColor = colourNeutral
-    '    Me.lblCar.ForeColor = colourWhite
-
-    '    ' lblCarPrompt
-    '    Me.lblCarPrompt = New Label
-    '    Me.lblCarPrompt.Text = "Select a car to book:"
-    '    Me.lblCarPrompt.Font = bodyFont
-    '    Me.lblCarPrompt.AutoSize = True
-    '    Me.lblCarPrompt.Margin = leftPadding
-
-    'End Sub
-
-
+    Public Overrides Sub CloseAllChildren()
+        If (Me.confirmForm IsNot Nothing) Then
+            Me.confirmForm.Dispose()
+        End If
+    End Sub
 End Class

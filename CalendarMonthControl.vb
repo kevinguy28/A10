@@ -98,8 +98,9 @@
 
     Private Sub LabelSetDays()
 
-        ' Dim startIndex As Integer = dateOne.DayOfWeek()
-        Dim startIndex As Integer = Me.currMonth.DayOfWeek()
+        Dim dayOne = New Date(Me.currMonth.Year, Me.currMonth.Month, 1, 0, 0, 0)
+
+        Dim startIndex As Integer = dayOne.DayOfWeek()
         Dim endIndex As Integer = (Date.DaysInMonth(2022, Me.month) - 1) + startIndex
 
         Dim today As Date

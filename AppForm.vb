@@ -22,7 +22,9 @@ Public Class AppForm
     ' -----------------
 
     Public Overridable Sub CloseAllChildren()
-
+        'If (Me.childForm IsNot Nothing) Then
+        '    Me.childForm.CloseAllForms()
+        'End If
     End Sub
 
     Public Overridable Sub CloseAllForms()

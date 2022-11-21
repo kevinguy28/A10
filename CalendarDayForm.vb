@@ -35,15 +35,20 @@
 
     Private Sub CalendarDayForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Form
+        Dim title As String
         If Me.user = "owner" Then
             Me.Text = "Car Owner Scheduling"
+            title = "Scheduling"
         ElseIf Me.user = "rider" Then
             Me.Text = "Car Rider Booking"
+            title = "Booking"
         End If
+
+
 
         ' Add Title, Home, Plus and Back buttons
         Me.SetBackground()
-        Me.CreateTitleLabel("Booking")
+        Me.CreateTitleLabel(title)
         Me.CreateHomeButton()
         Me.CreateBackButton()
         Me.CreatePlusButton()
@@ -57,6 +62,8 @@
 
         ' Day Control
         Me.usrctrlDay.SetParentForm(Me)
+        Me.usrctrlDay.SetDevForm(Me.devWindow)
+        Me.usrctrlDay.SetVariables(Me.user, Me.scenario)
         Me.usrctrlDay.SetDate(Me.currDay)
 
     End Sub

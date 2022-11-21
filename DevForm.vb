@@ -1,4 +1,5 @@
-﻿Imports System.Threading
+﻿Imports System.Drawing.Drawing2D
+Imports System.Threading
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
 Public Class DevForm
@@ -10,10 +11,12 @@ Public Class DevForm
     Dim currentRiderForm As AppForm
 
     Dim ownerAvailabilityList As List(Of UserCalendarEvent)
+    Dim riderBookingList As List(Of UserCalendarEvent)
 
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.CenterToScreen()
         Me.CreateOwnerAvailability()
+        Me.CreateRiderBookings()
     End Sub
 
     Private Sub btnScenario_Click(sender As Object, e As EventArgs) Handles _
@@ -37,6 +40,7 @@ Public Class DevForm
 
         ' Reset Availability
         Me.CreateOwnerAvailability()
+        Me.CreateRiderBookings()
     End Sub
 
     Public Sub SetCurrentOwnerForm(form As AppForm)
@@ -79,6 +83,10 @@ Public Class DevForm
         Me.ownerAvailabilityList.Add(ownerFou)
     End Sub
 
+    Private Sub CreateRiderBookings()
+        Me.riderBookingList = New List(Of UserCalendarEvent)()
+    End Sub
+
     Public Function AddAvailability(profilePicture As Image, userName As String, userType As String, carName As String, carColour As String, userRating As Integer, startDate As Date, endDate As Date)
         Dim newStart = startDate
         Dim newEnd = endDate
@@ -116,7 +124,7 @@ Public Class DevForm
                 ' Old | ⬛⬛⬛⬛ |
                 'newStart earlier than oldStart
                 'newEnd earlier than oldEnd
-                If Me.EarlierThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) AndAlso (oldCar = carName) Then
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) AndAlso (oldCar = carName) Then
                     conflict = True
                     Exit For
                 End If
@@ -125,7 +133,7 @@ Public Class DevForm
                 ' Old |  ⬛⬛  |
                 'newStart later than oldStart
                 'newEnd earlier than oldEnd
-                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) AndAlso (oldCar = carName) Then
+                If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) AndAlso (oldCar = carName) Then
                     conflict = True
                     Exit For
                 End If
@@ -168,12 +176,113 @@ Public Class DevForm
             ' Old |  ⬛⬛  |
             'newStart later than oldStart
             'newEnd earlier than oldEnd
-            If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+            If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
                 allAvblty.Add(cldrEvent)
             End If
         Next
 
         Return allAvblty
+    End Function
+
+    Public Sub AddBooking(profilePicture As Image, userName As String, userType As String, carName As String, carColour As String, userRating As Integer, startDate As Date, endDate As Date, carOwnerName As String, carOwnerProfilePicture As Image)
+        Dim booking = New UserCalendarEvent(profilePicture, userName, userType, carName, carColour, userRating, startDate, endDate)
+        booking.OwnerFound(carOwnerName, carOwnerProfilePicture)
+
+        For Each ownerEvent As UserCalendarEvent In Me.ownerAvailabilityList
+
+            If ownerEvent.GetName = carOwnerName AndAlso ownerEvent.GetCar = carColour _
+                AndAlso Me.EarlierThan(startDate, ownerEvent.GetStartDate) AndAlso Me.EarlierThan(endDate, ownerEvent.GetEndDate) Then
+
+                ownerEvent.RiderFound("John Smith", My.Resources.RiderProfile)
+                Exit For
+            End If
+        Next
+
+        Me.riderBookingList.Add(booking)
+    End Sub
+
+    Public Function GetBooking(startDate As Date, endDate As Date)
+        Dim newStart = startDate
+        Dim newEnd = endDate
+
+        Dim allBkng As List(Of UserCalendarEvent) = New List(Of UserCalendarEvent)()
+
+        ' Check if already exists
+        For Each cldrEvent As UserCalendarEvent In Me.riderBookingList
+
+            Dim oldStart = cldrEvent.GetStartDate()
+            Dim oldEnd = cldrEvent.GetEndDate()
+
+            ' New | ⬛⬛⬛⬛ |
+            ' Old |  ⬛⬛  |
+            'newStart later than oldStart
+            'newEnd earlier than oldEnd
+            If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
+                allBkng.Add(cldrEvent)
+            End If
+        Next
+
+        Return allBkng
+    End Function
+
+    Public Function isOwnerAvailable(startDate As Date, endDate As Date)
+        Dim newStart = startDate
+        Dim newEnd = endDate
+        Dim available = False
+
+        ' Check if already exists
+        For Each cldrEvent As UserCalendarEvent In Me.ownerAvailabilityList
+
+            ' If user has schedule
+            If cldrEvent.GetName() = "Jane Doe" Then
+
+                Dim oldStart = cldrEvent.GetStartDate()
+                Dim oldEnd = cldrEvent.GetEndDate()
+                Dim oldCar = cldrEvent.GetCar()
+
+                ' New |  ⬛⬛  |
+                ' Old | ⬛⬛⬛⬛ |
+                'newStart earlier than oldStart
+                'newEnd earlier than oldEnd
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    available = True
+                    Exit For
+                End If
+
+            End If
+        Next
+
+        Return available
+    End Function
+
+    Public Function isRiderBooked(startDate As Date, endDate As Date)
+        Dim newStart = startDate
+        Dim newEnd = endDate
+        Dim booked = False
+
+        ' Check if already exists
+        For Each cldrEvent As UserCalendarEvent In Me.riderBookingList
+
+            ' If user has schedule
+            If cldrEvent.GetName() = "John Smith" Then
+
+                Dim oldStart = cldrEvent.GetStartDate()
+                Dim oldEnd = cldrEvent.GetEndDate()
+                Dim oldCar = cldrEvent.GetCar()
+
+                ' New |  ⬛⬛  |
+                ' Old | ⬛⬛⬛⬛ |
+                'newStart earlier than oldStart
+                'newEnd earlier than oldEnd
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    booked = True
+                    Exit For
+                End If
+
+            End If
+        Next
+
+        Return booked
     End Function
 
     ' --------------
