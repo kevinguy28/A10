@@ -1,4 +1,5 @@
-﻿Imports System.Drawing.Drawing2D
+﻿Imports System.ComponentModel.DataAnnotations
+Imports System.Drawing.Drawing2D
 Imports System.Threading
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
@@ -12,12 +13,13 @@ Public Class DevForm
 
     Dim ownerAvailabilityList As List(Of UserCalendarEvent)
     Dim riderBookingList As List(Of UserCalendarEvent)
-    Dim chatHistory(2, 1) As String
+    Dim chatHistory As New List(Of ChatMessage)
 
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.CenterToScreen()
         Me.CreateOwnerAvailability()
         Me.CreateRiderBookings()
+        Me.chatHistory = New List(Of ChatMessage)
     End Sub
 
     Private Sub btnScenario_Click(sender As Object, e As EventArgs) Handles _
@@ -39,9 +41,10 @@ Public Class DevForm
         Me.ownerWindow.Show()
         Me.riderWindow.Show()
 
-        ' Reset Availability
+        ' Reset Arrays
         Me.CreateOwnerAvailability()
         Me.CreateRiderBookings()
+        Me.chatHistory = New List(Of ChatMessage)
     End Sub
 
     Public Sub SetCurrentOwnerForm(form As AppForm)
@@ -356,6 +359,18 @@ Public Class DevForm
         Next
 
         Return booked
+    End Function
+
+    ' ------------
+    ' --- Chat ---
+    ' ------------
+
+    Public Sub AddChat(chatMessage As ChatMessage)
+        chatHistory.Add(chatMessage)
+    End Sub
+
+    Public Function GetChatHistory()
+        Return Me.chatHistory
     End Function
 
     ' --------------
