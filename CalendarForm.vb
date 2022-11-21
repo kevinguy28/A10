@@ -73,8 +73,9 @@
             Me.bookingForm.CloseAllForms()
         End If
 
-        ' For Saadia~
-        ' Please copy+paste the bookingForm if-statement and adjust it to your scheduling form
+        If (Me.schedulingForm IsNot Nothing) Then
+            Me.schedulingForm.CloseAllForms()
+        End If
 
     End Sub
 
@@ -155,7 +156,6 @@
             Me.SetCurrentForm(Me.bookingForm)
 
         ElseIf Me.user = "owner" Then
-            ' For Saadia
             Me.schedulingForm = New CalendarSchedulingForm(Me.user, Me.scenario, Me, Me.previousWindow, Me.devWindow, Me.currMonth, "MonthPlus")
             Me.Hide()
             Me.schedulingForm.Show()

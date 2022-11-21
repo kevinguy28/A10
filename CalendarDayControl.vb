@@ -1,5 +1,6 @@
 ﻿Public Class CalendarDayControl
 
+    Dim previousForm As CalendarDayForm
     Dim timesLabels As Label()
     Dim currDay As Date
     Dim today As Date
@@ -18,6 +19,10 @@
 
     End Sub
 
+    Public Sub SetParentForm(parentForm As CalendarDayForm)
+        Me.previousForm = parentForm
+    End Sub
+
     Public Sub SetDate(newDate As Date)
         Me.currDay = newDate
 
@@ -33,6 +38,32 @@
         If isToday Then
             Me.timesLabels(today.Hour).BackColor = Color.FromArgb(151, 203, 197)
         End If
+    End Sub
+
+    'TimeSlotClicked
+
+    ' -----------------------
+    ' --- Day Label Click ---
+    ' -----------------------
+
+    Private Sub lblTimes_Click(sender As Object, e As EventArgs) Handles _
+        lblSlot12am.Click, lblSlot1am.Click, lblSlot2am.Click, lblSlot3am.Click,
+        lblSlot4am.Click, lblSlot5am.Click, lblSlot6am.Click, lblSlot7am.Click,
+        lblSlot8am.Click, lblSlot9am.Click, lblSlot10am.Click, lblSlot11am.Click,
+        lblSlot12pm.Click, lblSlot1pm.Click, lblSlot2pm.Click, lblSlot3pm.Click,
+        lblSlot4pm.Click, lblSlot5pm.Click, lblSlot6pm.Click, lblSlot7pm.Click,
+        lblSlot8pm.Click, lblSlot9pm.Click, lblSlot10pm.Click, lblSlot11pm.Click
+
+        For index As Integer = 0 To Me.timesLabels.Length - 1
+
+            If Me.timesLabels(index) Is sender Then
+                Dim timeDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, index, 0, 0)
+                Me.previousForm.TimeSlotClicked(timeDate)
+                Exit For
+            End If
+
+        Next
+
     End Sub
 
     ' -----------------------
@@ -63,4 +94,5 @@
             CType(sender, Label).BackColor = Color.White
         End If
     End Sub
+
 End Class
