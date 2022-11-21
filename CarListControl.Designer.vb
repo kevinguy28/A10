@@ -24,7 +24,6 @@ Partial Class CarListControl
     Private Sub InitializeComponent()
         Me.imgProfile = New System.Windows.Forms.PictureBox()
         Me.lblName = New System.Windows.Forms.Label()
-        Me.imgArrow = New System.Windows.Forms.PictureBox()
         Me.imgRating = New System.Windows.Forms.PictureBox()
         Me.lblCar = New System.Windows.Forms.Label()
         Me.lblAvblty = New System.Windows.Forms.Label()
@@ -33,7 +32,6 @@ Partial Class CarListControl
         Me.lblFromPrompt = New System.Windows.Forms.Label()
         Me.lblTop = New System.Windows.Forms.Label()
         CType(Me.imgProfile, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgArrow, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgRating, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -55,17 +53,6 @@ Partial Class CarListControl
         Me.lblName.TabIndex = 1
         Me.lblName.Text = "lblName"
         Me.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'imgArrow
-        '
-        Me.imgArrow.BackColor = System.Drawing.Color.White
-        Me.imgArrow.Image = Global.A10.My.Resources.Resources.ArrowDown___Neutral
-        Me.imgArrow.Location = New System.Drawing.Point(392, 20)
-        Me.imgArrow.Name = "imgArrow"
-        Me.imgArrow.Size = New System.Drawing.Size(25, 25)
-        Me.imgArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.imgArrow.TabIndex = 2
-        Me.imgArrow.TabStop = False
         '
         'imgRating
         '
@@ -150,14 +137,12 @@ Partial Class CarListControl
         Me.Controls.Add(Me.lblAvblty)
         Me.Controls.Add(Me.lblCar)
         Me.Controls.Add(Me.imgRating)
-        Me.Controls.Add(Me.imgArrow)
         Me.Controls.Add(Me.lblName)
         Me.Controls.Add(Me.imgProfile)
         Me.Margin = New System.Windows.Forms.Padding(0)
         Me.Name = "CarListControl"
         Me.Size = New System.Drawing.Size(420, 185)
         CType(Me.imgProfile, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgArrow, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgRating, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -166,7 +151,6 @@ Partial Class CarListControl
 
     Friend WithEvents imgProfile As PictureBox
     Friend WithEvents lblName As Label
-    Friend WithEvents imgArrow As PictureBox
     Friend WithEvents imgRating As PictureBox
     Friend WithEvents lblCar As Label
     Friend WithEvents lblAvblty As Label

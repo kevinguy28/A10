@@ -1,4 +1,5 @@
 ﻿Imports System.Diagnostics.Contracts
+Imports System.Reflection.Metadata.Ecma335
 
 Public Class CalendarCarSelectForm
     Inherits AppForm
@@ -8,6 +9,11 @@ Public Class CalendarCarSelectForm
 
     Dim carAvailability As List(Of UserCalendarEvent)
     Dim itemList As List(Of CarListControl)
+
+    Dim selectedItem As CarListControl
+    Dim selectedEvent As UserCalendarEvent
+
+    Dim colourNeutral = Color.FromArgb(151, 203, 197)
 
     Public Sub New(user As String, scenario As Integer, previousForm As AppForm, HomeForm As HomeForm, DevForm As DevForm, dateStart As Date, dateEnd As Date)
 
@@ -38,14 +44,23 @@ Public Class CalendarCarSelectForm
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.btnBack)
 
-        Me.Label1.Text = Format(dateStart, "dddd d MMMM yyyy hh:mm:ss tt")
-        Me.Label2.Text = Format(dateEnd, "dddd d MMMM yyyy hh:mm:ss tt")
+        Dim startTime = Format(dateStart, "ddd d MMM yyyy") & " at " & Format(dateStart, "h:mm tt")
+        Dim endTime = Format(dateEnd, "ddd d MMM yyyy") & " at " & Format(dateEnd, "h:mm tt")
+        Me.lblTime.Text = startTime & vbCrLf & endTime
 
         ' Availability
         Me.carAvailability = Me.devWindow.GetAvailability(Me.dateStart, Me.dateEnd)
 
         ' Panel
         Me.PopulatePanelView()
+
+        ' Setup
+        Me.lblName.Text = ""
+        Me.lblCar.Text = ""
+        Me.btnBook.BackColor = colourNeutral
+        Me.lblTop.BackColor = colourNeutral
+        Me.lblLeft.BackColor = colourNeutral
+        Me.lblRight.BackColor = colourNeutral
 
     End Sub
 
@@ -67,6 +82,15 @@ Public Class CalendarCarSelectForm
             ctrl.DeselectItem()
         Next
         itm.SelectItem()
+        Me.selectedItem = itm
+        Me.selectedEvent = itm.GetEvent()
+
+        Me.lblPrompt.Visible = True
+        Me.imgProfilePicture.Image = Me.selectedEvent.GetProfilePicture()
+
+        Me.lblName.Text = Me.selectedEvent.GetName()
+        Me.lblCar.Text = Me.selectedEvent.GetColour & " " & Me.selectedEvent.GetCar()
+
     End Sub
 
 

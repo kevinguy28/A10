@@ -2,14 +2,12 @@
     Dim usrEvent As UserCalendarEvent
     Dim previousForm As CalendarCarSelectForm
 
-    Dim expanded = False
-    Dim selected = False
-
-    Dim collapsedHeight = 50
+    Dim collapsedHeight = 45
     Dim expandedHeight = 185
 
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
     Dim colourWhite = Color.White
+    Dim colourBlack = Color.FromKnownColor(KnownColor.ControlText)
 
     Public Sub New(usrEvent As UserCalendarEvent, previousForm As CalendarCarSelectForm)
 
@@ -48,83 +46,63 @@
         Me.previousForm.ControlClicked(Me)
     End Sub
 
-    Private Sub imgArrow_Click(sender As Object, e As EventArgs) Handles imgArrow.Click
-        If expanded Then
-            expanded = False
-            Me.Height = collapsedHeight
-            Me.imgArrow.Image = My.Resources.ArrowDown___Hover
-        Else
-            expanded = True
-            Me.Height = expandedHeight
-            Me.imgArrow.Image = My.Resources.ArrowUp___Hover
-        End If
-    End Sub
+    Public Function GetEvent()
+        Return Me.usrEvent
+    End Function
 
     Public Sub SelectItem()
-        Me.selected = True
-        Me.BackColor = colourNeutral
-
-        Me.imgArrow.BackColor = colourNeutral
-        Me.imgProfile.BackColor = colourNeutral
-
-        Me.lblName.BackColor = colourNeutral
-        Me.lblCar.BackColor = colourNeutral
-        Me.lblAvblty.BackColor = colourNeutral
-        Me.lblAvPrompt.BackColor = colourNeutral
-        Me.lblFromPrompt.BackColor = colourNeutral
-        Me.lblToPrompt.BackColor = colourNeutral
-
-        Select Case Me.imgArrow.Image.ToString
-            Case My.Resources.ArrowUp___Neutral.ToString
-                Me.imgArrow.Image = My.Resources.ArrowUp___White
-            Case My.Resources.ArrowDown___Neutral.ToString
-                Me.imgArrow.Image = My.Resources.ArrowDown___White
-        End Select
+        Me.Height = expandedHeight
     End Sub
 
     Public Sub DeselectItem()
-        Me.selected = False
+        Me.Height = collapsedHeight
+    End Sub
+
+    Private Sub MakeBlueWhite()
+        Me.BackColor = colourNeutral
+        Me.imgProfile.BackColor = colourNeutral
+        Me.lblName.BackColor = colourNeutral
+        Me.lblName.ForeColor = colourWhite
+        Me.lblCar.BackColor = colourNeutral
+        Me.lblCar.ForeColor = colourWhite
+        Me.lblAvblty.BackColor = colourNeutral
+        Me.lblAvblty.ForeColor = colourWhite
+        Me.lblAvPrompt.BackColor = colourNeutral
+        Me.lblAvPrompt.ForeColor = colourWhite
+        Me.lblFromPrompt.BackColor = colourNeutral
+        Me.lblFromPrompt.ForeColor = colourWhite
+        Me.lblToPrompt.BackColor = colourNeutral
+        Me.lblToPrompt.ForeColor = colourWhite
+    End Sub
+
+    Private Sub MakeWhiteBlack()
         Me.BackColor = colourWhite
-
-        Me.imgArrow.BackColor = colourWhite
         Me.imgProfile.BackColor = colourWhite
-
         Me.lblName.BackColor = colourWhite
+        Me.lblName.ForeColor = colourBlack
         Me.lblCar.BackColor = colourWhite
+        Me.lblCar.ForeColor = colourBlack
         Me.lblAvblty.BackColor = colourWhite
+        Me.lblAvblty.ForeColor = colourBlack
         Me.lblAvPrompt.BackColor = colourWhite
+        Me.lblAvPrompt.ForeColor = colourBlack
         Me.lblFromPrompt.BackColor = colourWhite
+        Me.lblFromPrompt.ForeColor = colourBlack
         Me.lblToPrompt.BackColor = colourWhite
-
-        Select Case Me.imgArrow.Image.ToString
-            Case My.Resources.ArrowUp___White.ToString
-                Me.imgArrow.Image = My.Resources.ArrowUp___Neutral
-            Case My.Resources.ArrowDown___White.ToString
-                Me.imgArrow.Image = My.Resources.ArrowDown___Neutral
-        End Select
+        Me.lblToPrompt.ForeColor = colourBlack
     End Sub
 
-    Private Sub imgArrow_MouseEnter(sender As Object, e As EventArgs) Handles imgArrow.MouseEnter
-        If expanded Then
-            Me.imgArrow.Image = My.Resources.ArrowUp___Hover
-        Else
-            Me.imgArrow.Image = My.Resources.ArrowDown___Hover
-        End If
+    Private Sub CarListControl_MouseEnter(sender As Object, e As EventArgs) Handles _
+        Me.MouseEnter, imgProfile.MouseEnter, imgRating.MouseEnter, lblName.MouseEnter, lblCar.MouseEnter,
+        lblAvPrompt.MouseEnter, lblFromPrompt.MouseEnter, lblToPrompt.MouseEnter, lblAvblty.MouseEnter
+
+        Me.MakeBlueWhite()
     End Sub
 
-    Private Sub imgArrow_MouseLeave(sender As Object, e As EventArgs) Handles imgArrow.MouseLeave
-        If expanded Then
-            If selected Then
-                Me.imgArrow.Image = My.Resources.ArrowUp___White
-            Else
-                Me.imgArrow.Image = My.Resources.ArrowUp___Neutral
-            End If
-        Else
-            If selected Then
-                Me.imgArrow.Image = My.Resources.ArrowDown___White
-            Else
-                Me.imgArrow.Image = My.Resources.ArrowDown___Neutral
-            End If
-        End If
+    Private Sub CarListControl_MouseLeave(sender As Object, e As EventArgs) Handles _
+        Me.MouseLeave, imgProfile.MouseLeave, imgRating.MouseLeave, lblName.MouseLeave, lblCar.MouseLeave,
+        lblAvPrompt.MouseLeave, lblFromPrompt.MouseLeave, lblToPrompt.MouseLeave, lblAvblty.MouseLeave
+
+        Me.MakeWhiteBlack()
     End Sub
 End Class
