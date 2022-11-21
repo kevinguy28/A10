@@ -153,9 +153,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property ArrowDown() As System.Drawing.Bitmap
+        Friend ReadOnly Property ArrowDown___Hover() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("ArrowDown", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ArrowDown___Hover", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -163,9 +163,19 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property ArrowDown___Hover() As System.Drawing.Bitmap
+        Friend ReadOnly Property ArrowDown___Neutral() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("ArrowDown___Hover", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ArrowDown___Neutral", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ArrowDown___White() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ArrowDown___White", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -213,9 +223,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property ArrowUp() As System.Drawing.Bitmap
+        Friend ReadOnly Property ArrowUp___Hover() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("ArrowUp", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ArrowUp___Hover", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -223,9 +233,19 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property ArrowUp___Hover() As System.Drawing.Bitmap
+        Friend ReadOnly Property ArrowUp___Neutral() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("ArrowUp___Hover", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ArrowUp___Neutral", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ArrowUp___White() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ArrowUp___White", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

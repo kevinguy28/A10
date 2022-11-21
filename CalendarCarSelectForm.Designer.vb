@@ -48,9 +48,9 @@ Partial Class CalendarCarSelectForm
         'flPanel
         '
         Me.flPanel.BackColor = System.Drawing.Color.White
-        Me.flPanel.Location = New System.Drawing.Point(42, 241)
+        Me.flPanel.Location = New System.Drawing.Point(32, 241)
         Me.flPanel.Name = "flPanel"
-        Me.flPanel.Size = New System.Drawing.Size(400, 400)
+        Me.flPanel.Size = New System.Drawing.Size(420, 400)
         Me.flPanel.TabIndex = 2
         '
         'CalendarCarSelectForm

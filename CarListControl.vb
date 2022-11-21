@@ -3,11 +3,13 @@
     Dim previousForm As CalendarCarSelectForm
 
     Dim expanded = False
+    Dim selected = False
+
     Dim collapsedHeight = 50
-    Dim expandedHeight = 171
+    Dim expandedHeight = 185
 
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
-    Dim colourBlack = Color.FromKnownColor(KnownColor.ControlText)
+    Dim colourWhite = Color.White
 
     Public Sub New(usrEvent As UserCalendarEvent, previousForm As CalendarCarSelectForm)
 
@@ -17,6 +19,8 @@
         ' Add any initialization after the InitializeComponent() call.
         Me.usrEvent = usrEvent
         Me.previousForm = previousForm
+
+        Me.lblTop.BackColor = colourNeutral
 
         Me.imgProfile.Image = Me.usrEvent.GetProfilePicture
         Me.imgProfile.SizeMode = PictureBoxSizeMode.StretchImage
@@ -28,10 +32,10 @@
 
         Me.lblCar.Text = Me.usrEvent.GetColour() & " " & Me.usrEvent.GetCar()
 
-        Dim startText = Format(Me.usrEvent.GetStartDate, "dddd d MMMM yyyy") & " at " & Format(Me.usrEvent.GetStartDate, "h:mm tt")
-        Dim endText = Format(Me.usrEvent.GetEndDate, "dddd d MMMM yyyy") & " at " & Format(Me.usrEvent.GetEndDate, "h:mm tt")
+        Dim startText = Format(Me.usrEvent.GetStartDate, "ddd d MMM yyyy") & " " & Format(Me.usrEvent.GetStartDate, "h:mm tt")
+        Dim endText = Format(Me.usrEvent.GetEndDate, "ddd d MMM yyyy") & " " & Format(Me.usrEvent.GetEndDate, "h:mm tt")
 
-        Me.lblAvblty.Text = "Available from " & vbCrLf & startText & vbCrLf & " to " & vbCrLf & endText
+        Me.lblAvblty.Text = startText & vbCrLf & endText
     End Sub
 
     Private Sub CarListControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -41,36 +45,86 @@
     Private Sub CarListControl_Click(sender As Object, e As EventArgs) Handles _
         Me.Click, lblName.Click, lblCar.Click, lblAvblty.Click, imgProfile.Click, imgRating.Click
 
+        Me.previousForm.ControlClicked(Me)
     End Sub
 
     Private Sub imgArrow_Click(sender As Object, e As EventArgs) Handles imgArrow.Click
         If expanded Then
             expanded = False
             Me.Height = collapsedHeight
+            Me.imgArrow.Image = My.Resources.ArrowDown___Hover
         Else
             expanded = True
             Me.Height = expandedHeight
+            Me.imgArrow.Image = My.Resources.ArrowUp___Hover
         End If
     End Sub
 
     Public Sub SelectItem()
-        Me.lblName.ForeColor = colourNeutral
-        Me.lblCar.ForeColor = colourNeutral
-        Me.lblAvblty.ForeColor = colourNeutral
+        Me.selected = True
+        Me.BackColor = colourNeutral
+
+        Me.imgArrow.BackColor = colourNeutral
+        Me.imgProfile.BackColor = colourNeutral
+
+        Me.lblName.BackColor = colourNeutral
+        Me.lblCar.BackColor = colourNeutral
+        Me.lblAvblty.BackColor = colourNeutral
+        Me.lblAvPrompt.BackColor = colourNeutral
+        Me.lblFromPrompt.BackColor = colourNeutral
+        Me.lblToPrompt.BackColor = colourNeutral
+
+        Select Case Me.imgArrow.Image.ToString
+            Case My.Resources.ArrowUp___Neutral.ToString
+                Me.imgArrow.Image = My.Resources.ArrowUp___White
+            Case My.Resources.ArrowDown___Neutral.ToString
+                Me.imgArrow.Image = My.Resources.ArrowDown___White
+        End Select
     End Sub
 
     Public Sub DeselectItem()
-        Me.lblName.ForeColor = colourBlack
-        Me.lblCar.ForeColor = colourBlack
-        Me.lblAvblty.ForeColor = colourBlack
+        Me.selected = False
+        Me.BackColor = colourWhite
+
+        Me.imgArrow.BackColor = colourWhite
+        Me.imgProfile.BackColor = colourWhite
+
+        Me.lblName.BackColor = colourWhite
+        Me.lblCar.BackColor = colourWhite
+        Me.lblAvblty.BackColor = colourWhite
+        Me.lblAvPrompt.BackColor = colourWhite
+        Me.lblFromPrompt.BackColor = colourWhite
+        Me.lblToPrompt.BackColor = colourWhite
+
+        Select Case Me.imgArrow.Image.ToString
+            Case My.Resources.ArrowUp___White.ToString
+                Me.imgArrow.Image = My.Resources.ArrowUp___Neutral
+            Case My.Resources.ArrowDown___White.ToString
+                Me.imgArrow.Image = My.Resources.ArrowDown___Neutral
+        End Select
     End Sub
 
     Private Sub imgArrow_MouseEnter(sender As Object, e As EventArgs) Handles imgArrow.MouseEnter
-        Me.imgArrow.Image = My.Resources.ArrowDown___Hover
+        If expanded Then
+            Me.imgArrow.Image = My.Resources.ArrowUp___Hover
+        Else
+            Me.imgArrow.Image = My.Resources.ArrowDown___Hover
+        End If
     End Sub
 
     Private Sub imgArrow_MouseLeave(sender As Object, e As EventArgs) Handles imgArrow.MouseLeave
-        Me.imgArrow.Image = My.Resources.ArrowDown
+        If expanded Then
+            If selected Then
+                Me.imgArrow.Image = My.Resources.ArrowUp___White
+            Else
+                Me.imgArrow.Image = My.Resources.ArrowUp___Neutral
+            End If
+        Else
+            If selected Then
+                Me.imgArrow.Image = My.Resources.ArrowDown___White
+            Else
+                Me.imgArrow.Image = My.Resources.ArrowDown___Neutral
+            End If
+        End If
     End Sub
-
 End Class

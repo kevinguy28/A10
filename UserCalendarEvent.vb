@@ -10,7 +10,7 @@
     Dim endDate As Date
 
     Public Sub New(profilePicture As Image, userName As String, userType As String, carName As String, carColour As String, userRating As Integer, startDate As Date, endDate As Date)
-        Me.profilePic = profilePic
+        Me.profilePic = profilePicture
         Me.userName = userName
         Me.userType = userType
         Me.carName = carName
