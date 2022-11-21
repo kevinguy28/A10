@@ -8,11 +8,11 @@ Public Class DevForm
     Dim currentOwnerForm As AppForm
     Dim currentRiderForm As AppForm
 
-    Dim ownerScheduleList As List(Of UserCalendarEvent)
+    Dim ownerAvailabilityList As List(Of UserCalendarEvent)
 
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.CenterToScreen()
-        Me.CreateOwnerSchedules()
+        Me.CreateOwnerAvailability()
     End Sub
 
     Private Sub btnScenario_Click(sender As Object, e As EventArgs) Handles _
@@ -33,6 +33,9 @@ Public Class DevForm
         Me.riderWindow.addOtherForm(ownerWindow)
         Me.ownerWindow.Show()
         Me.riderWindow.Show()
+
+        ' Reset Availability
+        Me.CreateOwnerAvailability()
     End Sub
 
     Public Sub SetCurrentOwnerForm(form As AppForm)
@@ -59,7 +62,7 @@ Public Class DevForm
     ' --- Booking / Scheduling ---
     ' ----------------------------
 
-    Private Sub CreateOwnerSchedules()
+    Private Sub CreateOwnerAvailability()
         Dim startDate = New Date(2022, 11, 26, 11, 0, 0)
         Dim endDate = New Date(2022, 11, 26, 12, 0, 0)
 
@@ -68,20 +71,20 @@ Public Class DevForm
         Dim ownerThr = New UserCalendarEvent(My.Resources.RandomProfileThree, "Monica Penner", "owner", "Chevrolet Bolt EV", "Grey", 5, startDate, endDate)
         Dim ownerFou = New UserCalendarEvent(My.Resources.RandomProfileFour, "Robert Kitchens", "owner", "Ford Mustang Mach-E", "White", 3, startDate, endDate)
 
-        Me.ownerScheduleList = New List(Of UserCalendarEvent)()
-        Me.ownerScheduleList.Add(ownerOne)
-        Me.ownerScheduleList.Add(ownerTwo)
-        Me.ownerScheduleList.Add(ownerThr)
-        Me.ownerScheduleList.Add(ownerFou)
+        Me.ownerAvailabilityList = New List(Of UserCalendarEvent)()
+        Me.ownerAvailabilityList.Add(ownerOne)
+        Me.ownerAvailabilityList.Add(ownerTwo)
+        Me.ownerAvailabilityList.Add(ownerThr)
+        Me.ownerAvailabilityList.Add(ownerFou)
     End Sub
 
-    Public Function AddSchedule(profilePicture As Image, userName As String, userType As String, carName As String, carColour As String, userRating As Integer, startDate As Date, endDate As Date)
+    Public Function AddAvailability(profilePicture As Image, userName As String, userType As String, carName As String, carColour As String, userRating As Integer, startDate As Date, endDate As Date)
         Dim newStart = startDate
         Dim newEnd = endDate
         Dim conflict = False
 
         ' Check if already exists
-        For Each cldrEvent As UserCalendarEvent In Me.ownerScheduleList
+        For Each cldrEvent As UserCalendarEvent In Me.ownerAvailabilityList
 
             ' If user has schedule
             If cldrEvent.GetName() = userName Then
@@ -99,7 +102,6 @@ Public Class DevForm
                     conflict = True
                     Exit For
                 End If
-
 
                 ' New |   ⬛⬛⬛⬛ |
                 ' Old | ⬛⬛⬛⬛   |
@@ -137,7 +139,7 @@ Public Class DevForm
 
         ' No conflict
         Dim newOwner = New UserCalendarEvent(profilePicture, userName, userType, carName, carColour, userRating, startDate, endDate)
-        Me.ownerScheduleList.Add(newOwner)
+        Me.ownerAvailabilityList.Add(newOwner)
         Return True
 
     End Function
