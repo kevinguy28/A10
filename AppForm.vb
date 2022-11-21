@@ -187,6 +187,7 @@ Public Class AppForm
         dimOverlay = New Panel
         dimOverlay.BackgroundImageLayout = ImageLayout.None
         dimOverlay.Visible = False
+        Me.Controls.Add(Me.dimOverlay)
     End Sub
 
     Public Sub DimScreen()

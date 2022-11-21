@@ -12,6 +12,7 @@ Public Class DevForm
 
     Dim ownerAvailabilityList As List(Of UserCalendarEvent)
     Dim riderBookingList As List(Of UserCalendarEvent)
+    Dim chatHistory(2, 1) As String
 
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.CenterToScreen()
@@ -63,13 +64,21 @@ Public Class DevForm
         Return DevForm.Width
     End Function
 
-    ' ----------------------------
-    ' --- Booking / Scheduling ---
-    ' ----------------------------
+    ' ------------------
+    ' --- Scheduling ---
+    ' ------------------
+
+    Private Function EarlierThan(dateOne As Date, dateTwo As Date)
+        Return (dateOne.CompareTo(dateTwo) <= 0)
+    End Function
+
+    Private Function LaterThan(dateOne As Date, dateTwo As Date)
+        Return (dateOne.CompareTo(dateTwo) >= 0)
+    End Function
 
     Private Sub CreateOwnerAvailability()
-        Dim startDate = New Date(2022, 11, 26, 11, 0, 0)
-        Dim endDate = New Date(2022, 11, 26, 12, 0, 0)
+        Dim startDate = New Date(2022, 11, 26, 8, 0, 0)
+        Dim endDate = New Date(2022, 11, 26, 20, 0, 0)
 
         Dim ownerOne = New UserCalendarEvent(My.Resources.RandomProfileOne, "Eric Holme", "owner", "Hyundai Ioniq 6", "Red", 2, startDate, endDate)
         Dim ownerTwo = New UserCalendarEvent(My.Resources.RandomProfileTwo, "Nessa Whitney", "owner", "Tesla Model 3", "Black", 4, startDate, endDate)
@@ -122,7 +131,7 @@ Public Class DevForm
 
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |
-                'newStart earlier than oldStart
+                'newStart later than oldStart
                 'newEnd earlier than oldEnd
                 If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) AndAlso (oldCar = carName) Then
                     conflict = True
@@ -131,8 +140,8 @@ Public Class DevForm
 
                 ' New | ⬛⬛⬛⬛ |
                 ' Old |  ⬛⬛  |
-                'newStart later than oldStart
-                'newEnd earlier than oldEnd
+                'newStart earlier than oldStart
+                'newEnd later than oldEnd
                 If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) AndAlso (oldCar = carName) Then
                     conflict = True
                     Exit For
@@ -150,14 +159,6 @@ Public Class DevForm
         Me.ownerAvailabilityList.Add(newOwner)
         Return True
 
-    End Function
-
-    Private Function EarlierThan(dateOne As Date, dateTwo As Date)
-        Return (dateOne.CompareTo(dateTwo) <= 0)
-    End Function
-
-    Private Function LaterThan(dateOne As Date, dateTwo As Date)
-        Return (dateOne.CompareTo(dateTwo) >= 0)
     End Function
 
     Public Sub RemoveAvailability(availability As UserCalendarEvent)
@@ -178,8 +179,8 @@ Public Class DevForm
 
             ' New | ⬛⬛⬛⬛ |
             ' Old |  ⬛⬛  |
-            'newStart later than oldStart
-            'newEnd earlier than oldEnd
+            'newStart earlier than oldStart
+            'newEnd later than oldEnd
             If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
                 allAvblty.Add(cldrEvent)
             End If
@@ -204,7 +205,7 @@ Public Class DevForm
 
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |
-                'newStart earlier than oldStart
+                'newStart later than oldStart
                 'newEnd earlier than oldEnd
                 If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
                     availability = cldrEvent
@@ -232,7 +233,7 @@ Public Class DevForm
 
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |
-                'newStart earlier than oldStart
+                'newStart later than oldStart
                 'newEnd earlier than oldEnd
                 If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
                     available = True
@@ -245,6 +246,9 @@ Public Class DevForm
         Return available
     End Function
 
+    ' ---------------
+    ' --- Booking ---
+    ' ---------------
     Public Sub AddBooking(booking As UserCalendarEvent)
         For Each ownerEvent As UserCalendarEvent In Me.ownerAvailabilityList
 
@@ -287,8 +291,8 @@ Public Class DevForm
 
             ' New | ⬛⬛⬛⬛ |
             ' Old |  ⬛⬛  |
-            'newStart later than oldStart
-            'newEnd earlier than oldEnd
+            'newStart earlier than oldStart
+            'newEnd later than oldEnd
             If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
                 allBkng.Add(cldrEvent)
             End If
@@ -313,7 +317,7 @@ Public Class DevForm
 
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |
-                'newStart earlier than oldStart
+                'newStart later than oldStart
                 'newEnd earlier than oldEnd
                 If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
                     booking = cldrEvent
@@ -341,7 +345,7 @@ Public Class DevForm
 
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |
-                'newStart earlier than oldStart
+                'newStart later than oldStart
                 'newEnd earlier than oldEnd
                 If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
                     booked = True
