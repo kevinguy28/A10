@@ -70,7 +70,7 @@ Partial Class CarForm
         'btnDiagnostic
         '
         Me.btnDiagnostic.BackColor = System.Drawing.Color.White
-        Me.btnDiagnostic.BackgroundImage = Global.A10.My.Resources.Resources.car1
+        Me.btnDiagnostic.BackgroundImage = Global.A10.My.Resources.Resources.diagnostic3
         Me.btnDiagnostic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnDiagnostic.FlatAppearance.BorderSize = 0
         Me.btnDiagnostic.FlatStyle = System.Windows.Forms.FlatStyle.Flat

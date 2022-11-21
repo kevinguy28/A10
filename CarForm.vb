@@ -100,8 +100,16 @@ Public Class CarForm
 
     Private Sub btnDiagnostic_Click(sender As Object, e As EventArgs) Handles btnDiagnostic.Click
         Me.Hide()
-        Me.carDiagnostic = New CarDiagnosticForm("owner", 2, Me, Me.homeWindow, Me.devWindow)
+        Me.carDiagnostic = New CarDiagnosticForm(Me.user, 2, Me, Me.homeWindow, Me.devWindow)
         Me.carDiagnostic.Show()
         Me.SetCurrentForm(Me.carDiagnostic)
+    End Sub
+
+    Private Sub btnDiagnostic_MouseEnter(sender As Object, e As EventArgs) Handles btnDiagnostic.MouseEnter
+        btnDiagnostic.BackgroundImage = My.Resources.diagnostic4
+    End Sub
+
+    Private Sub btnDiagnostic_MouseLeave(sender As Object, e As EventArgs) Handles btnDiagnostic.MouseLeave
+        btnDiagnostic.BackgroundImage = My.Resources.diagnostic3
     End Sub
 End Class

@@ -4,10 +4,16 @@
     <Compile Update="AccidentNotification.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="AppForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CalendarBookingControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="CalendarBookingForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CalendarCarSelectForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="CalendarDayControl.vb">
@@ -22,7 +28,22 @@
     <Compile Update="CalendarMonthControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="CallForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CarDiagnosticForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="carFeaturesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CarForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CarListControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="CarMediaForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ChatForm.vb">
