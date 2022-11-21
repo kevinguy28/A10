@@ -35,6 +35,7 @@ Partial Class CalendarCarSelectForm
         Me.lblTop = New System.Windows.Forms.Label()
         Me.lblLeft = New System.Windows.Forms.Label()
         Me.lblRight = New System.Windows.Forms.Label()
+        Me.lblBottom = New System.Windows.Forms.Label()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -178,6 +179,15 @@ Partial Class CalendarCarSelectForm
         Me.lblRight.Size = New System.Drawing.Size(3, 68)
         Me.lblRight.TabIndex = 15
         '
+        'lblBottom
+        '
+        Me.lblBottom.BackColor = System.Drawing.Color.Gray
+        Me.lblBottom.Location = New System.Drawing.Point(32, 341)
+        Me.lblBottom.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblBottom.Name = "lblBottom"
+        Me.lblBottom.Size = New System.Drawing.Size(420, 3)
+        Me.lblBottom.TabIndex = 16
+        '
         'CalendarCarSelectForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -185,6 +195,7 @@ Partial Class CalendarCarSelectForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.lblBottom)
         Me.Controls.Add(Me.lblRight)
         Me.Controls.Add(Me.lblLeft)
         Me.Controls.Add(Me.lblTop)
@@ -219,4 +230,5 @@ Partial Class CalendarCarSelectForm
     Friend WithEvents lblTop As Label
     Friend WithEvents lblLeft As Label
     Friend WithEvents lblRight As Label
+    Friend WithEvents lblBottom As Label
 End Class
