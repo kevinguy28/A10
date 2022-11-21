@@ -12,6 +12,8 @@
 
     Dim monthForm As CalendarForm
     Dim bookingForm As CalendarBookingControl
+    Dim schedulingForm As CalendarSchedulingControl
+
 
     Private Sub CalendarMonthControl_Load(sender As Object, e As EventArgs) Handles Me.Load
         ' Days of the Week
@@ -38,6 +40,10 @@
 
     Public Sub SetBookingForm(newForm As CalendarBookingControl)
         Me.bookingForm = newForm
+    End Sub
+
+    Public Sub SetSchedulingForm(newform As CalendarSchedulingControl)
+        Me.schedulingForm = newform
     End Sub
 
     Public Sub SetMin(newMin As Date)
