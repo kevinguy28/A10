@@ -9,6 +9,7 @@
     Dim carForm As CarForm
     Dim routeForm As RouteForm
     Dim chatForm As ChatForm
+    Dim routeBackgroundImage As Bitmap
 
     Public Sub New(user As String, scenario As Integer, devForm As DevForm)
 
@@ -49,9 +50,16 @@
         End If
 
         If Me.scenario = 4 And Me.user = "rider" Then
-            Dim lowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario, Me.otherForm) : lowBatteryNotification.setLocation()
+            Dim riderLowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario, Me) : riderLowBatteryNotification.setLocation()
             Me.Hide()
-            lowBatteryNotification.TopMost = True : lowBatteryNotification.Show()
+            riderLowBatteryNotification.TopMost = True : riderLowBatteryNotification.Show()
+        End If
+
+        If Me.scenario = 4 And Me.user = "owner" Then
+            Dim ownerLowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario, Me) : ownerLowBatteryNotification.setLocation()
+            Me.Hide() : ownerLowBatteryNotification.btnConfirm.Visible = True : ownerLowBatteryNotification.btnEnd.Visible = False : ownerLowBatteryNotification.btnContinue.Visible = False
+            ownerLowBatteryNotification.Text = "The car battery is running low. Please wait for the riders response!"
+            ownerLowBatteryNotification.TopMost = True : ownerLowBatteryNotification.Show()
         End If
 
     End Sub
@@ -100,6 +108,7 @@
     Private Sub btnRoute_Click(sender As Object, e As EventArgs) Handles btnRoute.Click
         Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow)
         Me.Hide()
+        Me.routeForm.pbRoute.Image = routeBackgroundImage
         Me.routeForm.Show()
         Me.SetCurrentForm(Me.routeForm)
     End Sub
@@ -179,5 +188,11 @@
 
     Private Sub btnChat_MouseUp(sender As Object, e As MouseEventArgs) Handles btnChat.MouseUp
         Me.btnChat.BackgroundImage = My.Resources.Chat___Hover
+    End Sub
+
+    ' Relates to scenario 4, updatiung route background image
+
+    Public Sub changeMap(theImage As Bitmap)
+        Me.routeBackgroundImage = theImage
     End Sub
 End Class

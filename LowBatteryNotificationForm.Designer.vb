@@ -27,6 +27,7 @@ Partial Class LowBatteryNotificationForm
         Me.btnContinue = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblLowBattery = New System.Windows.Forms.Label()
+        Me.btnConfirm = New System.Windows.Forms.Button()
         CType(Me.pbLowBattery, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -86,6 +87,18 @@ Partial Class LowBatteryNotificationForm
         Me.lblLowBattery.TabIndex = 18
         Me.lblLowBattery.Text = "Car Battery Notification"
         '
+        'btnConfirm
+        '
+        Me.btnConfirm.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnConfirm.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnConfirm.Location = New System.Drawing.Point(153, 657)
+        Me.btnConfirm.Name = "btnConfirm"
+        Me.btnConfirm.Size = New System.Drawing.Size(179, 57)
+        Me.btnConfirm.TabIndex = 24
+        Me.btnConfirm.Text = "Confirm"
+        Me.btnConfirm.UseVisualStyleBackColor = False
+        Me.btnConfirm.Visible = False
+        '
         'LowBatteryNotificationForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -93,6 +106,7 @@ Partial Class LowBatteryNotificationForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.btnConfirm)
         Me.Controls.Add(Me.pbLowBattery)
         Me.Controls.Add(Me.btnEnd)
         Me.Controls.Add(Me.btnContinue)
@@ -113,4 +127,5 @@ Partial Class LowBatteryNotificationForm
     Friend WithEvents btnContinue As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents lblLowBattery As Label
+    Friend WithEvents btnConfirm As Button
 End Class

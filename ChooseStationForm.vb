@@ -49,24 +49,30 @@ Public Class ChooseStationForm
 
     Private Sub rb1_Click(sender As Object, e As EventArgs) Handles rb1.Click
         Me.pbMap.Image = My.Resources.the_map_rb1
+        Me.otherForm.changeMap(My.Resources.the_map_rb1)
     End Sub
 
     Private Sub rb2_Click(sender As Object, e As EventArgs) Handles rb2.Click
         Me.pbMap.Image = My.Resources.the_map_rb2
+        Me.otherForm.changeMap(My.Resources.the_map_rb2)
     End Sub
     Private Sub rb3_Click(sender As Object, e As EventArgs) Handles rb3.Click
         Me.pbMap.Image = My.Resources.the_map_rb3
+        Me.otherForm.changeMap(My.Resources.the_map_rb3)
     End Sub
 
     Private Sub rb4_Click(sender As Object, e As EventArgs) Handles rb4.Click
         Me.pbMap.Image = My.Resources.the_map_rb4
+        Me.otherForm.changeMap(My.Resources.the_map_rb4)
     End Sub
 
     Private Sub rb5_Click(sender As Object, e As EventArgs) Handles rb5.Click
         Me.pbMap.Image = My.Resources.the_map_rb5
+        Me.otherForm.changeMap(My.Resources.the_map_rb5)
     End Sub
 
     Private Sub rb6_Click(sender As Object, e As EventArgs) Handles rb6.Click
         Me.pbMap.Image = My.Resources.the_map_rb6
+        Me.otherForm.changeMap(My.Resources.the_map_rb6)
     End Sub
 End Class
