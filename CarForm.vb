@@ -4,7 +4,7 @@ Public Class CarForm
     Inherits AppForm
 
     ' Children
-    Dim carFeatures As CarFeaturesForm
+    Dim carFeatures As CarFeatureForm
     Dim carMedia As CarMediaForm
     Dim carDiagnostic As CarDiagnosticForm
 
@@ -70,7 +70,8 @@ Public Class CarForm
     ' --------------------
     Private Sub btnCarFeatures_Click(sender As Object, e As EventArgs) Handles btnCarFeatures.Click
         ' car features form opens up here
-        Me.carFeatures = New CarFeaturesForm
+        'Me.carFeatures = New CarFeaturesForm
+        Me.carFeatures = New CarFeatureForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow)
         Me.Hide()
         carFeatures.Show()
         Me.SetCurrentForm(Me.carFeatures)

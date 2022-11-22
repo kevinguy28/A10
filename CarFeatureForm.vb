@@ -1,6 +1,29 @@
-﻿Public Class CarFeaturesForm
+﻿Public Class CarFeatureForm
+    Inherits AppForm
 
-    Private Sub CarFeaturesForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Shared temperature As Integer = 12
+    Shared fanStength As Integer = 1
+
+    Public Sub New(user As String, scenario As Integer, previousForm As CarForm, homeForm As HomeForm, devForm As DevForm)
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        Me.user = user : Me.scenario = scenario : Me.previousWindow = previousForm : Me.homeWindow = homeForm : Me.devWindow = devForm
+    End Sub
+
+    Private Sub CarFeatureForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Me.SetBackground()
+        Me.CreateTitleLabel("Car Features")
+        Me.CreateHomeButton()
+        Me.CreateBackButton()
+        Me.Controls.Add(Me.lblTitle)
+        Me.Controls.Add(Me.btnHome)
+        Me.Controls.Add(Me.btnBack)
+
+        Me.SetLocation()
+
         Select Case Me.user
             Case "owner"
                 Me.Text = "Car Owner Car Features"
@@ -8,6 +31,7 @@
                 Me.Text = "Car Rider Car Features"
         End Select
     End Sub
+
     Private Sub btnToggleWindows_Click(sender As Object, e As EventArgs) Handles btnToggleWindows.Click
         If btnToggleWindows.Tag = 1 Then
             btnToggleWindows.BackgroundImage = My.Resources.toggle_off
@@ -22,12 +46,12 @@
     Private Sub btnFanStrengthDown_Click(sender As Object, e As EventArgs) Handles btnFanStrengthDown.Click
         'lowers the fan strength (range from 1 to 10)
         btnFanStrengthDown.BackgroundImage = My.Resources.arrow_down_press
-        If Not lblFanStrengthNumber.Tag = 1 Then
-            lblFanStrengthNumber.Tag -= 1
-            lblFanStrengthNumber.Text -= 1
-            lblInsideTempValue.Text += 1
+        If Not fanStength = 1 Then
+            fanStength -= 1
+            lblFanStrengthNumber.Text = fanStength
+            temperature += 1
+            lblInsideTempValue.Text = temperature
         End If
-
     End Sub
 
     Private Sub btnFanStrengthDown_MouseEnter(sender As Object, e As EventArgs) Handles btnFanStrengthDown.MouseEnter
@@ -42,12 +66,12 @@
     Private Sub btnFanStrengthUp_Click(sender As Object, e As EventArgs) Handles btnFanStrengthUp.Click
         'increases the fan strength (range from 1 to 10)
         btnFanStrengthUp.BackgroundImage = My.Resources.arrow_up_press
-        If Not lblFanStrengthNumber.Tag = 10 Then ' if tag is not 10 then increase intensity b/c 10 is max
-            lblFanStrengthNumber.Tag += 1
-            lblFanStrengthNumber.Text += 1
-            lblInsideTempValue.Text -= 1
+        If Not fanStength = 10 Then ' if tag is not 10 then increase intensity b/c 10 is max
+            fanStength += 1
+            lblFanStrengthNumber.Text = fanStength
+            temperature -= 1
+            lblInsideTempValue.Text = temperature
         End If
-
     End Sub
 
     Private Sub btnFanStrengthUp_MouseEnter(sender As Object, e As EventArgs) Handles btnFanStrengthUp.MouseEnter
