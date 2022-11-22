@@ -96,7 +96,8 @@ Public Class CarForm
 
     Private Sub btnCarMedia_Click(sender As Object, e As EventArgs) Handles btnCarMedia.Click
         btnCarMedia.BackgroundImage = My.Resources.car_media_press
-        Me.carMedia = New CarMediaForm
+        'Me.carMedia = New CarMediaForm
+        Me.carMedia = New CarMediaForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow)
         Me.carMedia.Show()
         Me.Hide()
         Me.SetCurrentForm(Me.carMedia)
