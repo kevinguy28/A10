@@ -108,11 +108,107 @@
     End Sub
 
     Private Sub btnRoute_Click(sender As Object, e As EventArgs) Handles btnRoute.Click
-        Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow)
-        Me.Hide()
-        Me.routeForm.pbRoute.Image = routeBackgroundImage
-        Me.routeForm.Show()
-        Me.SetCurrentForm(Me.routeForm)
+        Dim bookingEvent As UserCalendarEvent
+
+        ' Current Booking
+        If Me.scenario = 1 Then
+            Me.devWindow.SetCurrentBooking()
+        Else
+            Dim startDate = New Date(2022, 11, 22, 20, 0, 0)
+            Dim endDate = New Date(2022, 11, 22, 23, 0, 0)
+            Dim schedulingEvent = New UserCalendarEvent(My.Resources.OwnerProfile, "Jane Doe", "owner",
+                                                "Tesla Model 3", "Blue", 5,
+                                                 startDate, endDate)
+            bookingEvent = New UserCalendarEvent(My.Resources.RiderProfile, "John Smith", "rider",
+                                                 "Tesla Model 3", "Blue", 5,
+                                                 startDate, endDate)
+            bookingEvent.OwnerFound("Jane Doe", My.Resources.OwnerProfile)
+
+            Me.devWindow.AddAvailability(schedulingEvent)
+            Me.devWindow.AddBooking(bookingEvent)
+
+            Me.devWindow.SetCurrentBooking(bookingEvent)
+        End If
+
+        ' Owner needs to be part of booking event to see ride
+        If (bookingEvent Is Nothing) Then
+            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, New Date.Now(), New Date.Now(), bookingEvent)
+
+            Me.routeForm.cmbxStart.Enabled = False
+            Me.routeForm.cmbxEnd.Enabled = False
+            ' Disable Up
+            Me.routeForm.imgStartHourUp.Enabled = False
+            Me.routeForm.imgStartHourDown.Enabled = False
+            Me.routeForm.imgStartMinuteUp.Enabled = False
+            Me.routeForm.imgStartMinuteDown.Enabled = False
+            Me.routeForm.imgStartAmPmUp.Enabled = False
+            Me.routeForm.imgStartAmPmDown.Enabled = False
+            ' Disable Down
+            Me.routeForm.imgEndHourUp.Enabled = False
+            Me.routeForm.imgEndHourDown.Enabled = False
+            Me.routeForm.imgEndMinuteUp.Enabled = False
+            Me.routeForm.imgEndMinuteDown.Enabled = False
+            Me.routeForm.imgEndAmPmUp.Enabled = False
+            Me.routeForm.imgEndAmPmDown.Enabled = False
+            ' lblError
+            Select Case Me.user
+                Case "owner"
+                    Me.routeForm.lblError.Text = "You need to add a booking"
+                    Me.routeForm.lblError.Visible = True
+                    Me.routeForm.lblError.BringToFront()
+                Case "rider"
+                    Me.routeForm.lblError.Text = "You need to accept a booking request"
+                    Me.routeForm.lblError.Visible = True
+                    Me.routeForm.lblError.BringToFront()
+            End Select
+
+            Me.Hide()
+            Me.routeForm.pbRoute.Image = routeBackgroundImage
+            Me.routeForm.Show()
+            Me.SetCurrentForm(Me.routeForm)
+
+        ElseIf (Me.user = "owner" And bookingEvent.GetCarOwnerName = "Jane Doe") Then
+            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent.GetEndDate, bookingEvent)
+
+            Me.routeForm.cmbxStart.Enabled = False
+            Me.routeForm.cmbxEnd.Enabled = False
+            ' Disable Up
+            Me.routeForm.imgStartHourUp.Enabled = False
+            Me.routeForm.imgStartHourDown.Enabled = False
+            Me.routeForm.imgStartMinuteUp.Enabled = False
+            Me.routeForm.imgStartMinuteDown.Enabled = False
+            Me.routeForm.imgStartAmPmUp.Enabled = False
+            Me.routeForm.imgStartAmPmDown.Enabled = False
+            ' Disable Down
+            Me.routeForm.imgEndHourUp.Enabled = False
+            Me.routeForm.imgEndHourDown.Enabled = False
+            Me.routeForm.imgEndMinuteUp.Enabled = False
+            Me.routeForm.imgEndMinuteDown.Enabled = False
+            Me.routeForm.imgEndAmPmUp.Enabled = False
+            Me.routeForm.imgEndAmPmDown.Enabled = False
+
+            ' Start --> Recall Car
+            Me.routeForm.btnStart.Enabled = True
+            Me.routeForm.btnStart.Text = "Recall Car"
+
+            Me.Hide()
+            Me.routeForm.pbRoute.Image = routeBackgroundImage
+            Me.routeForm.Show()
+            Me.SetCurrentForm(Me.routeForm)
+        Else
+            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent.GetEndDate, bookingEvent)
+
+            Me.Hide()
+            Me.routeForm.pbRoute.Image = routeBackgroundImage
+            Me.routeForm.Show()
+            Me.SetCurrentForm(Me.routeForm)
+        End If
+
+        'If Car Moving
+        If Me.devWindow.GetCarMoving Then
+            Me.routeForm.cmbxStart.Text = "Toronto Metropolitan University"
+            Me.routeForm.cmbxEnd.Text = "University of Toronto"
+        End If
     End Sub
 
     Private Sub btnChat_Click(sender As Object, e As EventArgs) Handles btnChat.Click

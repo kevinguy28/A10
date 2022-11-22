@@ -17,6 +17,8 @@
         Me.usrEvent = usrEvent
         Me.user = user
         Me.devWindow = devWindow
+
+        Me.CalendarCarConfirmForm_LocationChanged(Nothing, Nothing)
     End Sub
 
     Private Sub CalendarCarConfirm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -98,6 +100,7 @@
     ' ----------------
     Private Sub CalendarCarConfirmForm_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Me.devWindow.ClosePopup(Me.user)
+        Me.Dispose()
     End Sub
 
 End Class

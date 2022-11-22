@@ -15,6 +15,9 @@ Public Class DevForm
     Dim riderBookingList As List(Of UserCalendarEvent)
     Dim chatHistory As New List(Of ChatMessage)
 
+    Dim currentBooking As UserCalendarEvent
+    Dim carMoving As Boolean = False
+
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.CenterToScreen()
         Me.CreateOwnerAvailability()
@@ -529,6 +532,34 @@ Public Class DevForm
         Next
 
         Return booked
+    End Function
+
+    ' -----------------------
+    ' --- Current Booking ---
+    ' -----------------------
+
+    Public Sub SetCurrentBooking(Optional bookingEvent As UserCalendarEvent = Nothing)
+        If bookingEvent Is Nothing Then
+            Me.currentBooking = Me.GetRiderFirstBooking(New Date.Now(), New Date.Now().AddYears(10))
+        Else
+            Me.currentBooking = bookingEvent
+        End If
+    End Sub
+
+    Public Function GetCurrentBooking() As UserCalendarEvent
+        Return Me.currentBooking
+    End Function
+
+    ' ------------------
+    ' --- Car Moving ---
+    ' ------------------
+
+    Public Sub SetCarMoving(moving As Boolean)
+        Me.carMoving = moving
+    End Sub
+
+    Public Function GetCarMoving() As Boolean
+        Return Me.carMoving
     End Function
 
     ' ------------
