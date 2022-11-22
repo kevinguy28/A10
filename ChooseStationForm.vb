@@ -3,14 +3,16 @@
 Public Class ChooseStationForm
     Dim user As String
     Dim scenario As Integer
-    Dim otherForm As HomeForm
-    Public Sub New(user As String, scenario As Integer, otherForm As HomeForm)
+    Dim homeForm As HomeForm
+
+    Public aNotification As NotificationForm
+    Public Sub New(user As String, scenario As Integer, homeForm As HomeForm)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Me.user = user : Me.scenario = scenario : Me.otherForm = otherForm
+        Me.user = user : Me.scenario = scenario : Me.homeForm = homeForm
     End Sub
 
     Public Sub setLocation()
@@ -19,11 +21,11 @@ Public Class ChooseStationForm
         Dim halfDev = DevForm.GetDevWidth() / 2
         Dim halfForm = DevForm.GetFormWidth() / 2
 
-        If Me.user = "rider" Then
+        If Me.user = "owner" Then
             Dim x = ((halfScreen - halfDev) / 2) - halfForm
             Me.Location = New Point(x, 0)
 
-        ElseIf Me.user = "owner" Then
+        ElseIf Me.user = "rider" Then
             Dim x = (fullScreen - ((halfScreen - halfDev) / 2)) - halfForm
             Me.Location = New Point(x, 0)
         End If
@@ -44,35 +46,41 @@ Public Class ChooseStationForm
     End Sub
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
+        MsgBox(Me.user)
+        If Me.user = "rider" Then
+            Me.aNotification = New NotificationForm(Me.user, Me.scenario, Me.homeForm) : Me.aNotification.changeTitle("Notification!")
+
+            Me.aNotification.Show() : Me.aNotification.Location = New Point(Me.aNotification.SetLocation(), 0)
+        End If
         Me.Close()
     End Sub
 
     Private Sub rb1_Click(sender As Object, e As EventArgs) Handles rb1.Click
         Me.pbMap.Image = My.Resources.the_map_rb1
-        Me.otherForm.changeMap(My.Resources.the_map_rb1)
+        Me.homeForm.changeMap(My.Resources.the_map_rb1)
     End Sub
 
     Private Sub rb2_Click(sender As Object, e As EventArgs) Handles rb2.Click
         Me.pbMap.Image = My.Resources.the_map_rb2
-        Me.otherForm.changeMap(My.Resources.the_map_rb2)
+        Me.homeForm.changeMap(My.Resources.the_map_rb2)
     End Sub
     Private Sub rb3_Click(sender As Object, e As EventArgs) Handles rb3.Click
         Me.pbMap.Image = My.Resources.the_map_rb3
-        Me.otherForm.changeMap(My.Resources.the_map_rb3)
+        Me.homeForm.changeMap(My.Resources.the_map_rb3)
     End Sub
 
     Private Sub rb4_Click(sender As Object, e As EventArgs) Handles rb4.Click
         Me.pbMap.Image = My.Resources.the_map_rb4
-        Me.otherForm.changeMap(My.Resources.the_map_rb4)
+        Me.homeForm.changeMap(My.Resources.the_map_rb4)
     End Sub
 
     Private Sub rb5_Click(sender As Object, e As EventArgs) Handles rb5.Click
         Me.pbMap.Image = My.Resources.the_map_rb5
-        Me.otherForm.changeMap(My.Resources.the_map_rb5)
+        Me.homeForm.changeMap(My.Resources.the_map_rb5)
     End Sub
 
     Private Sub rb6_Click(sender As Object, e As EventArgs) Handles rb6.Click
         Me.pbMap.Image = My.Resources.the_map_rb6
-        Me.otherForm.changeMap(My.Resources.the_map_rb6)
+        Me.homeForm.changeMap(My.Resources.the_map_rb6)
     End Sub
 End Class
