@@ -187,6 +187,17 @@
             Me.routeForm.imgEndAmPmUp.Enabled = False
             Me.routeForm.imgEndAmPmDown.Enabled = False
 
+            ' Grey Out Time
+            Dim disableColour = Color.Gray
+            Me.routeForm.lblHourStart.ForeColor = disableColour
+            Me.routeForm.lblMinuteStart.ForeColor = disableColour
+            Me.routeForm.lblStartColon.ForeColor = disableColour
+            Me.routeForm.lblAmPmStart.ForeColor = disableColour
+            Me.routeForm.lblHourEnd.ForeColor = disableColour
+            Me.routeForm.lblMinuteEnd.ForeColor = disableColour
+            Me.routeForm.lblEndColon.ForeColor = disableColour
+            Me.routeForm.lblAmPmEnd.ForeColor = disableColour
+
             ' Start --> Recall Car
             Me.routeForm.btnStart.Enabled = True
             Me.routeForm.btnStart.Text = "Recall Car"

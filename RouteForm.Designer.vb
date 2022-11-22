@@ -47,7 +47,7 @@ Partial Class RouteForm
         Me.imgEndHourUp = New System.Windows.Forms.PictureBox()
         Me.lblAmPmEnd = New System.Windows.Forms.Label()
         Me.lblMinuteEnd = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblEndColon = New System.Windows.Forms.Label()
         Me.lblHourEnd = New System.Windows.Forms.Label()
         Me.tmrMouseHold = New System.Windows.Forms.Timer(Me.components)
         Me.lblError = New System.Windows.Forms.Label()
@@ -345,17 +345,17 @@ Partial Class RouteForm
         Me.lblMinuteEnd.Text = "00"
         Me.lblMinuteEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label3
+        'lblEndColon
         '
-        Me.Label3.BackColor = System.Drawing.Color.White
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label3.Location = New System.Drawing.Point(202, 696)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(20, 30)
-        Me.Label3.TabIndex = 29
-        Me.Label3.Text = ":"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblEndColon.BackColor = System.Drawing.Color.White
+        Me.lblEndColon.Font = New System.Drawing.Font("Segoe UI Semibold", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblEndColon.Location = New System.Drawing.Point(202, 696)
+        Me.lblEndColon.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblEndColon.Name = "lblEndColon"
+        Me.lblEndColon.Size = New System.Drawing.Size(20, 30)
+        Me.lblEndColon.TabIndex = 29
+        Me.lblEndColon.Text = ":"
+        Me.lblEndColon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblHourEnd
         '
@@ -401,7 +401,7 @@ Partial Class RouteForm
         Me.Controls.Add(Me.imgEndHourUp)
         Me.Controls.Add(Me.lblAmPmEnd)
         Me.Controls.Add(Me.lblMinuteEnd)
-        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.lblEndColon)
         Me.Controls.Add(Me.lblHourEnd)
         Me.Controls.Add(Me.imgStartAmPmDown)
         Me.Controls.Add(Me.imgStartMinuteDown)
@@ -464,7 +464,7 @@ Partial Class RouteForm
     Friend WithEvents imgEndHourUp As PictureBox
     Friend WithEvents lblAmPmEnd As Label
     Friend WithEvents lblMinuteEnd As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents lblEndColon As Label
     Friend WithEvents lblHourEnd As Label
     Friend WithEvents tmrMouseHold As Timer
     Friend WithEvents lblError As Label

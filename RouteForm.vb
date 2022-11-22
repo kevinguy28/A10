@@ -31,6 +31,7 @@ Public Class RouteForm
 
     ' Children
     Dim confirmForm As CarRouteChangeForm
+    Dim recallForm As CarRecallForm
 
     Public Sub New(user As String, scenario As Integer, previousForm As HomeForm, devForm As DevForm, startDate As Date, endDate As Date, bookingEvent As UserCalendarEvent)
 
@@ -126,8 +127,14 @@ Public Class RouteForm
     ' --------------
 
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
-        Me.confirmForm = New CarRouteChangeForm(Me.user, Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent)
-        Me.devWindow.OpenPopup(Me.user, Me.confirmForm)
+        Select Case Me.user
+            Case "owner"
+                Me.recallForm = New CarRecallForm(Me.user, Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent)
+                Me.devWindow.OpenPopup(Me.user, Me.recallForm)
+            Case "rider"
+                Me.confirmForm = New CarRouteChangeForm(Me.user, Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent)
+                Me.devWindow.OpenPopup(Me.user, Me.confirmForm)
+        End Select
     End Sub
 
     ' -------------------

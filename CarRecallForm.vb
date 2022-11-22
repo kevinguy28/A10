@@ -1,4 +1,4 @@
-﻿Public Class CarRouteChangeForm
+﻿Public Class CarRecallForm
 
     Dim user As String
     Dim scenario As Integer
@@ -23,30 +23,28 @@
         Me.Form_LocationChanged(Nothing, Nothing)
     End Sub
 
-    Private Sub CarRouteChangeFormvb_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub CarRecallForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Select Case Me.user
             Case "owner"
-                Me.Text = "Car Owner Route Change"
-                Me.lblTitle.Text = "Your Car Is Moving"
-                Me.lblPrompt.Text = "Your car's rider" & vbCrLf & "has changed their route."
+                Me.Text = "Car Owner Car Recall"
+                Me.lblTitle.Text = "Car Recall"
+                Me.lblPrompt.Text = "Are you sure you" & vbCrLf & "want to recall your car?"
                 Me.imgProfilePicture.Image = bookingEvent.GetProfilePicture
                 Me.lblName.Text = bookingEvent.GetName
-                Me.lblPrice.Text = "Earnings: $11"
-
-                Me.btnConfirm.Visible = False
-                Me.btnCancel.Visible = False
-                Me.btnOk.Visible = True
-            Case "rider"
-                Me.Text = "Car Rider Route change"
-                Me.lblTitle.Text = "Route Confirmation"
-                Me.lblPrompt.Text = "Are you sure you" & vbCrLf & "want to set this route?"
-                Me.imgProfilePicture.Image = bookingEvent.GetCarOwnerProfilePicture
-                Me.lblName.Text = bookingEvent.GetCarOwnerName
-                Me.lblPrice.Text = "Cost: $11"
 
                 Me.btnConfirm.Visible = True
                 Me.btnCancel.Visible = True
                 Me.btnOk.Visible = False
+            Case "rider"
+                Me.Text = "Car Rider Car Recall"
+                Me.lblTitle.Text = "Car Recall"
+                Me.lblPrompt.Text = "Your ride has been recalled." & vbCrLf & "Please exit the vehicle."
+                Me.imgProfilePicture.Image = bookingEvent.GetCarOwnerProfilePicture
+                Me.lblName.Text = bookingEvent.GetCarOwnerName
+
+                Me.btnConfirm.Visible = False
+                Me.btnCancel.Visible = False
+                Me.btnOk.Visible = True
         End Select
 
         Me.lblCar.Text = Me.bookingEvent.GetColour & " " & Me.bookingEvent.GetCar
@@ -54,7 +52,6 @@
         Dim startTime = Format(Me.bookingEvent.GetStartDate, "ddd d MMM yyyy") & " at " & Format(Me.bookingEvent.GetStartDate, "h:mm tt")
         Dim endTime = Format(Me.bookingEvent.GetEndDate, "ddd d MMM yyyy") & " at " & Format(Me.bookingEvent.GetEndDate, "h:mm tt")
         Me.lblTime.Text = startTime & vbCrLf & endTime
-
     End Sub
 
     ' ---------------
@@ -62,13 +59,13 @@
     ' ---------------
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
-        Dim ownerConfirmForm = New CarRouteChangeForm("owner", Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent)
+        Dim ownerConfirmForm = New CarRecallForm("rider", Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent)
         Me.Close()
-        Me.devWindow.OpenPopup("owner", ownerConfirmForm)
+        Me.devWindow.OpenPopup("rider", ownerConfirmForm)
 
         ' Return to home
         Me.homeWindow.Show()
-        Me.devWindow.SetCurrentRiderForm(Me.homeWindow)
+        Me.devWindow.SetCurrentOwnerForm(Me.homeWindow)
         Me.homeWindow.CloseAllChildren()
     End Sub
 
@@ -85,7 +82,7 @@
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(358, 504)
+        Me.Size = New Size(358, 350)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
