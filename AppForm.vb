@@ -32,7 +32,7 @@ Public Class AppForm
         Me.Dispose()
     End Sub
 
-    Protected Sub SetCurrentForm(form As Form)
+    Protected Sub SetCurrentForm(form As AppForm)
         If (user = "owner") Then
             Me.devWindow.SetCurrentOwnerForm(form)
         ElseIf (user = "rider") Then
@@ -184,9 +184,9 @@ Public Class AppForm
     ' --- Dim Screen ---
     ' ------------------
     Public Sub CreateDimOverlay()
-        dimOverlay = New Panel
-        dimOverlay.BackgroundImageLayout = ImageLayout.None
-        dimOverlay.Visible = False
+        Me.dimOverlay = New Panel
+        Me.dimOverlay.BackgroundImageLayout = ImageLayout.None
+        Me.dimOverlay.Visible = False
         Me.Controls.Add(Me.dimOverlay)
     End Sub
 

@@ -40,6 +40,8 @@ Public Class DevForm
         Me.riderWindow.addOtherForm(ownerWindow)
         Me.ownerWindow.Show()
         Me.riderWindow.Show()
+        Me.currentOwnerForm = Me.ownerWindow
+        Me.currentRiderForm = Me.riderWindow
 
         ' Reset Arrays
         Me.CreateOwnerAvailability()
@@ -81,11 +83,11 @@ Public Class DevForm
 
     Private Sub CreateOwnerAvailability()
         Dim startDate = New Date(2022, 11, 26, 8, 0, 0)
-        Dim endDate = New Date(2022, 11, 26, 20, 0, 0)
+        Dim endDate = New Date(2022, 11, 26, 22, 0, 0)
 
         Dim ownerOne = New UserCalendarEvent(My.Resources.RandomProfileOne, "Eric Holme", "owner", "Hyundai Ioniq 6", "Red", 2, startDate, endDate)
-        Dim ownerTwo = New UserCalendarEvent(My.Resources.RandomProfileTwo, "Nessa Whitney", "owner", "Tesla Model 3", "Black", 4, startDate, endDate)
-        Dim ownerThr = New UserCalendarEvent(My.Resources.RandomProfileThree, "Monica Penner", "owner", "Chevrolet Bolt EV", "Grey", 5, startDate, endDate)
+        Dim ownerTwo = New UserCalendarEvent(My.Resources.RandomProfileTwo, "Nessa Whitney", "owner", "Porsche Taycan", "Black", 3, startDate, endDate)
+        Dim ownerThr = New UserCalendarEvent(My.Resources.RandomProfileThree, "Monica Penner", "owner", "Chevrolet Bolt EV", "Grey", 4, startDate, endDate)
         Dim ownerFou = New UserCalendarEvent(My.Resources.RandomProfileFour, "Robert Kitchens", "owner", "Ford Mustang Mach-E", "White", 3, startDate, endDate)
 
         Me.ownerAvailabilityList = New List(Of UserCalendarEvent)()
@@ -99,26 +101,30 @@ Public Class DevForm
         Me.riderBookingList = New List(Of UserCalendarEvent)()
     End Sub
 
-    Public Function AddAvailability(profilePicture As Image, userName As String, userType As String, carName As String, carColour As String, userRating As Integer, startDate As Date, endDate As Date)
-        Dim newStart = startDate
-        Dim newEnd = endDate
+    Public Function AddAvailability(scheduling As UserCalendarEvent)
+        Dim newStart = scheduling.GetStartDate
+        Dim newEnd = scheduling.GetEndDate
         Dim conflict = False
 
         ' Check if already exists
         For Each cldrEvent As UserCalendarEvent In Me.ownerAvailabilityList
 
             ' If user has schedule
-            If cldrEvent.GetName() = userName Then
+            If cldrEvent.GetName() = scheduling.GetName Then
 
                 Dim oldStart = cldrEvent.GetStartDate()
                 Dim oldEnd = cldrEvent.GetEndDate()
                 Dim oldCar = cldrEvent.GetCar()
 
+                If Not (oldCar = scheduling.GetCar) Then
+                    Continue For
+                End If
+
                 ' New | ⬛⬛⬛⬛   |
                 ' Old |   ⬛⬛⬛⬛ |
                 'newEnd later then oldStart
                 'newEnd earlier than oldEnd
-                If Me.LaterThan(newEnd, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) AndAlso (oldCar = carName) Then
+                If Me.LaterThan(newEnd, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
                     conflict = True
                     Exit For
                 End If
@@ -127,7 +133,7 @@ Public Class DevForm
                 ' Old | ⬛⬛⬛⬛   |
                 'newStart later than oldStart
                 'newStart earlier than oldEnd
-                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newStart, oldEnd) AndAlso (oldCar = carName) Then
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newStart, oldEnd) Then
                     conflict = True
                     Exit For
                 End If
@@ -136,7 +142,7 @@ Public Class DevForm
                 ' Old | ⬛⬛⬛⬛ |
                 'newStart later than oldStart
                 'newEnd earlier than oldEnd
-                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) AndAlso (oldCar = carName) Then
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
                     conflict = True
                     Exit For
                 End If
@@ -145,7 +151,7 @@ Public Class DevForm
                 ' Old |  ⬛⬛  |
                 'newStart earlier than oldStart
                 'newEnd later than oldEnd
-                If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) AndAlso (oldCar = carName) Then
+                If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
                     conflict = True
                     Exit For
                 End If
@@ -158,8 +164,9 @@ Public Class DevForm
         End If
 
         ' No conflict
-        Dim newOwner = New UserCalendarEvent(profilePicture, userName, userType, carName, carColour, userRating, startDate, endDate)
-        Me.ownerAvailabilityList.Add(newOwner)
+        'Dim newOwner = New UserCalendarEvent(profilePicture, userName, userType, carName, carColour, userRating, startDate, endDate)
+        'Me.ownerAvailabilityList.Add(newOwner)
+        Me.ownerAvailabilityList.Add(scheduling)
         Return True
 
     End Function
@@ -180,13 +187,42 @@ Public Class DevForm
             Dim oldStart = cldrEvent.GetStartDate()
             Dim oldEnd = cldrEvent.GetEndDate()
 
+            ' New | ⬛⬛⬛⬛   |
+            ' Old |   ⬛⬛⬛⬛ |
+            'newEnd later then oldStart
+            'newEnd earlier than oldEnd
+            If Me.LaterThan(newEnd, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                allAvblty.Add(cldrEvent)
+                Continue For
+            End If
+
+            ' New |   ⬛⬛⬛⬛ |
+            ' Old | ⬛⬛⬛⬛   |
+            'newStart later than oldStart
+            'newStart earlier than oldEnd
+            If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newStart, oldEnd) Then
+                allAvblty.Add(cldrEvent)
+                Continue For
+            End If
+
+            ' New |  ⬛⬛  |
+            ' Old | ⬛⬛⬛⬛ |
+            'newStart later than oldStart
+            'newEnd earlier than oldEnd
+            If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                allAvblty.Add(cldrEvent)
+                Continue For
+            End If
+
             ' New | ⬛⬛⬛⬛ |
             ' Old |  ⬛⬛  |
             'newStart earlier than oldStart
             'newEnd later than oldEnd
             If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
                 allAvblty.Add(cldrEvent)
+                Continue For
             End If
+
         Next
 
         Return allAvblty
@@ -292,13 +328,42 @@ Public Class DevForm
             Dim oldStart = cldrEvent.GetStartDate()
             Dim oldEnd = cldrEvent.GetEndDate()
 
+            ' New | ⬛⬛⬛⬛   |
+            ' Old |   ⬛⬛⬛⬛ |
+            'newEnd later then oldStart
+            'newEnd earlier than oldEnd
+            If Me.LaterThan(newEnd, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                allBkng.Add(cldrEvent)
+                Continue For
+            End If
+
+            ' New |   ⬛⬛⬛⬛ |
+            ' Old | ⬛⬛⬛⬛   |
+            'newStart later than oldStart
+            'newStart earlier than oldEnd
+            If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newStart, oldEnd) Then
+                allBkng.Add(cldrEvent)
+                Continue For
+            End If
+
+            ' New |  ⬛⬛  |
+            ' Old | ⬛⬛⬛⬛ |
+            'newStart later than oldStart
+            'newEnd earlier than oldEnd
+            If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                allBkng.Add(cldrEvent)
+                Continue For
+            End If
+
             ' New | ⬛⬛⬛⬛ |
             ' Old |  ⬛⬛  |
             'newStart earlier than oldStart
             'newEnd later than oldEnd
             If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
                 allBkng.Add(cldrEvent)
+                Continue For
             End If
+
         Next
 
         Return allBkng
@@ -379,11 +444,11 @@ Public Class DevForm
     Public Sub OpenPopup(user As String, popup As Form)
         Select Case user
             Case "owner"
-                currentOwnerForm.CreateDimOverlay()
-                currentOwnerForm.DimScreen()
+                Me.currentOwnerForm.CreateDimOverlay()
+                Me.currentOwnerForm.DimScreen()
             Case "rider"
-                currentRiderForm.CreateDimOverlay()
-                currentRiderForm.DimScreen()
+                Me.currentRiderForm.CreateDimOverlay()
+                Me.currentRiderForm.DimScreen()
         End Select
         popup.Show()
         popup.TopMost = True
@@ -392,9 +457,9 @@ Public Class DevForm
     Public Sub ClosePopup(user As String)
         Select Case user
             Case "owner"
-                currentOwnerForm.UnDimScreen()
+                Me.currentOwnerForm.UnDimScreen()
             Case "rider"
-                currentRiderForm.UnDimScreen()
+                Me.currentRiderForm.UnDimScreen()
         End Select
     End Sub
 

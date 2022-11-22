@@ -52,7 +52,7 @@
     End Sub
 
     Public Sub NextClicked(dateStart As Date, dateEnd As Date)
-        Me.carSelectForm = New CalendarCarSelectForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, dateStart, dateEnd)
+        Me.carSelectForm = New CalendarCarSelectForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, dateStart, dateEnd, Me.userEvent)
         Me.Hide()
         Me.carSelectForm.Show()
         Me.SetCurrentForm(Me.carSelectForm)

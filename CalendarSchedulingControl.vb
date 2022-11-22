@@ -147,7 +147,7 @@ Public Class CalendarSchedulingControl
     ' --- Functions ---
     ' -----------------
 
-    Public Sub Setup(currTime As Date, trigger As String, previousForm As CalendarSchedulingForm)
+    Public Sub Setup(currTime As Date, trigger As String, previousForm As CalendarSchedulingForm, userEvent As UserCalendarEvent)
         Me.flPanel.Location = New Point(0, 0)
         Me.flPanel.Size = New Size(410, 632)
 
@@ -158,8 +158,13 @@ Public Class CalendarSchedulingControl
         Me.previousForm = previousForm
         Me.lblError = Me.previousForm.GetLblError()
 
-        Me.startTime = currTime
-        Me.endTime = Me.startTime.AddHours(1)
+        If userEvent Is Nothing Then
+            Me.startTime = currTime
+            Me.endTime = Me.startTime.AddHours(1)
+        Else
+            Me.startTime = userEvent.GetStartDate
+            Me.endTime = userEvent.GetEndDate
+        End If
 
         Me.startMinute = 0
         Me.startMonth = Me.startTime.Month
@@ -624,7 +629,7 @@ Public Class CalendarSchedulingControl
     Private Sub CreateNext()
         'btnNext
         Me.btnNext = New Button
-        Me.btnNext.Text = "Next"
+        Me.btnNext.Text = "Schedule"
         Me.btnNext.Font = headingFont
         Me.btnNext.TextAlign = headingTextAlign
         Me.btnNext.BackColor = colourNeutral
@@ -1109,8 +1114,6 @@ Public Class CalendarSchedulingControl
         Me.mouseHoldSec = 0
         Me.mouseHoldImg = CType(sender, PictureBox)
         Me.tmrMouseHold.Start()
-
-        'Me.imgTime_Click(sender, e)
     End Sub
 
     Private Sub imgTime_MouseUp(sender As Object, e As MouseEventArgs) Handles _
@@ -1239,7 +1242,7 @@ Public Class CalendarSchedulingControl
         End If
 
         'If not error
-        ' Me.previousForm.NextClicked(startTime, endTime)
+        Me.previousForm.NextClicked(startTime, endTime)
 
     End Sub
 

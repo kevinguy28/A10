@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class CalendarCarConfirmForm
+Partial Class CalendarConfirmForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -29,7 +29,7 @@ Partial Class CalendarCarConfirmForm
         Me.lblFromPrompt = New System.Windows.Forms.Label()
         Me.lblToPrompt = New System.Windows.Forms.Label()
         Me.lblTime = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblPrompt = New System.Windows.Forms.Label()
         Me.btnConfirm = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -37,13 +37,13 @@ Partial Class CalendarCarConfirmForm
         '
         'lblTitle
         '
-        Me.lblTitle.AutoSize = True
         Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblTitle.Location = New System.Drawing.Point(15, 9)
         Me.lblTitle.Name = "lblTitle"
         Me.lblTitle.Size = New System.Drawing.Size(275, 45)
         Me.lblTitle.TabIndex = 0
         Me.lblTitle.Text = "Booking Request"
+        Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'lblCar
         '
@@ -110,16 +110,15 @@ Partial Class CalendarCarConfirmForm
         Me.lblTime.TabIndex = 12
         Me.lblTime.Text = "lblTime"
         '
-        'Label1
+        'lblPrompt
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(48, 202)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(204, 50)
-        Me.Label1.TabIndex = 15
-        Me.Label1.Text = "Are you sure you " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "want to book this ride?"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.lblPrompt.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblPrompt.Location = New System.Drawing.Point(15, 202)
+        Me.lblPrompt.Name = "lblPrompt"
+        Me.lblPrompt.Size = New System.Drawing.Size(275, 50)
+        Me.lblPrompt.TabIndex = 15
+        Me.lblPrompt.Text = "Are you sure you " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "want to book this ride?"
+        Me.lblPrompt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnConfirm
         '
@@ -155,14 +154,14 @@ Partial Class CalendarCarConfirmForm
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = False
         '
-        'CalendarCarConfirmForm
+        'CalendarConfirmForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(304, 307)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnConfirm)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblPrompt)
         Me.Controls.Add(Me.lblFromPrompt)
         Me.Controls.Add(Me.lblToPrompt)
         Me.Controls.Add(Me.lblTime)
@@ -170,7 +169,7 @@ Partial Class CalendarCarConfirmForm
         Me.Controls.Add(Me.lblName)
         Me.Controls.Add(Me.imgProfilePicture)
         Me.Controls.Add(Me.lblTitle)
-        Me.Name = "CalendarCarConfirmForm"
+        Me.Name = "CalendarConfirmForm"
         Me.Text = "Car Rider Booking"
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -185,7 +184,7 @@ Partial Class CalendarCarConfirmForm
     Friend WithEvents lblFromPrompt As Label
     Friend WithEvents lblToPrompt As Label
     Friend WithEvents lblTime As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblPrompt As Label
     Friend WithEvents btnConfirm As Button
     Friend WithEvents btnCancel As Button
 End Class

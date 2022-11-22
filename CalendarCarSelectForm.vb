@@ -19,7 +19,7 @@ Public Class CalendarCarSelectForm
     Dim previousEvent As UserCalendarEvent
 
     ' Children
-    Dim confirmForm As CalendarCarConfirmForm
+    Dim confirmForm As CalendarConfirmForm
 
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
 
@@ -128,7 +128,8 @@ Public Class CalendarCarSelectForm
                                                 dateStart, dateEnd)
         Me.bookingEvent.OwnerFound(Me.selectedEvent.GetName, Me.selectedEvent.GetProfilePicture)
 
-        Me.confirmForm = New CalendarCarConfirmForm(Me.bookingEvent, Me, Me.user, Me.devWindow)
+        Me.confirmForm = New CalendarConfirmForm(Me.bookingEvent, Me.user, Me.devWindow)
+        Me.confirmForm.SetBookingForm(Me)
 
         Me.devWindow.OpenPopup(Me.user, Me.confirmForm)
     End Sub

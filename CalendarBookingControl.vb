@@ -4,8 +4,6 @@ Public Class CalendarBookingControl
 
     Dim previousForm As CalendarBookingForm
 
-    Dim userEvent As UserCalendarEvent
-
     Dim startTime As Date
     Dim endTime As Date
 
@@ -1111,8 +1109,6 @@ Public Class CalendarBookingControl
         Me.mouseHoldSec = 0
         Me.mouseHoldImg = CType(sender, PictureBox)
         Me.tmrMouseHold.Start()
-
-        'Me.imgTime_Click(sender, e)
     End Sub
 
     Private Sub imgTime_MouseUp(sender As Object, e As MouseEventArgs) Handles _

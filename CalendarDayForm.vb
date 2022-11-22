@@ -83,7 +83,7 @@
             Me.SetCurrentForm(Me.bookingForm)
 
         ElseIf Me.user = "owner" Then
-            Me.schedulingForm = New CalendarSchedulingForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, timeDate, "DaySlot")
+            Me.schedulingForm = New CalendarSchedulingForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, timeDate, "DaySlot", Me.userEvent)
             Me.Hide()
             Me.schedulingForm.Show()
             Me.SetCurrentForm(Me.schedulingForm)
