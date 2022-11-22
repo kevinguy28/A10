@@ -131,4 +131,10 @@ Public Class CarForm
     Private Sub btnDiagnostic_MouseLeave(sender As Object, e As EventArgs) Handles btnDiagnostic.MouseLeave
         btnDiagnostic.BackgroundImage = My.Resources.diagnostic3
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim ownerNotification As New NotificationForm(Me.user, Me.scenario, Me.homeWindow)
+        ownerNotification.Show() : ownerNotification.changeTitle("Request") : ownerNotification.SetLocation() : ownerNotification.changeDescription("The rider has requested to stop the vehicle. Approve?")
+        ownerNotification.makeBtnVisible()
+    End Sub
 End Class

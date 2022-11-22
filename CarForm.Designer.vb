@@ -29,6 +29,7 @@ Partial Class CarForm
         Me.lblCarFeatures = New System.Windows.Forms.Label()
         Me.lblCarMedia = New System.Windows.Forms.Label()
         Me.lblDiagnostic = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnEmergency
@@ -120,6 +121,17 @@ Partial Class CarForm
         Me.lblDiagnostic.Text = "Diagnostic"
         Me.lblDiagnostic.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Button1.Location = New System.Drawing.Point(24, 685)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(436, 65)
+        Me.Button1.TabIndex = 22
+        Me.Button1.Text = "Request a Stop"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'CarForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -127,6 +139,7 @@ Partial Class CarForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lblDiagnostic)
         Me.Controls.Add(Me.lblCarMedia)
         Me.Controls.Add(Me.lblCarFeatures)
@@ -148,4 +161,5 @@ Partial Class CarForm
     Friend WithEvents lblCarFeatures As Label
     Friend WithEvents lblCarMedia As Label
     Friend WithEvents lblDiagnostic As Label
+    Friend WithEvents Button1 As Button
 End Class

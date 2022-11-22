@@ -33,6 +33,20 @@
         End If
     End Function
 
+    Function SetOtherLocation()
+        Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
+        Dim halfScreen = fullScreen / 2
+        Dim halfDev = DevForm.Width / 2
+        Dim halfHome = Me.Width / 2
+
+        If Me.user = "owner" Then
+            Me.Location = New Point(((halfScreen - halfDev) / 2) - halfHome, 0)
+
+        Else
+            Me.Location = New Point((fullScreen - ((halfScreen - halfDev) / 2)) - halfHome, 0)
+        End If
+    End Function
+
     Public Sub changeTitle(title As String)
         Me.lblTitle.Text = title
     End Sub
@@ -46,4 +60,21 @@
         Me.Dispose()
     End Sub
 
+    Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
+        Dim riderNotification As New NotificationForm(Me.user, Me.scenario, Me.homeWindow)
+        riderNotification.changeDescription("The owner has accepted the request. The vehicle will pull over when safe.")
+        riderNotification.changeTitle("Notification!") : riderNotification.SetOtherLocation() : riderNotification.Show()
+        Me.Close()
+    End Sub
+
+    Public Sub makeBtnVisible()
+        Me.btnApprove.Visible = True : Me.btnDeny.Visible = True : Me.btnConfirm.Visible = False
+    End Sub
+
+    Private Sub btnDeny_Click(sender As Object, e As EventArgs) Handles btnDeny.Click
+        Dim riderNotification As New NotificationForm(Me.user, Me.scenario, Me.homeWindow)
+        riderNotification.changeDescription("The owner has denied the request. The vehicle will continue.")
+        riderNotification.changeTitle("Notification!") : riderNotification.SetOtherLocation() : riderNotification.Show()
+        Me.Close()
+    End Sub
 End Class

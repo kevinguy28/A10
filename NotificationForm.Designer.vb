@@ -25,6 +25,8 @@ Partial Class NotificationForm
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.btnConfirm = New System.Windows.Forms.Button()
         Me.lblDescription = New System.Windows.Forms.Label()
+        Me.btnApprove = New System.Windows.Forms.Button()
+        Me.btnDeny = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblTitle
@@ -56,9 +58,31 @@ Partial Class NotificationForm
         Me.lblDescription.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblDescription.Location = New System.Drawing.Point(62, 197)
         Me.lblDescription.Name = "lblDescription"
-        Me.lblDescription.Size = New System.Drawing.Size(361, 439)
+        Me.lblDescription.Size = New System.Drawing.Size(361, 274)
         Me.lblDescription.TabIndex = 15
         Me.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnApprove
+        '
+        Me.btnApprove.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btnApprove.Location = New System.Drawing.Point(98, 538)
+        Me.btnApprove.Name = "btnApprove"
+        Me.btnApprove.Size = New System.Drawing.Size(116, 83)
+        Me.btnApprove.TabIndex = 16
+        Me.btnApprove.Text = "Approve"
+        Me.btnApprove.UseVisualStyleBackColor = False
+        Me.btnApprove.Visible = False
+        '
+        'btnDeny
+        '
+        Me.btnDeny.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btnDeny.Location = New System.Drawing.Point(270, 538)
+        Me.btnDeny.Name = "btnDeny"
+        Me.btnDeny.Size = New System.Drawing.Size(116, 83)
+        Me.btnDeny.TabIndex = 17
+        Me.btnDeny.Text = "Deny"
+        Me.btnDeny.UseVisualStyleBackColor = False
+        Me.btnDeny.Visible = False
         '
         'NotificationForm
         '
@@ -67,6 +91,8 @@ Partial Class NotificationForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.btnDeny)
+        Me.Controls.Add(Me.btnApprove)
         Me.Controls.Add(Me.lblDescription)
         Me.Controls.Add(Me.btnConfirm)
         Me.Controls.Add(Me.lblTitle)
@@ -81,4 +107,6 @@ Partial Class NotificationForm
     Friend WithEvents lblTitle As Label
     Friend WithEvents btnConfirm As Button
     Friend WithEvents lblDescription As Label
+    Friend WithEvents btnApprove As Button
+    Friend WithEvents btnDeny As Button
 End Class
