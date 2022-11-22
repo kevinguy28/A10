@@ -21,6 +21,8 @@ Public Class CalendarCarSelectForm
 
     ' Children
     Dim confirmForm As CalendarConfirmForm
+    Dim requestForm As BookingRequestForm
+    Dim responseForm As BookingRequestResponseForm
 
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
 
@@ -150,8 +152,8 @@ Public Class CalendarCarSelectForm
             Me.devWindow.RemoveBooking(Me.previousEvent)
         End If
 
-        'Add booking
-        Dim err = Not Me.devWindow.AddBooking(Me.bookingEvent)
+        'Check for conflict
+        Dim err = Me.devWindow.CheckRiderBookingConflict(Me.bookingEvent)
 
         ' If error
         If (err) And (Me.shaking = False) Then
@@ -168,6 +170,16 @@ Public Class CalendarCarSelectForm
         Me.Close()
         Me.homeWindow.Show()
         Me.SetCurrentForm(Me.homeWindow)
+
+        ' Send request to Owner
+        If Me.bookingEvent.GetCarOwnerName = "Jane Doe" Then
+            Me.requestForm = New BookingRequestForm("owner", Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent)
+            Me.devWindow.OpenPopup("owner", Me.requestForm)
+        Else
+            Me.responseForm = New BookingRequestResponseForm(Me.user, Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent, "accept")
+            Me.devWindow.OpenPopup(Me.user, Me.responseForm)
+        End If
+
         Me.homeWindow.CloseAllChildren()
     End Sub
 

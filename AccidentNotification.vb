@@ -32,6 +32,7 @@
             Me.OpenOwnerForm()
         End If
 
+        Me.Form_Resize(Nothing, Nothing)
         Me.Form_LocationChanged(Nothing, Nothing)
     End Sub
 
@@ -140,7 +141,4 @@
         AccidentNotification.CloseAllForms()
     End Sub
 
-    Private Sub AccidentNotification_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

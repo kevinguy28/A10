@@ -30,6 +30,9 @@
             Me.Text = "Car Rider Home"
         End If
 
+        ' Dim Overlay
+        Me.CreateDimOverlay()
+
         ' Profile
         If Me.user = "owner" Then
             Me.imgAvatar.Image = My.Resources.OwnerProfile

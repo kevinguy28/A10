@@ -1,6 +1,4 @@
-﻿Imports System.Threading
-
-Public Class BookingRequestForm
+﻿Public Class BookingRequestResponseForm
 
     Dim user As String
     Dim scenario As Integer
@@ -8,9 +6,10 @@ Public Class BookingRequestForm
     Dim devWindow As DevForm
 
     Dim bookingEvent As UserCalendarEvent
-    Dim responseForm As BookingRequestResponseForm
+    Dim response As String
+    Dim bookingForm As CalendarCarSelectForm
 
-    Public Sub New(user As String, scenario As Integer, homeWindow As HomeForm, devWindow As DevForm, bookingEvent As UserCalendarEvent)
+    Public Sub New(user As String, scenario As Integer, homeWindow As HomeForm, devWindow As DevForm, bookingEvent As UserCalendarEvent, response As String)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -21,22 +20,27 @@ Public Class BookingRequestForm
         Me.homeWindow = homeWindow
         Me.devWindow = devWindow
         Me.bookingEvent = bookingEvent
-
+        Me.response = response
     End Sub
 
-    Private Sub BookingRequestForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        Select Case Me.user
-            Case "owner"
-                Me.Text = "Car Owner"
-            Case "rider"
-                Me.Text = "Car Rider"
+    Private Sub BookingRequestResponseFormvb_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Text = "Car Rider Booking Request"
+        Select Case Me.response
+            Case "accept"
+                Me.lblPrompt.Text = "This booking request" & vbCrLf & "has been accepted"
+                Me.btnConfirm.Visible = True
+                Me.btnCancel.Visible = False
+                Me.btnCheck.Visible = False
+            Case "deny"
+                Me.lblPrompt.Text = "This booking request" & vbCrLf & "has been denied"
+                Me.btnConfirm.Visible = False
+                Me.btnCancel.Visible = True
+                Me.btnCheck.Visible = True
         End Select
 
-        Me.lblPrompt.Text = "This user wants to book your" & vbCrLf & Me.bookingEvent.GetColour & " " & Me.bookingEvent.GetCar
-        Me.imgProfilePicture.Image = Me.bookingEvent.GetProfilePicture()
-        Me.lblName.Text = Me.bookingEvent.GetName
-        Me.imgRating.Image = Me.bookingEvent.GetRatingImg
+        Me.imgProfilePicture.Image = Me.bookingEvent.GetCarOwnerProfilePicture
+        Me.lblName.Text = Me.bookingEvent.GetCarOwnerName
+        Me.lblCar.Text = Me.bookingEvent.GetColour & " " & Me.bookingEvent.GetCar
 
         Dim startTime = Format(Me.bookingEvent.GetStartDate, "ddd d MMM yyyy") & " at " & Format(Me.bookingEvent.GetStartDate, "h:mm tt")
         Dim endTime = Format(Me.bookingEvent.GetEndDate, "ddd d MMM yyyy") & " at " & Format(Me.bookingEvent.GetEndDate, "h:mm tt")
@@ -50,20 +54,18 @@ Public Class BookingRequestForm
     ' --- Buttons ---
     ' ----------------
 
-    Private Sub btnAccept_Click(sender As Object, e As EventArgs) Handles btnAccept.Click
-        Me.responseForm = New BookingRequestResponseForm("rider", Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent, "accept")
-        Me.devWindow.OpenPopup("rider", Me.responseForm)
-
-        'Add booking
-        Me.devWindow.AddBooking(Me.bookingEvent)
-
+    Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
         Me.Close()
     End Sub
 
-    Private Sub btnDeny_Click(sender As Object, e As EventArgs) Handles btnDeny.Click
-        Me.responseForm = New BookingRequestResponseForm("rider", Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent, "deny")
-        Me.devWindow.OpenPopup("rider", Me.responseForm)
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Me.Close()
+    End Sub
 
+    Private Sub btnCheck_Click(sender As Object, e As EventArgs) Handles btnCheck.Click
+        Me.bookingForm = New CalendarCarSelectForm("rider", Me.scenario, Me.homeWindow, Me.homeWindow, Me.devWindow, Me.bookingEvent.GetStartDate, Me.bookingEvent.GetEndDate)
+        Me.devWindow.SetCurrentRiderForm(Me.bookingForm)
+        Me.bookingForm.Show()
         Me.Close()
     End Sub
 
@@ -72,7 +74,7 @@ Public Class BookingRequestForm
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(320, 360)
+        Me.Size = New Size(320, 346)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

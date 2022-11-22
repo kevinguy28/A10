@@ -135,7 +135,7 @@ Public Class DevForm
         Me.riderBookingList = New List(Of UserCalendarEvent)()
     End Sub
 
-    Public Function AddAvailability(scheduling As UserCalendarEvent)
+    Public Function AddAvailability(scheduling As UserCalendarEvent) As Boolean
         Dim newStart = scheduling.GetStartDate
         Dim newEnd = scheduling.GetEndDate
         Dim conflict = False
@@ -207,7 +207,7 @@ Public Class DevForm
         Me.ownerAvailabilityList.Remove(availability)
     End Sub
 
-    Public Function GetAvailability(startDate As Date, endDate As Date)
+    Public Function GetAvailability(startDate As Date, endDate As Date) As List(Of UserCalendarEvent)
         Dim newStart = startDate
         Dim newEnd = endDate
 
@@ -260,7 +260,7 @@ Public Class DevForm
         Return allAvblty
     End Function
 
-    Public Function GetOwnerFirstAvailability(startDate As Date, endDate As Date)
+    Public Function GetOwnerFirstAvailability(startDate As Date, endDate As Date) As UserCalendarEvent
         Dim newStart = startDate
         Dim newEnd = endDate
         Dim availability As UserCalendarEvent
@@ -288,7 +288,7 @@ Public Class DevForm
         Return availability
     End Function
 
-    Public Function isOwnerAvailable(startDate As Date, endDate As Date)
+    Public Function isOwnerAvailable(startDate As Date, endDate As Date) As Boolean
         Dim newStart = startDate
         Dim newEnd = endDate
         Dim available = False
@@ -320,7 +320,8 @@ Public Class DevForm
     ' ---------------
     ' --- Booking ---
     ' ---------------
-    Public Function AddBooking(booking As UserCalendarEvent)
+
+    Public Function CheckRiderBookingConflict(booking As UserCalendarEvent) As Boolean
         Dim newStart = booking.GetStartDate
         Dim newEnd = booking.GetEndDate
         Dim conflict = False
@@ -374,6 +375,17 @@ Public Class DevForm
         Next
 
         If conflict Then
+            Return True
+            Exit Function
+        End If
+
+        Return False
+    End Function
+
+    Public Function AddBooking(booking As UserCalendarEvent) As Boolean
+        Dim conflict As Boolean = Me.CheckRiderBookingConflict(booking)
+
+        If conflict Then
             Return False
             Exit Function
         End If
@@ -409,7 +421,7 @@ Public Class DevForm
         Me.riderBookingList.Remove(booking)
     End Sub
 
-    Public Function GetBooking(startDate As Date, endDate As Date)
+    Public Function GetBooking(startDate As Date, endDate As Date) As List(Of UserCalendarEvent)
         Dim newStart = startDate
         Dim newEnd = endDate
 
@@ -462,7 +474,7 @@ Public Class DevForm
         Return allBkng
     End Function
 
-    Public Function GetRiderFirstBooking(startDate As Date, endDate As Date)
+    Public Function GetRiderFirstBooking(startDate As Date, endDate As Date) As UserCalendarEvent
         Dim newStart = startDate
         Dim newEnd = endDate
         Dim booking As UserCalendarEvent
@@ -490,7 +502,7 @@ Public Class DevForm
         Return booking
     End Function
 
-    Public Function isRiderBooked(startDate As Date, endDate As Date)
+    Public Function isRiderBooked(startDate As Date, endDate As Date) As Boolean
         Dim newStart = startDate
         Dim newEnd = endDate
         Dim booked = False
@@ -527,7 +539,7 @@ Public Class DevForm
         chatHistory.Add(chatMessage)
     End Sub
 
-    Public Function GetChatHistory()
+    Public Function GetChatHistory() As List(Of ChatMessage)
         Return Me.chatHistory
     End Function
 
@@ -537,10 +549,8 @@ Public Class DevForm
     Public Sub OpenPopup(user As String, popup As Form)
         Select Case user
             Case "owner"
-                Me.currentOwnerForm.CreateDimOverlay()
                 Me.currentOwnerForm.DimScreen()
             Case "rider"
-                Me.currentRiderForm.CreateDimOverlay()
                 Me.currentRiderForm.DimScreen()
         End Select
         popup.Show()

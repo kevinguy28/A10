@@ -66,6 +66,7 @@ Public Class AppForm
     Protected Sub SetBackground()
         Me.BackgroundImage = My.Resources.Phone___Form
         Me.BackgroundImageLayout = ImageLayout.Stretch
+        Me.CreateDimOverlay()
     End Sub
 
     ' -------------
