@@ -28,7 +28,7 @@
         If mainForm Then
             AccidentNotification.mainAccidentForm = Me
             AccidentNotification.mainOpened = True
-            Me.GetCurrentForms()
+            Me.OpenOwnerForm()
         End If
 
         Me.Form_LocationChanged(Nothing, Nothing)
@@ -38,13 +38,8 @@
     ' --- Functions ---
     ' -----------------
 
-    Private Sub GetCurrentForms()
-        Me.prevOwnerForm = Me.devWindow.GetCurrentOwnerForm
-        Me.prevRiderForm = Me.devWindow.GetCurrentRiderForm
-    End Sub
-
     Private Sub OpenOwnerForm()
-        If AccidentNotification.ownerAccidentForm Is Nothing Then
+        If Not AccidentNotification.ownerOpened Then
             AccidentNotification.ownerOpened = True
             AccidentNotification.ownerAccidentForm = New AccidentNotification("owner", Me.scenario, Me.devWindow)
             AccidentNotification.ownerAccidentForm.denyButton.Visible = False
@@ -55,14 +50,16 @@
     End Sub
 
     Private Sub OpenEmergencyForm()
-        If AccidentNotification.emergencyContactForm Is Nothing Then
+        If Not AccidentNotification.emergencyOpened Then
+            AccidentNotification.mainAccidentForm.Close()
             AccidentNotification.emergencyOpened = True
             AccidentNotification.emergencyContactForm = New EmergencyContactForm("rider", Me.scenario, DevForm)
+            Me.devWindow.OpenPopup("rider", emergencyContactForm)
         End If
     End Sub
 
     Public Shared Sub CloseAllForms()
-        If Not mainOpened And Not ownerOpened And Not emergencyOpened Then
+        If (Not mainOpened) AndAlso (Not ownerOpened) AndAlso (Not emergencyOpened) Then
 
             If (AccidentNotification.mainAccidentForm IsNot Nothing) Then
                 AccidentNotification.mainAccidentForm.Dispose()
@@ -82,79 +79,28 @@
         End If
     End Sub
 
-    ' Set current form
-
-    'Private Sub SetCurrentForm(form As Form)
-    '    If (user = "owner") Then
-    '        Me.devForm.SetCurrentOwnerForm(form)
-    '    ElseIf (user = "rider") Then
-    '        Me.devForm.SetCurrentRiderForm(form)
-    '    End If
-    'End Sub
-
-    '' Set Location of the Accident Notifcation
-
-    'Function SetLocation()
-    '    Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
-    '    Dim halfScreen = fullScreen / 2
-    '    Dim halfDev = DevForm.Width / 2
-    '    Dim halfHome = Me.Width / 2
-
-    '    If Me.user = "owner" Then
-    '        Return ((halfScreen - halfDev) / 2) - halfHome
-
-    '    Else
-    '        Return (fullScreen - ((halfScreen - halfDev) / 2)) - halfHome
-    '    End If
-    'End Function
-
     ' ----------------
     ' --- Buttons ---
     ' ----------------
 
     Private Sub confirmButton_Click(sender As Object, e As EventArgs) Handles confirmButton.Click
-        ' Confirms the accident by rider, emergency call form for rider, homescreen for owner
         Me.OpenOwnerForm()
 
         AccidentNotification.ownerAccidentForm.lblAccident.Text = "The accident was confirmed!"
 
-        OpenEmergencyForm()
-
-        AccidentNotification.mainAccidentForm.Close()
-        AccidentNotification.mainOpened = False
-        Me.devWindow.ClosePopup(AccidentNotification.mainAccidentForm.user)
-        AccidentNotification.CloseAllForms()
-
-        'Me.Close()
-        'Me.ownerAccidentForm = New AccidentNotification("owner", Me.scenario, Me.devForm) 'Me.previousForm = carForm
-        ''Me.ownerAccidentForm.Location = New Point(Me.ownerAccidentForm.SetLocation(), 0)
-        'Me.ownerAccidentForm.denyButton.Visible = False : Me.ownerAccidentForm.confirmButton.Visible = False : Me.ownerAccidentForm.btnConfirm.Visible = True
-        'Me.ownerAccidentForm.lblAccident.Text = "The accident" : Me.ownerAccidentForm.lblAccident.Text = "was confirmed!"
-        'Me.ownerAccidentForm.Show()
-
-        'Me.emergencyContactForm = New EmergencyContactForm("rider", 2, DevForm, Me)
-        'Me.emergencyContactForm.Show()
-        'Me.emergencyContactForm.Location = New Point(Me.emergencyContactForm.SetLocation(), 2)
+        Me.OpenEmergencyForm()
     End Sub
 
-    ' Goes back to previous rider CarForm, shows new rider notfication
     Private Sub denyButton_Click(sender As Object, e As EventArgs) Handles denyButton.Click
         Me.OpenOwnerForm()
 
         AccidentNotification.ownerAccidentForm.lblAccident.Text = "The accident was a false alarm!"
 
         AccidentNotification.mainAccidentForm.Close()
-        AccidentNotification.mainOpened = False
-        Me.devWindow.ClosePopup(AccidentNotification.mainAccidentForm.user)
-        AccidentNotification.CloseAllForms()
     End Sub
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
-
         AccidentNotification.ownerAccidentForm.Close()
-        AccidentNotification.ownerOpened = False
-        Me.devWindow.ClosePopup(AccidentNotification.ownerAccidentForm.user)
-        AccidentNotification.CloseAllForms()
     End Sub
 
     ' -------------------------
@@ -181,8 +127,15 @@
     ' ----------------
     ' --- On Close ---
     ' ----------------
-    'Private Sub Form_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-    '    Me.devWindow.ClosePopup(Me.user)
-    'End Sub
+    Private Sub Form_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        If Me Is AccidentNotification.mainAccidentForm Then
+            AccidentNotification.mainOpened = False
+        End If
+        If Me Is AccidentNotification.ownerAccidentForm Then
+            AccidentNotification.ownerOpened = False
+        End If
+        Me.devWindow.ClosePopup(Me.user)
+        AccidentNotification.CloseAllForms()
+    End Sub
 
 End Class

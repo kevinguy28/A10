@@ -38,7 +38,7 @@ Partial Class EmergencyContactForm
         'imgEndCall
         '
         Me.imgEndCall.Image = Global.A10.My.Resources.Resources.endCall
-        Me.imgEndCall.Location = New System.Drawing.Point(161, 245)
+        Me.imgEndCall.Location = New System.Drawing.Point(161, 215)
         Me.imgEndCall.Name = "imgEndCall"
         Me.imgEndCall.Size = New System.Drawing.Size(73, 84)
         Me.imgEndCall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -49,7 +49,7 @@ Partial Class EmergencyContactForm
         'imgNoCall
         '
         Me.imgNoCall.Image = Global.A10.My.Resources.Resources.nocall
-        Me.imgNoCall.Location = New System.Drawing.Point(309, 245)
+        Me.imgNoCall.Location = New System.Drawing.Point(309, 215)
         Me.imgNoCall.Name = "imgNoCall"
         Me.imgNoCall.Size = New System.Drawing.Size(73, 84)
         Me.imgNoCall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -59,7 +59,7 @@ Partial Class EmergencyContactForm
         'imgCall
         '
         Me.imgCall.Image = Global.A10.My.Resources.Resources._call
-        Me.imgCall.Location = New System.Drawing.Point(12, 245)
+        Me.imgCall.Location = New System.Drawing.Point(12, 215)
         Me.imgCall.Name = "imgCall"
         Me.imgCall.Size = New System.Drawing.Size(73, 84)
         Me.imgCall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -69,13 +69,13 @@ Partial Class EmergencyContactForm
         'lblName
         '
         Me.lblName.BackColor = System.Drawing.SystemColors.Control
-        Me.lblName.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblName.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblName.ImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.lblName.Location = New System.Drawing.Point(12, 56)
         Me.lblName.Name = "lblName"
-        Me.lblName.Size = New System.Drawing.Size(85, 176)
+        Me.lblName.Size = New System.Drawing.Size(94, 153)
         Me.lblName.TabIndex = 14
-        Me.lblName.Text = "lblName" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "4" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "5"
+        Me.lblName.Text = "John Smith:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "4" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "5"
         Me.lblName.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'lblTitle
@@ -93,11 +93,11 @@ Partial Class EmergencyContactForm
         'lblMessage
         '
         Me.lblMessage.BackColor = System.Drawing.SystemColors.Control
-        Me.lblMessage.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblMessage.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblMessage.ImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.lblMessage.Location = New System.Drawing.Point(103, 56)
+        Me.lblMessage.Location = New System.Drawing.Point(112, 56)
         Me.lblMessage.Name = "lblMessage"
-        Me.lblMessage.Size = New System.Drawing.Size(279, 176)
+        Me.lblMessage.Size = New System.Drawing.Size(270, 153)
         Me.lblMessage.TabIndex = 18
         Me.lblMessage.Text = "lblMessage" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "4" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "5"
         '
@@ -110,7 +110,7 @@ Partial Class EmergencyContactForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(394, 341)
+        Me.ClientSize = New System.Drawing.Size(394, 311)
         Me.Controls.Add(Me.lblMessage)
         Me.Controls.Add(Me.imgEndCall)
         Me.Controls.Add(Me.imgNoCall)

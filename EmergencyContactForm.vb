@@ -6,7 +6,7 @@
 
     Dim messageIndex = 0
     Dim messageName() = New String() {"", "", "Dispatcher:", "John Smith:", "Dispatcher:", "", ""}
-    Dim messageMssg() = New String() {"Calling...", "", "991, what is your emergency?", "I'd like to request an ambulence", "Understood, they are on their way", "", "End Call"}
+    Dim messageMssg() = New String() {"Calling...", "", "991, what is your emergency?", "I'd like to request an ambulence.", "Ok, they are on their way.", "", "...End Call"}
     Public Sub New(user As String, scenario As Integer, devForm As DevForm)
 
         ' This call is required by the designer.
@@ -14,9 +14,12 @@
 
         ' Add any initialization after the InitializeComponent() call.
         Me.user = user : Me.scenario = scenario : Me.devWindow = devForm : Me.previousForm = previousForm
+        Me.Form_Resize(Nothing, Nothing)
+        Me.Form_LocationChanged(Nothing, Nothing)
     End Sub
 
     Private Sub EmergencyContactForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Me.lblName.Text = ""
         Me.lblMessage.Text = ""
     End Sub
 
@@ -25,6 +28,8 @@
     '----------------
 
     Private Sub callPicBox_Click(sender As Object, e As EventArgs) Handles imgCall.Click
+        Me.lblName.Text = ""
+        Me.lblMessage.Text = ""
         Me.lblTitle.Text = "Emergency Call"
         Me.imgEndCall.Visible = True
         Me.imgCall.Visible = False
@@ -48,6 +53,9 @@
         Me.lblName.Text += Me.messageName(Me.messageIndex)
         Me.lblMessage.Text += Me.messageMssg(Me.messageIndex)
         Me.messageIndex += 1
+        If Me.messageIndex = 7 Then
+            tmrCall.Stop()
+        End If
     End Sub
 
     ' -------------------------
@@ -55,7 +63,7 @@
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(410, 380)
+        Me.Size = New Size(410, 350)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
@@ -75,7 +83,6 @@
     '--- On Close ---
     '----------------
     Private Sub Form_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Me.Close()
         Me.devWindow.ClosePopup(Me.user)
         AccidentNotification.emergencyOpened = False
         AccidentNotification.CloseAllForms()
