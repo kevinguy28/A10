@@ -2,7 +2,7 @@
     Inherits AppForm
 
     ' Sibling
-    Dim otherForm As HomeForm
+    Public otherForm As HomeForm
 
     ' Children
     Dim calendarForm As CalendarForm
@@ -58,7 +58,7 @@
         If Me.scenario = 4 And Me.user = "owner" Then
             Dim ownerLowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario, Me) : ownerLowBatteryNotification.setLocation()
             Me.Hide() : ownerLowBatteryNotification.btnConfirm.Visible = True : ownerLowBatteryNotification.btnEnd.Visible = False : ownerLowBatteryNotification.btnContinue.Visible = False
-            ownerLowBatteryNotification.Text = "The car battery is running low. Please wait for the riders response!"
+            ownerLowBatteryNotification.lblDescription.Text = "The car battery is running low. Please wait for the riders response!"
             ownerLowBatteryNotification.TopMost = True : ownerLowBatteryNotification.Show()
         End If
 

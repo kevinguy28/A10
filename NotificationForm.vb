@@ -16,10 +16,10 @@
         Dim halfHome = Me.Width / 2
 
         If Me.user = "rider" Then
-            Return ((halfScreen - halfDev) / 2) - halfHome
+            Me.Location = New Point(((halfScreen - halfDev) / 2) - halfHome, 0)
 
         Else
-            Return (fullScreen - ((halfScreen - halfDev) / 2)) - halfHome
+            Me.Location = New Point((fullScreen - ((halfScreen - halfDev) / 2)) - halfHome, 0)
         End If
     End Function
 
@@ -27,4 +27,12 @@
         Me.lblTitle.Text = title
     End Sub
 
+    Public Sub changeDescription(description As String)
+        Me.lblDescription.Text = description
+    End Sub
+
+    Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
+        Me.Close()
+        Me.Dispose()
+    End Sub
 End Class

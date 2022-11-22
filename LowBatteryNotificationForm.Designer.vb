@@ -25,7 +25,7 @@ Partial Class LowBatteryNotificationForm
         Me.pbLowBattery = New System.Windows.Forms.PictureBox()
         Me.btnEnd = New System.Windows.Forms.Button()
         Me.btnContinue = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblDescription = New System.Windows.Forms.Label()
         Me.lblLowBattery = New System.Windows.Forms.Label()
         Me.btnConfirm = New System.Windows.Forms.Button()
         CType(Me.pbLowBattery, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -35,7 +35,7 @@ Partial Class LowBatteryNotificationForm
         '
         Me.pbLowBattery.BackColor = System.Drawing.Color.Transparent
         Me.pbLowBattery.Image = Global.A10.My.Resources.Resources.low_battery
-        Me.pbLowBattery.Location = New System.Drawing.Point(141, 326)
+        Me.pbLowBattery.Location = New System.Drawing.Point(141, 362)
         Me.pbLowBattery.Name = "pbLowBattery"
         Me.pbLowBattery.Size = New System.Drawing.Size(202, 109)
         Me.pbLowBattery.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -46,7 +46,7 @@ Partial Class LowBatteryNotificationForm
         '
         Me.btnEnd.BackColor = System.Drawing.Color.IndianRed
         Me.btnEnd.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnEnd.Location = New System.Drawing.Point(262, 477)
+        Me.btnEnd.Location = New System.Drawing.Point(265, 513)
         Me.btnEnd.Name = "btnEnd"
         Me.btnEnd.Size = New System.Drawing.Size(142, 87)
         Me.btnEnd.TabIndex = 21
@@ -57,23 +57,24 @@ Partial Class LowBatteryNotificationForm
         '
         Me.btnContinue.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnContinue.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnContinue.Location = New System.Drawing.Point(80, 477)
+        Me.btnContinue.Location = New System.Drawing.Point(78, 513)
         Me.btnContinue.Name = "btnContinue"
         Me.btnContinue.Size = New System.Drawing.Size(142, 87)
         Me.btnContinue.TabIndex = 20
         Me.btnContinue.Text = "Continue Ride"
         Me.btnContinue.UseVisualStyleBackColor = False
         '
-        'Label1
+        'lblDescription
         '
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(38, 198)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(408, 95)
-        Me.Label1.TabIndex = 19
-        Me.Label1.Text = "The car battery is running low. What would you like to do?"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDescription.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblDescription.BackColor = System.Drawing.Color.Transparent
+        Me.lblDescription.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblDescription.Location = New System.Drawing.Point(38, 187)
+        Me.lblDescription.Name = "lblDescription"
+        Me.lblDescription.Size = New System.Drawing.Size(408, 161)
+        Me.lblDescription.TabIndex = 19
+        Me.lblDescription.Text = "The car battery is running low. What would you like to do?"
+        Me.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblLowBattery
         '
@@ -81,7 +82,7 @@ Partial Class LowBatteryNotificationForm
         Me.lblLowBattery.BackColor = System.Drawing.Color.Transparent
         Me.lblLowBattery.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblLowBattery.ForeColor = System.Drawing.Color.Black
-        Me.lblLowBattery.Location = New System.Drawing.Point(44, 79)
+        Me.lblLowBattery.Location = New System.Drawing.Point(50, 79)
         Me.lblLowBattery.Name = "lblLowBattery"
         Me.lblLowBattery.Size = New System.Drawing.Size(385, 46)
         Me.lblLowBattery.TabIndex = 18
@@ -91,7 +92,7 @@ Partial Class LowBatteryNotificationForm
         '
         Me.btnConfirm.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
         Me.btnConfirm.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnConfirm.Location = New System.Drawing.Point(153, 657)
+        Me.btnConfirm.Location = New System.Drawing.Point(153, 693)
         Me.btnConfirm.Name = "btnConfirm"
         Me.btnConfirm.Size = New System.Drawing.Size(179, 57)
         Me.btnConfirm.TabIndex = 24
@@ -110,7 +111,7 @@ Partial Class LowBatteryNotificationForm
         Me.Controls.Add(Me.pbLowBattery)
         Me.Controls.Add(Me.btnEnd)
         Me.Controls.Add(Me.btnContinue)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblDescription)
         Me.Controls.Add(Me.lblLowBattery)
         Me.DoubleBuffered = True
         Me.Name = "LowBatteryNotificationForm"
@@ -125,7 +126,7 @@ Partial Class LowBatteryNotificationForm
     Friend WithEvents pbLowBattery As PictureBox
     Friend WithEvents btnEnd As Button
     Friend WithEvents btnContinue As Button
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblDescription As Label
     Friend WithEvents lblLowBattery As Label
     Friend WithEvents btnConfirm As Button
 End Class

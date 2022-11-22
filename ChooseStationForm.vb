@@ -46,11 +46,11 @@ Public Class ChooseStationForm
     End Sub
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
-        MsgBox(Me.user)
         If Me.user = "rider" Then
-            Me.aNotification = New NotificationForm(Me.user, Me.scenario, Me.homeForm) : Me.aNotification.changeTitle("Notification!")
-
-            Me.aNotification.Show() : Me.aNotification.Location = New Point(Me.aNotification.SetLocation(), 0)
+            Me.aNotification = New NotificationForm(Me.user, Me.scenario, Me.homeForm)
+            Me.aNotification.changeTitle("Notification!")
+            Me.aNotification.changeDescription("The rider has chose to continue the ride." & Chr(13) & Chr(10) & "The car has been rerouted to: " & Chr(13) & Chr(10) & Me.lblStationAddress.Text)
+            Me.aNotification.Show() : Me.aNotification.SetLocation()
         End If
         Me.Close()
     End Sub
@@ -58,6 +58,7 @@ Public Class ChooseStationForm
     Private Sub rb1_Click(sender As Object, e As EventArgs) Handles rb1.Click
         Me.pbMap.Image = My.Resources.the_map_rb1
         Me.homeForm.changeMap(My.Resources.the_map_rb1)
+        Me.homeForm.otherForm.changeMap(My.Resources.the_map_rb1)
     End Sub
 
     Private Sub rb2_Click(sender As Object, e As EventArgs) Handles rb2.Click
