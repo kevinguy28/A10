@@ -1,6 +1,11 @@
 ﻿Public Class CallForm
     Dim user As String
     Dim scenario As Integer
+
+    Dim messageIndex = 0
+    Dim messageName() = New String() {"", "", "Dispatcher:", "John Smith:", "Dispatcher:", "", ""}
+    Dim messageMssg() = New String() {"Calling...", "", "991, what is your emergency?", "I'd like to request an ambulence.", "Ok, they are on their way.", "", "...End Call"}
+
     Public Sub New(user As String, scenario As Integer)
 
         ' This call is required by the designer.
@@ -17,6 +22,10 @@
             Case "rider"
                 Me.Text = "Car Rider Call"
         End Select
+
+        If Me.user = "owner" Then
+            Me.messageName(3) = "Jane Doe:"
+        End If
     End Sub
 
     Public Sub setLocation()
@@ -37,6 +46,8 @@
 
     Private Sub callPicBox_Click(sender As Object, e As EventArgs) Handles callPicBox.Click
         pbKeypad.Visible = False : callPicBox.Visible = False : noCallPicBox.Visible = False : endCallPicBox.Visible = True : lblCalling.Visible = True
+
+        Me.tmrCall.Start()
     End Sub
 
     Private Sub endCallPicBox_Click(sender As Object, e As EventArgs) Handles endCallPicBox.Click
@@ -49,4 +60,15 @@
         Me.Dispose()
     End Sub
 
+    Private Sub tmrCall_Tick(sender As Object, e As EventArgs) Handles tmrCall.Tick
+        If messageIndex <> 0 Then
+            Me.lblCalling.Text += vbCrLf
+        End If
+
+        Me.lblCalling.Text += Me.messageName(Me.messageIndex) & " " & Me.messageMssg(Me.messageIndex)
+        Me.messageIndex += 1
+        If Me.messageIndex = 7 Then
+            tmrCall.Stop()
+        End If
+    End Sub
 End Class

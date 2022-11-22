@@ -22,12 +22,14 @@ Partial Class CallForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.label1 = New System.Windows.Forms.Label()
         Me.pbKeypad = New System.Windows.Forms.PictureBox()
         Me.endCallPicBox = New System.Windows.Forms.PictureBox()
         Me.noCallPicBox = New System.Windows.Forms.PictureBox()
         Me.callPicBox = New System.Windows.Forms.PictureBox()
         Me.lblCalling = New System.Windows.Forms.Label()
+        Me.tmrCall = New System.Windows.Forms.Timer(Me.components)
         CType(Me.pbKeypad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.endCallPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.noCallPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,15 +96,17 @@ Partial Class CallForm
         '
         'lblCalling
         '
-        Me.lblCalling.AutoSize = True
         Me.lblCalling.BackColor = System.Drawing.Color.Transparent
-        Me.lblCalling.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblCalling.Location = New System.Drawing.Point(165, 203)
+        Me.lblCalling.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblCalling.Location = New System.Drawing.Point(33, 181)
         Me.lblCalling.Name = "lblCalling"
-        Me.lblCalling.Size = New System.Drawing.Size(154, 46)
+        Me.lblCalling.Size = New System.Drawing.Size(415, 424)
         Me.lblCalling.TabIndex = 21
-        Me.lblCalling.Text = "calling ..."
         Me.lblCalling.Visible = False
+        '
+        'tmrCall
+        '
+        Me.tmrCall.Interval = 1000
         '
         'CallForm
         '
@@ -136,4 +140,5 @@ Partial Class CallForm
     Friend WithEvents noCallPicBox As PictureBox
     Friend WithEvents callPicBox As PictureBox
     Friend WithEvents lblCalling As Label
+    Friend WithEvents tmrCall As Timer
 End Class
