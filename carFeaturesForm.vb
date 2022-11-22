@@ -8,7 +8,6 @@
                 Me.Text = "Car Rider Car Features"
         End Select
     End Sub
-
     Private Sub btnToggleWindows_Click(sender As Object, e As EventArgs) Handles btnToggleWindows.Click
         If btnToggleWindows.Tag = 1 Then
             btnToggleWindows.BackgroundImage = My.Resources.toggle_off
@@ -92,12 +91,9 @@
 
     Private Sub btnAirIntakeDown_MouseEnter(sender As Object, e As EventArgs) Handles btnAirIntakeDown.MouseEnter
         btnAirIntakeDown.BackgroundImage = My.Resources.arrow_down_hover
-
     End Sub
 
     Private Sub btnAirIntakeDown_MouseLeave(sender As Object, e As EventArgs) Handles btnAirIntakeDown.MouseLeave
         btnAirIntakeDown.BackgroundImage = My.Resources.arrow_down_neutral
-
     End Sub
-
 End Class

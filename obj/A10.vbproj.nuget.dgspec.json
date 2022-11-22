@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mudKI\\source\\repos\\A10_4\\A10.vbproj": {}
+    "C:\\Users\\mudKI\\source\\repos\\A10\\A10.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\mudKI\\source\\repos\\A10_4\\A10.vbproj": {
+    "C:\\Users\\mudKI\\source\\repos\\A10\\A10.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mudKI\\source\\repos\\A10_4\\A10.vbproj",
+        "projectUniqueName": "C:\\Users\\mudKI\\source\\repos\\A10\\A10.vbproj",
         "projectName": "A10",
-        "projectPath": "C:\\Users\\mudKI\\source\\repos\\A10_4\\A10.vbproj",
+        "projectPath": "C:\\Users\\mudKI\\source\\repos\\A10\\A10.vbproj",
         "packagesPath": "C:\\Users\\mudKI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mudKI\\source\\repos\\A10_4\\obj\\",
+        "outputPath": "C:\\Users\\mudKI\\source\\repos\\A10\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mudKI\\AppData\\Roaming\\NuGet\\NuGet.Config",

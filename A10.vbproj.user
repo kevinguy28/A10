@@ -7,6 +7,12 @@
     <Compile Update="AppForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="BookingRequestForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BookingRequestResponseForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CalendarBookingControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
@@ -14,6 +20,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="CalendarCarSelectForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CalendarConfirmForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="CalendarDayControl.vb">
@@ -28,10 +37,19 @@
     <Compile Update="CalendarMonthControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="CalendarSchedulingControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="CalendarSchedulingForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CallForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="CarDiagnosticForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CarFeatureForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="carFeaturesForm.vb">
@@ -49,6 +67,9 @@
     <Compile Update="ChatForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ChooseStationForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DevForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +83,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="HomeForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LowBatteryNotificationForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="NotificationForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ownerHomeScreen.vb">

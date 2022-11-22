@@ -36,6 +36,8 @@ Partial Class CarFeaturesForm
         Me.btnAirIntakeDown = New System.Windows.Forms.Button()
         Me.btnAirIntakeUp = New System.Windows.Forms.Button()
         Me.lblAirIntakeNumber = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnToggleWindows
@@ -76,7 +78,7 @@ Partial Class CarFeaturesForm
         '
         'btnOpenTrunk
         '
-        Me.btnOpenTrunk.Location = New System.Drawing.Point(134, 709)
+        Me.btnOpenTrunk.Location = New System.Drawing.Point(147, 709)
         Me.btnOpenTrunk.Name = "btnOpenTrunk"
         Me.btnOpenTrunk.Size = New System.Drawing.Size(191, 65)
         Me.btnOpenTrunk.TabIndex = 3
@@ -209,6 +211,17 @@ Partial Class CarFeaturesForm
         Me.lblAirIntakeNumber.Tag = "1"
         Me.lblAirIntakeNumber.Text = "1"
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Image = Global.A10.My.Resources.Resources.Home
+        Me.PictureBox1.Location = New System.Drawing.Point(192, 810)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(100, 74)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 14
+        Me.PictureBox1.TabStop = False
+        '
         'CarFeaturesForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -216,6 +229,7 @@ Partial Class CarFeaturesForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblAirIntakeNumber)
         Me.Controls.Add(Me.btnAirIntakeUp)
         Me.Controls.Add(Me.btnAirIntakeDown)
@@ -232,7 +246,9 @@ Partial Class CarFeaturesForm
         Me.Controls.Add(Me.btnToggleWindows)
         Me.DoubleBuffered = True
         Me.Name = "CarFeaturesForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "carFeaturesForm"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -252,4 +268,5 @@ Partial Class CarFeaturesForm
     Friend WithEvents btnAirIntakeDown As Button
     Friend WithEvents btnAirIntakeUp As Button
     Friend WithEvents lblAirIntakeNumber As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

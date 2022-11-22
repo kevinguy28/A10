@@ -1,14 +1,13 @@
 ﻿
 Public Class CarMediaForm
     Inherits AppForm
-
-    Public Sub New()
+    Public Sub New(user As String, scenario As Integer, previousForm As CarForm, homeForm As HomeForm, devForm As DevForm)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-
+        Me.user = user : Me.scenario = scenario : Me.previousWindow = previousForm : Me.homeWindow = homeForm : Me.devWindow = devForm
     End Sub
     Private Sub CarMediaForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Select Case Me.user
@@ -20,9 +19,11 @@ Public Class CarMediaForm
 
         Me.SetBackground()
         Me.CreateTitleLabel("Car Media Settings")
-        '  Me.CreateHomeButton()
+        Me.CreateHomeButton()
+        Me.CreateBackButton()
         Me.Controls.Add(Me.lblTitle)
-        ' Me.Controls.Add(Me.btnHome)
+        Me.Controls.Add(Me.btnHome)
+        Me.Controls.Add(Me.btnBack)
 
         'to set the volume keys
     End Sub
