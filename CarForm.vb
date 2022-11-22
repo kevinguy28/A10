@@ -55,13 +55,8 @@ Public Class CarForm
     ' -----------------
     Private Sub btnEmergency_Click(sender As Object, e As EventArgs) Handles btnEmergency.Click
         'Rider Accident Notification
-        Me.riderAccidentNotification = New AccidentNotification("rider", 2, Me.devWindow, Me) : Me.Hide()
-        Me.riderAccidentNotification.Show() : Me.riderAccidentNotification.Location = New Point(riderAccidentNotification.SetLocation(), 0)
-        ' Owner Accident Notification
-        Me.ownerAccidentNotification = New AccidentNotification("owner", 2, Me.devWindow, Me)
-        Me.ownerAccidentNotification.Show() : Me.ownerAccidentNotification.Location = New Point(ownerAccidentNotification.SetLocation(), 0)
-        Me.ownerAccidentNotification.confirmButton.Hide() : Me.ownerAccidentNotification.denyButton.Hide()
-        Me.ownerAccidentNotification.btnConfirm.Visible = True
+        Me.riderAccidentNotification = New AccidentNotification("rider", Me.scenario, Me.devWindow, True)
+        Me.devWindow.OpenPopup("rider", Me.riderAccidentNotification)
     End Sub
 
     ' --------------------

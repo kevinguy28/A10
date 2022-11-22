@@ -49,6 +49,10 @@ Public Class DevForm
         Me.chatHistory = New List(Of ChatMessage)
     End Sub
 
+    ' ---------------------
+    ' --- Current Forms ---
+    ' ---------------------
+
     Public Sub SetCurrentOwnerForm(form As AppForm)
         Me.currentOwnerForm = form
     End Sub
@@ -56,6 +60,14 @@ Public Class DevForm
     Public Sub SetCurrentRiderForm(form As AppForm)
         Me.currentRiderForm = form
     End Sub
+
+    Public Function GetCurrentOwnerForm()
+        Return Me.currentOwnerForm
+    End Function
+
+    Public Function GetCurrentRiderForm()
+        Return Me.currentRiderForm
+    End Function
 
     Public Shared Function GetFormWidth() As Integer
         Return 500
@@ -67,6 +79,28 @@ Public Class DevForm
 
     Public Shared Function GetDevWidth() As Integer
         Return DevForm.Width
+    End Function
+
+    Public Shared Function GetOwnerLocation() As Point
+        Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
+        Dim halfScreen = fullScreen / 2
+        Dim halfDev = DevForm.GetDevWidth() / 2
+        Dim halfForm = DevForm.GetFormWidth() / 2
+
+        Dim x = ((halfScreen - halfDev) / 2) - halfForm
+        Dim loc = New Point(x, 0)
+        Return loc
+    End Function
+
+    Public Shared Function GetRiderLocation() As Point
+        Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
+        Dim halfScreen = fullScreen / 2
+        Dim halfDev = DevForm.GetDevWidth() / 2
+        Dim halfForm = DevForm.GetFormWidth() / 2
+
+        Dim x = (fullScreen - ((halfScreen - halfDev) / 2)) - halfForm
+        Dim loc = New Point(x, 0)
+        Return loc
     End Function
 
     ' ------------------
@@ -164,8 +198,6 @@ Public Class DevForm
         End If
 
         ' No conflict
-        'Dim newOwner = New UserCalendarEvent(profilePicture, userName, userType, carName, carColour, userRating, startDate, endDate)
-        'Me.ownerAvailabilityList.Add(newOwner)
         Me.ownerAvailabilityList.Add(scheduling)
         Return True
 
@@ -288,7 +320,67 @@ Public Class DevForm
     ' ---------------
     ' --- Booking ---
     ' ---------------
-    Public Sub AddBooking(booking As UserCalendarEvent)
+    Public Function AddBooking(booking As UserCalendarEvent)
+        Dim newStart = booking.GetStartDate
+        Dim newEnd = booking.GetEndDate
+        Dim conflict = False
+
+        ' Check if already exists
+        For Each cldrEvent As UserCalendarEvent In Me.riderBookingList
+
+            ' If user has schedule
+            If cldrEvent.GetName() = booking.GetName Then
+
+                Dim oldStart = cldrEvent.GetStartDate()
+                Dim oldEnd = cldrEvent.GetEndDate()
+                Dim oldCar = cldrEvent.GetCar()
+
+                ' New | ⬛⬛⬛⬛   |
+                ' Old |   ⬛⬛⬛⬛ |
+                'newEnd later then oldStart
+                'newEnd earlier than oldEnd
+                If Me.LaterThan(newEnd, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    conflict = True
+                    Exit For
+                End If
+
+                ' New |   ⬛⬛⬛⬛ |
+                ' Old | ⬛⬛⬛⬛   |
+                'newStart later than oldStart
+                'newStart earlier than oldEnd
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newStart, oldEnd) Then
+                    conflict = True
+                    Exit For
+                End If
+
+                ' New |  ⬛⬛  |
+                ' Old | ⬛⬛⬛⬛ |
+                'newStart later than oldStart
+                'newEnd earlier than oldEnd
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    conflict = True
+                    Exit For
+                End If
+
+                ' New | ⬛⬛⬛⬛ |
+                ' Old |  ⬛⬛  |
+                'newStart earlier than oldStart
+                'newEnd later than oldEnd
+                If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
+                    conflict = True
+                    Exit For
+                End If
+            End If
+        Next
+
+        If conflict Then
+            Return False
+            Exit Function
+        End If
+
+        ' No conflict
+
+        ' Update owner's event
         For Each ownerEvent As UserCalendarEvent In Me.ownerAvailabilityList
 
             If ownerEvent.GetName = booking.GetCarOwnerName AndAlso ownerEvent.GetCar = booking.GetColour _
@@ -300,7 +392,8 @@ Public Class DevForm
         Next
 
         Me.riderBookingList.Add(booking)
-    End Sub
+        Return True
+    End Function
 
     Public Sub RemoveBooking(booking As UserCalendarEvent)
         For Each ownerEvent As UserCalendarEvent In Me.ownerAvailabilityList

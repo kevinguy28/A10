@@ -115,7 +115,7 @@
 
         If Me.hourEventList.Contains(CType(sender, Label)) Then
             Dim startDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourInt, 0, 0)
-            Dim endDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourInt + 1, 0, 0)
+            Dim endDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourInt, 59, 59)
             Dim userEvent As UserCalendarEvent
             Select Case Me.user
                 Case "owner"

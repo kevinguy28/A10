@@ -36,6 +36,7 @@ Partial Class CalendarCarSelectForm
         Me.lblRight = New System.Windows.Forms.Label()
         Me.lblBottom = New System.Windows.Forms.Label()
         Me.lblNoAvblty = New System.Windows.Forms.Label()
+        Me.lblError = New System.Windows.Forms.Label()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -188,6 +189,21 @@ Partial Class CalendarCarSelectForm
         Me.lblNoAvblty.Text = "No cars available at this time"
         Me.lblNoAvblty.Visible = False
         '
+        'lblError
+        '
+        Me.lblError.AutoSize = True
+        Me.lblError.BackColor = System.Drawing.Color.IndianRed
+        Me.lblError.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblError.ForeColor = System.Drawing.Color.White
+        Me.lblError.Location = New System.Drawing.Point(195, 704)
+        Me.lblError.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblError.Name = "lblError"
+        Me.lblError.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
+        Me.lblError.Size = New System.Drawing.Size(95, 25)
+        Me.lblError.TabIndex = 18
+        Me.lblError.Text = "lblError"
+        Me.lblError.Visible = False
+        '
         'CalendarCarSelectForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -195,6 +211,7 @@ Partial Class CalendarCarSelectForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.lblError)
         Me.Controls.Add(Me.lblBottom)
         Me.Controls.Add(Me.lblRight)
         Me.Controls.Add(Me.lblLeft)
@@ -231,4 +248,5 @@ Partial Class CalendarCarSelectForm
     Friend WithEvents lblRight As Label
     Friend WithEvents lblBottom As Label
     Friend WithEvents lblNoAvblty As Label
+    Friend WithEvents lblError As Label
 End Class

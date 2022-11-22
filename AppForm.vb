@@ -48,18 +48,10 @@ Public Class AppForm
     End Sub
 
     Protected Sub SetLocation()
-        Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
-        Dim halfScreen = fullScreen / 2
-        Dim halfDev = DevForm.GetDevWidth() / 2
-        Dim halfForm = DevForm.GetFormWidth() / 2
-
         If Me.user = "owner" Then
-            Dim x = ((halfScreen - halfDev) / 2) - halfForm
-            Me.Location = New Point(x, 0)
-
+            Me.Location = DevForm.GetOwnerLocation()
         ElseIf Me.user = "rider" Then
-            Dim x = (fullScreen - ((halfScreen - halfDev) / 2)) - halfForm
-            Me.Location = New Point(x, 0)
+            Me.Location = DevForm.GetRiderLocation()
         End If
     End Sub
 

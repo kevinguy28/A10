@@ -1,5 +1,6 @@
 ﻿Imports System.Diagnostics.Contracts
 Imports System.Reflection.Metadata.Ecma335
+Imports System.Threading
 
 Public Class CalendarCarSelectForm
     Inherits AppForm
@@ -22,6 +23,8 @@ Public Class CalendarCarSelectForm
     Dim confirmForm As CalendarConfirmForm
 
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
+
+    Dim shaking = False
 
     Public Sub New(user As String, scenario As Integer, previousForm As AppForm, HomeForm As HomeForm, DevForm As DevForm, dateStart As Date, dateEnd As Date, Optional previousEvent As UserCalendarEvent = Nothing)
 
@@ -141,7 +144,19 @@ Public Class CalendarCarSelectForm
         End If
 
         'Add booking
-        Me.devWindow.AddBooking(Me.bookingEvent)
+        Dim err = Not Me.devWindow.AddBooking(Me.bookingEvent)
+
+        ' If error
+        If (err) And (Me.shaking = False) Then
+            Me.lblError.Visible = True
+            Me.lblError.BringToFront()
+            Me.lblError.Text = "You already have a booking at this time"
+            Me.lblError.Location = New Point((Me.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)
+            Me.shaking = True
+            Dim t1 As Thread = New Thread(New ThreadStart(AddressOf Me.ShakeErrorMessage))
+            t1.Start()
+            Exit Sub
+        End If
 
         Me.Close()
         Me.homeWindow.Show()
@@ -158,4 +173,56 @@ Public Class CalendarCarSelectForm
             Me.confirmForm.Dispose()
         End If
     End Sub
+
+    ' -------------
+    ' --- Shake ---
+    ' -------------
+
+    Private Sub ShakeErrorMessage()
+        Dim shakeArr() = {1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1}
+
+        ' Shake
+        For fullShake As Integer = 0 To 3
+
+            For moveIndex As Integer = 0 To shakeArr.Length() - 1
+                'Move
+                If lblError.InvokeRequired Then
+                    lblError.Invoke(Sub() lblError.Left += shakeArr(moveIndex))
+                Else
+                    lblError.Left += shakeArr(moveIndex)
+                End If
+
+                'Wait
+                If lblError.InvokeRequired Then
+                    lblError.Invoke(Sub() Me.lblError.Refresh())
+                Else
+                    Me.lblError.Refresh()
+                End If
+                Threading.Thread.Sleep(10)
+            Next
+
+        Next
+
+        ' Pause
+        For pause As Integer = 0 To 150
+
+            'Wait
+            If lblError.InvokeRequired Then
+                lblError.Invoke(Sub() Me.lblError.Refresh())
+            Else
+                Me.lblError.Refresh()
+            End If
+            Threading.Thread.Sleep(10)
+
+        Next
+
+        Me.shaking = False
+        If lblError.InvokeRequired Then
+            lblError.Invoke(Sub() Me.lblError.Visible = False)
+        Else
+            Me.lblError.Visible = False
+        End If
+
+    End Sub
+
 End Class

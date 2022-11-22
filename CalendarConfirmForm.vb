@@ -53,12 +53,12 @@
     ' ------------------------
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
+        Me.Close()
         If bookingForm IsNot Nothing Then
             Me.bookingForm.ConfirmClicked()
         ElseIf schedulingForm IsNot Nothing Then
             Me.schedulingForm.ConfirmClicked()
         End If
-        Me.Close()
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
