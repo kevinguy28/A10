@@ -27,7 +27,7 @@ Partial Class ChatForm
         Me.btnSubmit = New System.Windows.Forms.Button()
         Me.tmrCheckChat = New System.Windows.Forms.Timer(Me.components)
         Me.imgList = New System.Windows.Forms.ImageList(Me.components)
-        Me.lblChat = New System.Windows.Forms.Label()
+        Me.lstView = New System.Windows.Forms.ListView()
         Me.SuspendLayout()
         '
         'txtChatMessage
@@ -43,6 +43,7 @@ Partial Class ChatForm
         Me.btnSubmit.FlatAppearance.BorderSize = 0
         Me.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSubmit.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btnSubmit.ForeColor = System.Drawing.Color.White
         Me.btnSubmit.Location = New System.Drawing.Point(166, 762)
         Me.btnSubmit.Name = "btnSubmit"
         Me.btnSubmit.Size = New System.Drawing.Size(152, 35)
@@ -52,6 +53,7 @@ Partial Class ChatForm
         '
         'tmrCheckChat
         '
+        Me.tmrCheckChat.Interval = 1000
         '
         'imgList
         '
@@ -59,15 +61,14 @@ Partial Class ChatForm
         Me.imgList.ImageSize = New System.Drawing.Size(16, 16)
         Me.imgList.TransparentColor = System.Drawing.Color.Transparent
         '
-        'lblChat
+        'lstView
         '
-        Me.lblChat.BackColor = System.Drawing.Color.White
-        Me.lblChat.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblChat.Location = New System.Drawing.Point(39, 190)
-        Me.lblChat.Name = "lblChat"
-        Me.lblChat.Size = New System.Drawing.Size(407, 531)
-        Me.lblChat.TabIndex = 3
-        Me.lblChat.Text = "Label1"
+        Me.lstView.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lstView.Location = New System.Drawing.Point(39, 191)
+        Me.lstView.Name = "lstView"
+        Me.lstView.Size = New System.Drawing.Size(407, 527)
+        Me.lstView.TabIndex = 3
+        Me.lstView.UseCompatibleStateImageBehavior = False
         '
         'ChatForm
         '
@@ -76,7 +77,7 @@ Partial Class ChatForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
-        Me.Controls.Add(Me.lblChat)
+        Me.Controls.Add(Me.lstView)
         Me.Controls.Add(Me.btnSubmit)
         Me.Controls.Add(Me.txtChatMessage)
         Me.DoubleBuffered = True
@@ -91,5 +92,5 @@ Partial Class ChatForm
     Friend WithEvents btnSubmit As Button
     Friend WithEvents tmrCheckChat As Timer
     Friend WithEvents imgList As ImageList
-    Friend WithEvents lblChat As Label
+    Friend WithEvents lstView As ListView
 End Class

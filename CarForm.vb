@@ -4,15 +4,13 @@ Public Class CarForm
     Inherits AppForm
 
     ' Children
-    ' Emergency
-    Public ownerAccidentNotification As AccidentNotification
-    Public riderAccidentNotification As AccidentNotification
-    ' Car Diagnostic
-    Dim carDiagnostic As CarDiagnosticForm
-    '
     Dim carFeatures As CarFeaturesForm
     Dim carMedia As CarMediaForm
+    Dim carDiagnostic As CarDiagnosticForm
 
+    ' Notifications
+    Public ownerAccidentNotification As AccidentNotification
+    Public riderAccidentNotification As AccidentNotification
 
     Public Sub New(user As String, scenario As Integer, previousForm As HomeForm, devForm As DevForm)
 
@@ -38,6 +36,20 @@ Public Class CarForm
         Me.Controls.Add(Me.btnHome)
     End Sub
 
+    Public Overrides Sub CloseAllChildren()
+        If (Me.carFeatures IsNot Nothing) Then
+            Me.carFeatures.CloseAllForms()
+        End If
+
+        If (Me.carMedia IsNot Nothing) Then
+            Me.carMedia.CloseAllForms()
+        End If
+
+        If (Me.carDiagnostic IsNot Nothing) Then
+            Me.carDiagnostic.CloseAllForms()
+        End If
+    End Sub
+
     ' -----------------
     ' --- Emergency ---
     ' -----------------
@@ -57,11 +69,10 @@ Public Class CarForm
     ' --------------------
     Private Sub btnCarFeatures_Click(sender As Object, e As EventArgs) Handles btnCarFeatures.Click
         ' car features form opens up here
-        carFeatures = New CarFeaturesForm
+        Me.carFeatures = New CarFeaturesForm
         Me.Hide()
         carFeatures.Show()
-
-
+        Me.SetCurrentForm(Me.carFeatures)
     End Sub
 
     Private Sub btnCarFeatures_MouseDown(sender As Object, e As MouseEventArgs) Handles btnCarFeatures.MouseDown
@@ -77,15 +88,16 @@ Public Class CarForm
 
     End Sub
 
-    '-------------------
-    '-----Car Media-----
-    '-------------------
+    '-----------------
+    '--- Car Media ---
+    '-----------------
 
     Private Sub btnCarMedia_Click(sender As Object, e As EventArgs) Handles btnCarMedia.Click
         btnCarMedia.BackgroundImage = My.Resources.car_media_press
         Me.carMedia = New CarMediaForm
         Me.carMedia.Show()
         Me.Hide()
+        Me.SetCurrentForm(Me.carMedia)
     End Sub
 
     Private Sub btnCarMedia_MouseEnter(sender As Object, e As EventArgs) Handles btnCarMedia.MouseEnter
@@ -98,9 +110,13 @@ Public Class CarForm
 
     End Sub
 
+    '------------------
+    '--- Diagnostic ---
+    '------------------
+
     Private Sub btnDiagnostic_Click(sender As Object, e As EventArgs) Handles btnDiagnostic.Click
         Me.Hide()
-        Me.carDiagnostic = New CarDiagnosticForm(Me.user, 2, Me, Me.homeWindow, Me.devWindow)
+        Me.carDiagnostic = New CarDiagnosticForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow)
         Me.carDiagnostic.Show()
         Me.SetCurrentForm(Me.carDiagnostic)
     End Sub
