@@ -1,5 +1,14 @@
 ﻿Public Class CarFeaturesForm
 
+    Private Sub CarFeaturesForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Select Case Me.user
+            Case "owner"
+                Me.Text = "Car Owner Car Features"
+            Case "rider"
+                Me.Text = "Car Rider Car Features"
+        End Select
+    End Sub
+
     Private Sub btnToggleWindows_Click(sender As Object, e As EventArgs) Handles btnToggleWindows.Click
         If btnToggleWindows.Tag = 1 Then
             btnToggleWindows.BackgroundImage = My.Resources.toggle_off
@@ -90,4 +99,5 @@
         btnAirIntakeDown.BackgroundImage = My.Resources.arrow_down_neutral
 
     End Sub
+
 End Class

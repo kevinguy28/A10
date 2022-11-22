@@ -11,6 +11,13 @@ Public Class CarMediaForm
 
     End Sub
     Private Sub CarMediaForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Select Case Me.user
+            Case "owner"
+                Me.Text = "Car Owner Car Media"
+            Case "rider"
+                Me.Text = "Car Rider Car Media"
+        End Select
+
         Me.SetBackground()
         Me.CreateTitleLabel("Car Media Settings")
         '  Me.CreateHomeButton()

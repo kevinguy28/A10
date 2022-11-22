@@ -49,6 +49,13 @@ Public Class CalendarCarSelectForm
     End Sub
 
     Private Sub CalendarCarSelect_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Select Case Me.user
+            Case "owner"
+                Me.Text = "Car Owner Car Selection"
+            Case "rider"
+                Me.Text = "Car Rider Car Selection"
+        End Select
+
         ' Add Title, Home, Plus and Back buttons
         Me.SetBackground()
         Me.CreateTitleLabel("Select Your Ride")

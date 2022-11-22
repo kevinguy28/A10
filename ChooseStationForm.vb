@@ -42,6 +42,13 @@ Public Class ChooseStationForm
     End Sub
 
     Private Sub ChooseStationForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Select Case Me.user
+            Case "owner"
+                Me.Text = "Car Owner Choose Station"
+            Case "rider"
+                Me.Text = "Car Rider Choose Station"
+        End Select
+
         Me.lblStationAddress.Text = rb1.Text
     End Sub
 

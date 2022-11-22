@@ -22,12 +22,14 @@
     Private Sub CalendarCarConfirm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Select Case Me.user
             Case "owner"
+                Me.Text = "[Owner] Confirm Avblty"
                 Me.lblTitle.Text = "Scheduling"
                 Me.lblPrompt.Text = "Are you sure you want to" & vbCrLf & "change the availability?"
                 Me.imgProfilePicture.Image = usrEvent.GetProfilePicture
                 Me.lblName.Text = usrEvent.GetName
             Case "rider"
-                Me.lblTitle.Text = "Booking Request"
+                Me.Text = "[Rider] Confirm Booking"
+                Me.lblTitle.Text = "Booking"
                 Me.lblPrompt.Text = "Are you sure you" & vbCrLf & "want to book this ride?"
                 Me.imgProfilePicture.Image = usrEvent.GetCarOwnerProfilePicture
                 Me.lblName.Text = usrEvent.GetCarOwnerName

@@ -19,6 +19,13 @@
     End Sub
 
     Private Sub EmergencyContactForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Select Case Me.user
+            Case "owner"
+                Me.Text = "Car Owner Emergency"
+            Case "rider"
+                Me.Text = "Car Rider Emergency"
+        End Select
+
         Me.lblName.Text = ""
         Me.lblMessage.Text = ""
     End Sub

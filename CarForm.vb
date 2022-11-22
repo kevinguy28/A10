@@ -28,6 +28,12 @@ Public Class CarForm
     End Sub
 
     Private Sub CarForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Me.user = "owner" Then
+            Me.Text = "Car Owner Car"
+        ElseIf Me.user = "rider" Then
+            Me.Text = "Car Rider Car"
+        End If
+
         ' Add Title and Home button
         Me.SetBackground()
         Me.CreateTitleLabel("Car")

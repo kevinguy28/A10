@@ -120,7 +120,7 @@ Partial Class EmergencyContactForm
         Me.DoubleBuffered = True
         Me.Name = "EmergencyContactForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
-        Me.Text = "EmergencyContactForm"
+        Me.Text = "[Rider] Emergency Contact"
         CType(Me.imgEndCall, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgNoCall, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgCall, System.ComponentModel.ISupportInitialize).EndInit()

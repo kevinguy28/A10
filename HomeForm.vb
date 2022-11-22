@@ -21,15 +21,14 @@
         Me.scenario = scenario
         Me.devWindow = devForm
 
+    End Sub
+
+    Private Sub HomeForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Me.user = "owner" Then
             Me.Text = "Car Owner Home"
         ElseIf Me.user = "rider" Then
             Me.Text = "Car Rider Home"
         End If
-
-    End Sub
-
-    Private Sub HomeForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' Profile
         If Me.user = "owner" Then

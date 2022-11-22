@@ -9,6 +9,16 @@
         ' Add any initialization after the InitializeComponent() call.
         Me.user = user : Me.scenario = scenario : Me.homeWindow = homeForm
     End Sub
+
+    Private Sub NotificationForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Select Case Me.user
+            Case "owner"
+                Me.Text = "Car Owner Notification"
+            Case "rider"
+                Me.Text = "Car Rider Notification"
+        End Select
+    End Sub
+
     Function SetLocation()
         Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
         Dim halfScreen = fullScreen / 2
@@ -35,4 +45,5 @@
         Me.Close()
         Me.Dispose()
     End Sub
+
 End Class

@@ -10,6 +10,15 @@
         Me.user = user : Me.scenario = scenario
     End Sub
 
+    Private Sub CallForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Select Case Me.user
+            Case "owner"
+                Me.Text = "Car Owner Call"
+            Case "rider"
+                Me.Text = "Car Rider Call"
+        End Select
+    End Sub
+
     Public Sub setLocation()
         Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
         Dim halfScreen = fullScreen / 2
@@ -39,4 +48,5 @@
         Me.Close()
         Me.Dispose()
     End Sub
+
 End Class

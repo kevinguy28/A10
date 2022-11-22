@@ -18,6 +18,13 @@ Public Class RouteForm
     End Sub
 
     Private Sub RouteForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Select Case Me.user
+            Case "owner"
+                Me.Text = "Car Owner Route"
+            Case "rider"
+                Me.Text = "Car Rider Route"
+        End Select
+
         ' Add Title and Home button
         Me.SetBackground()
         Me.CreateTitleLabel("Route")

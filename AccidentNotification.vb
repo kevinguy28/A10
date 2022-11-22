@@ -28,6 +28,7 @@
         If mainForm Then
             AccidentNotification.mainAccidentForm = Me
             AccidentNotification.mainOpened = True
+            AccidentNotification.mainAccidentForm.Text = "Car Rider Accident"
             Me.OpenOwnerForm()
         End If
 
@@ -42,6 +43,7 @@
         If Not AccidentNotification.ownerOpened Then
             AccidentNotification.ownerOpened = True
             AccidentNotification.ownerAccidentForm = New AccidentNotification("owner", Me.scenario, Me.devWindow)
+            AccidentNotification.ownerAccidentForm.Text = "Car Owner Accident"
             AccidentNotification.ownerAccidentForm.denyButton.Visible = False
             AccidentNotification.ownerAccidentForm.confirmButton.Visible = False
             AccidentNotification.ownerAccidentForm.btnConfirm.Visible = True
@@ -138,4 +140,7 @@
         AccidentNotification.CloseAllForms()
     End Sub
 
+    Private Sub AccidentNotification_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

@@ -12,6 +12,15 @@
         Me.user = user : Me.scenario = scenario : Me.otherForm = otherForm
     End Sub
 
+    Private Sub LowBatteryNotificationForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Select Case Me.user
+            Case "owner"
+                Me.Text = "Car Owner Low Battery"
+            Case "rider"
+                Me.Text = "Car Rider Low Battery"
+        End Select
+    End Sub
+
     Public Sub setLocation()
         Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
         Dim halfScreen = fullScreen / 2
@@ -43,4 +52,5 @@
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
         Me.Close()
     End Sub
+
 End Class

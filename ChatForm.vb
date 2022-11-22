@@ -22,6 +22,13 @@ Public Class ChatForm
     End Sub
 
     Private Sub ChatForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Select Case Me.user
+            Case "owner"
+                Me.Text = "Car Owner Chat"
+            Case "rider"
+                Me.Text = "Car Rider Chat"
+        End Select
+
         ' Add Title and Home button
         Me.SetBackground()
         Me.CreateTitleLabel("Chat")

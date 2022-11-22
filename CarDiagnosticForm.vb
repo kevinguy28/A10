@@ -16,6 +16,13 @@
         Me.devWindow = devForm
     End Sub
     Private Sub CarDiagnosticForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Select Case Me.user
+            Case "owner"
+                Me.Text = "Car Owner Car Diagnostic"
+            Case "rider"
+                Me.Text = "Car Rider Car Diagnostic"
+        End Select
+
         Me.SetLocation()
         Me.SetBackground()
         Me.CreateTitleLabel("Diagnostic")
