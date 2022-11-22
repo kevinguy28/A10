@@ -23,6 +23,8 @@ Partial Class NotificationForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.lblTitle = New System.Windows.Forms.Label()
+        Me.btnConfirm = New System.Windows.Forms.Button()
+        Me.lblDescription = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblTitle
@@ -37,6 +39,27 @@ Partial Class NotificationForm
         Me.lblTitle.TabIndex = 13
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'btnConfirm
+        '
+        Me.btnConfirm.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnConfirm.Location = New System.Drawing.Point(125, 672)
+        Me.btnConfirm.Name = "btnConfirm"
+        Me.btnConfirm.Size = New System.Drawing.Size(235, 65)
+        Me.btnConfirm.TabIndex = 14
+        Me.btnConfirm.Text = "Confirm"
+        Me.btnConfirm.UseVisualStyleBackColor = True
+        '
+        'lblDescription
+        '
+        Me.lblDescription.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblDescription.BackColor = System.Drawing.Color.Transparent
+        Me.lblDescription.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblDescription.Location = New System.Drawing.Point(62, 197)
+        Me.lblDescription.Name = "lblDescription"
+        Me.lblDescription.Size = New System.Drawing.Size(361, 439)
+        Me.lblDescription.TabIndex = 15
+        Me.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'NotificationForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -44,6 +67,8 @@ Partial Class NotificationForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.lblDescription)
+        Me.Controls.Add(Me.btnConfirm)
         Me.Controls.Add(Me.lblTitle)
         Me.DoubleBuffered = True
         Me.Name = "NotificationForm"
@@ -54,4 +79,6 @@ Partial Class NotificationForm
     End Sub
 
     Friend WithEvents lblTitle As Label
+    Friend WithEvents btnConfirm As Button
+    Friend WithEvents lblDescription As Label
 End Class
