@@ -40,8 +40,8 @@ Partial Class CallForm
         'imgEndCall
         '
         Me.imgEndCall.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.imgEndCall.BackColor = System.Drawing.Color.Transparent
-        Me.imgEndCall.Image = Global.A10.My.Resources.Resources.endCall
+        Me.imgEndCall.BackColor = System.Drawing.SystemColors.Control
+        Me.imgEndCall.Image = Global.A10.My.Resources.Resources.CallStop
         Me.imgEndCall.Location = New System.Drawing.Point(161, 298)
         Me.imgEndCall.Name = "imgEndCall"
         Me.imgEndCall.Size = New System.Drawing.Size(73, 84)
@@ -53,8 +53,8 @@ Partial Class CallForm
         'imgNoCall
         '
         Me.imgNoCall.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.imgNoCall.BackColor = System.Drawing.Color.Transparent
-        Me.imgNoCall.Image = Global.A10.My.Resources.Resources.nocall
+        Me.imgNoCall.BackColor = System.Drawing.SystemColors.Control
+        Me.imgNoCall.Image = Global.A10.My.Resources.Resources.CallCancel
         Me.imgNoCall.Location = New System.Drawing.Point(309, 298)
         Me.imgNoCall.Name = "imgNoCall"
         Me.imgNoCall.Size = New System.Drawing.Size(73, 84)
@@ -65,9 +65,9 @@ Partial Class CallForm
         'imgCall
         '
         Me.imgCall.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.imgCall.BackColor = System.Drawing.Color.Transparent
+        Me.imgCall.BackColor = System.Drawing.SystemColors.Control
         Me.imgCall.Enabled = False
-        Me.imgCall.Image = Global.A10.My.Resources.Resources._call
+        Me.imgCall.Image = Global.A10.My.Resources.Resources.CallStart
         Me.imgCall.Location = New System.Drawing.Point(12, 298)
         Me.imgCall.Name = "imgCall"
         Me.imgCall.Size = New System.Drawing.Size(73, 84)

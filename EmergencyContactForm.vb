@@ -30,9 +30,9 @@
         Me.lblMessage.Text = ""
     End Sub
 
-    '----------------
-    '--- Buttons ---
-    '----------------
+    '--------------------
+    '--- Button Click ---
+    '--------------------
 
     Private Sub callPicBox_Click(sender As Object, e As EventArgs) Handles imgCall.Click
         Me.lblName.Text = ""
@@ -46,6 +46,34 @@
 
     Private Sub endCall_Click(sender As Object, e As EventArgs) Handles imgEndCall.Click, imgNoCall.Click
         Me.Close()
+    End Sub
+
+    '--------------------
+    '--- Button Hover ---
+    '--------------------
+
+    Private Sub imgCall_MouseEnter(sender As Object, e As EventArgs) Handles imgCall.MouseEnter, imgEndCall.MouseEnter, imgNoCall.MouseEnter
+        Dim currBtn = CType(sender, PictureBox)
+
+        If currBtn Is Me.imgCall Then
+            currBtn.Image = My.Resources.CallStart_Hover
+        ElseIf currBtn Is Me.imgEndCall Then
+            currBtn.Image = My.Resources.CallStop_Hover
+        ElseIf currBtn Is Me.imgNoCall Then
+            currBtn.Image = My.Resources.CallCancel_Hover
+        End If
+    End Sub
+
+    Private Sub imgCall_MouseLeave(sender As Object, e As EventArgs) Handles imgCall.MouseLeave, imgEndCall.MouseLeave, imgNoCall.MouseLeave
+        Dim currBtn = CType(sender, PictureBox)
+
+        If currBtn Is Me.imgCall Then
+            currBtn.Image = My.Resources.CallStart
+        ElseIf currBtn Is Me.imgEndCall Then
+            currBtn.Image = My.Resources.CallStop
+        ElseIf currBtn Is Me.imgNoCall Then
+            currBtn.Image = My.Resources.CallCancel
+        End If
     End Sub
 
     '-------------

@@ -41,32 +41,45 @@ Partial Class CarDiagnosticForm
         '
         'lbDiagnostic
         '
-        Me.lbDiagnostic.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lbDiagnostic.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lbDiagnostic.FormattingEnabled = True
-        Me.lbDiagnostic.ItemHeight = 37
+        Me.lbDiagnostic.ItemHeight = 30
         Me.lbDiagnostic.Items.AddRange(New Object() {"Engine:" & Global.Microsoft.VisualBasic.ChrW(9), "Radiator: " & Global.Microsoft.VisualBasic.ChrW(9), "Wheels: " & Global.Microsoft.VisualBasic.ChrW(9), "Doors:" & Global.Microsoft.VisualBasic.ChrW(9), "Battery:" & Global.Microsoft.VisualBasic.ChrW(9), "Brakes:" & Global.Microsoft.VisualBasic.ChrW(9), "Windows:" & Global.Microsoft.VisualBasic.ChrW(9)})
         Me.lbDiagnostic.Location = New System.Drawing.Point(45, 226)
         Me.lbDiagnostic.Name = "lbDiagnostic"
-        Me.lbDiagnostic.Size = New System.Drawing.Size(345, 263)
+        Me.lbDiagnostic.Size = New System.Drawing.Size(392, 214)
         Me.lbDiagnostic.TabIndex = 1
         '
         'btnRun
         '
-        Me.btnRun.Font = New System.Drawing.Font("Segoe UI Semibold", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnRun.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnRun.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnRun.FlatAppearance.BorderSize = 0
+        Me.btnRun.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.btnRun.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.btnRun.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnRun.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btnRun.ForeColor = System.Drawing.Color.White
         Me.btnRun.Location = New System.Drawing.Point(235, 183)
         Me.btnRun.Name = "btnRun"
-        Me.btnRun.Size = New System.Drawing.Size(215, 37)
+        Me.btnRun.Size = New System.Drawing.Size(202, 37)
         Me.btnRun.TabIndex = 2
         Me.btnRun.Text = "Run diagnostic"
-        Me.btnRun.UseVisualStyleBackColor = True
+        Me.btnRun.UseVisualStyleBackColor = False
         '
         'btnTow
         '
         Me.btnTow.BackColor = System.Drawing.Color.IndianRed
-        Me.btnTow.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnTow.Location = New System.Drawing.Point(25, 741)
+        Me.btnTow.FlatAppearance.BorderColor = System.Drawing.Color.Firebrick
+        Me.btnTow.FlatAppearance.BorderSize = 0
+        Me.btnTow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick
+        Me.btnTow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick
+        Me.btnTow.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnTow.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btnTow.ForeColor = System.Drawing.Color.White
+        Me.btnTow.Location = New System.Drawing.Point(92, 739)
         Me.btnTow.Name = "btnTow"
-        Me.btnTow.Size = New System.Drawing.Size(436, 65)
+        Me.btnTow.Size = New System.Drawing.Size(300, 50)
         Me.btnTow.TabIndex = 5
         Me.btnTow.Text = "Request a tow"
         Me.btnTow.UseVisualStyleBackColor = False
@@ -76,7 +89,7 @@ Partial Class CarDiagnosticForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
         Me.Controls.Add(Me.btnTow)
         Me.Controls.Add(Me.btnRun)

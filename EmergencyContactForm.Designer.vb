@@ -37,7 +37,7 @@ Partial Class EmergencyContactForm
         '
         'imgEndCall
         '
-        Me.imgEndCall.Image = Global.A10.My.Resources.Resources.endCall
+        Me.imgEndCall.Image = Global.A10.My.Resources.Resources.CallStop
         Me.imgEndCall.Location = New System.Drawing.Point(161, 215)
         Me.imgEndCall.Name = "imgEndCall"
         Me.imgEndCall.Size = New System.Drawing.Size(73, 84)
@@ -48,7 +48,7 @@ Partial Class EmergencyContactForm
         '
         'imgNoCall
         '
-        Me.imgNoCall.Image = Global.A10.My.Resources.Resources.nocall
+        Me.imgNoCall.Image = Global.A10.My.Resources.Resources.CallCancel
         Me.imgNoCall.Location = New System.Drawing.Point(309, 215)
         Me.imgNoCall.Name = "imgNoCall"
         Me.imgNoCall.Size = New System.Drawing.Size(73, 84)
@@ -58,7 +58,7 @@ Partial Class EmergencyContactForm
         '
         'imgCall
         '
-        Me.imgCall.Image = Global.A10.My.Resources.Resources._call
+        Me.imgCall.Image = Global.A10.My.Resources.Resources.CallStart
         Me.imgCall.Location = New System.Drawing.Point(12, 215)
         Me.imgCall.Name = "imgCall"
         Me.imgCall.Size = New System.Drawing.Size(73, 84)
