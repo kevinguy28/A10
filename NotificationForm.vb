@@ -2,6 +2,8 @@
     Dim user As String
     Dim scenario As Integer
     Dim homeWindow As HomeForm
+
+    Shared startAgain As Boolean
     Public Sub New(user As String, scenario As Integer, homeForm As HomeForm)
         ' This call is required by the designer.
         InitializeComponent()
