@@ -6,7 +6,7 @@
 
     Dim messageIndex = 0
     Dim messageName() = New String() {"", "", "Dispatcher:", "John Smith:", "Dispatcher:", "", ""}
-    Dim messageMssg() = New String() {"Calling...", "", "991, what is your emergency?", "I'd like to request an ambulence.", "Ok, they are on their way.", "", "...End Call"}
+    Dim messageMssg() = New String() {"Calling...", "", "911, what is your emergency?", "I'd like to request an ambulence.", "Ok, they are on their way.", "", "...End Call"}
     Public Sub New(user As String, scenario As Integer, devForm As DevForm)
 
         ' This call is required by the designer.

@@ -1,6 +1,7 @@
 ﻿Public Class CarDiagnosticForm
     Inherits AppForm
 
+    'Notification
     Dim callForm As CallForm
 
     Public Sub New(user As String, Scenario As Integer, previousForm As CarForm, homeForm As HomeForm, devForm As DevForm)
@@ -44,7 +45,7 @@
     End Sub
 
     Private Sub btnTow_Click(sender As Object, e As EventArgs) Handles btnTow.Click
-        Me.callForm = New CallForm(Me.user, Me.scenario) : Me.callForm.setLocation()
-        Me.callForm.Show()
+        Me.callForm = New CallForm(Me.user, Me.scenario, Me.devWindow)
+        Me.devWindow.OpenPopup(Me.user, Me.callForm)
     End Sub
 End Class
