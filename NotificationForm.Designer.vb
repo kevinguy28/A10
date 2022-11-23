@@ -43,13 +43,20 @@ Partial Class NotificationForm
         '
         'btnConfirm
         '
-        Me.btnConfirm.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnConfirm.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnConfirm.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnConfirm.FlatAppearance.BorderSize = 0
+        Me.btnConfirm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.btnConfirm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnConfirm.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnConfirm.ForeColor = System.Drawing.Color.White
         Me.btnConfirm.Location = New System.Drawing.Point(125, 672)
         Me.btnConfirm.Name = "btnConfirm"
         Me.btnConfirm.Size = New System.Drawing.Size(235, 65)
         Me.btnConfirm.TabIndex = 14
         Me.btnConfirm.Text = "Confirm"
-        Me.btnConfirm.UseVisualStyleBackColor = True
+        Me.btnConfirm.UseVisualStyleBackColor = False
         '
         'lblDescription
         '
@@ -64,23 +71,37 @@ Partial Class NotificationForm
         '
         'btnApprove
         '
-        Me.btnApprove.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btnApprove.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnApprove.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnApprove.FlatAppearance.BorderSize = 0
+        Me.btnApprove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
+        Me.btnApprove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
+        Me.btnApprove.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnApprove.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnApprove.ForeColor = System.Drawing.Color.White
         Me.btnApprove.Location = New System.Drawing.Point(98, 538)
         Me.btnApprove.Name = "btnApprove"
         Me.btnApprove.Size = New System.Drawing.Size(116, 83)
         Me.btnApprove.TabIndex = 16
-        Me.btnApprove.Text = "Approve"
+        Me.btnApprove.Text = "Confirm"
         Me.btnApprove.UseVisualStyleBackColor = False
         Me.btnApprove.Visible = False
         '
         'btnDeny
         '
-        Me.btnDeny.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btnDeny.BackColor = System.Drawing.Color.IndianRed
+        Me.btnDeny.FlatAppearance.BorderColor = System.Drawing.Color.Firebrick
+        Me.btnDeny.FlatAppearance.BorderSize = 0
+        Me.btnDeny.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick
+        Me.btnDeny.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick
+        Me.btnDeny.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDeny.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnDeny.ForeColor = System.Drawing.Color.White
         Me.btnDeny.Location = New System.Drawing.Point(270, 538)
         Me.btnDeny.Name = "btnDeny"
         Me.btnDeny.Size = New System.Drawing.Size(116, 83)
         Me.btnDeny.TabIndex = 17
-        Me.btnDeny.Text = "Deny"
+        Me.btnDeny.Text = "Cancel"
         Me.btnDeny.UseVisualStyleBackColor = False
         Me.btnDeny.Visible = False
         '

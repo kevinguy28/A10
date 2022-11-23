@@ -68,7 +68,8 @@ Partial Class RouteForm
         '
         'pbRoute
         '
-        Me.pbRoute.BackgroundImage = Global.A10.My.Resources.Resources.the_map
+        Me.pbRoute.BackgroundImage = Global.A10.My.Resources.Resources.the_map_car
+        Me.pbRoute.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pbRoute.Location = New System.Drawing.Point(24, 169)
         Me.pbRoute.Name = "pbRoute"
         Me.pbRoute.Size = New System.Drawing.Size(436, 286)

@@ -133,8 +133,8 @@ Public Class CarForm
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim ownerNotification As New NotificationForm(Me.user, Me.scenario, Me.homeWindow)
-        ownerNotification.Show() : ownerNotification.changeTitle("Request") : ownerNotification.SetLocation() : ownerNotification.changeDescription("The rider has requested to stop the vehicle. Approve?")
-        ownerNotification.makeBtnVisible()
+        Dim riderNotification As New NotificationForm("owner", Me.scenario, Me.homeWindow)
+        riderNotification.Show() : riderNotification.changeTitle("Confirm") : riderNotification.SetLocation() : riderNotification.changeDescription("Are you sure you want to stop the vehicle?")
+        riderNotification.makeBtnVisible()
     End Sub
 End Class

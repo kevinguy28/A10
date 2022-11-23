@@ -63,9 +63,8 @@
     End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
-        Dim riderNotification As New NotificationForm(Me.user, Me.scenario, Me.homeWindow)
-        riderNotification.changeDescription("The owner has accepted the request. The vehicle will pull over when safe.")
-        riderNotification.changeTitle("Notification!") : riderNotification.SetOtherLocation() : riderNotification.Show()
+        Dim ownerNotification As New NotificationForm("rider", Me.scenario, Me.homeWindow)
+        ownerNotification.Show() : ownerNotification.changeTitle("Car Stopped") : ownerNotification.SetLocation() : ownerNotification.changeDescription("The rider has stopped the vehicle.")
         Me.Close()
     End Sub
 
@@ -74,9 +73,6 @@
     End Sub
 
     Private Sub btnDeny_Click(sender As Object, e As EventArgs) Handles btnDeny.Click
-        Dim riderNotification As New NotificationForm(Me.user, Me.scenario, Me.homeWindow)
-        riderNotification.changeDescription("The owner has denied the request. The vehicle will continue.")
-        riderNotification.changeTitle("Notification!") : riderNotification.SetOtherLocation() : riderNotification.Show()
         Me.Close()
     End Sub
 End Class
