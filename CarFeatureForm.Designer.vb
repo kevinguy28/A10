@@ -22,6 +22,7 @@ Partial Class CarFeatureForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.lblAirIntakeNumber = New System.Windows.Forms.Label()
         Me.btnAirIntakeUp = New System.Windows.Forms.Button()
         Me.btnAirIntakeDown = New System.Windows.Forms.Button()
@@ -35,6 +36,7 @@ Partial Class CarFeatureForm
         Me.btnOpenTrunk = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnToggleWindows = New System.Windows.Forms.Button()
+        Me.tmrUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'lblAirIntakeNumber
@@ -197,6 +199,9 @@ Partial Class CarFeatureForm
         Me.btnToggleWindows.TabStop = False
         Me.btnToggleWindows.UseVisualStyleBackColor = True
         '
+        'tmrUpdate
+        '
+        '
         'CarFeatureForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -220,7 +225,7 @@ Partial Class CarFeatureForm
         Me.DoubleBuffered = True
         Me.Name = "CarFeatureForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
-        Me.Text = "CarFeatureForm"
+        Me.Text = "w"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -239,4 +244,5 @@ Partial Class CarFeatureForm
     Friend WithEvents btnOpenTrunk As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents btnToggleWindows As Button
+    Friend WithEvents tmrUpdate As Timer
 End Class

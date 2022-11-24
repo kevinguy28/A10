@@ -18,6 +18,12 @@ Public Class DevForm
     Dim currentBooking As UserCalendarEvent
     Dim carMoving As Boolean = False
 
+    Dim fanIntake = 1
+    Dim fanStrength = 1
+    Dim temperature = 12
+
+    Dim toggleWindow = 0
+
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.CenterToScreen()
         Me.CreateOwnerAvailability()
@@ -608,6 +614,42 @@ Public Class DevForm
 
     Public Function GetChatHistory() As List(Of ChatMessage)
         Return Me.chatHistory
+    End Function
+
+    ' ------------
+    ' --- Car Feature ---
+    ' ------------
+
+    Public Sub UpdateStregth(fanStrength As Integer)
+        Me.fanStrength += fanStrength
+    End Sub
+
+    Public Sub UpdateIntake(fanIntake As Integer)
+        Me.fanIntake += fanIntake
+    End Sub
+
+    Public Sub UpdateTemperature(temperature As Integer)
+        Me.temperature += temperature
+    End Sub
+
+    Public Function GetFanStrength()
+        Return Me.fanStrength
+    End Function
+
+    Public Function GetFanIntake()
+        Return Me.fanIntake
+    End Function
+
+    Public Function GetTemperature()
+        Return Me.temperature
+    End Function
+
+    Public Sub UpdateToggleWindow(update As Integer)
+        Me.toggleWindow = update
+    End Sub
+
+    Public Function GetToggleWindow()
+        Return Me.toggleWindow
     End Function
 
     ' --------------
