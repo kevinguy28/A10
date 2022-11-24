@@ -25,6 +25,7 @@ Public Class DevForm
     Dim fanStrength = 1
     Dim temperature = 12
     Dim toggleWindow = 0
+    Dim toggleTrunk = 0
 
     ' Car Media
     Dim speakerVolume = 1
@@ -737,6 +738,13 @@ Public Class DevForm
         Return Me.toggleWindow
     End Function
 
+    Public Sub UpdateToggleTrunk(update As Integer)
+        Me.toggleTrunk = update
+    End Sub
+
+    Public Function GetToggleTrunk()
+        Return Me.toggleTrunk
+    End Function
     ' --------------
     ' -- Car Media -
     ' --------------
