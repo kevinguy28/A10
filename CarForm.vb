@@ -12,7 +12,6 @@ Public Class CarForm
     ' Notifications
     Dim riderAccidentNotification As AccidentNotification
 
-
     ' Current Booking
     Dim bookingEvent As UserCalendarEvent
 
@@ -37,6 +36,7 @@ Public Class CarForm
     Private Sub CarForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Me.user = "owner" Then
             Me.Text = "Car Owner Car"
+            Me.btnStop.Visible = False
         ElseIf Me.user = "rider" Then
             Me.Text = "Car Rider Car"
         End If
@@ -96,11 +96,8 @@ Public Class CarForm
     '------------
     Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
         If Me.DisabledClick(True) Then Exit Sub
-        Dim riderNotification As New CarStopForm("owner", Me.scenario, Me.homeWindow, Me.devWindow)
-        riderNotification.Show()
-        riderNotification.changeTitle("Confirm")
-        riderNotification.changeDescription("Are you sure you want to stop the vehicle?")
-        riderNotification.makeBtnVisible()
+        Dim riderNotification As New CarStopForm("rider", Me.scenario, Me.homeWindow, Me.devWindow)
+        Me.devWindow.OpenPopup(Me.user, riderNotification)
     End Sub
 
     ' --------------------
@@ -188,6 +185,7 @@ Public Class CarForm
         Me.lblError.Visible = True
         Me.lblError.BringToFront()
         If Me.backgroundWorker.IsBusy() = False Then
+            Me.lblError.Location = New Point((Me.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)
             Me.backgroundWorker.RunWorkerAsync()
         End If
     End Sub
@@ -195,34 +193,34 @@ Public Class CarForm
     Private Sub backgroundWorker_DoWork(sender As Object, e As DoWorkEventArgs) Handles backgroundWorker.DoWork
         Dim shakeArr() = {1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1}
 
-        ' Location
-        If lblError.InvokeRequired Then lblError.Invoke(Sub() Me.lblError.Location = New Point((Me.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)) _
-        Else Me.lblError.Location = New Point((Me.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)
+        Try
+            ' Shake
+            For fullShake As Integer = 0 To 3
+                For moveIndex As Integer = 0 To shakeArr.Length() - 1
+                    'Move
+                    If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() lblError.Left += shakeArr(moveIndex)) _
+                    Else lblError.Left += shakeArr(moveIndex)
 
-        ' Shake
-        For fullShake As Integer = 0 To 3
-            For moveIndex As Integer = 0 To shakeArr.Length() - 1
-                'Move
-                If lblError.InvokeRequired Then lblError.Invoke(Sub() lblError.Left += shakeArr(moveIndex)) _
-                Else lblError.Left += shakeArr(moveIndex)
+                    'Wait
+                    If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
+                    Else Me.lblError.Refresh()
+                    Threading.Thread.Sleep(10)
+                Next
+            Next
 
+            ' Pause
+            For pause As Integer = 0 To 150
                 'Wait
-                If lblError.InvokeRequired Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
+                If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
                 Else Me.lblError.Refresh()
                 Threading.Thread.Sleep(10)
             Next
-        Next
 
-        ' Pause
-        For pause As Integer = 0 To 150
-            'Wait
-            If lblError.InvokeRequired Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
-            Else Me.lblError.Refresh()
-            Threading.Thread.Sleep(10)
-        Next
+            If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() Me.lblError.Visible = False) _
+            Else Me.lblError.Visible = False
+        Catch ex As Exception
+        End Try
 
-        If lblError.InvokeRequired Then lblError.Invoke(Sub() Me.lblError.Visible = False) _
-        Else Me.lblError.Visible = False
     End Sub
 
 End Class

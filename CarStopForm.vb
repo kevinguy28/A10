@@ -1,4 +1,6 @@
-﻿Public Class CarStopForm
+﻿Imports System.Buffers
+
+Public Class CarStopForm
     Dim user As String
     Dim scenario As Integer
     Dim homeWindow As HomeForm
@@ -16,6 +18,9 @@
         Me.devWindow = devWindow
 
         Me.bookingEvent = Me.devWindow.GetCurrentBooking()
+
+        Me.Form_Resize(Nothing, Nothing)
+        Me.Form_LocationChanged(Nothing, Nothing)
     End Sub
 
     Private Sub NotificationForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -79,11 +84,10 @@
         Me.Dispose()
     End Sub
 
-    Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
+    Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
         If Me.bookingEvent.GetCarOwnerName = "Jane Doe" Then
-            Dim ownerNotification As New CarStopForm("rider", Me.scenario, Me.homeWindow, Me.devWindow)
-            ownerNotification.Show() : ownerNotification.changeTitle("Car Stopped")
-            ownerNotification.changeDescription("The rider has stopped the vehicle.")
+            Dim ownerForm As New CarStopForm("owner", Me.scenario, Me.homeWindow, Me.devWindow)
+            Me.devWindow.OpenPopup("owner", ownerForm)
         End If
         Me.Close()
     End Sub
@@ -103,7 +107,7 @@
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(425, 378)
+        Me.Size = New Size(380, 378)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
@@ -123,7 +127,7 @@
     ' --- On Close ---
     ' ----------------
     Private Sub CalendarCarConfirmForm_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        'Me.devWindow.ClosePopup(Me.user)
+        Me.devWindow.ClosePopup(Me.user)
         Me.Dispose()
     End Sub
 

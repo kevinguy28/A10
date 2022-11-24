@@ -32,6 +32,7 @@ Partial Class BookingRequestForm
         Me.lblTime = New System.Windows.Forms.Label()
         Me.btnDeny = New System.Windows.Forms.Button()
         Me.btnAccept = New System.Windows.Forms.Button()
+        Me.lblUser = New System.Windows.Forms.Label()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgRating, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -51,7 +52,7 @@ Partial Class BookingRequestForm
         Me.lblName.AutoSize = True
         Me.lblName.BackColor = System.Drawing.SystemColors.Control
         Me.lblName.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblName.Location = New System.Drawing.Point(78, 107)
+        Me.lblName.Location = New System.Drawing.Point(78, 137)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(93, 30)
         Me.lblName.TabIndex = 13
@@ -61,7 +62,7 @@ Partial Class BookingRequestForm
         'imgProfilePicture
         '
         Me.imgProfilePicture.BackColor = System.Drawing.SystemColors.Control
-        Me.imgProfilePicture.Location = New System.Drawing.Point(12, 107)
+        Me.imgProfilePicture.Location = New System.Drawing.Point(12, 137)
         Me.imgProfilePicture.Name = "imgProfilePicture"
         Me.imgProfilePicture.Size = New System.Drawing.Size(60, 60)
         Me.imgProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -81,7 +82,7 @@ Partial Class BookingRequestForm
         '
         'imgRating
         '
-        Me.imgRating.Location = New System.Drawing.Point(82, 140)
+        Me.imgRating.Location = New System.Drawing.Point(82, 170)
         Me.imgRating.Name = "imgRating"
         Me.imgRating.Size = New System.Drawing.Size(157, 28)
         Me.imgRating.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -92,7 +93,7 @@ Partial Class BookingRequestForm
         '
         Me.lblFromPrompt.AutoSize = True
         Me.lblFromPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblFromPrompt.Location = New System.Drawing.Point(31, 171)
+        Me.lblFromPrompt.Location = New System.Drawing.Point(31, 201)
         Me.lblFromPrompt.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFromPrompt.Name = "lblFromPrompt"
         Me.lblFromPrompt.Size = New System.Drawing.Size(47, 21)
@@ -103,7 +104,7 @@ Partial Class BookingRequestForm
         '
         Me.lblToPrompt.AutoSize = True
         Me.lblToPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblToPrompt.Location = New System.Drawing.Point(51, 192)
+        Me.lblToPrompt.Location = New System.Drawing.Point(51, 222)
         Me.lblToPrompt.Margin = New System.Windows.Forms.Padding(0)
         Me.lblToPrompt.Name = "lblToPrompt"
         Me.lblToPrompt.Size = New System.Drawing.Size(27, 21)
@@ -113,7 +114,7 @@ Partial Class BookingRequestForm
         'lblTime
         '
         Me.lblTime.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTime.Location = New System.Drawing.Point(78, 171)
+        Me.lblTime.Location = New System.Drawing.Point(78, 201)
         Me.lblTime.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTime.Name = "lblTime"
         Me.lblTime.Size = New System.Drawing.Size(226, 42)
@@ -156,11 +157,24 @@ Partial Class BookingRequestForm
         Me.btnAccept.Text = "Accept"
         Me.btnAccept.UseVisualStyleBackColor = False
         '
+        'lblUser
+        '
+        Me.lblUser.AutoSize = True
+        Me.lblUser.BackColor = System.Drawing.SystemColors.Control
+        Me.lblUser.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblUser.Location = New System.Drawing.Point(12, 104)
+        Me.lblUser.Name = "lblUser"
+        Me.lblUser.Size = New System.Drawing.Size(79, 30)
+        Me.lblUser.TabIndex = 36
+        Me.lblUser.Text = "lblUser"
+        Me.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'BookingRequestForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(304, 321)
+        Me.Controls.Add(Me.lblUser)
         Me.Controls.Add(Me.btnDeny)
         Me.Controls.Add(Me.btnAccept)
         Me.Controls.Add(Me.lblFromPrompt)
@@ -190,4 +204,5 @@ Partial Class BookingRequestForm
     Friend WithEvents lblTime As Label
     Friend WithEvents btnDeny As Button
     Friend WithEvents btnAccept As Button
+    Friend WithEvents lblUser As Label
 End Class

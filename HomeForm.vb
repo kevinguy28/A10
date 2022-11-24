@@ -136,7 +136,7 @@
     End Sub
 
     Private Sub btnRoute_Click(sender As Object, e As EventArgs) Handles btnRoute.Click
-        Dim bookingEvent As UserCalendarEvent
+        Dim bookingEvent = Me.devWindow.GetCurrentBooking
 
         ' If no current booking
         If (bookingEvent Is Nothing) Then
@@ -151,8 +151,23 @@
             ' Don't show car
             Me.routeForm.ChangeMap(My.Resources.the_map)
 
-            ' Owner needs to be part of booking event to see ride
+            ' Owner with booking
         ElseIf (Me.user = "owner" And bookingEvent.GetCarOwnerName = "Jane Doe") Then
+            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent.GetEndDate, bookingEvent)
+
+            ' Disable
+            Me.routeForm.DisableForm()
+
+            ' Start --> Recall Car
+            Me.routeForm.btnStart.Enabled = True
+            Me.routeForm.btnStart.Text = "Recall Car"
+
+            'Rider
+        ElseIf Me.user = "rider" Then
+            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent.GetEndDate, bookingEvent)
+
+            ' Owner without booking
+        Else
             Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent.GetEndDate, bookingEvent)
 
             ' Disable
@@ -164,8 +179,6 @@
             ' Start --> Recall Car
             Me.routeForm.btnStart.Enabled = True
             Me.routeForm.btnStart.Text = "Recall Car"
-        Else
-            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent.GetEndDate, bookingEvent)
         End If
 
         Me.Hide()

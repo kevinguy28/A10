@@ -149,7 +149,7 @@ Partial Class RouteForm
         Me.lblHourStart.Location = New System.Drawing.Point(165, 548)
         Me.lblHourStart.Margin = New System.Windows.Forms.Padding(0)
         Me.lblHourStart.Name = "lblHourStart"
-        Me.lblHourStart.Size = New System.Drawing.Size(37, 30)
+        Me.lblHourStart.Size = New System.Drawing.Size(40, 30)
         Me.lblHourStart.TabIndex = 18
         Me.lblHourStart.Text = "00"
         Me.lblHourStart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -170,10 +170,10 @@ Partial Class RouteForm
         '
         Me.lblMinuteStart.BackColor = System.Drawing.Color.White
         Me.lblMinuteStart.Font = New System.Drawing.Font("Segoe UI Semibold", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblMinuteStart.Location = New System.Drawing.Point(222, 548)
+        Me.lblMinuteStart.Location = New System.Drawing.Point(221, 548)
         Me.lblMinuteStart.Margin = New System.Windows.Forms.Padding(0)
         Me.lblMinuteStart.Name = "lblMinuteStart"
-        Me.lblMinuteStart.Size = New System.Drawing.Size(37, 30)
+        Me.lblMinuteStart.Size = New System.Drawing.Size(40, 30)
         Me.lblMinuteStart.TabIndex = 20
         Me.lblMinuteStart.Text = "00"
         Me.lblMinuteStart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter

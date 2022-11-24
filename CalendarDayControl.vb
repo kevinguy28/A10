@@ -91,8 +91,9 @@
             Dim startDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourIndex, 0, 0)
             Dim endDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourIndex, 59, 59)
 
-            If Me.devWindow.isRiderBooked(startDate, endDate) Then
-                lblHour.Text = "Booked"
+            Dim currBooking As UserCalendarEvent = Me.devWindow.GetRiderFirstBooking(startDate, endDate)
+            If currBooking IsNot Nothing Then
+                lblHour.Text = "Booked" & vbCrLf & currBooking.GetCarOwnerName
                 lblHour.BackColor = colourGreen
                 Me.hourEventList.Add(lblHour)
             End If

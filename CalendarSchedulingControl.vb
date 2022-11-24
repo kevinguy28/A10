@@ -1,4 +1,5 @@
-﻿Imports System.Drawing.Imaging
+﻿Imports System.ComponentModel
+Imports System.Drawing.Imaging
 Imports System.Drawing.Printing
 Imports System.Text.RegularExpressions
 Imports System.Threading
@@ -34,8 +35,8 @@ Public Class CalendarSchedulingControl
     Dim bdrBotHghtChanged = False
     Dim bdrBotPosnChanged = False
 
-    ' Shake
-    Dim shaking = False
+    ' Error Shake
+    Dim WithEvents backgroundWorker As BackgroundWorker
     Dim lblError As Label
 
     ' MouseHold
@@ -141,6 +142,9 @@ Public Class CalendarSchedulingControl
         ' User Control width - scroll bar (to make space for it) = 410
         Me.showMonthsStart = False
         Me.showMonthsEnd = False
+
+        ' Background Worker
+        Me.backgroundWorker = New BackgroundWorker()
     End Sub
 
     ' -----------------
@@ -1230,14 +1234,8 @@ Public Class CalendarSchedulingControl
         Next
 
         ' If error
-        If (errorMsg <> "") And (Me.shaking = False) Then
-            Me.lblError.Visible = True
-            Me.lblError.BringToFront()
-            Me.lblError.Text = errorMsg
-            Me.lblError.Location = New Point((Me.previousForm.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)
-            Me.shaking = True
-            Dim t1 As Thread = New Thread(New ThreadStart(AddressOf Me.ShakeErrorMessage))
-            t1.Start()
+        If (errorMsg <> "") Then
+            Me.ShakeErrorMessage(errorMsg)
             Exit Sub
         End If
 
@@ -1257,63 +1255,46 @@ Public Class CalendarSchedulingControl
     ' -------------
     ' --- Shake ---
     ' -------------
+    Private Sub ShakeErrorMessage(errorText As String)
+        Me.lblError.Text = errorText
+        Me.lblError.Visible = True
+        Me.lblError.BringToFront()
+        If Me.backgroundWorker.IsBusy() = False Then
+            Me.lblError.Location = New Point((Me.previousForm.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)
+            Me.backgroundWorker.RunWorkerAsync()
+        End If
+    End Sub
 
-    Private Sub ShakeErrorMessage()
-        ''                 |           plus           |                 minus                 |                 minus                 |            plus             |
-        ''                 1, 2, 3, 4, 5, 6, 7, 8, 9,10,  9,  8,  7,  6,  5,  4,  3,  2,  1,  0, -1, -2, -3, -4, -5, -6, -7, -8, -9,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1, 0
-        'Dim shakeArr() = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-        'Dim shakeArr() = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
-        'Dim shakeArr() = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
-        'Dim shakeArr() = {5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5}
-        'Dim shakeArr() = {10, -10, 10, -10, 10, -10, 10, -10, 10, -10, 10, -10, 10, -10, 10, -10}
-        'Dim shakeArr() = {25, -25, 25, -25, 25, -25, 25, -25, 25, -25, 25, -25, 25, -25, 25, -25}
-        ''                 |    plus    |       minus       |       minus       |     plus     |
-        ''                  2  4  6  8  10  8   6   4   2   0  -2  -4  -6  -8  -10-8 -6 -4  -2 0
-        ''                 1  3  5  7  9   9   7   5   3   1  -1  -3  -5  -7  -9 -9 -7,-5,-3,-1,
-        'Dim shakeArr() = {2, 2, 2, 2, 2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 2, 2, 2, 2, 2}
+    Private Sub backgroundWorker_DoWork(sender As Object, e As DoWorkEventArgs) Handles backgroundWorker.DoWork
         Dim shakeArr() = {1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1}
 
-        ' Shake
-        For fullShake As Integer = 0 To 3
+        Try
+            ' Shake
+            For fullShake As Integer = 0 To 3
+                For moveIndex As Integer = 0 To shakeArr.Length() - 1
+                    'Move
+                    If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() lblError.Left += shakeArr(moveIndex)) _
+                    Else lblError.Left += shakeArr(moveIndex)
 
-            For moveIndex As Integer = 0 To shakeArr.Length() - 1
-                'Move
-                If lblError.InvokeRequired Then
-                    lblError.Invoke(Sub() lblError.Left += shakeArr(moveIndex))
-                Else
-                    lblError.Left += shakeArr(moveIndex)
-                End If
+                    'Wait
+                    If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
+                    Else Me.lblError.Refresh()
+                    Threading.Thread.Sleep(10)
+                Next
+            Next
 
+            ' Pause
+            For pause As Integer = 0 To 150
                 'Wait
-                If lblError.InvokeRequired Then
-                    lblError.Invoke(Sub() Me.lblError.Refresh())
-                Else
-                    Me.lblError.Refresh()
-                End If
+                If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
+                Else Me.lblError.Refresh()
                 Threading.Thread.Sleep(10)
             Next
 
-        Next
-
-        ' Pause
-        For pause As Integer = 0 To 150
-
-            'Wait
-            If lblError.InvokeRequired Then
-                lblError.Invoke(Sub() Me.lblError.Refresh())
-            Else
-                Me.lblError.Refresh()
-            End If
-            Threading.Thread.Sleep(10)
-
-        Next
-
-        Me.shaking = False
-        If lblError.InvokeRequired Then
-            lblError.Invoke(Sub() Me.lblError.Visible = False)
-        Else
-            Me.lblError.Visible = False
-        End If
+            If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() Me.lblError.Visible = False) _
+            Else Me.lblError.Visible = False
+        Catch ex As Exception
+        End Try
 
     End Sub
 

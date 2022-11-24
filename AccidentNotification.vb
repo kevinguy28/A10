@@ -90,6 +90,8 @@
         Me.OpenOwnerForm()
 
         AccidentNotification.ownerAccidentForm.lblAccident.Text = "The accident was confirmed!"
+        AccidentNotification.ownerAccidentForm.lblMessage.BringToFront()
+        AccidentNotification.ownerAccidentForm.lblMessage.Text = "Contact the rider for more information."
 
         Me.OpenEmergencyForm()
     End Sub
@@ -111,7 +113,7 @@
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(320, 250)
+        Me.Size = New Size(365, 250)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

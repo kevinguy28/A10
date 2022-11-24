@@ -27,19 +27,21 @@ Partial Class AccidentNotification
         Me.confirmButton = New System.Windows.Forms.Button()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.btnConfirm = New System.Windows.Forms.Button()
+        Me.lblMessage = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblAccident
         '
-        Me.lblAccident.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblAccident.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblAccident.BackColor = System.Drawing.SystemColors.Control
         Me.lblAccident.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblAccident.Location = New System.Drawing.Point(12, 55)
         Me.lblAccident.Name = "lblAccident"
-        Me.lblAccident.Size = New System.Drawing.Size(280, 50)
+        Me.lblAccident.Size = New System.Drawing.Size(325, 50)
         Me.lblAccident.TabIndex = 7
         Me.lblAccident.Text = "An accident has " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "been detected!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.lblAccident.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblAccident.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'denyButton
         '
@@ -50,7 +52,7 @@ Partial Class AccidentNotification
         Me.denyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.denyButton.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.denyButton.ForeColor = System.Drawing.Color.White
-        Me.denyButton.Location = New System.Drawing.Point(177, 140)
+        Me.denyButton.Location = New System.Drawing.Point(222, 140)
         Me.denyButton.Name = "denyButton"
         Me.denyButton.Size = New System.Drawing.Size(115, 59)
         Me.denyButton.TabIndex = 6
@@ -75,11 +77,13 @@ Partial Class AccidentNotification
         '
         'lblTitle
         '
+        Me.lblTitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTitle.BackColor = System.Drawing.Color.Transparent
         Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblTitle.Location = New System.Drawing.Point(12, 9)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(280, 46)
+        Me.lblTitle.Size = New System.Drawing.Size(325, 46)
         Me.lblTitle.TabIndex = 10
         Me.lblTitle.Text = "Emergency"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -94,7 +98,7 @@ Partial Class AccidentNotification
         Me.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnConfirm.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnConfirm.ForeColor = System.Drawing.Color.White
-        Me.btnConfirm.Location = New System.Drawing.Point(63, 152)
+        Me.btnConfirm.Location = New System.Drawing.Point(85, 152)
         Me.btnConfirm.Name = "btnConfirm"
         Me.btnConfirm.Size = New System.Drawing.Size(179, 35)
         Me.btnConfirm.TabIndex = 12
@@ -102,17 +106,29 @@ Partial Class AccidentNotification
         Me.btnConfirm.UseVisualStyleBackColor = False
         Me.btnConfirm.Visible = False
         '
+        'lblMessage
+        '
+        Me.lblMessage.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblMessage.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblMessage.Location = New System.Drawing.Point(12, 80)
+        Me.lblMessage.Name = "lblMessage"
+        Me.lblMessage.Size = New System.Drawing.Size(325, 25)
+        Me.lblMessage.TabIndex = 13
+        Me.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'AccidentNotification
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(304, 211)
+        Me.ClientSize = New System.Drawing.Size(349, 211)
         Me.Controls.Add(Me.btnConfirm)
         Me.Controls.Add(Me.lblTitle)
-        Me.Controls.Add(Me.lblAccident)
         Me.Controls.Add(Me.denyButton)
         Me.Controls.Add(Me.confirmButton)
+        Me.Controls.Add(Me.lblAccident)
+        Me.Controls.Add(Me.lblMessage)
         Me.DoubleBuffered = True
         Me.Location = New System.Drawing.Point(685, 200)
         Me.Name = "AccidentNotification"
@@ -127,4 +143,5 @@ Partial Class AccidentNotification
     Friend WithEvents confirmButton As Button
     Friend WithEvents lblTitle As Label
     Friend WithEvents btnConfirm As Button
+    Friend WithEvents lblMessage As Label
 End Class

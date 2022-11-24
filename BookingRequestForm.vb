@@ -34,6 +34,7 @@ Public Class BookingRequestForm
         End Select
 
         Me.lblPrompt.Text = "This user wants to book your" & vbCrLf & Me.bookingEvent.GetColour & " " & Me.bookingEvent.GetCar
+        Me.lblUser.Text = "Car Rider:"
         Me.imgProfilePicture.Image = Me.bookingEvent.GetProfilePicture()
         Me.lblName.Text = Me.bookingEvent.GetName
         Me.imgRating.Image = Me.bookingEvent.GetRatingImg

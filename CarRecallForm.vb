@@ -28,6 +28,7 @@
             Case "owner"
                 Me.Text = "Car Owner Car Recall"
                 Me.lblTitle.Text = "Car Recall"
+                Me.lblUser.Text = "Car Rider:"
                 Me.lblPrompt.Text = "Are you sure you" & vbCrLf & "want to recall your car?"
                 Me.imgProfilePicture.Image = bookingEvent.GetProfilePicture
                 Me.lblName.Text = bookingEvent.GetName
@@ -38,6 +39,7 @@
             Case "rider"
                 Me.Text = "Car Rider Car Recall"
                 Me.lblTitle.Text = "Car Recall"
+                Me.lblUser.Text = "Car Owner:"
                 Me.lblPrompt.Text = "Your ride has been recalled." & vbCrLf & "Please exit the vehicle."
                 Me.imgProfilePicture.Image = bookingEvent.GetCarOwnerProfilePicture
                 Me.lblName.Text = bookingEvent.GetCarOwnerName
@@ -82,7 +84,7 @@
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(358, 350)
+        Me.Size = New Size(358, 375)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

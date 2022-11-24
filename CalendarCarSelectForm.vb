@@ -1,4 +1,5 @@
-﻿Imports System.Diagnostics.Contracts
+﻿Imports System.ComponentModel
+Imports System.Diagnostics.Contracts
 Imports System.Reflection.Metadata.Ecma335
 Imports System.Threading
 
@@ -26,8 +27,8 @@ Public Class CalendarCarSelectForm
 
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
 
-    ' Shake
-    Dim shaking = False
+    ' Error Shake
+    Dim WithEvents backgroundWorker As BackgroundWorker
 
     Public Sub New(user As String, scenario As Integer, previousForm As AppForm, HomeForm As HomeForm, DevForm As DevForm, dateStart As Date, dateEnd As Date, Optional previousEvent As UserCalendarEvent = Nothing)
 
@@ -99,6 +100,9 @@ Public Class CalendarCarSelectForm
         Me.lblRight.BackColor = colourNeutral
         Me.lblBottom.BackColor = colourNeutral
 
+        ' Background Worker
+        Me.backgroundWorker = New BackgroundWorker()
+
     End Sub
 
     Private Sub PopulatePanelView()
@@ -156,15 +160,9 @@ Public Class CalendarCarSelectForm
         'Check for conflict
         Dim err = Me.devWindow.CheckRiderBookingConflict(Me.bookingEvent.GetStartDate, Me.bookingEvent.GetEndDate)
 
-        ' If error
-        If (err) And (Me.shaking = False) Then
-            Me.lblError.Visible = True
-            Me.lblError.BringToFront()
-            Me.lblError.Text = "You already have a booking at this time"
-            Me.lblError.Location = New Point((Me.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)
-            Me.shaking = True
-            Dim t1 As Thread = New Thread(New ThreadStart(AddressOf Me.ShakeErrorMessage))
-            t1.Start()
+        'If error
+        If (err) Then
+            Me.ShakeErrorMessage("You already have a booking at this time")
             Exit Sub
         End If
 
@@ -179,6 +177,8 @@ Public Class CalendarCarSelectForm
         Else
             Me.responseForm = New BookingRequestResponseForm(Me.user, Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent, "accept")
             Me.devWindow.OpenPopup(Me.user, Me.responseForm)
+            'Add booking
+            Me.devWindow.AddBooking(Me.bookingEvent)
         End If
 
         Me.homeWindow.CloseAllChildren()
@@ -197,35 +197,47 @@ Public Class CalendarCarSelectForm
     ' -------------
     ' --- Shake ---
     ' -------------
+    Private Sub ShakeErrorMessage(errorText As String)
+        Me.lblError.Text = errorText
+        Me.lblError.Visible = True
+        Me.lblError.BringToFront()
+        If Me.backgroundWorker.IsBusy() = False Then
+            Me.lblError.Location = New Point((Me.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)
+            Me.backgroundWorker.RunWorkerAsync()
+        End If
+    End Sub
 
-    Private Sub ShakeErrorMessage()
+    Private Sub backgroundWorker_DoWork(sender As Object, e As DoWorkEventArgs) Handles backgroundWorker.DoWork
         Dim shakeArr() = {1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1}
 
-        ' Shake
-        For fullShake As Integer = 0 To 3
-            For moveIndex As Integer = 0 To shakeArr.Length() - 1
-                'Move
-                If lblError.InvokeRequired Then lblError.Invoke(Sub() lblError.Left += shakeArr(moveIndex)) _
-                Else lblError.Left += shakeArr(moveIndex)
+        Try
+            ' Shake
+            For fullShake As Integer = 0 To 3
+                For moveIndex As Integer = 0 To shakeArr.Length() - 1
+                    'Move
+                    If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() lblError.Left += shakeArr(moveIndex)) _
+                    Else lblError.Left += shakeArr(moveIndex)
 
+                    'Wait
+                    If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
+                    Else Me.lblError.Refresh()
+                    Threading.Thread.Sleep(10)
+                Next
+            Next
+
+            ' Pause
+            For pause As Integer = 0 To 150
                 'Wait
-                If lblError.InvokeRequired Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
+                If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
                 Else Me.lblError.Refresh()
                 Threading.Thread.Sleep(10)
             Next
-        Next
 
-        ' Pause
-        For pause As Integer = 0 To 150
-            'Wait
-            If lblError.InvokeRequired Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
-            Else Me.lblError.Refresh()
-            Threading.Thread.Sleep(10)
-        Next
+            If (Not lblError.IsDisposed) AndAlso (lblError.InvokeRequired) Then lblError.Invoke(Sub() Me.lblError.Visible = False) _
+            Else Me.lblError.Visible = False
+        Catch ex As Exception
+        End Try
 
-        Me.shaking = False
-        If lblError.InvokeRequired Then lblError.Invoke(Sub() Me.lblError.Visible = False) _
-        Else Me.lblError.Visible = False
     End Sub
 
 End Class

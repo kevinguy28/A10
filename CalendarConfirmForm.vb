@@ -37,6 +37,7 @@
                 Me.lblName.Text = usrEvent.GetCarOwnerName
         End Select
 
+        Me.lblUser.Text = "Car Owner:"
         Me.lblCar.Text = usrEvent.GetColour & " " & Me.usrEvent.GetCar
 
         Dim startTime = Format(usrEvent.GetStartDate, "ddd d MMM yyyy") & " at " & Format(usrEvent.GetStartDate, "h:mm tt")
@@ -79,7 +80,7 @@
     ' -------------------------
 
     Private Sub CalendarCarConfirmForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(320, 346)
+        Me.Size = New Size(320, 375)
     End Sub
 
     Private Sub CalendarCarConfirmForm_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

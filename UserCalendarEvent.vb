@@ -1,7 +1,7 @@
 ﻿Public Class UserCalendarEvent
 
     ' All
-    Dim profilePic As Image
+    Dim profilePic As Bitmap
     Dim userName As String
     Dim userType As String
 
@@ -50,31 +50,31 @@
         Me.carOwnerProfilePic = Nothing
     End Sub
 
-    Public Function GetProfilePicture()
+    Public Function GetProfilePicture() As Bitmap
         Return Me.profilePic
     End Function
 
-    Public Function GetName()
+    Public Function GetName() As String
         Return Me.userName
     End Function
 
-    Public Function GetUserType()
+    Public Function GetUserType() As String
         Return Me.userType
     End Function
 
-    Public Function GetCar()
+    Public Function GetCar() As String
         Return Me.carName
     End Function
 
-    Public Function GetColour()
+    Public Function GetColour() As String
         Return Me.carColour
     End Function
 
-    Public Function GetRatingInt()
+    Public Function GetRatingInt() As Integer
         Return Me.userRating
     End Function
 
-    Public Function GetRatingImg()
+    Public Function GetRatingImg() As Bitmap
         Select Case Me.userRating
             Case 0
                 Return My.Resources.StarZero
@@ -91,27 +91,27 @@
         End Select
     End Function
 
-    Public Function GetStartDate()
+    Public Function GetStartDate() As Date
         Return Me.startDate
     End Function
 
-    Public Function GetEndDate()
+    Public Function GetEndDate() As Date
         Return Me.endDate
     End Function
 
-    Public Function GetCarOwnerName()
+    Public Function GetCarOwnerName() As String
         Return Me.carOwnerName
     End Function
 
-    Public Function GetCarOwnerProfilePicture()
+    Public Function GetCarOwnerProfilePicture() As Bitmap
         Return Me.carOwnerProfilePic
     End Function
 
-    Public Function GetCarRiderName()
+    Public Function GetCarRiderName() As String
         Return Me.carRiderName
     End Function
 
-    Public Function GetCarRiderProfilePicture()
+    Public Function GetCarRiderProfilePicture() As Bitmap
         Return Me.carRiderProfilePic
     End Function
 

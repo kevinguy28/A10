@@ -134,19 +134,27 @@ Public Class DevForm
     End Function
 
     Private Sub CreateOwnerAvailability()
-        Dim startDate = New Date(2022, 11, 26, 8, 0, 0)
-        Dim endDate = New Date(2022, 11, 26, 22, 0, 0)
-
-        Dim ownerOne = New UserCalendarEvent(My.Resources.RandomProfileOne, "Eric Holme", "owner", "Hyundai Ioniq 6", "Red", 2, startDate, endDate)
-        Dim ownerTwo = New UserCalendarEvent(My.Resources.RandomProfileTwo, "Nessa Whitney", "owner", "Porsche Taycan", "Black", 3, startDate, endDate)
-        Dim ownerThr = New UserCalendarEvent(My.Resources.RandomProfileThree, "Monica Penner", "owner", "Chevrolet Bolt EV", "Grey", 4, startDate, endDate)
-        Dim ownerFou = New UserCalendarEvent(My.Resources.RandomProfileFour, "Robert Kitchens", "owner", "Ford Mustang Mach-E", "White", 3, startDate, endDate)
 
         Me.ownerAvailabilityList = New List(Of UserCalendarEvent)()
-        Me.ownerAvailabilityList.Add(ownerOne)
-        Me.ownerAvailabilityList.Add(ownerTwo)
-        Me.ownerAvailabilityList.Add(ownerThr)
-        Me.ownerAvailabilityList.Add(ownerFou)
+        Dim today = New Date.Now()
+
+        ' Make Availabilities for one week
+        For dayNum As Integer = 0 To 6
+            Dim currDay = today.AddDays(dayNum)
+
+            Dim startDate = New Date(currDay.Year, currDay.Month, currDay.Day, 8, 0, 0)
+            Dim endDate = New Date(currDay.Year, currDay.Month, currDay.Day, 22, 0, 0)
+
+            Dim ownerOne = New UserCalendarEvent(My.Resources.RandomProfileOne, "Eric Holme", "owner", "Hyundai Ioniq 6", "Red", 2, startDate, endDate)
+            Dim ownerTwo = New UserCalendarEvent(My.Resources.RandomProfileTwo, "Nessa Whitney", "owner", "Porsche Taycan", "Black", 3, startDate, endDate)
+            Dim ownerThr = New UserCalendarEvent(My.Resources.RandomProfileThree, "Monica Penner", "owner", "Chevrolet Bolt EV", "Grey", 3, startDate, endDate)
+            Dim ownerFou = New UserCalendarEvent(My.Resources.RandomProfileFour, "Robert Kitchens", "owner", "Ford Mustang Mach-E", "White", 4, startDate, endDate)
+
+            Me.ownerAvailabilityList.Add(ownerOne)
+            Me.ownerAvailabilityList.Add(ownerTwo)
+            Me.ownerAvailabilityList.Add(ownerThr)
+            Me.ownerAvailabilityList.Add(ownerFou)
+        Next
     End Sub
 
     Private Sub CreateRiderBookings()
@@ -167,6 +175,8 @@ Public Class DevForm
                 Dim oldStart = cldrEvent.GetStartDate()
                 Dim oldEnd = cldrEvent.GetEndDate()
                 Dim oldCar = cldrEvent.GetCar()
+                ' Prevent overlap between consecutive schedulings
+                oldEnd = oldEnd.AddSeconds(-1)
 
                 If Not (oldCar = scheduling.GetCar) Then
                     Continue For
@@ -236,6 +246,8 @@ Public Class DevForm
 
             Dim oldStart = cldrEvent.GetStartDate()
             Dim oldEnd = cldrEvent.GetEndDate()
+            ' Prevent overlap between consecutive schedulings
+            oldEnd = oldEnd.AddSeconds(-1)
 
             ' New | ⬛⬛⬛⬛   |
             ' Old |   ⬛⬛⬛⬛ |
@@ -291,6 +303,8 @@ Public Class DevForm
 
                 Dim oldStart = cldrEvent.GetStartDate()
                 Dim oldEnd = cldrEvent.GetEndDate()
+                ' Prevent overlap between consecutive schedulings
+                oldEnd = oldEnd.AddSeconds(-1)
 
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |
@@ -319,12 +333,41 @@ Public Class DevForm
 
                 Dim oldStart = cldrEvent.GetStartDate()
                 Dim oldEnd = cldrEvent.GetEndDate()
+                ' Prevent overlap between consecutive schedulings
+                oldEnd = oldEnd.AddSeconds(-1)
+
+                ' New | ⬛⬛⬛⬛   |
+                ' Old |   ⬛⬛⬛⬛ |
+                'newEnd later then oldStart
+                'newEnd earlier than oldEnd
+                If Me.LaterThan(newEnd, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    available = True
+                    Exit For
+                End If
+
+                ' New |   ⬛⬛⬛⬛ |
+                ' Old | ⬛⬛⬛⬛   |
+                'newStart later than oldStart
+                'newStart earlier than oldEnd
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newStart, oldEnd) Then
+                    available = True
+                    Exit For
+                End If
 
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |
                 'newStart later than oldStart
                 'newEnd earlier than oldEnd
                 If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    available = True
+                    Exit For
+                End If
+
+                ' New | ⬛⬛⬛⬛ |
+                ' Old |  ⬛⬛  |
+                'newStart earlier than oldStart
+                'newEnd later than oldEnd
+                If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
                     available = True
                     Exit For
                 End If
@@ -353,6 +396,8 @@ Public Class DevForm
                 Dim oldStart = cldrEvent.GetStartDate()
                 Dim oldEnd = cldrEvent.GetEndDate()
                 Dim oldCar = cldrEvent.GetCar()
+                ' Prevent overlap between consecutive bookings
+                oldEnd = oldEnd.AddSeconds(-1)
 
                 ' New | ⬛⬛⬛⬛   |
                 ' Old |   ⬛⬛⬛⬛ |
@@ -450,6 +495,8 @@ Public Class DevForm
 
             Dim oldStart = cldrEvent.GetStartDate()
             Dim oldEnd = cldrEvent.GetEndDate()
+            ' Prevent overlap between consecutive bookings
+            oldEnd = oldEnd.AddSeconds(-1)
 
             ' New | ⬛⬛⬛⬛   |
             ' Old |   ⬛⬛⬛⬛ |
@@ -505,6 +552,8 @@ Public Class DevForm
 
                 Dim oldStart = cldrEvent.GetStartDate()
                 Dim oldEnd = cldrEvent.GetEndDate()
+                ' Prevent overlap between consecutive bookings
+                oldEnd = oldEnd.AddSeconds(-1)
 
                 ' New | ⬛⬛⬛⬛   |
                 ' Old |   ⬛⬛⬛⬛ |
@@ -560,6 +609,26 @@ Public Class DevForm
 
                 Dim oldStart = cldrEvent.GetStartDate()
                 Dim oldEnd = cldrEvent.GetEndDate()
+                ' Prevent overlap between consecutive bookings
+                oldEnd = oldEnd.AddSeconds(-1)
+
+                ' New | ⬛⬛⬛⬛   |
+                ' Old |   ⬛⬛⬛⬛ |
+                'newEnd later then oldStart
+                'newEnd earlier than oldEnd
+                If Me.LaterThan(newEnd, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    booked = True
+                    Exit For
+                End If
+
+                ' New |   ⬛⬛⬛⬛ |
+                ' Old | ⬛⬛⬛⬛   |
+                'newStart later than oldStart
+                'newStart earlier than oldEnd
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newStart, oldEnd) Then
+                    booked = True
+                    Exit For
+                End If
 
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |

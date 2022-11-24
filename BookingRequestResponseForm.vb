@@ -38,6 +38,7 @@
                 Me.btnCheck.Visible = True
         End Select
 
+        Me.lblUser.Text = "Car Owner:"
         Me.imgProfilePicture.Image = Me.bookingEvent.GetCarOwnerProfilePicture
         Me.lblName.Text = Me.bookingEvent.GetCarOwnerName
         Me.lblCar.Text = Me.bookingEvent.GetColour & " " & Me.bookingEvent.GetCar
@@ -74,7 +75,7 @@
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(320, 346)
+        Me.Size = New Size(320, 375)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

@@ -33,6 +33,7 @@ Partial Class CarRecallForm
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnConfirm = New System.Windows.Forms.Button()
         Me.lblPrompt = New System.Windows.Forms.Label()
+        Me.lblUser = New System.Windows.Forms.Label()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -40,7 +41,7 @@ Partial Class CarRecallForm
         '
         Me.lblFromPrompt.AutoSize = True
         Me.lblFromPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblFromPrompt.Location = New System.Drawing.Point(9, 120)
+        Me.lblFromPrompt.Location = New System.Drawing.Point(9, 150)
         Me.lblFromPrompt.Margin = New System.Windows.Forms.Padding(0)
         Me.lblFromPrompt.Name = "lblFromPrompt"
         Me.lblFromPrompt.Size = New System.Drawing.Size(47, 21)
@@ -51,7 +52,7 @@ Partial Class CarRecallForm
         '
         Me.lblToPrompt.AutoSize = True
         Me.lblToPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblToPrompt.Location = New System.Drawing.Point(29, 141)
+        Me.lblToPrompt.Location = New System.Drawing.Point(29, 171)
         Me.lblToPrompt.Margin = New System.Windows.Forms.Padding(0)
         Me.lblToPrompt.Name = "lblToPrompt"
         Me.lblToPrompt.Size = New System.Drawing.Size(27, 21)
@@ -61,10 +62,10 @@ Partial Class CarRecallForm
         'lblTime
         '
         Me.lblTime.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTime.Location = New System.Drawing.Point(56, 120)
+        Me.lblTime.Location = New System.Drawing.Point(56, 150)
         Me.lblTime.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTime.Name = "lblTime"
-        Me.lblTime.Size = New System.Drawing.Size(239, 42)
+        Me.lblTime.Size = New System.Drawing.Size(274, 42)
         Me.lblTime.TabIndex = 25
         Me.lblTime.Text = "lblTime"
         '
@@ -72,9 +73,9 @@ Partial Class CarRecallForm
         '
         Me.lblCar.BackColor = System.Drawing.SystemColors.Control
         Me.lblCar.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblCar.Location = New System.Drawing.Point(78, 87)
+        Me.lblCar.Location = New System.Drawing.Point(78, 117)
         Me.lblCar.Name = "lblCar"
-        Me.lblCar.Size = New System.Drawing.Size(217, 30)
+        Me.lblCar.Size = New System.Drawing.Size(252, 30)
         Me.lblCar.TabIndex = 24
         Me.lblCar.Text = "lblCar"
         Me.lblCar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -84,7 +85,7 @@ Partial Class CarRecallForm
         Me.lblName.AutoSize = True
         Me.lblName.BackColor = System.Drawing.SystemColors.Control
         Me.lblName.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblName.Location = New System.Drawing.Point(78, 57)
+        Me.lblName.Location = New System.Drawing.Point(78, 87)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(93, 30)
         Me.lblName.TabIndex = 23
@@ -94,7 +95,7 @@ Partial Class CarRecallForm
         'imgProfilePicture
         '
         Me.imgProfilePicture.BackColor = System.Drawing.SystemColors.Control
-        Me.imgProfilePicture.Location = New System.Drawing.Point(12, 57)
+        Me.imgProfilePicture.Location = New System.Drawing.Point(12, 87)
         Me.imgProfilePicture.Name = "imgProfilePicture"
         Me.imgProfilePicture.Size = New System.Drawing.Size(60, 60)
         Me.imgProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -122,7 +123,7 @@ Partial Class CarRecallForm
         Me.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnOk.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnOk.ForeColor = System.Drawing.Color.White
-        Me.btnOk.Location = New System.Drawing.Point(123, 259)
+        Me.btnOk.Location = New System.Drawing.Point(123, 284)
         Me.btnOk.Name = "btnOk"
         Me.btnOk.Size = New System.Drawing.Size(100, 40)
         Me.btnOk.TabIndex = 31
@@ -140,7 +141,7 @@ Partial Class CarRecallForm
         Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancel.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnCancel.ForeColor = System.Drawing.Color.White
-        Me.btnCancel.Location = New System.Drawing.Point(232, 259)
+        Me.btnCancel.Location = New System.Drawing.Point(232, 284)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(100, 40)
         Me.btnCancel.TabIndex = 30
@@ -158,7 +159,7 @@ Partial Class CarRecallForm
         Me.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnConfirm.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnConfirm.ForeColor = System.Drawing.Color.White
-        Me.btnConfirm.Location = New System.Drawing.Point(11, 259)
+        Me.btnConfirm.Location = New System.Drawing.Point(11, 284)
         Me.btnConfirm.Name = "btnConfirm"
         Me.btnConfirm.Size = New System.Drawing.Size(100, 40)
         Me.btnConfirm.TabIndex = 29
@@ -169,18 +170,31 @@ Partial Class CarRecallForm
         '
         Me.lblPrompt.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.lblPrompt.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblPrompt.Location = New System.Drawing.Point(14, 206)
+        Me.lblPrompt.Location = New System.Drawing.Point(14, 231)
         Me.lblPrompt.Name = "lblPrompt"
         Me.lblPrompt.Size = New System.Drawing.Size(318, 50)
         Me.lblPrompt.TabIndex = 28
         Me.lblPrompt.Text = "Are you sure you " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "want to recall your car?"
         Me.lblPrompt.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         '
+        'lblUser
+        '
+        Me.lblUser.AutoSize = True
+        Me.lblUser.BackColor = System.Drawing.SystemColors.Control
+        Me.lblUser.Font = New System.Drawing.Font("Segoe UI Semibold", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblUser.Location = New System.Drawing.Point(12, 54)
+        Me.lblUser.Name = "lblUser"
+        Me.lblUser.Size = New System.Drawing.Size(79, 30)
+        Me.lblUser.TabIndex = 36
+        Me.lblUser.Text = "lblUser"
+        Me.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'CarRecallForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(342, 311)
+        Me.ClientSize = New System.Drawing.Size(342, 336)
+        Me.Controls.Add(Me.lblUser)
         Me.Controls.Add(Me.btnOk)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnConfirm)
@@ -211,4 +225,5 @@ Partial Class CarRecallForm
     Friend WithEvents btnCancel As Button
     Friend WithEvents btnConfirm As Button
     Friend WithEvents lblPrompt As Label
+    Friend WithEvents lblUser As Label
 End Class
