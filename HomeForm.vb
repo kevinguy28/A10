@@ -51,17 +51,47 @@
             Me.lblCar.Text = "My Ride"
         End If
 
+        ' Pre-Make booking if scenario is not 1
+        Dim bookingEvent As UserCalendarEvent
+        Dim today As Date = New Date.Now()
+        If Me.scenario = 1 Then
+            Me.devWindow.SetCurrentBooking()
+        Else
+            Dim startDate = New Date(today.Year, today.Month, today.Day, today.Hour, 0, 0)
+            Dim endDate = New Date(today.Year, today.Month, today.Day, today.AddHours(5).Hour, 0, 0)
+            Dim schedulingEvent = New UserCalendarEvent(My.Resources.OwnerProfile, "Jane Doe", "owner",
+                                                "Tesla Model 3", "Blue", 5,
+                                                 startDate, endDate)
+            bookingEvent = New UserCalendarEvent(My.Resources.RiderProfile, "John Smith", "rider",
+                                                 "Tesla Model 3", "Blue", 5,
+                                                 startDate, endDate)
+            bookingEvent.OwnerFound("Jane Doe", My.Resources.OwnerProfile)
+
+            Me.devWindow.AddAvailability(schedulingEvent)
+            Me.devWindow.AddBooking(bookingEvent)
+
+            Me.devWindow.SetCurrentBooking(bookingEvent)
+        End If
+
+        ' Low Battery Notification
         If Me.scenario = 4 And Me.user = "rider" Then
-            Dim riderLowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario, Me) : riderLowBatteryNotification.setLocation()
+            Dim riderLowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario, Me, Me.devWindow)
+            riderLowBatteryNotification.setLocation()
             Me.Hide()
-            riderLowBatteryNotification.TopMost = True : riderLowBatteryNotification.Show()
+            riderLowBatteryNotification.TopMost = True
+            riderLowBatteryNotification.Show()
         End If
 
         If Me.scenario = 4 And Me.user = "owner" Then
-            Dim ownerLowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario, Me) : ownerLowBatteryNotification.setLocation()
-            Me.Hide() : ownerLowBatteryNotification.btnConfirm.Visible = True : ownerLowBatteryNotification.btnEnd.Visible = False : ownerLowBatteryNotification.btnContinue.Visible = False
+            Dim ownerLowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario, Me, Me.devWindow)
+            ownerLowBatteryNotification.setLocation()
+            ownerLowBatteryNotification.btnConfirm.Visible = True
+            ownerLowBatteryNotification.btnEnd.Visible = False
+            ownerLowBatteryNotification.btnContinue.Visible = False
             ownerLowBatteryNotification.lblDescription.Text = "The car battery is running low. Please wait for the riders response!"
-            ownerLowBatteryNotification.TopMost = True : ownerLowBatteryNotification.Show()
+            ownerLowBatteryNotification.TopMost = True
+            ownerLowBatteryNotification.Show()
+            Me.Hide()
         End If
 
     End Sub
@@ -110,110 +140,39 @@
     Private Sub btnRoute_Click(sender As Object, e As EventArgs) Handles btnRoute.Click
         Dim bookingEvent As UserCalendarEvent
 
-        ' Current Booking
-        If Me.scenario = 1 Then
-            Me.devWindow.SetCurrentBooking()
-        Else
-            Dim startDate = New Date(2022, 11, 22, 20, 0, 0)
-            Dim endDate = New Date(2022, 11, 22, 23, 0, 0)
-            Dim schedulingEvent = New UserCalendarEvent(My.Resources.OwnerProfile, "Jane Doe", "owner",
-                                                "Tesla Model 3", "Blue", 5,
-                                                 startDate, endDate)
-            bookingEvent = New UserCalendarEvent(My.Resources.RiderProfile, "John Smith", "rider",
-                                                 "Tesla Model 3", "Blue", 5,
-                                                 startDate, endDate)
-            bookingEvent.OwnerFound("Jane Doe", My.Resources.OwnerProfile)
-
-            Me.devWindow.AddAvailability(schedulingEvent)
-            Me.devWindow.AddBooking(bookingEvent)
-
-            Me.devWindow.SetCurrentBooking(bookingEvent)
-        End If
-
-        ' Owner needs to be part of booking event to see ride
+        ' If no current booking
         If (bookingEvent Is Nothing) Then
             Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, New Date.Now(), New Date.Now(), bookingEvent)
 
-            Me.routeForm.cmbxStart.Enabled = False
-            Me.routeForm.cmbxEnd.Enabled = False
-            ' Disable Up
-            Me.routeForm.imgStartHourUp.Enabled = False
-            Me.routeForm.imgStartHourDown.Enabled = False
-            Me.routeForm.imgStartMinuteUp.Enabled = False
-            Me.routeForm.imgStartMinuteDown.Enabled = False
-            Me.routeForm.imgStartAmPmUp.Enabled = False
-            Me.routeForm.imgStartAmPmDown.Enabled = False
-            ' Disable Down
-            Me.routeForm.imgEndHourUp.Enabled = False
-            Me.routeForm.imgEndHourDown.Enabled = False
-            Me.routeForm.imgEndMinuteUp.Enabled = False
-            Me.routeForm.imgEndMinuteDown.Enabled = False
-            Me.routeForm.imgEndAmPmUp.Enabled = False
-            Me.routeForm.imgEndAmPmDown.Enabled = False
-            ' lblError
-            Select Case Me.user
-                Case "owner"
-                    Me.routeForm.lblError.Text = "You need to add a booking"
-                    Me.routeForm.lblError.Visible = True
-                    Me.routeForm.lblError.BringToFront()
-                Case "rider"
-                    Me.routeForm.lblError.Text = "You need to accept a booking request"
-                    Me.routeForm.lblError.Visible = True
-                    Me.routeForm.lblError.BringToFront()
-            End Select
+            ' Disable
+            Me.routeForm.DisableForm()
 
-            Me.Hide()
-            Me.routeForm.pbRoute.Image = routeBackgroundImage
-            Me.routeForm.Show()
-            Me.SetCurrentForm(Me.routeForm)
+            ' Error
+            Me.routeForm.ShowError()
 
+            ' Don't show car
+            Me.routeForm.ChangeMap(My.Resources.the_map)
+
+            ' Owner needs to be part of booking event to see ride
         ElseIf (Me.user = "owner" And bookingEvent.GetCarOwnerName = "Jane Doe") Then
             Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent.GetEndDate, bookingEvent)
 
-            Me.routeForm.cmbxStart.Enabled = False
-            Me.routeForm.cmbxEnd.Enabled = False
-            ' Disable Up
-            Me.routeForm.imgStartHourUp.Enabled = False
-            Me.routeForm.imgStartHourDown.Enabled = False
-            Me.routeForm.imgStartMinuteUp.Enabled = False
-            Me.routeForm.imgStartMinuteDown.Enabled = False
-            Me.routeForm.imgStartAmPmUp.Enabled = False
-            Me.routeForm.imgStartAmPmDown.Enabled = False
-            ' Disable Down
-            Me.routeForm.imgEndHourUp.Enabled = False
-            Me.routeForm.imgEndHourDown.Enabled = False
-            Me.routeForm.imgEndMinuteUp.Enabled = False
-            Me.routeForm.imgEndMinuteDown.Enabled = False
-            Me.routeForm.imgEndAmPmUp.Enabled = False
-            Me.routeForm.imgEndAmPmDown.Enabled = False
+            ' Disable
+            Me.routeForm.DisableForm()
 
-            ' Grey Out Time
-            Dim disableColour = Color.Gray
-            Me.routeForm.lblHourStart.ForeColor = disableColour
-            Me.routeForm.lblMinuteStart.ForeColor = disableColour
-            Me.routeForm.lblStartColon.ForeColor = disableColour
-            Me.routeForm.lblAmPmStart.ForeColor = disableColour
-            Me.routeForm.lblHourEnd.ForeColor = disableColour
-            Me.routeForm.lblMinuteEnd.ForeColor = disableColour
-            Me.routeForm.lblEndColon.ForeColor = disableColour
-            Me.routeForm.lblAmPmEnd.ForeColor = disableColour
+            ' Don't show car
+            Me.routeForm.ChangeMap(My.Resources.the_map)
 
             ' Start --> Recall Car
             Me.routeForm.btnStart.Enabled = True
             Me.routeForm.btnStart.Text = "Recall Car"
-
-            Me.Hide()
-            Me.routeForm.pbRoute.Image = routeBackgroundImage
-            Me.routeForm.Show()
-            Me.SetCurrentForm(Me.routeForm)
         Else
             Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent.GetEndDate, bookingEvent)
-
-            Me.Hide()
-            Me.routeForm.pbRoute.Image = routeBackgroundImage
-            Me.routeForm.Show()
-            Me.SetCurrentForm(Me.routeForm)
         End If
+
+        Me.Hide()
+        Me.routeForm.Show()
+        Me.SetCurrentForm(Me.routeForm)
 
         'If Car Moving
         If Me.devWindow.GetCarMoving Then

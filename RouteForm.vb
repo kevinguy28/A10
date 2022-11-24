@@ -122,6 +122,57 @@ Public Class RouteForm
         Me.lblAmPmEnd.Text = Format(Me.endTime, "tt").ToLower
     End Sub
 
+    Public Sub DisableForm()
+        ' Disable Combo Box
+        Me.cmbxStart.Enabled = False
+        Me.cmbxEnd.Enabled = False
+
+        ' Disable Up
+        Me.imgStartHourUp.Enabled = False
+        Me.imgStartHourDown.Enabled = False
+        Me.imgStartMinuteUp.Enabled = False
+        Me.imgStartMinuteDown.Enabled = False
+        Me.imgStartAmPmUp.Enabled = False
+        Me.imgStartAmPmDown.Enabled = False
+
+        ' Disable Down
+        Me.imgEndHourUp.Enabled = False
+        Me.imgEndHourDown.Enabled = False
+        Me.imgEndMinuteUp.Enabled = False
+        Me.imgEndMinuteDown.Enabled = False
+        Me.imgEndAmPmUp.Enabled = False
+        Me.imgEndAmPmDown.Enabled = False
+
+        ' Grey Out Time
+        Dim disableColour = Color.Gray
+        Me.lblHourStart.ForeColor = disableColour
+        Me.lblMinuteStart.ForeColor = disableColour
+        Me.lblStartColon.ForeColor = disableColour
+        Me.lblAmPmStart.ForeColor = disableColour
+        Me.lblHourEnd.ForeColor = disableColour
+        Me.lblMinuteEnd.ForeColor = disableColour
+        Me.lblEndColon.ForeColor = disableColour
+        Me.lblAmPmEnd.ForeColor = disableColour
+    End Sub
+
+    Public Sub ShowError()
+        ' lblError
+        Select Case Me.user
+            Case "owner"
+                Me.lblError.Text = "You need to accept a booking request"
+                Me.lblError.Visible = True
+                Me.lblError.BringToFront()
+            Case "rider"
+                Me.lblError.Text = "You need to add a booking"
+                Me.lblError.Visible = True
+                Me.lblError.BringToFront()
+        End Select
+    End Sub
+
+    Public Sub ChangeMap(newMap As Bitmap)
+        Me.pbRoute.BackgroundImage = newMap
+    End Sub
+
     ' --------------
     ' --- Button ---
     ' --------------

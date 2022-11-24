@@ -210,7 +210,7 @@ Public Class DevForm
         Me.ownerAvailabilityList.Remove(availability)
     End Sub
 
-    Public Function GetAvailability(startDate As Date, endDate As Date) As List(Of UserCalendarEvent)
+    Public Function GetAllAvailabilities(startDate As Date, endDate As Date) As List(Of UserCalendarEvent)
         Dim newStart = startDate
         Dim newEnd = endDate
 
@@ -324,16 +324,16 @@ Public Class DevForm
     ' --- Booking ---
     ' ---------------
 
-    Public Function CheckRiderBookingConflict(booking As UserCalendarEvent) As Boolean
-        Dim newStart = booking.GetStartDate
-        Dim newEnd = booking.GetEndDate
+    Public Function CheckRiderBookingConflict(startDate As Date, endDate As Date) As Boolean
+        Dim newStart = startDate
+        Dim newEnd = endDate
         Dim conflict = False
 
         ' Check if already exists
         For Each cldrEvent As UserCalendarEvent In Me.riderBookingList
 
             ' If user has schedule
-            If cldrEvent.GetName() = booking.GetName Then
+            If cldrEvent.GetName() = "John Smith" Then
 
                 Dim oldStart = cldrEvent.GetStartDate()
                 Dim oldEnd = cldrEvent.GetEndDate()
@@ -386,7 +386,7 @@ Public Class DevForm
     End Function
 
     Public Function AddBooking(booking As UserCalendarEvent) As Boolean
-        Dim conflict As Boolean = Me.CheckRiderBookingConflict(booking)
+        Dim conflict As Boolean = Me.CheckRiderBookingConflict(booking.GetStartDate, booking.GetEndDate)
 
         If conflict Then
             Return False
@@ -398,7 +398,7 @@ Public Class DevForm
         ' Update owner's event
         For Each ownerEvent As UserCalendarEvent In Me.ownerAvailabilityList
 
-            If ownerEvent.GetName = booking.GetCarOwnerName AndAlso ownerEvent.GetCar = booking.GetColour _
+            If ownerEvent.GetName = booking.GetCarOwnerName AndAlso ownerEvent.GetCar = booking.GetCar _
                 AndAlso Me.LaterThan(booking.GetStartDate, ownerEvent.GetStartDate) AndAlso Me.EarlierThan(booking.GetEndDate, ownerEvent.GetEndDate) Then
 
                 ownerEvent.RiderFound("John Smith", My.Resources.RiderProfile)
@@ -424,7 +424,7 @@ Public Class DevForm
         Me.riderBookingList.Remove(booking)
     End Sub
 
-    Public Function GetBooking(startDate As Date, endDate As Date) As List(Of UserCalendarEvent)
+    Public Function GetAllBookings(startDate As Date, endDate As Date) As List(Of UserCalendarEvent)
         Dim newStart = startDate
         Dim newEnd = endDate
 
@@ -491,11 +491,38 @@ Public Class DevForm
                 Dim oldStart = cldrEvent.GetStartDate()
                 Dim oldEnd = cldrEvent.GetEndDate()
 
+                ' New | ⬛⬛⬛⬛   |
+                ' Old |   ⬛⬛⬛⬛ |
+                'newEnd later then oldStart
+                'newEnd earlier than oldEnd
+                If Me.LaterThan(newEnd, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    booking = cldrEvent
+                    Exit For
+                End If
+
+                ' New |   ⬛⬛⬛⬛ |
+                ' Old | ⬛⬛⬛⬛   |
+                'newStart later than oldStart
+                'newStart earlier than oldEnd
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newStart, oldEnd) Then
+                    booking = cldrEvent
+                    Exit For
+                End If
+
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |
                 'newStart later than oldStart
                 'newEnd earlier than oldEnd
                 If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    booking = cldrEvent
+                    Exit For
+                End If
+
+                ' New | ⬛⬛⬛⬛ |
+                ' Old |  ⬛⬛  |
+                'newStart earlier than oldStart
+                'newEnd later than oldEnd
+                If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
                     booking = cldrEvent
                     Exit For
                 End If
@@ -524,6 +551,15 @@ Public Class DevForm
                 'newStart later than oldStart
                 'newEnd earlier than oldEnd
                 If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    booked = True
+                    Exit For
+                End If
+
+                ' New | ⬛⬛⬛⬛ |
+                ' Old |  ⬛⬛  |
+                'newStart earlier than oldStart
+                'newEnd later than oldEnd
+                If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
                     booked = True
                     Exit For
                 End If
