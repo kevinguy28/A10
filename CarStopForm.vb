@@ -4,7 +4,7 @@
     Dim homeWindow As HomeForm
     Dim devWindow As DevForm
 
-    Dim bookingEvent
+    Dim bookingEvent As UserCalendarEvent
     Public Sub New(user As String, scenario As Integer, homeWindow As HomeForm, devWindow As DevForm)
         ' This call is required by the designer.
         InitializeComponent()
@@ -14,6 +14,8 @@
         Me.scenario = scenario
         Me.homeWindow = homeWindow
         Me.devWindow = devWindow
+
+        Me.bookingEvent = Me.devWindow.GetCurrentBooking()
     End Sub
 
     Private Sub NotificationForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -78,9 +80,11 @@
     End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
-        Dim ownerNotification As New CarStopForm("rider", Me.scenario, Me.homeWindow, Me.devWindow)
-        ownerNotification.Show() : ownerNotification.changeTitle("Car Stopped")
-        ownerNotification.changeDescription("The rider has stopped the vehicle.")
+        If Me.bookingEvent.GetCarOwnerName = "Jane Doe" Then
+            Dim ownerNotification As New CarStopForm("rider", Me.scenario, Me.homeWindow, Me.devWindow)
+            ownerNotification.Show() : ownerNotification.changeTitle("Car Stopped")
+            ownerNotification.changeDescription("The rider has stopped the vehicle.")
+        End If
         Me.Close()
     End Sub
 

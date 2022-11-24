@@ -69,8 +69,6 @@
 
             Me.devWindow.AddAvailability(schedulingEvent)
             Me.devWindow.AddBooking(bookingEvent)
-
-            Me.devWindow.SetCurrentBooking(bookingEvent)
         End If
 
         ' Low Battery Notification

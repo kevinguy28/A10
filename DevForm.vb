@@ -11,17 +11,19 @@ Public Class DevForm
     Dim currentOwnerForm As AppForm
     Dim currentRiderForm As AppForm
 
+    ' Scheduling / Booking
     Dim ownerAvailabilityList As List(Of UserCalendarEvent)
     Dim riderBookingList As List(Of UserCalendarEvent)
     Dim chatHistory As New List(Of ChatMessage)
-
     Dim currentBooking As UserCalendarEvent
+
+    ' Route
     Dim carMoving As Boolean = False
 
+    ' Car Features
     Dim fanIntake = 1
     Dim fanStrength = 1
     Dim temperature = 12
-
     Dim toggleWindow = 0
 
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -42,6 +44,17 @@ Public Class DevForm
             Me.riderWindow.CloseAllForms()
         End If
 
+        ' Reset Arrays
+        Me.CreateOwnerAvailability()
+        Me.CreateRiderBookings()
+        Me.chatHistory = New List(Of ChatMessage)
+
+        ' Reset Car Features
+        Me.fanIntake = 1
+        Me.fanStrength = 1
+        Me.temperature = 12
+        Me.toggleWindow = 0
+
         ' Open new windows
         Me.ownerWindow = New HomeForm("owner", CType(sender, Button).Tag, Me)
         Me.riderWindow = New HomeForm("rider", CType(sender, Button).Tag, Me)
@@ -52,10 +65,6 @@ Public Class DevForm
         Me.currentOwnerForm = Me.ownerWindow
         Me.currentRiderForm = Me.riderWindow
 
-        ' Reset Arrays
-        Me.CreateOwnerAvailability()
-        Me.CreateRiderBookings()
-        Me.chatHistory = New List(Of ChatMessage)
     End Sub
 
     ' ---------------------
@@ -589,6 +598,7 @@ Public Class DevForm
     End Sub
 
     Public Function GetCurrentBooking() As UserCalendarEvent
+        Me.SetCurrentBooking()
         Return Me.currentBooking
     End Function
 
@@ -616,9 +626,9 @@ Public Class DevForm
         Return Me.chatHistory
     End Function
 
-    ' ------------
+    ' -------------------
     ' --- Car Feature ---
-    ' ------------
+    ' -------------------
 
     Public Sub UpdateStregth(fanStrength As Integer)
         Me.fanStrength += fanStrength

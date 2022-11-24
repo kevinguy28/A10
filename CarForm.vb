@@ -49,23 +49,7 @@ Public Class CarForm
         Me.Controls.Add(Me.btnHome)
 
         ' Booking
-        Me.devWindow.SetCurrentBooking()
         Me.bookingEvent = Me.devWindow.GetCurrentBooking()
-
-        ' Disable if no booking
-        If Me.bookingEvent Is Nothing Then
-            Select Case Me.user
-                Case "owner"
-                    Me.btnStop.Enabled = False
-                    Me.btnEmergency.Enabled = False
-                Case "rider"
-                    Me.btnStop.Enabled = False
-                    Me.btnEmergency.Enabled = False
-                    Me.btnCarFeatures.Enabled = False
-                    Me.btnCarMedia.Enabled = False
-                    Me.btnDiagnostic.Enabled = False
-            End Select
-        End If
 
         ' Background Worker
         Me.backgroundWorker = New BackgroundWorker()
@@ -85,19 +69,24 @@ Public Class CarForm
         End If
     End Sub
 
+    Private Function DisabledClick(disableOwner As Boolean)
+        If Me.bookingEvent Is Nothing Then
+            Select Case Me.user
+                Case "owner"
+                    If disableOwner Then Me.ShakeErrorMessage("You need to accept a booking request") : Return True
+                Case "rider"
+                    Me.ShakeErrorMessage("You need to add a booking")
+                    Return True
+            End Select
+        End If
+        Return False
+    End Function
+
     ' -----------------
     ' --- Emergency ---
     ' -----------------
     Private Sub btnEmergency_Click(sender As Object, e As EventArgs) Handles btnEmergency.Click
-        If Me.bookingEvent Is Nothing Then
-            Select Case Me.user
-                Case "owner"
-                    Me.ShakeErrorMessage("You need to accept a booking request")
-                Case "rider"
-                    Me.ShakeErrorMessage("You need to add a booking")
-            End Select
-            Exit Sub
-        End If
+        If Me.DisabledClick(True) Then Exit Sub
         Me.riderAccidentNotification = New AccidentNotification("rider", Me.scenario, Me.devWindow, True)
         Me.devWindow.OpenPopup("rider", Me.riderAccidentNotification)
     End Sub
@@ -105,17 +94,8 @@ Public Class CarForm
     '------------
     '--- Stop ---
     '------------
-
     Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
-        If Me.bookingEvent Is Nothing Then
-            Select Case Me.user
-                Case "owner"
-                    Me.ShakeErrorMessage("You need to accept a booking request")
-                Case "rider"
-                    Me.ShakeErrorMessage("You need to add a booking")
-            End Select
-            Exit Sub
-        End If
+        If Me.DisabledClick(True) Then Exit Sub
         Dim riderNotification As New CarStopForm("owner", Me.scenario, Me.homeWindow, Me.devWindow)
         riderNotification.Show()
         riderNotification.changeTitle("Confirm")
@@ -127,7 +107,7 @@ Public Class CarForm
     ' --- Car Features ---
     ' --------------------
     Private Sub btnCarFeatures_Click(sender As Object, e As EventArgs) Handles btnCarFeatures.Click
-        ' car features form opens up here
+        If Me.DisabledClick(False) Then Exit Sub
         Me.carFeatures = New CarFeatureForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow)
         Me.Hide()
         carFeatures.Show()
@@ -136,6 +116,10 @@ Public Class CarForm
 
     Private Sub btnCarFeatures_MouseDown(sender As Object, e As MouseEventArgs) Handles btnCarFeatures.MouseDown
         btnCarFeatures.BackgroundImage = My.Resources.fan_press
+    End Sub
+
+    Private Sub btnCarFeatures_MouseUp(sender As Object, e As MouseEventArgs) Handles btnCarFeatures.MouseUp
+        btnCarFeatures.BackgroundImage = My.Resources.fan_hover
     End Sub
 
     Private Sub btnCarFeatures_MouseEnter(sender As Object, e As EventArgs) Handles btnCarFeatures.MouseEnter
@@ -152,8 +136,7 @@ Public Class CarForm
     '-----------------
 
     Private Sub btnCarMedia_Click(sender As Object, e As EventArgs) Handles btnCarMedia.Click
-        btnCarMedia.BackgroundImage = My.Resources.car_media_press
-        'Me.carMedia = New CarMediaForm
+        If Me.DisabledClick(False) Then Exit Sub
         Me.carMedia = New CarMediaForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow)
         Me.carMedia.Show()
         Me.Hide()
@@ -167,7 +150,14 @@ Public Class CarForm
 
     Private Sub btnCarMedia_MouseLeave(sender As Object, e As EventArgs) Handles btnCarMedia.MouseLeave
         btnCarMedia.BackgroundImage = My.Resources.car_media_neutral
+    End Sub
 
+    Private Sub btnCarMedia_MouseDown(sender As Object, e As MouseEventArgs) Handles btnCarMedia.MouseDown
+        btnCarMedia.BackgroundImage = My.Resources.car_media_press
+    End Sub
+
+    Private Sub btnCarMedia_MouseUp(sender As Object, e As MouseEventArgs) Handles btnCarMedia.MouseUp
+        btnCarMedia.BackgroundImage = My.Resources.car_media_hover
     End Sub
 
     '------------------
@@ -175,6 +165,7 @@ Public Class CarForm
     '------------------
 
     Private Sub btnDiagnostic_Click(sender As Object, e As EventArgs) Handles btnDiagnostic.Click
+        If Me.DisabledClick(False) Then Exit Sub
         Me.Hide()
         Me.carDiagnostic = New CarDiagnosticForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow)
         Me.carDiagnostic.Show()
@@ -192,12 +183,10 @@ Public Class CarForm
     ' -------------
     ' --- Shake ---
     ' -------------
-
     Private Sub ShakeErrorMessage(errorText As String)
         Me.lblError.Text = errorText
         Me.lblError.Visible = True
         Me.lblError.BringToFront()
-        Me.lblError.Location = New Point((Me.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)
         If Me.backgroundWorker.IsBusy() = False Then
             Me.backgroundWorker.RunWorkerAsync()
         End If
@@ -206,14 +195,20 @@ Public Class CarForm
     Private Sub backgroundWorker_DoWork(sender As Object, e As DoWorkEventArgs) Handles backgroundWorker.DoWork
         Dim shakeArr() = {1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1}
 
+        ' Location
+        If lblError.InvokeRequired Then lblError.Invoke(Sub() Me.lblError.Location = New Point((Me.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)) _
+        Else Me.lblError.Location = New Point((Me.Width / 2) - (Me.lblError.Width / 2) - 18, Me.lblError.Top)
+
         ' Shake
         For fullShake As Integer = 0 To 3
             For moveIndex As Integer = 0 To shakeArr.Length() - 1
                 'Move
-                lblError.Left += shakeArr(moveIndex)
+                If lblError.InvokeRequired Then lblError.Invoke(Sub() lblError.Left += shakeArr(moveIndex)) _
+                Else lblError.Left += shakeArr(moveIndex)
 
                 'Wait
-                Me.lblError.Refresh()
+                If lblError.InvokeRequired Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
+                Else Me.lblError.Refresh()
                 Threading.Thread.Sleep(10)
             Next
         Next
@@ -221,11 +216,13 @@ Public Class CarForm
         ' Pause
         For pause As Integer = 0 To 150
             'Wait
-            Me.lblError.Refresh()
+            If lblError.InvokeRequired Then lblError.Invoke(Sub() Me.lblError.Refresh()) _
+            Else Me.lblError.Refresh()
             Threading.Thread.Sleep(10)
         Next
 
-        Me.lblError.Visible = False
+        If lblError.InvokeRequired Then lblError.Invoke(Sub() Me.lblError.Visible = False) _
+        Else Me.lblError.Visible = False
     End Sub
 
 End Class
