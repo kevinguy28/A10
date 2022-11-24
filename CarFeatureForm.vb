@@ -48,7 +48,6 @@ Public Class CarFeatureForm
             btnToggleWindows.BackgroundImage = My.Resources.toggle_on
             Me.devWindow.UpdateToggleWindow(1)
         End If
-
     End Sub
     '----Fan strength Down Button-----
     Private Sub btnFanStrengthDown_Click(sender As Object, e As EventArgs) Handles btnFanStrengthDown.Click
@@ -142,5 +141,9 @@ Public Class CarFeatureForm
             btnToggleWindows.BackgroundImage = My.Resources.toggle_off
         End If
         Me.ResumeLayout()
+    End Sub
+
+    Private Sub btnOpenTrunk_Click(sender As Object, e As EventArgs) Handles btnOpenTrunk.Click
+
     End Sub
 End Class

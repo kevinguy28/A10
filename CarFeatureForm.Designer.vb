@@ -167,6 +167,7 @@ Partial Class CarFeatureForm
         '
         'btnOpenTrunk
         '
+        Me.btnOpenTrunk.Font = New System.Drawing.Font("Segoe UI Semibold", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnOpenTrunk.Location = New System.Drawing.Point(147, 705)
         Me.btnOpenTrunk.Name = "btnOpenTrunk"
         Me.btnOpenTrunk.Size = New System.Drawing.Size(191, 65)

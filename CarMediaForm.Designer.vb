@@ -22,6 +22,7 @@ Partial Class CarMediaForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.lblSpeakers = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnVolumeDown = New System.Windows.Forms.Button()
@@ -29,6 +30,8 @@ Partial Class CarMediaForm
         Me.lblVolumeNumber = New System.Windows.Forms.Label()
         Me.btnSpeakersToggle = New System.Windows.Forms.Button()
         Me.btnConnectPhone = New System.Windows.Forms.Button()
+        Me.tmrSync = New System.Windows.Forms.Timer(Me.components)
+        Me.lblConnected = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblSpeakers
@@ -93,7 +96,7 @@ Partial Class CarMediaForm
         'btnSpeakersToggle
         '
         Me.btnSpeakersToggle.BackColor = System.Drawing.Color.White
-        Me.btnSpeakersToggle.BackgroundImage = Global.A10.My.Resources.Resources.toggle_on
+        Me.btnSpeakersToggle.BackgroundImage = Global.A10.My.Resources.Resources.toggle_off
         Me.btnSpeakersToggle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnSpeakersToggle.FlatAppearance.BorderSize = 0
         Me.btnSpeakersToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -106,13 +109,31 @@ Partial Class CarMediaForm
         '
         'btnConnectPhone
         '
-        Me.btnConnectPhone.Location = New System.Drawing.Point(147, 492)
+        Me.btnConnectPhone.BackColor = System.Drawing.Color.RoyalBlue
+        Me.btnConnectPhone.Font = New System.Drawing.Font("Segoe UI Semibold", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnConnectPhone.Location = New System.Drawing.Point(125, 512)
         Me.btnConnectPhone.Name = "btnConnectPhone"
-        Me.btnConnectPhone.Size = New System.Drawing.Size(203, 62)
+        Me.btnConnectPhone.Size = New System.Drawing.Size(234, 60)
         Me.btnConnectPhone.TabIndex = 6
         Me.btnConnectPhone.Tag = "0"
-        Me.btnConnectPhone.Text = "connect phone"
-        Me.btnConnectPhone.UseVisualStyleBackColor = True
+        Me.btnConnectPhone.Text = "Connect Phone"
+        Me.btnConnectPhone.UseVisualStyleBackColor = False
+        '
+        'tmrSync
+        '
+        '
+        'lblConnected
+        '
+        Me.lblConnected.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblConnected.BackColor = System.Drawing.Color.Transparent
+        Me.lblConnected.Font = New System.Drawing.Font("Segoe UI Semibold", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblConnected.Location = New System.Drawing.Point(82, 619)
+        Me.lblConnected.Name = "lblConnected"
+        Me.lblConnected.Size = New System.Drawing.Size(320, 31)
+        Me.lblConnected.TabIndex = 7
+        Me.lblConnected.Text = "iPhone X Connected"
+        Me.lblConnected.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblConnected.Visible = False
         '
         'CarMediaForm
         '
@@ -121,6 +142,7 @@ Partial Class CarMediaForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.lblConnected)
         Me.Controls.Add(Me.btnVolumeUp)
         Me.Controls.Add(Me.btnConnectPhone)
         Me.Controls.Add(Me.btnSpeakersToggle)
@@ -143,4 +165,6 @@ Partial Class CarMediaForm
     Friend WithEvents lblVolumeNumber As Label
     Friend WithEvents btnSpeakersToggle As Button
     Friend WithEvents btnConnectPhone As Button
+    Friend WithEvents tmrSync As Timer
+    Friend WithEvents lblConnected As Label
 End Class
