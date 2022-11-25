@@ -199,7 +199,7 @@ Partial Class CarStopForm
         Me.lblPrompt.Name = "lblPrompt"
         Me.lblPrompt.Size = New System.Drawing.Size(346, 50)
         Me.lblPrompt.TabIndex = 42
-        Me.lblPrompt.Text = "Contact the rider for more information."
+        Me.lblPrompt.Text = "lblPrompt"
         Me.lblPrompt.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         '
         'CarStopForm

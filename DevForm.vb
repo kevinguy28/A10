@@ -56,6 +56,7 @@ Public Class DevForm
         Me.toggleWindow = 0
 
         ' Open new windows
+        Dim scenario = CType(sender, Button).Tag
         Me.ownerWindow = New HomeForm("owner", CType(sender, Button).Tag, Me)
         Me.riderWindow = New HomeForm("rider", CType(sender, Button).Tag, Me)
         Me.ownerWindow.addOtherForm(riderWindow)
@@ -64,6 +65,18 @@ Public Class DevForm
         Me.riderWindow.Show()
         Me.currentOwnerForm = Me.ownerWindow
         Me.currentRiderForm = Me.riderWindow
+
+        ' Scenario 4: Low Battery Notification
+        If scenario = 4 Then
+            ' Rider
+            Dim riderLowBatteryNotification As New LowBatteryNotificationForm("rider", scenario, Me)
+            Me.OpenPopup("rider", riderLowBatteryNotification)
+
+            'Owner
+            Dim ownerLowBatteryNotification As New LowBatteryNotificationForm("owner", scenario, Me)
+            'ownerLowBatteryNotification.lblDescription.Text = "The car battery is running low. Please wait for the riders response!"
+            Me.OpenPopup("owner", ownerLowBatteryNotification)
+        End If
 
     End Sub
 

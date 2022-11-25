@@ -1,78 +1,96 @@
 ﻿Public Class LowBatteryResponseForm
     Dim user As String
     Dim scenario As Integer
-    Dim homeWindow As HomeForm
+    Dim devWindow As DevForm
 
-    Shared startAgain As Boolean
-    Public Sub New(user As String, scenario As Integer, homeForm As HomeForm)
+    Dim bookingEvent As UserCalendarEvent
+
+    Public Sub New(user As String, scenario As Integer, devWindow As DevForm)
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Me.user = user : Me.scenario = scenario : Me.homeWindow = homeForm
+        Me.user = user
+        Me.scenario = scenario
+        Me.devWindow = devWindow
+
+        Me.Form_Resize(Nothing, Nothing)
+        Me.Form_LocationChanged(Nothing, Nothing)
+
+        Me.lblTitle.Text = "Car Rerouted"
+        Me.lblPrompt.Text = "The car has been rerouted to: " & vbCrLf
     End Sub
 
     Private Sub NotificationForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Booking
+        Me.bookingEvent = Me.devWindow.GetCurrentBooking()
+
         Select Case Me.user
             Case "owner"
-                Me.Text = "Car Owner Notification"
+                Me.Text = "Car Owner Car Rerouted"
+                Me.lblUser.Text = "Car Rider:"
+
+                'Booking
+                Me.imgProfilePicture.Image = bookingEvent.GetProfilePicture
+                Me.lblName.Text = bookingEvent.GetName
             Case "rider"
-                Me.Text = "Car Rider Notification"
+                Me.Text = "Car Rider Car Rerouted"
+                Me.lblUser.Text = "Car Owner:"
+
+                'Booking
+                Me.imgProfilePicture.Image = bookingEvent.GetCarOwnerProfilePicture
+                Me.lblName.Text = bookingEvent.GetCarOwnerName
         End Select
+
+        'Booking
+        Me.lblCar.Text = bookingEvent.GetColour & " " & bookingEvent.GetCar
+
+        Dim startTime = Format(bookingEvent.GetStartDate, "ddd d MMM yyyy") & " at " & Format(bookingEvent.GetStartDate, "h:mm tt")
+        Dim endTime = Format(bookingEvent.GetEndDate, "ddd d MMM yyyy") & " at " & Format(bookingEvent.GetEndDate, "h:mm tt")
+        Me.lblTime.Text = startTime & vbCrLf & endTime
     End Sub
 
-    Function SetLocation()
-        Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
-        Dim halfScreen = fullScreen / 2
-        Dim halfDev = DevForm.Width / 2
-        Dim halfHome = Me.Width / 2
+    ' --------------
+    ' --- Button ---
+    ' --------------
 
+    Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
+        Me.Close()
+    End Sub
+
+    ' -------------------------
+    ' --- Size and Location ---
+    ' -------------------------
+
+    Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        Me.Size = New Size(396, 390)
+    End Sub
+
+    Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
+        Dim x = 0
+        Dim y = 0
         If Me.user = "rider" Then
-            Me.Location = New Point(((halfScreen - halfDev) / 2) - halfHome, 0)
-
-        Else
-            Me.Location = New Point((fullScreen - ((halfScreen - halfDev) / 2)) - halfHome, 0)
+            x = DevForm.GetRiderLocation.X + ((DevForm.GetFormWidth / 2) - (Me.Width / 2))
+            y = DevForm.GetRiderLocation.Y + ((DevForm.GetFormHeight / 2) - (Me.Height / 2))
+        ElseIf Me.user = "owner" Then
+            x = DevForm.GetOwnerLocation.X + ((DevForm.GetFormWidth / 2) - (Me.Width / 2))
+            y = DevForm.GetOwnerLocation.Y + ((DevForm.GetFormHeight / 2) - (Me.Height / 2))
         End If
-    End Function
-
-    Function SetOtherLocation()
-        Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
-        Dim halfScreen = fullScreen / 2
-        Dim halfDev = DevForm.Width / 2
-        Dim halfHome = Me.Width / 2
-
-        If Me.user = "owner" Then
-            Me.Location = New Point(((halfScreen - halfDev) / 2) - halfHome, 0)
-
-        Else
-            Me.Location = New Point((fullScreen - ((halfScreen - halfDev) / 2)) - halfHome, 0)
-        End If
-    End Function
-
-    Public Sub changeTitle(title As String)
-        Me.lblTitle.Text = title
+        Me.Location = New Size(x, y)
     End Sub
 
-    Public Sub changeDescription(description As String)
-        Me.lblDescription.Text = description
+    ' ----------------
+    ' --- On Close ---
+    ' ----------------
+    Private Sub CalendarCarConfirmForm_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        Me.devWindow.ClosePopup(Me.user)
+        Select Case Me.user
+            Case "owner"
+                LowBatteryNotificationForm.SetOwnerDone()
+            Case "rider"
+                LowBatteryNotificationForm.SetRiderDone()
+        End Select
+        LowBatteryNotificationForm.CloseAllForms()
     End Sub
 
-    Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
-        Me.Close()
-        Me.Dispose()
-    End Sub
-
-    Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
-        Dim ownerNotification As New LowBatteryResponseForm("rider", Me.scenario, Me.homeWindow)
-        ownerNotification.Show() : ownerNotification.changeTitle("Car Stopped") : ownerNotification.SetLocation() : ownerNotification.changeDescription("The rider has stopped the vehicle.")
-        Me.Close()
-    End Sub
-
-    Public Sub makeBtnVisible()
-        Me.btnApprove.Visible = True : Me.btnDeny.Visible = True : Me.btnConfirm.Visible = False
-    End Sub
-
-    Private Sub btnDeny_Click(sender As Object, e As EventArgs) Handles btnDeny.Click
-        Me.Close()
-    End Sub
 End Class

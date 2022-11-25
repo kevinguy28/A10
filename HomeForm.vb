@@ -54,11 +54,12 @@
         ' Pre-Make booking if scenario is not 1
         Dim bookingEvent As UserCalendarEvent
         Dim today As Date = New Date.Now()
+        Dim todayPlusHour = today.AddHours(5)
         If Me.scenario = 1 Then
             Me.devWindow.SetCurrentBooking()
         Else
             Dim startDate = New Date(today.Year, today.Month, today.Day, today.Hour, 0, 0)
-            Dim endDate = New Date(today.Year, today.Month, today.Day, today.AddHours(5).Hour, 0, 0)
+            Dim endDate = New Date(todayPlusHour.Year, todayPlusHour.Month, todayPlusHour.Day, todayPlusHour.Hour, 0, 0)
             Dim schedulingEvent = New UserCalendarEvent(My.Resources.OwnerProfile, "Jane Doe", "owner",
                                                 "Tesla Model 3", "Blue", 5,
                                                  startDate, endDate)
@@ -69,27 +70,6 @@
 
             Me.devWindow.AddAvailability(schedulingEvent)
             Me.devWindow.AddBooking(bookingEvent)
-        End If
-
-        ' Low Battery Notification
-        If Me.scenario = 4 And Me.user = "rider" Then
-            Dim riderLowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario, Me, Me.devWindow)
-            riderLowBatteryNotification.setLocation()
-            Me.Hide()
-            riderLowBatteryNotification.TopMost = True
-            riderLowBatteryNotification.Show()
-        End If
-
-        If Me.scenario = 4 And Me.user = "owner" Then
-            Dim ownerLowBatteryNotification As New LowBatteryNotificationForm(Me.user, Me.scenario, Me, Me.devWindow)
-            ownerLowBatteryNotification.setLocation()
-            ownerLowBatteryNotification.btnConfirm.Visible = True
-            ownerLowBatteryNotification.btnEnd.Visible = False
-            ownerLowBatteryNotification.btnContinue.Visible = False
-            ownerLowBatteryNotification.lblDescription.Text = "The car battery is running low. Please wait for the riders response!"
-            ownerLowBatteryNotification.TopMost = True
-            ownerLowBatteryNotification.Show()
-            Me.Hide()
         End If
 
     End Sub

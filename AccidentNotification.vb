@@ -1,11 +1,7 @@
 ﻿Public Class AccidentNotification
     Dim user As String
     Dim scenario As Integer
-    Public devWindow As DevForm
-    'Public previousForm As CarForm
-
-    Shared prevOwnerForm As AppForm
-    Shared prevRiderForm As AppForm
+    Dim devWindow As DevForm
 
     ' Forms
     Shared mainAccidentForm As AccidentNotification
@@ -78,6 +74,11 @@
                 AccidentNotification.emergencyContactForm.Dispose()
                 AccidentNotification.emergencyContactForm = Nothing
             End If
+
+            ' Opened
+            mainOpened = False
+            ownerOpened = False
+            emergencyOpened = False
 
         End If
     End Sub

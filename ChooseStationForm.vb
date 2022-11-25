@@ -3,11 +3,10 @@
 Public Class ChooseStationForm
     Dim user As String
     Dim scenario As Integer
-    Dim homeWindow As HomeForm
     Dim devWindow As DevForm
 
-    Public aNotification As CarStopForm
-    Public Sub New(user As String, scenario As Integer, homeWindow As HomeForm, devWindow As DevForm)
+    Public aNotification As LowBatteryResponseForm
+    Public Sub New(user As String, scenario As Integer, devWindow As DevForm)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -15,34 +14,10 @@ Public Class ChooseStationForm
         ' Add any initialization after the InitializeComponent() call.
         Me.user = user
         Me.scenario = scenario
-        Me.homeWindow = homeWindow
         Me.devWindow = devWindow
-    End Sub
 
-    Public Sub setLocation()
-        Dim fullScreen = Screen.PrimaryScreen.WorkingArea.Width
-        Dim halfScreen = fullScreen / 2
-        Dim halfDev = DevForm.GetDevWidth() / 2
-        Dim halfForm = DevForm.GetFormWidth() / 2
-
-        If Me.user = "owner" Then
-            Dim x = ((halfScreen - halfDev) / 2) - halfForm
-            Me.Location = New Point(x, 0)
-
-        ElseIf Me.user = "rider" Then
-            Dim x = (fullScreen - ((halfScreen - halfDev) / 2)) - halfForm
-            Me.Location = New Point(x, 0)
-        End If
-    End Sub
-
-    Private Sub rb_CheckedChanged(sender As Object, e As EventArgs) Handles _
-        rb1.CheckedChanged, rb2.CheckedChanged, rb3.CheckedChanged, rb4.CheckedChanged, rb5.CheckedChanged, rb6.CheckedChanged
-        If DirectCast(sender, RadioButton).Checked = True Then
-            DirectCast(sender, RadioButton).BackColor = Color.Green
-            Me.lblStationAddress.Text = DirectCast(sender, RadioButton).Tag
-        Else
-            DirectCast(sender, RadioButton).BackColor = Color.Red
-        End If
+        Me.Form_Resize(Nothing, Nothing)
+        Me.Form_LocationChanged(Nothing, Nothing)
     End Sub
 
     Private Sub ChooseStationForm_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -56,43 +31,93 @@ Public Class ChooseStationForm
         Me.lblStationAddress.Text = rb1.Text
     End Sub
 
+    ' ---------------
+    ' --- Buttons ---
+    ' ---------------
+
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
-        If Me.user = "rider" Then
-            Me.aNotification = New CarStopForm(Me.user, Me.scenario, Me.homeWindow, devWindow)
-            Me.aNotification.changeTitle("Notification!")
-            Me.aNotification.changeDescription("The rider has chose to continue the ride." & Chr(13) & Chr(10) & "The car has been rerouted to: " & Chr(13) & Chr(10) & Me.lblStationAddress.Text)
-            Me.aNotification.Show()
-        End If
+        LowBatteryNotificationForm.CreateResponseForm(False, lblStationAddress.Text)
         Me.Close()
+    End Sub
+
+    ' ---------------------
+    ' --- Radio Buttons ---
+    ' ---------------------
+
+    Private Sub rb_CheckedChanged(sender As Object, e As EventArgs) Handles _
+        rb1.CheckedChanged, rb2.CheckedChanged, rb3.CheckedChanged, rb4.CheckedChanged, rb5.CheckedChanged, rb6.CheckedChanged
+        If DirectCast(sender, RadioButton).Checked = True Then
+            DirectCast(sender, RadioButton).BackColor = Color.FromArgb(120, 145, 141)
+            Me.lblStationAddress.Text = DirectCast(sender, RadioButton).Tag
+        Else
+            DirectCast(sender, RadioButton).BackColor = Color.FromArgb(151, 203, 197)
+        End If
     End Sub
 
     Private Sub rb1_Click(sender As Object, e As EventArgs) Handles rb1.Click
         Me.pbMap.Image = My.Resources.the_map_rb1
-        Me.homeWindow.changeMap(My.Resources.the_map_rb1)
-        Me.homeWindow.otherForm.changeMap(My.Resources.the_map_rb1)
+        'Me.homeWindow.changeMap(My.Resources.the_map_rb1)
+        'Me.homeWindow.otherForm.changeMap(My.Resources.the_map_rb1)
     End Sub
 
     Private Sub rb2_Click(sender As Object, e As EventArgs) Handles rb2.Click
         Me.pbMap.Image = My.Resources.the_map_rb2
-        Me.homeWindow.changeMap(My.Resources.the_map_rb2)
+        'Me.homeWindow.changeMap(My.Resources.the_map_rb2)
     End Sub
     Private Sub rb3_Click(sender As Object, e As EventArgs) Handles rb3.Click
         Me.pbMap.Image = My.Resources.the_map_rb3
-        Me.homeWindow.changeMap(My.Resources.the_map_rb3)
+        'Me.homeWindow.changeMap(My.Resources.the_map_rb3)
     End Sub
 
     Private Sub rb4_Click(sender As Object, e As EventArgs) Handles rb4.Click
         Me.pbMap.Image = My.Resources.the_map_rb4
-        Me.homeWindow.changeMap(My.Resources.the_map_rb4)
+        'Me.homeWindow.changeMap(My.Resources.the_map_rb4)
     End Sub
 
     Private Sub rb5_Click(sender As Object, e As EventArgs) Handles rb5.Click
         Me.pbMap.Image = My.Resources.the_map_rb5
-        Me.homeWindow.changeMap(My.Resources.the_map_rb5)
+        'Me.homeWindow.changeMap(My.Resources.the_map_rb5)
     End Sub
 
     Private Sub rb6_Click(sender As Object, e As EventArgs) Handles rb6.Click
         Me.pbMap.Image = My.Resources.the_map_rb6
-        Me.homeWindow.changeMap(My.Resources.the_map_rb6)
+        'Me.homeWindow.changeMap(My.Resources.the_map_rb6)
+    End Sub
+
+    Private Sub rb_MouseEnter(sender As Object, e As EventArgs) Handles rb1.MouseEnter, rb2.MouseEnter, rb3.MouseEnter, rb4.MouseEnter, rb5.MouseEnter, rb6.MouseEnter
+        CType(sender, RadioButton).BackColor = Color.FromArgb(127, 242, 229)
+    End Sub
+
+    Private Sub rb_MouseLeave(sender As Object, e As EventArgs) Handles rb1.MouseLeave, rb2.MouseLeave, rb3.MouseLeave, rb4.MouseLeave, rb5.MouseLeave, rb6.MouseLeave
+        CType(sender, RadioButton).BackColor = Color.FromArgb(151, 203, 197)
+    End Sub
+
+    ' -------------------------
+    ' --- Size and Location ---
+    ' -------------------------
+
+    Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        Me.Size = New Size(455, 600)
+    End Sub
+
+    Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
+        Dim x = 0
+        Dim y = 0
+        If Me.user = "rider" Then
+            x = DevForm.GetRiderLocation.X + ((DevForm.GetFormWidth / 2) - (Me.Width / 2))
+            y = DevForm.GetRiderLocation.Y + ((DevForm.GetFormHeight / 2) - (Me.Height / 2))
+        ElseIf Me.user = "owner" Then
+            x = DevForm.GetOwnerLocation.X + ((DevForm.GetFormWidth / 2) - (Me.Width / 2))
+            y = DevForm.GetOwnerLocation.Y + ((DevForm.GetFormHeight / 2) - (Me.Height / 2))
+        End If
+        Me.Location = New Size(x, y)
+    End Sub
+
+    ' ----------------
+    ' --- On Close ---
+    ' ----------------
+    Private Sub CalendarCarConfirmForm_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        Me.devWindow.ClosePopup(Me.user)
+        LowBatteryNotificationForm.CloseAllForms()
     End Sub
 End Class

@@ -25,7 +25,6 @@ Public Class CarStopForm
 
     Private Sub NotificationForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Booking
-        Me.devWindow.SetCurrentBooking()
         Me.bookingEvent = Me.devWindow.GetCurrentBooking()
 
         Select Case Me.user
