@@ -48,7 +48,6 @@ Public Class CarFeatureForm
             btnToggleWindows.BackgroundImage = My.Resources.toggle_on
             Me.devWindow.UpdateToggleWindow(1)
         End If
-
     End Sub
     '----Fan strength Down Button-----
     Private Sub btnFanStrengthDown_Click(sender As Object, e As EventArgs) Handles btnFanStrengthDown.Click
@@ -131,6 +130,16 @@ Public Class CarFeatureForm
         btnAirIntakeDown.BackgroundImage = My.Resources.arrow_down_neutral
     End Sub
 
+    Private Sub btnOpenTrunk_Click(sender As Object, e As EventArgs) Handles btnOpenTrunk.Click
+        If Me.devWindow.GetToggleTrunk = 0 Then
+            Me.devWindow.UpdateToggleTrunk(1)
+            btnOpenTrunk.Text = "Close trunk"
+        Else
+            Me.devWindow.UpdateToggleTrunk(0)
+            btnOpenTrunk.Text = "Open trunk"
+        End If
+    End Sub
+
     Private Sub tmrUpdate_Tick(sender As Object, e As EventArgs) Handles tmrUpdate.Tick
         Me.SuspendLayout()
         lblAirIntakeNumber.Text = Me.devWindow.GetFanIntake
@@ -140,6 +149,12 @@ Public Class CarFeatureForm
             btnToggleWindows.BackgroundImage = My.Resources.toggle_on
         Else
             btnToggleWindows.BackgroundImage = My.Resources.toggle_off
+        End If
+
+        If Me.devWindow.GetToggleTrunk = 1 Then
+            btnOpenTrunk.Text = "Close trunk"
+        Else
+            btnOpenTrunk.Text = "Open trunk"
         End If
         Me.ResumeLayout()
     End Sub

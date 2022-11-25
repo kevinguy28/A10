@@ -25,6 +25,13 @@ Public Class DevForm
     Dim fanStrength = 1
     Dim temperature = 12
     Dim toggleWindow = 0
+    Dim toggleTrunk = 0
+
+    ' Car Media
+    Dim speakerVolume = 1
+    Dim speakersOnOff = 0
+    Dim connectedPhone = 0
+
 
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.CenterToScreen()
@@ -743,6 +750,42 @@ Public Class DevForm
     Public Function GetToggleWindow()
         Return Me.toggleWindow
     End Function
+
+    Public Sub UpdateToggleTrunk(update As Integer)
+        Me.toggleTrunk = update
+    End Sub
+
+    Public Function GetToggleTrunk()
+        Return Me.toggleTrunk
+    End Function
+    ' --------------
+    ' -- Car Media -
+    ' --------------
+
+    Public Sub UpdateSpeakerOnOff(update As Integer)
+        Me.speakersOnOff = update
+    End Sub
+
+    Public Function GetSpeakerOnOff()
+        Return Me.speakersOnOff
+    End Function
+
+    Public Sub UpdateSpeakerVolume(value As Integer)
+        Me.speakerVolume += value
+    End Sub
+
+    Public Function GetSpeakerVolume()
+        Return Me.speakerVolume
+    End Function
+
+    Public Sub UpdateConnectedPhone(update As Integer)
+        Me.connectedPhone = update
+    End Sub
+
+    Public Function GetConnectedPhone()
+        Return Me.connectedPhone
+    End Function
+
 
     ' --------------
     ' --- Popups ---
