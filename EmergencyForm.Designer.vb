@@ -1,0 +1,170 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class EmergencyForm
+    'Inherits System.Windows.Forms.Form
+    Inherits AppForm
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()>
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()>
+    Private Sub InitializeComponent()
+        Me.lblDiagnostic = New System.Windows.Forms.Label()
+        Me.lblCarMedia = New System.Windows.Forms.Label()
+        Me.lblAccident = New System.Windows.Forms.Label()
+        Me.btnTechProblem = New System.Windows.Forms.Button()
+        Me.btnIntrusion = New System.Windows.Forms.Button()
+        Me.btnAccident = New System.Windows.Forms.Button()
+        Me.lblStop = New System.Windows.Forms.Label()
+        Me.btnStop = New System.Windows.Forms.Button()
+        Me.SuspendLayout()
+        '
+        'lblDiagnostic
+        '
+        Me.lblDiagnostic.BackColor = System.Drawing.Color.White
+        Me.lblDiagnostic.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblDiagnostic.Location = New System.Drawing.Point(46, 422)
+        Me.lblDiagnostic.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDiagnostic.Name = "lblDiagnostic"
+        Me.lblDiagnostic.Size = New System.Drawing.Size(188, 38)
+        Me.lblDiagnostic.TabIndex = 31
+        Me.lblDiagnostic.Text = "Tech Problem"
+        Me.lblDiagnostic.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'lblCarMedia
+        '
+        Me.lblCarMedia.BackColor = System.Drawing.Color.White
+        Me.lblCarMedia.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblCarMedia.Location = New System.Drawing.Point(267, 204)
+        Me.lblCarMedia.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblCarMedia.Name = "lblCarMedia"
+        Me.lblCarMedia.Size = New System.Drawing.Size(150, 38)
+        Me.lblCarMedia.TabIndex = 30
+        Me.lblCarMedia.Text = "Intrusion"
+        Me.lblCarMedia.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'lblAccident
+        '
+        Me.lblAccident.BackColor = System.Drawing.Color.White
+        Me.lblAccident.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblAccident.Location = New System.Drawing.Point(67, 204)
+        Me.lblAccident.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblAccident.Name = "lblAccident"
+        Me.lblAccident.Size = New System.Drawing.Size(150, 38)
+        Me.lblAccident.TabIndex = 29
+        Me.lblAccident.Text = "Accident"
+        Me.lblAccident.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'btnTechProblem
+        '
+        Me.btnTechProblem.BackColor = System.Drawing.Color.White
+        Me.btnTechProblem.BackgroundImage = Global.A10.My.Resources.Resources.diagnostic3
+        Me.btnTechProblem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnTechProblem.FlatAppearance.BorderSize = 0
+        Me.btnTechProblem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnTechProblem.Location = New System.Drawing.Point(67, 463)
+        Me.btnTechProblem.Name = "btnTechProblem"
+        Me.btnTechProblem.Size = New System.Drawing.Size(150, 150)
+        Me.btnTechProblem.TabIndex = 28
+        Me.btnTechProblem.TabStop = False
+        Me.btnTechProblem.UseVisualStyleBackColor = True
+        '
+        'btnIntrusion
+        '
+        Me.btnIntrusion.BackColor = System.Drawing.Color.White
+        Me.btnIntrusion.BackgroundImage = Global.A10.My.Resources.Resources.car_media_neutral
+        Me.btnIntrusion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnIntrusion.FlatAppearance.BorderSize = 0
+        Me.btnIntrusion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnIntrusion.Location = New System.Drawing.Point(267, 245)
+        Me.btnIntrusion.Name = "btnIntrusion"
+        Me.btnIntrusion.Size = New System.Drawing.Size(150, 150)
+        Me.btnIntrusion.TabIndex = 27
+        Me.btnIntrusion.TabStop = False
+        Me.btnIntrusion.UseVisualStyleBackColor = True
+        '
+        'btnAccident
+        '
+        Me.btnAccident.BackColor = System.Drawing.Color.White
+        Me.btnAccident.BackgroundImage = Global.A10.My.Resources.Resources.fan_neutral
+        Me.btnAccident.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnAccident.FlatAppearance.BorderSize = 0
+        Me.btnAccident.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAccident.Location = New System.Drawing.Point(67, 245)
+        Me.btnAccident.Name = "btnAccident"
+        Me.btnAccident.Size = New System.Drawing.Size(150, 150)
+        Me.btnAccident.TabIndex = 26
+        Me.btnAccident.TabStop = False
+        Me.btnAccident.UseVisualStyleBackColor = True
+        '
+        'lblStop
+        '
+        Me.lblStop.BackColor = System.Drawing.Color.White
+        Me.lblStop.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblStop.Location = New System.Drawing.Point(252, 422)
+        Me.lblStop.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblStop.Name = "lblStop"
+        Me.lblStop.Size = New System.Drawing.Size(179, 38)
+        Me.lblStop.TabIndex = 33
+        Me.lblStop.Text = "Request Stop"
+        Me.lblStop.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'btnStop
+        '
+        Me.btnStop.BackColor = System.Drawing.Color.White
+        Me.btnStop.BackgroundImage = Global.A10.My.Resources.Resources.car_media_neutral
+        Me.btnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnStop.FlatAppearance.BorderSize = 0
+        Me.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStop.Location = New System.Drawing.Point(267, 463)
+        Me.btnStop.Name = "btnStop"
+        Me.btnStop.Size = New System.Drawing.Size(150, 150)
+        Me.btnStop.TabIndex = 32
+        Me.btnStop.TabStop = False
+        Me.btnStop.UseVisualStyleBackColor = True
+        '
+        'EmergencyForm
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.lblStop)
+        Me.Controls.Add(Me.btnStop)
+        Me.Controls.Add(Me.lblDiagnostic)
+        Me.Controls.Add(Me.lblCarMedia)
+        Me.Controls.Add(Me.lblAccident)
+        Me.Controls.Add(Me.btnTechProblem)
+        Me.Controls.Add(Me.btnIntrusion)
+        Me.Controls.Add(Me.btnAccident)
+        Me.DoubleBuffered = True
+        Me.Name = "EmergencyForm"
+        Me.Text = "EmergencyForm"
+        Me.ResumeLayout(False)
+
+    End Sub
+
+    Friend WithEvents lblDiagnostic As Label
+    Friend WithEvents lblCarMedia As Label
+    Friend WithEvents lblAccident As Label
+    Friend WithEvents btnTechProblem As Button
+    Friend WithEvents btnIntrusion As Button
+    Friend WithEvents btnAccident As Button
+    Friend WithEvents lblStop As Label
+    Friend WithEvents btnStop As Button
+End Class

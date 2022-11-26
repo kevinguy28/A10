@@ -8,10 +8,12 @@ Public Class CarForm
     Dim carFeatures As CarFeatureForm
     Dim carMedia As CarMediaForm
     Dim carDiagnostic As CarDiagnosticForm
+    Dim carEmergency As EmergencyForm
 
     ' Notifications
     Dim riderAccidentNotification As AccidentNotification
-
+    Dim riderIntrusionNotification As IntrusionAlertForm
+    Dim riderTechProblemNotification As TechAlertForm
     ' Current Booking
     Dim bookingEvent As UserCalendarEvent
 
@@ -36,7 +38,6 @@ Public Class CarForm
     Private Sub CarForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Me.user = "owner" Then
             Me.Text = "Car Owner Car"
-            Me.btnStop.Visible = False
         ElseIf Me.user = "rider" Then
             Me.Text = "Car Rider Car"
         End If
@@ -85,16 +86,28 @@ Public Class CarForm
     ' -----------------
     ' --- Emergency ---
     ' -----------------
-    Private Sub btnEmergency_Click(sender As Object, e As EventArgs) Handles btnEmergency.Click
-        If Me.DisabledClick(True) Then Exit Sub
-        Me.riderAccidentNotification = New AccidentNotification("rider", Me.scenario, Me.devWindow, True)
-        Me.devWindow.OpenPopup("rider", Me.riderAccidentNotification)
-    End Sub
+    'Private Sub btnEmergency_Click(sender As Object, e As EventArgs) Handles btnEmergency_.Click
+    '    If Me.DisabledClick(True) Then Exit Sub
+    '    Me.riderAccidentNotification = New AccidentNotification("rider", Me.scenario, Me.devWindow, True)
+    '    Me.devWindow.OpenPopup("rider", Me.riderAccidentNotification)
+
+    '    ' Tech
+
+    '    'If Me.DisabledClick(True) Then Exit Sub
+    '    'Me.riderTechProblemNotification = New TechAlertForm("rider", Me.scenario, Me.devWindow, Me.homeWindow, Me.previousWindow, Me, True)
+    '    'Me.devWindow.OpenPopup("rider", Me.riderTechProblemNotification)
+
+    '    ' Intrusion
+
+    '    'If Me.DisabledClick(True) Then Exit Sub
+    '    'Me.riderIntrusionNotification = New IntrusionAlertForm("rider", Me.scenario, Me.devWindow, True)
+    '    'Me.devWindow.OpenPopup("rider", Me.riderIntrusionNotification)
+    'End Sub
 
     '------------
     '--- Stop ---
     '------------
-    Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
+    Private Sub btnStop_Click(sender As Object, e As EventArgs)
         If Me.DisabledClick(True) Then Exit Sub
         Dim riderNotification As New CarStopForm("rider", Me.scenario, Me.homeWindow, Me.devWindow)
         Me.devWindow.OpenPopup(Me.user, riderNotification)
@@ -158,7 +171,7 @@ Public Class CarForm
     End Sub
 
     '------------------
-    '--- Diagnostic ---
+    '-- CarDiagnostic -
     '------------------
 
     Private Sub btnDiagnostic_Click(sender As Object, e As EventArgs) Handles btnDiagnostic.Click
@@ -175,6 +188,18 @@ Public Class CarForm
 
     Private Sub btnDiagnostic_MouseLeave(sender As Object, e As EventArgs) Handles btnDiagnostic.MouseLeave
         btnDiagnostic.BackgroundImage = My.Resources.diagnostic3
+    End Sub
+
+    '------------------
+    '--- Emergency ----
+    '------------------
+
+    Private Sub btnEmergency_Click(sender As Object, e As EventArgs) Handles btnEmergency.Click
+        If Me.DisabledClick(False) Then Exit Sub
+        Me.Hide()
+        Me.carEmergency = New EmergencyForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow)
+        Me.carEmergency.Show()
+        Me.SetCurrentForm(Me.carEmergency)
     End Sub
 
     ' -------------
@@ -222,5 +247,4 @@ Public Class CarForm
         End Try
 
     End Sub
-
 End Class
