@@ -22,27 +22,16 @@ Partial Class CarForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.btnEmergency = New System.Windows.Forms.Button()
         Me.btnCarFeatures = New System.Windows.Forms.Button()
         Me.btnCarMedia = New System.Windows.Forms.Button()
         Me.btnDiagnostic = New System.Windows.Forms.Button()
         Me.lblCarFeatures = New System.Windows.Forms.Label()
         Me.lblCarMedia = New System.Windows.Forms.Label()
         Me.lblDiagnostic = New System.Windows.Forms.Label()
-        Me.btnStop = New System.Windows.Forms.Button()
         Me.lblError = New System.Windows.Forms.Label()
+        Me.lblEmergency = New System.Windows.Forms.Label()
+        Me.btnEmergency = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'btnEmergency
-        '
-        Me.btnEmergency.BackColor = System.Drawing.Color.IndianRed
-        Me.btnEmergency.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnEmergency.Location = New System.Drawing.Point(24, 742)
-        Me.btnEmergency.Name = "btnEmergency"
-        Me.btnEmergency.Size = New System.Drawing.Size(436, 65)
-        Me.btnEmergency.TabIndex = 3
-        Me.btnEmergency.Text = "Report an Emergency"
-        Me.btnEmergency.UseVisualStyleBackColor = False
         '
         'btnCarFeatures
         '
@@ -122,17 +111,6 @@ Partial Class CarForm
         Me.lblDiagnostic.Text = "Diagnostic"
         Me.lblDiagnostic.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'btnStop
-        '
-        Me.btnStop.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.btnStop.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnStop.Location = New System.Drawing.Point(24, 685)
-        Me.btnStop.Name = "btnStop"
-        Me.btnStop.Size = New System.Drawing.Size(436, 65)
-        Me.btnStop.TabIndex = 22
-        Me.btnStop.Text = "Request a Stop"
-        Me.btnStop.UseVisualStyleBackColor = False
-        '
         'lblError
         '
         Me.lblError.AutoSize = True
@@ -148,6 +126,32 @@ Partial Class CarForm
         Me.lblError.Text = "lblError"
         Me.lblError.Visible = False
         '
+        'lblEmergency
+        '
+        Me.lblEmergency.BackColor = System.Drawing.Color.White
+        Me.lblEmergency.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblEmergency.Location = New System.Drawing.Point(258, 435)
+        Me.lblEmergency.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblEmergency.Name = "lblEmergency"
+        Me.lblEmergency.Size = New System.Drawing.Size(170, 38)
+        Me.lblEmergency.TabIndex = 25
+        Me.lblEmergency.Text = "Emergency"
+        Me.lblEmergency.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'btnEmergency
+        '
+        Me.btnEmergency.BackColor = System.Drawing.Color.White
+        Me.btnEmergency.BackgroundImage = Global.A10.My.Resources.Resources.emergency
+        Me.btnEmergency.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnEmergency.FlatAppearance.BorderSize = 0
+        Me.btnEmergency.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEmergency.Location = New System.Drawing.Point(268, 476)
+        Me.btnEmergency.Name = "btnEmergency"
+        Me.btnEmergency.Size = New System.Drawing.Size(150, 150)
+        Me.btnEmergency.TabIndex = 24
+        Me.btnEmergency.TabStop = False
+        Me.btnEmergency.UseVisualStyleBackColor = True
+        '
         'CarForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -155,15 +159,15 @@ Partial Class CarForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.lblEmergency)
+        Me.Controls.Add(Me.btnEmergency)
         Me.Controls.Add(Me.lblError)
-        Me.Controls.Add(Me.btnStop)
         Me.Controls.Add(Me.lblDiagnostic)
         Me.Controls.Add(Me.lblCarMedia)
         Me.Controls.Add(Me.lblCarFeatures)
         Me.Controls.Add(Me.btnDiagnostic)
         Me.Controls.Add(Me.btnCarMedia)
         Me.Controls.Add(Me.btnCarFeatures)
-        Me.Controls.Add(Me.btnEmergency)
         Me.DoubleBuffered = True
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "CarForm"
@@ -173,12 +177,12 @@ Partial Class CarForm
 
     End Sub
     Friend WithEvents btnCarFeatures As Button
-    Friend WithEvents btnEmergency As Button
     Friend WithEvents btnCarMedia As Button
     Friend WithEvents btnDiagnostic As Button
     Friend WithEvents lblCarFeatures As Label
     Friend WithEvents lblCarMedia As Label
     Friend WithEvents lblDiagnostic As Label
-    Friend WithEvents btnStop As Button
     Friend WithEvents lblError As Label
+    Friend WithEvents lblEmergency As Label
+    Friend WithEvents btnEmergency As Button
 End Class
