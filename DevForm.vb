@@ -11,11 +11,18 @@ Public Class DevForm
     Dim currentOwnerForm As AppForm
     Dim currentRiderForm As AppForm
 
+    Dim lastOwnerPopup As Form
+    Dim lastRiderPopup As Form
+
     ' Scheduling / Booking
     Dim ownerAvailabilityList As List(Of UserCalendarEvent)
     Dim riderBookingList As List(Of UserCalendarEvent)
-    Dim chatHistory As New List(Of ChatMessage)
+
     Dim currentBooking As UserCalendarEvent
+    Dim currentSchedule As UserCalendarEvent
+
+    ' Chat
+    Dim chatHistory As New List(Of ChatMessage)
 
     ' Route
     Dim carMoving As Boolean = False
@@ -49,6 +56,16 @@ Public Class DevForm
         If (ownerWindow IsNot Nothing) Or (riderWindow IsNot Nothing) Then
             Me.ownerWindow.CloseAllForms()
             Me.riderWindow.CloseAllForms()
+
+            ' Close Popup
+            If Me.lastOwnerPopup IsNot Nothing Then
+                Me.lastOwnerPopup.Close()
+                Me.lastOwnerPopup.Dispose()
+            End If
+            If Me.lastRiderPopup IsNot Nothing Then
+                Me.lastRiderPopup.Close()
+                Me.lastRiderPopup.Dispose()
+            End If
         End If
 
         ' Reset Arrays
@@ -185,6 +202,8 @@ Public Class DevForm
         Dim newStart = scheduling.GetStartDate
         Dim newEnd = scheduling.GetEndDate
         Dim conflict = False
+        ' Prevent overlap between consecutive schedulings
+        newEnd = newEnd.AddSeconds(-1)
 
         ' Check if already exists
         For Each cldrEvent As UserCalendarEvent In Me.ownerAvailabilityList
@@ -258,6 +277,8 @@ Public Class DevForm
     Public Function GetAllAvailabilities(startDate As Date, endDate As Date) As List(Of UserCalendarEvent)
         Dim newStart = startDate
         Dim newEnd = endDate
+        ' Prevent overlap between consecutive schedulings
+        newEnd = newEnd.AddSeconds(-1)
 
         Dim allAvblty As List(Of UserCalendarEvent) = New List(Of UserCalendarEvent)()
 
@@ -314,6 +335,8 @@ Public Class DevForm
         Dim newStart = startDate
         Dim newEnd = endDate
         Dim availability As UserCalendarEvent
+        ' Prevent overlap between consecutive schedulings
+        newEnd = newEnd.AddSeconds(-1)
 
         ' Check if already exists
         For Each cldrEvent As UserCalendarEvent In Me.ownerAvailabilityList
@@ -326,6 +349,24 @@ Public Class DevForm
                 ' Prevent overlap between consecutive schedulings
                 oldEnd = oldEnd.AddSeconds(-1)
 
+                ' New | ⬛⬛⬛⬛   |
+                ' Old |   ⬛⬛⬛⬛ |
+                'newEnd later then oldStart
+                'newEnd earlier than oldEnd
+                If Me.LaterThan(newEnd, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+                    availability = cldrEvent
+                    Exit For
+                End If
+
+                ' New |   ⬛⬛⬛⬛ |
+                ' Old | ⬛⬛⬛⬛   |
+                'newStart later than oldStart
+                'newStart earlier than oldEnd
+                If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newStart, oldEnd) Then
+                    availability = cldrEvent
+                    Exit For
+                End If
+
                 ' New |  ⬛⬛  |
                 ' Old | ⬛⬛⬛⬛ |
                 'newStart later than oldStart
@@ -334,6 +375,16 @@ Public Class DevForm
                     availability = cldrEvent
                     Exit For
                 End If
+
+                ' New | ⬛⬛⬛⬛ |
+                ' Old |  ⬛⬛  |
+                'newStart earlier than oldStart
+                'newEnd later than oldEnd
+                If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
+                    availability = cldrEvent
+                    Exit For
+                End If
+
             End If
         Next
 
@@ -344,6 +395,8 @@ Public Class DevForm
         Dim newStart = startDate
         Dim newEnd = endDate
         Dim available = False
+        ' Prevent overlap between consecutive schedulings
+        newEnd = newEnd.AddSeconds(-1)
 
         ' Check if already exists
         For Each cldrEvent As UserCalendarEvent In Me.ownerAvailabilityList
@@ -406,6 +459,8 @@ Public Class DevForm
         Dim newStart = startDate
         Dim newEnd = endDate
         Dim conflict = False
+        ' Prevent overlap between consecutive bookings
+        newEnd = newEnd.AddSeconds(-1)
 
         ' Check if already exists
         For Each cldrEvent As UserCalendarEvent In Me.riderBookingList
@@ -507,6 +562,8 @@ Public Class DevForm
     Public Function GetAllBookings(startDate As Date, endDate As Date) As List(Of UserCalendarEvent)
         Dim newStart = startDate
         Dim newEnd = endDate
+        ' Prevent overlap between consecutive bookings
+        newEnd = newEnd.AddSeconds(-1)
 
         Dim allBkng As List(Of UserCalendarEvent) = New List(Of UserCalendarEvent)()
 
@@ -563,6 +620,8 @@ Public Class DevForm
         Dim newStart = startDate
         Dim newEnd = endDate
         Dim booking As UserCalendarEvent
+        ' Prevent overlap between consecutive bookings
+        newEnd = newEnd.AddSeconds(-1)
 
         ' Check if already exists
         For Each cldrEvent As UserCalendarEvent In Me.riderBookingList
@@ -620,6 +679,8 @@ Public Class DevForm
         Dim newStart = startDate
         Dim newEnd = endDate
         Dim booked = False
+        ' Prevent overlap between consecutive bookings
+        newEnd = newEnd.AddSeconds(-1)
 
         ' Check if already exists
         For Each cldrEvent As UserCalendarEvent In Me.riderBookingList
@@ -674,11 +735,11 @@ Public Class DevForm
         Return booked
     End Function
 
-    ' -----------------------
-    ' --- Current Booking ---
-    ' -----------------------
+    ' ----------------------------------
+    ' --- Current Booking / Schedule ---
+    ' -----------------------------------
 
-    Public Sub SetCurrentBooking(Optional bookingEvent As UserCalendarEvent = Nothing)
+    Private Sub SetCurrentBooking(Optional bookingEvent As UserCalendarEvent = Nothing)
         If bookingEvent Is Nothing Then
             Me.currentBooking = Me.GetRiderFirstBooking(New Date.Now(), New Date.Now().AddYears(10))
         Else
@@ -689,6 +750,19 @@ Public Class DevForm
     Public Function GetCurrentBooking() As UserCalendarEvent
         Me.SetCurrentBooking()
         Return Me.currentBooking
+    End Function
+
+    Private Sub SetCurrentSchedule(Optional scheduleEvent As UserCalendarEvent = Nothing)
+        If scheduleEvent Is Nothing Then
+            Me.currentSchedule = Me.GetOwnerFirstAvailability(New Date.Now(), New Date.Now().AddYears(10))
+        Else
+            Me.currentSchedule = scheduleEvent
+        End If
+    End Sub
+
+    Public Function GetCurrentSchedule() As UserCalendarEvent
+        Me.SetCurrentSchedule()
+        Return Me.currentSchedule
     End Function
 
     ' ------------------
@@ -758,6 +832,7 @@ Public Class DevForm
     Public Function GetToggleTrunk()
         Return Me.toggleTrunk
     End Function
+
     ' --------------
     ' -- Car Media -
     ' --------------
@@ -794,8 +869,10 @@ Public Class DevForm
         Select Case user
             Case "owner"
                 Me.currentOwnerForm.DimScreen()
+                Me.lastOwnerPopup = popup
             Case "rider"
                 Me.currentRiderForm.DimScreen()
+                Me.lastRiderPopup = popup
         End Select
         popup.Show()
         popup.TopMost = True

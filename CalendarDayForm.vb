@@ -91,6 +91,27 @@
 
     End Sub
 
+    Public Sub RefreshDayControl()
+        Me.usrctrlDay.Dispose()
+        Me.usrctrlDay = New CalendarDayControl()
+        Me.Controls.Add(Me.usrctrlDay)
+
+        ' Properties
+        Me.usrctrlDay.AutoScroll = True
+        Me.usrctrlDay.BackColor = System.Drawing.Color.White
+        Me.usrctrlDay.Location = New System.Drawing.Point(60, 273)
+        Me.usrctrlDay.Margin = New System.Windows.Forms.Padding(2)
+        Me.usrctrlDay.Name = "usrctrlDay"
+        Me.usrctrlDay.Size = New System.Drawing.Size(359, 400)
+        Me.usrctrlDay.TabIndex = 4
+
+        ' Setup
+        Me.usrctrlDay.SetParentForm(Me)
+        Me.usrctrlDay.SetDevForm(Me.devWindow)
+        Me.usrctrlDay.SetVariables(Me.user, Me.scenario)
+        Me.usrctrlDay.SetDate(Me.currDay)
+    End Sub
+
     ' ------------
     ' --- Plus ---
     ' ------------

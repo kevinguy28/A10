@@ -42,7 +42,7 @@
 
     Public Sub RiderFound(carRiderName As String, carRiderProfilePic As Image)
         Me.carRiderName = carRiderName
-        Me.carOwnerProfilePic = carRiderProfilePic
+        Me.carRiderProfilePic = carRiderProfilePic
     End Sub
 
     Public Sub RiderRemove()

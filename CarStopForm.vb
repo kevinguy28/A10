@@ -17,8 +17,6 @@ Public Class CarStopForm
         Me.homeWindow = homeWindow
         Me.devWindow = devWindow
 
-        Me.bookingEvent = Me.devWindow.GetCurrentBooking()
-
         Me.Form_Resize(Nothing, Nothing)
         Me.Form_LocationChanged(Nothing, Nothing)
     End Sub
@@ -70,13 +68,9 @@ Public Class CarStopForm
 
     End Sub
 
-    Public Sub changeTitle(title As String)
-        Me.lblTitle.Text = title
-    End Sub
-
-    Public Sub changeDescription(description As String)
-        Me.lblDescription.Text = description
-    End Sub
+    ' ---------------
+    ' --- Buttons ---
+    ' ---------------
 
     Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
         Me.Close()
@@ -89,12 +83,6 @@ Public Class CarStopForm
             Me.devWindow.OpenPopup("owner", ownerForm)
         End If
         Me.Close()
-    End Sub
-
-    Public Sub makeBtnVisible()
-        Me.btnConfirm.Visible = True
-        Me.btnCancel.Visible = True
-        Me.btnConfirm.Visible = False
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click

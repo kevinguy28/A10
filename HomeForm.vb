@@ -55,9 +55,7 @@
         Dim bookingEvent As UserCalendarEvent
         Dim today As Date = New Date.Now()
         Dim todayPlusHour = today.AddHours(5)
-        If Me.scenario = 1 Then
-            Me.devWindow.SetCurrentBooking()
-        Else
+        If Me.scenario <> 1 Then
             Dim startDate = New Date(today.Year, today.Month, today.Day, today.Hour, 0, 0)
             Dim endDate = New Date(todayPlusHour.Year, todayPlusHour.Month, todayPlusHour.Day, todayPlusHour.Hour, 0, 0)
             Dim schedulingEvent = New UserCalendarEvent(My.Resources.OwnerProfile, "Jane Doe", "owner",

@@ -6,12 +6,12 @@
     Dim user As String
     Dim scenario As Integer
 
-    Dim hourEventList As List(Of Label)
+    Dim hourEventLabelList As List(Of Label)
 
     Dim colourHover = Color.FromArgb(127, 242, 229)
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
     Dim colourPressed = Color.FromArgb(120, 145, 141)
-    Dim colourGreen = Color.FromArgb(148, 255, 155)
+    Dim colourGreen = Color.MediumSeaGreen 'Color.FromArgb(148, 255, 155)
 
     Dim timesLabels As Label()
     Dim currDay As Date
@@ -68,23 +68,30 @@
     End Sub
 
     Private Sub SetAvailabileSlots()
-        Me.hourEventList = New List(Of Label)
+        Me.hourEventLabelList = New List(Of Label)
 
         For hourIndex As Integer = 0 To 23
             Dim lblHour = Me.timesLabels(hourIndex)
             Dim startDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourIndex, 0, 0)
             Dim endDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourIndex, 59, 59)
 
-            If Me.devWindow.isOwnerAvailable(startDate, endDate) Then
-                lblHour.Text = "Available"
+            Dim currAvailability As UserCalendarEvent = Me.devWindow.GetOwnerFirstAvailability(startDate, endDate)
+            If currAvailability IsNot Nothing Then
+                'If rider has booked there
+                If currAvailability.GetCarRiderName IsNot Nothing Then
+                    lblHour.Text = "Booked" & vbCrLf & currAvailability.GetCarRiderName
+                Else
+                    lblHour.Text = "Available"
+                End If
                 lblHour.BackColor = colourGreen
-                Me.hourEventList.Add(lblHour)
+                lblHour.ForeColor = Color.White
+                Me.hourEventLabelList.Add(lblHour)
             End If
         Next
     End Sub
 
     Private Sub SetBookedSlots()
-        Me.hourEventList = New List(Of Label)
+        Me.hourEventLabelList = New List(Of Label)
 
         For hourIndex As Integer = 0 To 23
             Dim lblHour = Me.timesLabels(hourIndex)
@@ -95,7 +102,8 @@
             If currBooking IsNot Nothing Then
                 lblHour.Text = "Booked" & vbCrLf & currBooking.GetCarOwnerName
                 lblHour.BackColor = colourGreen
-                Me.hourEventList.Add(lblHour)
+                lblHour.ForeColor = Color.White
+                Me.hourEventLabelList.Add(lblHour)
             End If
         Next
     End Sub
@@ -114,7 +122,7 @@
 
         Dim hourInt = Array.IndexOf(Me.timesLabels, CType(sender, Label))
 
-        If Me.hourEventList.Contains(CType(sender, Label)) Then
+        If Me.hourEventLabelList.Contains(CType(sender, Label)) Then
             Dim startDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourInt, 0, 0)
             Dim endDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourInt, 59, 59)
             Dim userEvent As UserCalendarEvent
@@ -124,13 +132,13 @@
                 Case "rider"
                     userEvent = Me.devWindow.GetRiderFirstBooking(startDate, endDate)
             End Select
-            Me.previousForm.TimeSlotClicked(startDate, userEvent)
+            ' Open popup
+            Dim modifyForm = New CalendarModifyForm(Me.user, Me.scenario, Me.previousForm, Me.devWindow, userEvent)
+            Me.devWindow.OpenPopup(Me.user, modifyForm)
         Else
             Dim timeDate = New Date(Me.currDay.Year, Me.currDay.Month, Me.currDay.Day, hourInt, 0, 0)
             Me.previousForm.TimeSlotClicked(timeDate)
         End If
-
-
 
     End Sub
 
@@ -146,6 +154,7 @@
         lblSlot8pm.MouseEnter, lblSlot9pm.MouseEnter, lblSlot10pm.MouseEnter, lblSlot11pm.MouseEnter
 
         CType(sender, Label).BackColor = Color.FromArgb(127, 242, 229)
+        CType(sender, Label).ForeColor = Color.FromKnownColor(KnownColor.ControlText)
     End Sub
 
     Private Sub lblTimes_MouseLeave(sender As Object, e As EventArgs) Handles _
@@ -162,8 +171,9 @@
             CType(sender, Label).BackColor = Color.White
         End If
 
-        For Each hourEvent As Label In Me.hourEventList
+        For Each hourEvent As Label In Me.hourEventLabelList
             hourEvent.BackColor = colourGreen
+            hourEvent.ForeColor = Color.White
         Next
     End Sub
 
