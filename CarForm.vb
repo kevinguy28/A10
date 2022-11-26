@@ -12,6 +12,7 @@ Public Class CarForm
     ' Notifications
     Dim riderAccidentNotification As AccidentNotification
     Dim riderIntrusionNotification As IntrusionAlertForm
+    Dim riderTechProblemNotification As TechAlertForm
     ' Current Booking
     Dim bookingEvent As UserCalendarEvent
 
@@ -89,6 +90,14 @@ Public Class CarForm
         If Me.DisabledClick(True) Then Exit Sub
         Me.riderAccidentNotification = New AccidentNotification("rider", Me.scenario, Me.devWindow, True)
         Me.devWindow.OpenPopup("rider", Me.riderAccidentNotification)
+
+        ' Tech
+
+        'If Me.DisabledClick(True) Then Exit Sub
+        'Me.riderTechProblemNotification = New TechAlertForm("rider", Me.scenario, Me.devWindow, Me.homeWindow, Me.previousWindow, Me, True)
+        'Me.devWindow.OpenPopup("rider", Me.riderTechProblemNotification)
+
+        ' Intrusion
 
         'If Me.DisabledClick(True) Then Exit Sub
         'Me.riderIntrusionNotification = New IntrusionAlertForm("rider", Me.scenario, Me.devWindow, True)
