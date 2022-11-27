@@ -3,6 +3,7 @@ Imports System.Drawing.Imaging
 Imports System.Drawing.Printing
 Imports System.Text.RegularExpressions
 Imports System.Threading
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Status
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock
 
 Public Class CalendarSchedulingControl
@@ -11,9 +12,11 @@ Public Class CalendarSchedulingControl
 
     Dim startTime As Date
     Dim endTime As Date
+    Dim repeatTime As Date
 
     Dim changedStartTime = False
     Dim changedEndTime = False
+    Dim changedRepeatTime = False
 
     Dim startMinute As Integer
     Dim startHour As Integer
@@ -27,6 +30,12 @@ Public Class CalendarSchedulingControl
     Dim endMonth As Integer
     Dim endYear As Integer
 
+    Dim repeatMinute As Integer
+    Dim repeatHour As Integer
+    Dim repeatDay As Integer
+    Dim repeatMonth As Integer
+    Dim repeatYear As Integer
+
     ' Height Change
     Dim addedHeight = 472
 
@@ -34,6 +43,10 @@ Public Class CalendarSchedulingControl
     Dim bdrTopHghtChanged = False
     Dim bdrBotHghtChanged = False
     Dim bdrBotPosnChanged = False
+    Dim bdrRptHghtChangedOne = False
+    Dim bdrRptPosnChangedOne = False
+    Dim bdrRptHghtChanged = False
+    Dim bdrRptPosnChangedTwo = False
 
     ' Error Shake
     Dim WithEvents backgroundWorker As BackgroundWorker
@@ -92,6 +105,9 @@ Public Class CalendarSchedulingControl
     Dim WithEvents imgStartAmPmUp As PictureBox
     Dim WithEvents imgStartAmPmDown As PictureBox
 
+    Dim lblLocationStartPrompt As Label
+    Dim WithEvents cmbxLocationStart As ComboBox
+
     Dim lblStartConfirmPrompt As Label
     Dim lblStartConfirmDate As Label
 
@@ -115,8 +131,23 @@ Public Class CalendarSchedulingControl
     Dim WithEvents imgEndAmPmUp As PictureBox
     Dim WithEvents imgEndAmPmDown As PictureBox
 
+    Dim lblLocationEndPrompt As Label
+    Dim WithEvents cmbxLocationEnd As ComboBox
+
     Dim lblEndConfirmPrompt As Label
     Dim lblEndConfirmDate As Label
+
+    ' --- Repeat ---
+    Dim lblRepeat As Label
+
+    Dim lblTypeRepeatPrompt As Label
+    Dim WithEvents cmbxTypeRepeat As ComboBox
+    Dim lblDateRepeatPrompt As Label
+    Dim txtDateRepeat As TextBox
+    Dim WithEvents btnDateRepeatSelect As Button
+
+    Dim lblRepeatConfirmPrompt As Label
+    Dim lblRepeatConfirmDate As Label
 
     ' --- Start Month ---
     Dim showMonthsStart As Boolean
@@ -131,6 +162,13 @@ Public Class CalendarSchedulingControl
     Dim WithEvents imgEndArrowLeft As PictureBox
     Dim WithEvents imgEndArrowRight As PictureBox
     Dim usrctrlEndMonth As CalendarMonthControl
+
+    ' --- Repeat Month ----
+    Dim showMonthsRepeat As Boolean
+    Dim lblRepeatMonth As Label
+    Dim WithEvents imgRepeatArrowLeft As PictureBox
+    Dim WithEvents imgRepeatArrowRight As PictureBox
+    Dim usrctrlRepeatMonth As CalendarMonthControl
 
     ' --- Next ---
     Dim WithEvents btnNext As Button
@@ -153,9 +191,9 @@ Public Class CalendarSchedulingControl
 
     Public Sub Setup(currTime As Date, trigger As String, previousForm As CalendarSchedulingForm, userEvent As UserCalendarEvent)
         Me.flPanel.Location = New Point(0, 0)
-        Me.flPanel.Size = New Size(410, 632)
+        Me.flPanel.Size = New Size(410, 868)
 
-        Dim initialAddedHeight = 410
+        Dim initialAddedHeight = 755
         Me.Height = Me.Height + initialAddedHeight
         Me.flPanel.Height = Me.flPanel.Height + initialAddedHeight
 
@@ -195,17 +233,24 @@ Public Class CalendarSchedulingControl
             Me.endDay = Me.endTime.Day
         End If
 
+        Me.repeatTime = Me.endTime.AddDays(7)
+        Me.UpdateRepeatTimeVar()
+
         Me.CreateStart()
         Me.CreateEnd()
+        Me.CreateRepeat()
         Me.CreateStartMonths()
         Me.CreateEndMonths()
+        Me.CreateRepeatMonths()
         Me.CreateNext()
         Me.AddControls()
 
         ' Border
-        Dim borderSize = New Size(10, 392)
+        Dim borderSize = New Size(10, 510)
+        Dim borderRepeatSize = New Size(10, 292)
         Dim top = 50
-        Dim btm = 492
+        Dim btm = 610
+        Dim rpt = 1170
         Dim lft = 10
         Dim rgt = 400
 
@@ -228,6 +273,16 @@ Public Class CalendarSchedulingControl
         Me.lblEndRight.BackColor = colourNeutral
         Me.lblEndRight.Location = New Point(rgt, btm)
         Me.lblEndRight.Size = borderSize
+
+        Me.lblRepeatLeft.BringToFront()
+        Me.lblRepeatLeft.BackColor = colourNeutral
+        Me.lblRepeatLeft.Location = New Point(lft, rpt)
+        Me.lblRepeatLeft.Size = borderRepeatSize
+
+        Me.lblRepeatRight.BringToFront()
+        Me.lblRepeatRight.BackColor = colourNeutral
+        Me.lblRepeatRight.Location = New Point(rgt, rpt)
+        Me.lblRepeatRight.Size = borderRepeatSize
 
 
     End Sub
@@ -370,7 +425,26 @@ Public Class CalendarSchedulingControl
         Me.imgStartAmPmDown.SizeMode = PictureBoxSizeMode.Zoom
         Me.imgStartAmPmDown.Margin = New Padding(colonSize.Width + 10, 8, 0, 5)
 
-        ' --- Time: Confirm ---
+        ' --- Location ---
+
+        Me.lblLocationStartPrompt = New Label
+        Me.lblLocationStartPrompt.Text = "Select the start location of your car:"
+        Me.lblLocationStartPrompt.Font = bodyFont
+        Me.lblLocationStartPrompt.AutoSize = True
+        Me.lblLocationStartPrompt.Margin = leftPadding
+
+        Me.cmbxLocationStart = New ComboBox
+        Me.cmbxLocationStart.DropDownStyle = ComboBoxStyle.DropDownList
+        Me.cmbxLocationStart.Font = bodyFont
+        Me.cmbxLocationStart.Width = 320 - txtPad - txtBor
+        Me.cmbxLocationStart.Margin = New Padding(25 + txtPad, 5, 0, 10)
+        Me.cmbxLocationStart.Items.Add("CN Tower")
+        Me.cmbxLocationStart.Items.Add("Toronto Metropolitan University")
+        Me.cmbxLocationStart.Items.Add("Union Station")
+        Me.cmbxLocationStart.Items.Add("University of Toronto")
+        Me.cmbxLocationStart.Text = "CN Tower"
+
+        ' --- Confirm ---
 
         ' lblStartConfirmPrompt
         Me.lblStartConfirmPrompt = New Label
@@ -383,10 +457,10 @@ Public Class CalendarSchedulingControl
 
         ' lblStartConfirmDate
         Me.lblStartConfirmDate = New Label
-        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.startTime, "h:mm tt")
+        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.startTime, "h:mm tt") & vbCrLf & "at " & cmbxLocationStart.Text
         Me.lblStartConfirmDate.TextAlign = ContentAlignment.MiddleCenter
         Me.lblStartConfirmDate.Font = bodyBoldFont
-        Me.lblStartConfirmDate.Size = New Size(Me.Width - 40, 55)
+        Me.lblStartConfirmDate.Size = New Size(Me.Width - 40, 90)
         Me.lblStartConfirmDate.AutoSize = False
         Me.lblStartConfirmDate.Margin = New Padding(leftPadding.Left / 2, 0, 0, 0)
         Me.lblStartConfirmDate.BackColor = colourNeutral
@@ -532,7 +606,26 @@ Public Class CalendarSchedulingControl
         Me.imgEndAmPmDown.SizeMode = PictureBoxSizeMode.Zoom
         Me.imgEndAmPmDown.Margin = New Padding(colonSize.Width + 10, 8, 0, 5)
 
-        ' --- Time: Confirm ---
+        ' --- Location ---
+
+        Me.lblLocationEndPrompt = New Label
+        Me.lblLocationEndPrompt.Text = "Select the end location of your car:"
+        Me.lblLocationEndPrompt.Font = bodyFont
+        Me.lblLocationEndPrompt.AutoSize = True
+        Me.lblLocationEndPrompt.Margin = leftPadding
+
+        Me.cmbxLocationEnd = New ComboBox
+        Me.cmbxLocationEnd.DropDownStyle = ComboBoxStyle.DropDownList
+        Me.cmbxLocationEnd.Font = bodyFont
+        Me.cmbxLocationEnd.Width = 320 - txtPad - txtBor
+        Me.cmbxLocationEnd.Margin = New Padding(25 + txtPad, 5, 0, 10)
+        Me.cmbxLocationEnd.Items.Add("CN Tower")
+        Me.cmbxLocationEnd.Items.Add("Toronto Metropolitan University")
+        Me.cmbxLocationEnd.Items.Add("Union Station")
+        Me.cmbxLocationEnd.Items.Add("University of Toronto")
+        Me.cmbxLocationEnd.Text = "CN Tower"
+
+        ' --- Confirm ---
 
         ' lblEndConfirmPrompt
         Me.lblEndConfirmPrompt = New Label
@@ -545,14 +638,106 @@ Public Class CalendarSchedulingControl
 
         ' lblEndConfirmDate
         Me.lblEndConfirmDate = New Label
-        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.endTime, "h:mm tt")
+        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.endTime, "h:mm tt") & vbCrLf & "at " & cmbxLocationStart.Text
         Me.lblEndConfirmDate.TextAlign = ContentAlignment.MiddleCenter
         Me.lblEndConfirmDate.Font = bodyBoldFont
-        Me.lblEndConfirmDate.Size = New Size(Me.Width - 40, 55)
+        Me.lblEndConfirmDate.Size = New Size(Me.Width - 40, 90)
         Me.lblEndConfirmDate.AutoSize = False
         Me.lblEndConfirmDate.Margin = New Padding(leftPadding.Left / 2, 0, 0, 0)
         Me.lblEndConfirmDate.BackColor = colourNeutral
         Me.lblEndConfirmDate.ForeColor = Color.White
+    End Sub
+
+    Private Sub CreateRepeat()
+        ' lblRepeat
+        Me.lblRepeat = New Label()
+        Me.lblRepeat.Text = "Repeat"
+        Me.lblRepeat.TextAlign = headingTextAlign
+        Me.lblRepeat.Font = headingFont
+        Me.lblRepeat.Size = headingSize
+        Me.lblRepeat.AutoSize = False
+        Me.lblRepeat.Margin = headingPadding
+        Me.lblRepeat.BackColor = colourNeutral
+        Me.lblRepeat.ForeColor = colourWhite
+
+        ' --- Type ---
+        Dim txtPad = 5
+        Dim txtBor = 15
+
+        ' lblTypeRepeatPrompt
+        Me.lblTypeRepeatPrompt = New Label
+        Me.lblTypeRepeatPrompt.Text = "Select the repeat of your car availability:"
+        Me.lblTypeRepeatPrompt.Font = bodyFont
+        Me.lblTypeRepeatPrompt.AutoSize = True
+        Me.lblTypeRepeatPrompt.Margin = leftPadding
+
+        ' cmbxTypeRepeat
+        Me.cmbxTypeRepeat = New ComboBox
+        Me.cmbxTypeRepeat.DropDownStyle = ComboBoxStyle.DropDownList
+        Me.cmbxTypeRepeat.Font = bodyFont
+        Me.cmbxTypeRepeat.Width = 320 - txtPad - txtBor
+        Me.cmbxTypeRepeat.Margin = New Padding(25 + txtPad, 5, 0, 10)
+        Me.cmbxTypeRepeat.Items.Add("Never")
+        Me.cmbxTypeRepeat.Items.Add("Daily")
+        Me.cmbxTypeRepeat.Items.Add("Weekly")
+        Me.cmbxTypeRepeat.Items.Add("Monthly")
+        Me.cmbxTypeRepeat.Items.Add("Monday to Friday")
+        Me.cmbxTypeRepeat.Items.Add("Saturday to Sunday")
+        Me.cmbxTypeRepeat.SelectedItem = "Never"
+
+        ' --- Date ---
+
+        ' lblDateRepeatPrompt
+        Me.lblDateRepeatPrompt = New Label
+        Me.lblDateRepeatPrompt.Text = "Repeat until:"
+        Me.lblDateRepeatPrompt.Font = bodyFont
+        Me.lblDateRepeatPrompt.AutoSize = True
+        Me.lblDateRepeatPrompt.Margin = leftPadding
+
+        ' txtDateRepeat
+        Me.txtDateRepeat = New TextBox
+        Me.txtDateRepeat.Multiline = False
+        Me.txtDateRepeat.Enabled = False
+        Me.txtDateRepeat.Font = bodyFont
+        Me.txtDateRepeat.Width = 300 - txtPad - txtBor
+        Me.txtDateRepeat.Text = Format(Me.repeatTime, "dddd d MMMM yyyy")
+        Me.txtDateRepeat.Margin = New Padding(25 + txtPad, 5, 0, 5)
+
+        ' btnDateEndSelect
+        Me.btnDateRepeatSelect = New Button
+        Me.btnDateRepeatSelect.Text = "Select"
+        Me.btnDateRepeatSelect.Font = bodyFont
+        Me.btnDateRepeatSelect.Height = Me.txtDateEnd.Height
+        Me.btnDateRepeatSelect.BackColor = colourNeutral
+        Me.btnDateRepeatSelect.ForeColor = Color.White
+        Me.btnDateRepeatSelect.TabStop = False
+        Me.btnDateRepeatSelect.FlatStyle = FlatStyle.Flat
+        Me.btnDateRepeatSelect.FlatAppearance.BorderSize = 0
+        Me.btnDateRepeatSelect.Margin = sidePadding
+        Me.btnDateRepeatSelect.Enabled = False
+
+        ' --- Confirm ---
+
+        ' lblRepeatConfirmPrompt
+        Me.lblRepeatConfirmPrompt = New Label
+        Me.lblRepeatConfirmPrompt.Text = "Your availability will repeat"
+        Me.lblRepeatConfirmPrompt.TextAlign = ContentAlignment.MiddleCenter
+        Me.lblRepeatConfirmPrompt.Font = bodyFont
+        Me.lblRepeatConfirmPrompt.Size = New Size(Me.Width, 24)
+        Me.lblRepeatConfirmPrompt.AutoSize = False
+        Me.lblRepeatConfirmPrompt.Margin = noPadding
+
+        ' lblRepeatConfirmDate
+        Me.lblRepeatConfirmDate = New Label
+        Me.lblRepeatConfirmDate.Text = cmbxTypeRepeat.Text & vbCrLf & "until " & Format(Me.repeatTime, "dddd d MMMM yyyy")
+        Me.lblRepeatConfirmDate.TextAlign = ContentAlignment.MiddleCenter
+        Me.lblRepeatConfirmDate.Font = bodyBoldFont
+        Me.lblRepeatConfirmDate.Size = New Size(Me.Width - 40, 55)
+        Me.lblRepeatConfirmDate.AutoSize = False
+        Me.lblRepeatConfirmDate.Margin = New Padding(leftPadding.Left / 2, 0, 0, 0)
+        Me.lblRepeatConfirmDate.BackColor = colourNeutral
+        Me.lblRepeatConfirmDate.ForeColor = Color.White
+
     End Sub
 
     Private Sub CreateStartMonths()
@@ -630,6 +815,43 @@ Public Class CalendarSchedulingControl
         Me.usrctrlEndMonth.Size = New Size(Me.usrctrlEndMonth.Width - 28, Me.usrctrlEndMonth.Height - 28)
     End Sub
 
+    Private Sub CreateRepeatMonths()
+        '                          l, t, r, b
+        Dim padding = New Padding(0, 20, 0, 20)
+        Dim leftMonthPadding = New Padding(25, 20, 0, 20)
+
+        ' imgRepeatArrowLeft
+        Me.imgRepeatArrowLeft = New PictureBox
+        Me.imgRepeatArrowLeft.Size = New Size(45, 45)
+        Me.imgRepeatArrowLeft.Image = My.Resources.ArrowLeft
+        Me.imgRepeatArrowLeft.SizeMode = PictureBoxSizeMode.Zoom
+        Me.imgRepeatArrowLeft.Margin = leftMonthPadding
+
+        ' lblRepeatMonth
+        Me.lblRepeatMonth = New Label
+        Me.lblRepeatMonth.Text = Format(Me.repeatTime, "MMMM yyyy")
+        Me.lblRepeatMonth.TextAlign = ContentAlignment.MiddleCenter
+        Me.lblRepeatMonth.Font = headingFont
+        Me.lblRepeatMonth.AutoSize = False
+        Me.lblRepeatMonth.Size = New Size(410 - ((Me.imgRepeatArrowLeft.Width * 2) + 40), Me.imgRepeatArrowLeft.Height)
+        Me.lblRepeatMonth.Margin = padding
+
+        ' imgRepeatArrowRight
+        Me.imgRepeatArrowRight = New PictureBox
+        Me.imgRepeatArrowRight.Size = New Size(45, 45)
+        Me.imgRepeatArrowRight.Image = My.Resources.ArrowRight
+        Me.imgRepeatArrowRight.SizeMode = PictureBoxSizeMode.Zoom
+        Me.imgRepeatArrowRight.Margin = padding
+
+        ' usrctrlRepeatMonth
+        Me.usrctrlRepeatMonth = New CalendarMonthControl()
+        Me.usrctrlRepeatMonth.SetSchedulingForm(Me)
+        Me.usrctrlRepeatMonth.SetMin(New Date.Now().AddHours(1).AddDays(1))
+        Me.usrctrlRepeatMonth.SetMonth(Me.repeatTime)
+        Me.usrctrlRepeatMonth.Margin = New Padding(28, 0, 0, 10)
+        Me.usrctrlRepeatMonth.Size = New Size(Me.usrctrlRepeatMonth.Width - 28, Me.usrctrlRepeatMonth.Height - 28)
+    End Sub
+
     Private Sub CreateNext()
         'btnNext
         Me.btnNext = New Button
@@ -684,6 +906,11 @@ Public Class CalendarSchedulingControl
         Me.flPanel.Controls.Add(Me.imgStartAmPmDown)
         Me.flPanel.SetFlowBreak(Me.imgStartAmPmDown, True)
 
+        Me.flPanel.Controls.Add(Me.lblLocationStartPrompt)
+        Me.flPanel.SetFlowBreak(Me.lblLocationStartPrompt, True)
+        Me.flPanel.Controls.Add(Me.cmbxLocationStart)
+        Me.flPanel.SetFlowBreak(Me.cmbxLocationStart, True)
+
         Me.flPanel.Controls.Add(Me.lblStartConfirmPrompt)
         Me.flPanel.SetFlowBreak(Me.lblStartConfirmPrompt, True)
         Me.flPanel.Controls.Add(Me.lblStartConfirmDate)
@@ -724,11 +951,44 @@ Public Class CalendarSchedulingControl
         Me.flPanel.Controls.Add(Me.imgEndAmPmDown)
         Me.flPanel.SetFlowBreak(Me.imgEndAmPmDown, True)
 
+        Me.flPanel.Controls.Add(Me.lblLocationEndPrompt)
+        Me.flPanel.SetFlowBreak(Me.lblLocationEndPrompt, True)
+        Me.flPanel.Controls.Add(Me.cmbxLocationEnd)
+        Me.flPanel.SetFlowBreak(Me.cmbxLocationEnd, True)
+
         Me.flPanel.Controls.Add(Me.lblEndConfirmPrompt)
         Me.flPanel.SetFlowBreak(Me.lblEndConfirmPrompt, True)
         Me.flPanel.Controls.Add(Me.lblEndConfirmDate)
         Me.flPanel.SetFlowBreak(Me.lblEndConfirmDate, True)
 
+        ' Repeat
+        Me.flPanel.Controls.Add(Me.lblRepeat)
+        Me.flPanel.SetFlowBreak(Me.lblRepeat, True)
+
+        Me.flPanel.Controls.Add(Me.lblTypeRepeatPrompt)
+        Me.flPanel.SetFlowBreak(Me.lblTypeRepeatPrompt, True)
+        Me.flPanel.Controls.Add(Me.cmbxTypeRepeat)
+        Me.flPanel.SetFlowBreak(Me.cmbxTypeRepeat, True)
+
+        Me.flPanel.Controls.Add(Me.lblDateRepeatPrompt)
+        Me.flPanel.SetFlowBreak(Me.lblDateRepeatPrompt, True)
+        Me.flPanel.Controls.Add(Me.txtDateRepeat)
+        Me.flPanel.Controls.Add(Me.btnDateRepeatSelect)
+        Me.flPanel.SetFlowBreak(Me.btnDateRepeatSelect, True)
+
+        If showMonthsRepeat Then
+            Me.flPanel.Controls.Add(Me.imgRepeatArrowLeft)
+            Me.flPanel.Controls.Add(Me.lblRepeatMonth)
+            Me.flPanel.Controls.Add(Me.imgRepeatArrowRight)
+            Me.flPanel.Controls.Add(Me.usrctrlRepeatMonth)
+        End If
+
+        Me.flPanel.Controls.Add(Me.lblRepeatConfirmPrompt)
+        Me.flPanel.SetFlowBreak(Me.lblRepeatConfirmPrompt, True)
+        Me.flPanel.Controls.Add(Me.lblRepeatConfirmDate)
+        Me.flPanel.SetFlowBreak(Me.lblRepeatConfirmDate, True)
+
+        ' Next
         Me.flPanel.Controls.Add(Me.btnNext)
 
         Me.flPanel.ResumeLayout(True)
@@ -747,19 +1007,32 @@ Public Class CalendarSchedulingControl
         Dim topHchanged = False
         Dim botPchanged = False
         Dim botHchanged = False
+        Dim rptPchangedO = False
+        Dim rptPchangedT = False
+        Dim rptHchanged = False
 
         If showMonthsStart Then
             If Not bdrTopHghtChanged Then topHchanged = True
             If Not bdrBotPosnChanged Then botPchanged = True
+            If Not bdrRptPosnChangedOne Then rptPchangedO = True
         Else
             If bdrTopHghtChanged Then topHchanged = True
             If bdrBotPosnChanged Then botPchanged = True
+            If bdrRptPosnChangedOne Then rptPchangedO = True
         End If
 
         If showMonthsEnd Then
             If Not bdrBotHghtChanged Then botHchanged = True
+            If Not bdrRptPosnChangedTwo Then rptPchangedT = True
         Else
             If bdrBotHghtChanged Then botHchanged = True
+            If bdrRptPosnChangedTwo Then rptPchangedT = True
+        End If
+
+        If showMonthsRepeat Then
+            If Not bdrRptHghtChanged Then rptHchanged = True
+        Else
+            If bdrRptHghtChanged Then rptHchanged = True
         End If
 
         'Top Height
@@ -783,6 +1056,27 @@ Public Class CalendarSchedulingControl
             bdrBotHghtChanged = Not bdrBotHghtChanged
         End If
 
+        ' Repeat Position One
+        If rptPchangedO Then
+            Me.lblRepeatLeft.Top += changeHeight
+            Me.lblRepeatRight.Top += changeHeight
+            bdrRptPosnChangedOne = Not bdrRptPosnChangedOne
+        End If
+
+        ' Repeat Position Two
+        If rptPchangedT Then
+            Me.lblRepeatLeft.Top += changeHeight
+            Me.lblRepeatRight.Top += changeHeight
+            bdrRptPosnChangedTwo = Not bdrRptPosnChangedTwo
+        End If
+
+        ' Repeat Height
+        If rptHchanged Then
+            Me.lblRepeatLeft.Height += changeHeight
+            Me.lblRepeatRight.Height += changeHeight
+            bdrRptHghtChanged = Not bdrRptHghtChanged
+        End If
+
     End Sub
 
     Private Sub UpdateStartTimeVar()
@@ -804,18 +1098,32 @@ Public Class CalendarSchedulingControl
         Me.endYear = Me.endTime.Year
     End Sub
 
+    Private Sub UpdateRepeatTimeVar()
+        If changedRepeatTime = False Then
+            Me.repeatTime = endTime.AddDays(7)
+        End If
+        Me.repeatMinute = Me.repeatTime.Minute
+        Me.repeatHour = Me.repeatTime.Hour
+        Me.repeatDay = Me.repeatTime.Day
+        Me.repeatMonth = Me.repeatTime.Month
+        Me.repeatYear = Me.repeatTime.Year
+    End Sub
+
     Private Sub UpdateLabels()
         Me.txtDateStart.Text = Format(Me.startTime, "dddd d MMMM yyyy")
         Me.lblHourStart.Text = Format(Me.startTime, "hh")
         Me.lblMinuteStart.Text = Format(Me.startTime, "mm")
         Me.lblAmPmStart.Text = Format(Me.startTime, "tt").ToLower
-        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.startTime, "h:mm tt")
+        Me.lblStartConfirmDate.Text = Format(Me.startTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.startTime, "h:mm tt") & vbCrLf & "at " & Me.cmbxLocationStart.Text
 
         Me.txtDateEnd.Text = Format(Me.endTime, "dddd d MMMM yyyy")
         Me.lblHourEnd.Text = Format(Me.endTime, "hh")
         Me.lblMinuteEnd.Text = Format(Me.endTime, "mm")
         Me.lblAmPmEnd.Text = Format(Me.endTime, "tt").ToLower
-        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.endTime, "h:mm tt")
+        Me.lblEndConfirmDate.Text = Format(Me.endTime, "dddd d MMMM yyyy") & vbCrLf & "at " & Format(Me.endTime, "h:mm tt") & vbCrLf & "at " & cmbxLocationEnd.Text
+
+        Me.txtDateRepeat.Text = Format(Me.repeatTime, "dddd d MMMM yyyy")
+        Me.lblRepeatConfirmDate.Text = cmbxTypeRepeat.Text & vbCrLf & "until " & Format(Me.repeatTime, "dddd d MMMM yyyy")
     End Sub
 
     Private Function GetMinDate(dateOne As Date)
@@ -851,12 +1159,24 @@ Public Class CalendarSchedulingControl
             Me.endTime = newDate
             Me.changedEndTime = True
             Me.UpdateEndTimeVar()
-
+            Me.UpdateRepeatTimeVar()
 
             Me.showMonthsEnd = False
+            Me.usrctrlRepeatMonth.SetMin(Me.GetMinDate(Me.endTime.AddDays(1)))
 
             Me.btnDateEndSelect.Enabled = True
             Me.btnDateEndSelect.BackColor = colourNeutral
+
+        ElseIf (curCtrl Is Me.usrctrlRepeatMonth) Then
+            Dim newDate = New Date(Me.repeatYear, Me.repeatMonth, day, Me.repeatHour, Me.repeatMinute, 0)
+            Me.repeatTime = newDate
+            Me.changedRepeatTime = True
+            Me.UpdateRepeatTimeVar()
+
+            Me.showMonthsRepeat = False
+
+            Me.btnDateRepeatSelect.Enabled = True
+            Me.btnDateRepeatSelect.BackColor = colourNeutral
 
         End If
 
@@ -880,6 +1200,14 @@ Public Class CalendarSchedulingControl
 
             Me.usrctrlEndMonth.SetMonth(Me.endTime)
             Me.lblEndMonth.Text = Format(Me.endTime, "MMMM yyyy")
+
+        ElseIf time = "repeat" Then
+            Me.changedRepeatTime = True
+            Me.repeatTime = Me.repeatTime.AddMonths(monthChange)
+            Me.UpdateRepeatTimeVar()
+
+            Me.usrctrlRepeatMonth.SetMonth(Me.repeatTime)
+            Me.lblRepeatMonth.Text = Format(Me.repeatTime, "MMMM yyyy")
         End If
     End Sub
 
@@ -968,7 +1296,7 @@ Public Class CalendarSchedulingControl
     ' -------------------
     ' --- Date Select ---
     ' -------------------
-    Private Sub btnDateSelect_Click(sender As Object, e As EventArgs) Handles btnDateStartSelect.Click, btnDateEndSelect.Click
+    Private Sub btnDateSelect_Click(sender As Object, e As EventArgs) Handles btnDateStartSelect.Click, btnDateEndSelect.Click, btnDateRepeatSelect.Click
 
         Dim btnCur = CType(sender, Button)
 
@@ -981,6 +1309,11 @@ Public Class CalendarSchedulingControl
             Me.showMonthsEnd = True
             Me.btnDateEndSelect.Enabled = False
             Me.btnDateEndSelect.BackColor = colourPressed
+
+        ElseIf (btnCur Is btnDateRepeatSelect) Then
+            Me.showMonthsRepeat = True
+            Me.btnDateRepeatSelect.Enabled = False
+            Me.btnDateRepeatSelect.BackColor = colourPressed
 
         End If
 
@@ -999,7 +1332,7 @@ Public Class CalendarSchedulingControl
     ' -------------------------
     ' --- Month Arrow Click ---
     ' -------------------------
-    Private Sub imgArrowRight_Click(sender As Object, e As EventArgs) Handles imgStartArrowRight.Click, imgEndArrowRight.Click
+    Private Sub imgArrowRight_Click(sender As Object, e As EventArgs) Handles imgStartArrowRight.Click, imgEndArrowRight.Click, imgRepeatArrowRight.Click
 
         Dim imgCur = CType(sender, PictureBox)
 
@@ -1007,35 +1340,47 @@ Public Class CalendarSchedulingControl
             Me.UpdateMonth(1, "start")
         ElseIf (imgCur Is imgEndArrowRight) Then
             Me.UpdateMonth(1, "end")
+        ElseIf (imgCur Is imgRepeatArrowRight) Then
+            Me.UpdateMonth(1, "repeat")
         End If
     End Sub
 
-    Private Sub imgArrowLeft_Click(sender As Object, e As EventArgs) Handles imgStartArrowLeft.Click, imgEndArrowLeft.Click
+    Private Sub imgArrowLeft_Click(sender As Object, e As EventArgs) Handles imgStartArrowLeft.Click, imgEndArrowLeft.Click, imgRepeatArrowLeft.Click
         Dim imgCur = CType(sender, PictureBox)
 
         If (imgCur Is imgStartArrowLeft) Then
             Me.UpdateMonth(-1, "start")
         ElseIf (imgCur Is imgEndArrowLeft) Then
             Me.UpdateMonth(-1, "end")
+        ElseIf (imgCur Is imgRepeatArrowLeft) Then
+            Me.UpdateMonth(-1, "repeat")
         End If
     End Sub
 
     ' -------------------------
     ' --- Month Arrow Hover ---
     ' -------------------------
-    Private Sub imgArrowRight_MouseEnter(sender As Object, e As EventArgs) Handles imgStartArrowRight.MouseEnter, imgEndArrowRight.MouseEnter
+    Private Sub imgArrowRight_MouseEnter(sender As Object, e As EventArgs) _
+        Handles imgStartArrowRight.MouseEnter, imgEndArrowRight.MouseEnter, imgRepeatArrowRight.MouseEnter
+
         CType(sender, PictureBox).Image = My.Resources.ArrowRight___Hover
     End Sub
 
-    Private Sub imgArrowRight_MouseLeave(sender As Object, e As EventArgs) Handles imgStartArrowRight.MouseLeave, imgEndArrowRight.MouseLeave
+    Private Sub imgArrowRight_MouseLeave(sender As Object, e As EventArgs) _
+        Handles imgStartArrowRight.MouseLeave, imgEndArrowRight.MouseLeave, imgRepeatArrowRight.MouseLeave
+
         CType(sender, PictureBox).Image = My.Resources.ArrowRight
     End Sub
 
-    Private Sub imgArrowLeft_MouseEnter(sender As Object, e As EventArgs) Handles imgStartArrowLeft.MouseEnter, imgEndArrowLeft.MouseEnter
+    Private Sub imgArrowLeft_MouseEnter(sender As Object, e As EventArgs) _
+        Handles imgStartArrowLeft.MouseEnter, imgEndArrowLeft.MouseEnter, imgRepeatArrowLeft.MouseEnter
+
         CType(sender, PictureBox).Image = My.Resources.ArrowLeft___Hover
     End Sub
 
-    Private Sub imgArrowLeft_MouseLeave(sender As Object, e As EventArgs) Handles imgStartArrowLeft.MouseLeave, imgStartArrowLeft.MouseLeave
+    Private Sub imgArrowLeft_MouseLeave(sender As Object, e As EventArgs) _
+        Handles imgStartArrowLeft.MouseLeave, imgStartArrowLeft.MouseLeave, imgRepeatArrowLeft.MouseLeave
+
         CType(sender, PictureBox).Image = My.Resources.ArrowLeft
     End Sub
 
@@ -1240,7 +1585,7 @@ Public Class CalendarSchedulingControl
         End If
 
         'If not error
-        Me.previousForm.NextClicked(startTime, endTime)
+        Me.previousForm.NextClicked(startTime, endTime, Me.cmbxTypeRepeat.Text, Me.repeatTime, Me.cmbxLocationStart.Text, Me.cmbxLocationEnd.Text)
 
     End Sub
 
@@ -1298,5 +1643,36 @@ Public Class CalendarSchedulingControl
 
     End Sub
 
+    ' -----------------
+    ' --- Combo Box ---
+    ' -----------------
+    Private Sub cmbxLocation_SelectionChangeCommitted(sender As Object, e As EventArgs) _
+        Handles cmbxLocationStart.SelectionChangeCommitted, cmbxLocationEnd.SelectionChangeCommitted, cmbxTypeRepeat.SelectionChangeCommitted
+        If (Me.lblStartConfirmDate IsNot Nothing) AndAlso (Me.lblEndConfirmDate IsNot Nothing) Then
+            Me.UpdateLabels()
+        End If
+    End Sub
+
+    Private Sub cmbxDateRepeat_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbxTypeRepeat.SelectionChangeCommitted
+        If btnDateRepeatSelect IsNot Nothing Then
+            If cmbxTypeRepeat.Text = "Never" Then
+                Me.btnDateRepeatSelect.Enabled = False
+            Else
+                Me.btnDateRepeatSelect.Enabled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub cmbxTypeRepeat_MouseWheel(sender As Object, e As MouseEventArgs) Handles cmbxLocationStart.MouseWheel, cmbxLocationEnd.MouseWheel, cmbxTypeRepeat.MouseWheel
+        DirectCast(e, HandledMouseEventArgs).Handled = True
+        CType(sender, ComboBox).DroppedDown = False
+        If (Me.VerticalScroll.Value - e.Delta < Me.VerticalScroll.Minimum) Then
+            Me.VerticalScroll.Value = Me.VerticalScroll.Minimum
+        ElseIf (Me.VerticalScroll.Value - e.Delta > Me.VerticalScroll.Maximum) Then
+            Me.VerticalScroll.Value = Me.VerticalScroll.Maximum
+        Else
+            Me.VerticalScroll.Value -= e.Delta
+        End If
+    End Sub
 
 End Class

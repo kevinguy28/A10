@@ -11,6 +11,9 @@ Public Class DevForm
     Dim currentOwnerForm As AppForm
     Dim currentRiderForm As AppForm
 
+    Dim ownerHomeForm As HomeForm
+    Dim riderHomeForm As HomeForm
+
     Dim lastOwnerPopup As Form
     Dim lastRiderPopup As Form
 
@@ -89,6 +92,8 @@ Public Class DevForm
         Me.riderWindow.Show()
         Me.currentOwnerForm = Me.ownerWindow
         Me.currentRiderForm = Me.riderWindow
+        Me.ownerHomeForm = Me.ownerWindow
+        Me.riderHomeForm = Me.riderWindow
 
         ' Scenario 4: Low Battery Notification
         If scenario = 4 Then
@@ -122,6 +127,14 @@ Public Class DevForm
 
     Public Function GetCurrentRiderForm()
         Return Me.currentRiderForm
+    End Function
+
+    Public Function GetOwnerHomeForm()
+        Return Me.ownerHomeForm
+    End Function
+
+    Public Function GetRiderHomeForm()
+        Return Me.riderHomeForm
     End Function
 
     Public Shared Function GetFormWidth() As Integer
@@ -271,6 +284,10 @@ Public Class DevForm
     End Function
 
     Public Sub RemoveAvailability(availability As UserCalendarEvent)
+        availability.GetBooking.SetAvailability(Nothing)
+        availability.GetBooking.OwnerRemove()
+        availability.SetBooking(Nothing)
+        availability.RiderRemove()
         Me.ownerAvailabilityList.Remove(availability)
     End Sub
 
@@ -537,6 +554,8 @@ Public Class DevForm
                 AndAlso Me.LaterThan(booking.GetStartDate, ownerEvent.GetStartDate) AndAlso Me.EarlierThan(booking.GetEndDate, ownerEvent.GetEndDate) Then
 
                 ownerEvent.RiderFound("John Smith", My.Resources.RiderProfile)
+                ownerEvent.SetBooking(booking)
+                booking.SetAvailability(ownerEvent)
                 Exit For
             End If
         Next
@@ -737,7 +756,7 @@ Public Class DevForm
 
     ' ----------------------------------
     ' --- Current Booking / Schedule ---
-    ' -----------------------------------
+    ' ----------------------------------
 
     Private Sub SetCurrentBooking(Optional bookingEvent As UserCalendarEvent = Nothing)
         If bookingEvent Is Nothing Then
@@ -775,6 +794,118 @@ Public Class DevForm
 
     Public Function GetCarMoving() As Boolean
         Return Me.carMoving
+    End Function
+
+    ' --------------
+    ' --- Route ---
+    ' --------------
+
+    Public Function GetETA(startLocation As String, endLocation As String) As Integer
+
+        Select Case startLocation
+            Case "CN Tower"
+                Select Case endLocation
+                    Case "CN Tower"
+                        Return 0
+                    Case "Toronto Metropolitan University"
+                        Return 8
+                    Case "Union Station"
+                        Return 2
+                    Case "University of Toronto"
+                        Return 7
+                End Select
+
+            Case "Toronto Metropolitan University"
+                Select Case endLocation
+                    Case "CN Tower"
+                        Return 8
+                    Case "Toronto Metropolitan University"
+                        Return 0
+                    Case "Union Station"
+                        Return 6
+                    Case "University of Toronto"
+                        Return 4
+                End Select
+
+            Case "Union Station"
+                Select Case endLocation
+                    Case "CN Tower"
+                        Return 2
+                    Case "Toronto Metropolitan University"
+                        Return 6
+                    Case "Union Station"
+                        Return 0
+                    Case "University of Toronto"
+                        Return 9
+                End Select
+
+            Case "University of Toronto"
+                Select Case endLocation
+                    Case "CN Tower"
+                        Return 7
+                    Case "Toronto Metropolitan University"
+                        Return 4
+                    Case "Union Station"
+                        Return 9
+                    Case "University of Toronto"
+                        Return 0
+                End Select
+
+        End Select
+    End Function
+
+    Public Function GetCost(startLocation As String, endLocation As String) As Integer
+
+        Select Case startLocation
+            Case "CN Tower"
+                Select Case endLocation
+                    Case "CN Tower"
+                        Return 0
+                    Case "Toronto Metropolitan University"
+                        Return 15
+                    Case "Union Station"
+                        Return 9
+                    Case "University of Toronto"
+                        Return 14
+                End Select
+
+            Case "Toronto Metropolitan University"
+                Select Case endLocation
+                    Case "CN Tower"
+                        Return 15
+                    Case "Toronto Metropolitan University"
+                        Return 0
+                    Case "Union Station"
+                        Return 13
+                    Case "University of Toronto"
+                        Return 11
+                End Select
+
+            Case "Union Station"
+                Select Case endLocation
+                    Case "CN Tower"
+                        Return 9
+                    Case "Toronto Metropolitan University"
+                        Return 13
+                    Case "Union Station"
+                        Return 0
+                    Case "University of Toronto"
+                        Return 16
+                End Select
+
+            Case "University of Toronto"
+                Select Case endLocation
+                    Case "CN Tower"
+                        Return 14
+                    Case "Toronto Metropolitan University"
+                        Return 11
+                    Case "Union Station"
+                        Return 16
+                    Case "University of Toronto"
+                        Return 0
+                End Select
+
+        End Select
     End Function
 
     ' ------------

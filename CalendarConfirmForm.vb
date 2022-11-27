@@ -8,7 +8,10 @@
     Dim devWindow As DevForm
     Dim usrEvent As UserCalendarEvent
 
-    Public Sub New(usrEvent As UserCalendarEvent, user As String, devWindow As DevForm)
+    Dim repeat As String
+    Dim repeatTime As Date
+
+    Public Sub New(usrEvent As UserCalendarEvent, user As String, devWindow As DevForm, Optional repeat As String = "", Optional repeatTime As Date = Nothing)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -17,6 +20,9 @@
         Me.usrEvent = usrEvent
         Me.user = user
         Me.devWindow = devWindow
+
+        Me.repeat = repeat
+        Me.repeatTime = repeatTime
 
         Me.CalendarCarConfirmForm_LocationChanged(Nothing, Nothing)
     End Sub
@@ -29,6 +35,7 @@
                 Me.lblPrompt.Text = "Are you sure you want to" & vbCrLf & "change the availability?"
                 Me.imgProfilePicture.Image = usrEvent.GetProfilePicture
                 Me.lblName.Text = usrEvent.GetName
+
             Case "rider"
                 Me.Text = "Car Rider Confirm Booking"
                 Me.lblTitle.Text = "Booking"
@@ -43,6 +50,13 @@
         Dim startTime = Format(usrEvent.GetStartDate, "ddd d MMM yyyy") & " at " & Format(usrEvent.GetStartDate, "h:mm tt")
         Dim endTime = Format(usrEvent.GetEndDate, "ddd d MMM yyyy") & " at " & Format(usrEvent.GetEndDate, "h:mm tt")
         Me.lblTime.Text = startTime & vbCrLf & endTime
+
+        ' Repeat
+        If Me.repeat <> "" Then
+            Me.lblRepeat.Text = Me.repeat & " until " & Format(Me.repeatTime, "dddd d MMMM yyyy")
+        Else
+            Me.lblRepeat.Text = ""
+        End If
     End Sub
 
     Public Sub SetBookingForm(bookingForm As CalendarCarSelectForm)

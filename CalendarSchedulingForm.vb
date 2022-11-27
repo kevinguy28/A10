@@ -7,6 +7,9 @@
     Dim currTime As Date
     Dim schedulingEvent As UserCalendarEvent
     Dim previousEvent As UserCalendarEvent
+
+    Dim repeat As String = ""
+    Dim repeatTime As Date
     Public Sub New(user As String, scenario As Integer, previousForm As AppForm, homeForm As HomeForm, devForm As DevForm, currTime As Date, trigger As String, Optional previousEvent As UserCalendarEvent = Nothing)
 
         ' This call is required by the designer.
@@ -43,12 +46,15 @@
         Me.Controls.Add(Me.btnBack)
     End Sub
 
-    Public Sub NextClicked(dateStart As Date, dateEnd As Date)
+    Public Sub NextClicked(dateStart As Date, dateEnd As Date, repeat As String, repeatTime As Date, startLocation As String, endLocation As String)
+        Me.repeat = repeat
+        Me.repeatTime = repeatTime
+
         Me.schedulingEvent = New UserCalendarEvent(My.Resources.OwnerProfile, "Jane Doe", "owner",
                                                 "Tesla Model 3", "Blue", 5,
-                                                dateStart, dateEnd)
+                                                dateStart, dateEnd, startLocation, endLocation)
 
-        Me.confirmForm = New CalendarConfirmForm(Me.schedulingEvent, Me.user, Me.devWindow)
+        Me.confirmForm = New CalendarConfirmForm(Me.schedulingEvent, Me.user, Me.devWindow, Me.repeat, Me.repeatTime)
         Me.confirmForm.SetSchedulingForm(Me)
 
         Me.devWindow.OpenPopup(Me.user, Me.confirmForm)
@@ -61,7 +67,60 @@
         End If
 
         'Add booking
-        Me.devWindow.AddAvailability(Me.schedulingEvent)
+        Dim startDate = Me.schedulingEvent.GetStartDate
+        Dim endDate = Me.schedulingEvent.GetEndDate
+        Select Case Me.repeat
+            Case ""
+            Case "Daily"
+                Do Until endDate.CompareTo(Me.repeatTime) >= 0
+                    Dim schdle = New UserCalendarEvent(Me.schedulingEvent.GetProfilePicture, Me.schedulingEvent.GetName, Me.schedulingEvent.GetUserType,
+                                                       Me.schedulingEvent.GetCar, Me.schedulingEvent.GetColour, Me.schedulingEvent.GetRatingInt,
+                                                        startDate, endDate, Me.schedulingEvent.GetStartLocation, Me.schedulingEvent.GetEndLocation)
+                    Me.devWindow.AddAvailability(schdle)
+                    startDate = startDate.AddDays(1)
+                    endDate = endDate.AddDays(1)
+                Loop
+            Case "Weekly"
+                Do Until endDate.CompareTo(Me.repeatTime) >= 0
+                    Dim schdle = New UserCalendarEvent(Me.schedulingEvent.GetProfilePicture, Me.schedulingEvent.GetName, Me.schedulingEvent.GetUserType,
+                                                       Me.schedulingEvent.GetCar, Me.schedulingEvent.GetColour, Me.schedulingEvent.GetRatingInt,
+                                                        startDate, endDate, Me.schedulingEvent.GetStartLocation, Me.schedulingEvent.GetEndLocation)
+                    Me.devWindow.AddAvailability(schdle)
+                    startDate = startDate.AddDays(7)
+                    endDate = endDate.AddDays(7)
+                Loop
+            Case "Monthly"
+                Do Until endDate.CompareTo(Me.repeatTime) >= 0
+                    Dim schdle = New UserCalendarEvent(Me.schedulingEvent.GetProfilePicture, Me.schedulingEvent.GetName, Me.schedulingEvent.GetUserType,
+                                                       Me.schedulingEvent.GetCar, Me.schedulingEvent.GetColour, Me.schedulingEvent.GetRatingInt,
+                                                        startDate, endDate, Me.schedulingEvent.GetStartLocation, Me.schedulingEvent.GetEndLocation)
+                    Me.devWindow.AddAvailability(schdle)
+                    startDate = startDate.AddMonths(1)
+                    endDate = endDate.AddMonths(1)
+                Loop
+            Case "Monday to Friday"
+                Do Until endDate.CompareTo(Me.repeatTime) >= 0
+                    If Not (startDate.DayOfWeek = 0) AndAlso Not (startDate.DayOfWeek = 6) Then
+                        Dim schdle = New UserCalendarEvent(Me.schedulingEvent.GetProfilePicture, Me.schedulingEvent.GetName, Me.schedulingEvent.GetUserType,
+                                                       Me.schedulingEvent.GetCar, Me.schedulingEvent.GetColour, Me.schedulingEvent.GetRatingInt,
+                                                        startDate, endDate, Me.schedulingEvent.GetStartLocation, Me.schedulingEvent.GetEndLocation)
+                        Me.devWindow.AddAvailability(schdle)
+                    End If
+                    startDate = startDate.AddDays(1)
+                    endDate = endDate.AddDays(1)
+                Loop
+            Case "Saturday to Sunday"
+                Do Until endDate.CompareTo(Me.repeatTime) >= 0
+                    If (startDate.DayOfWeek = 0) OrElse (startDate.DayOfWeek = 6) Then
+                        Dim schdle = New UserCalendarEvent(Me.schedulingEvent.GetProfilePicture, Me.schedulingEvent.GetName, Me.schedulingEvent.GetUserType,
+                                                   Me.schedulingEvent.GetCar, Me.schedulingEvent.GetColour, Me.schedulingEvent.GetRatingInt,
+                                                    startDate, endDate, Me.schedulingEvent.GetStartLocation, Me.schedulingEvent.GetEndLocation)
+                        Me.devWindow.AddAvailability(schdle)
+                    End If
+                    startDate = startDate.AddDays(1)
+                    endDate = endDate.AddDays(1)
+                Loop
+        End Select
 
         Me.Close()
         Me.homeWindow.Show()

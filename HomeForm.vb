@@ -58,12 +58,14 @@
         If Me.scenario <> 1 Then
             Dim startDate = New Date(today.Year, today.Month, today.Day, today.Hour, 0, 0)
             Dim endDate = New Date(todayPlusHour.Year, todayPlusHour.Month, todayPlusHour.Day, todayPlusHour.Hour, 0, 0)
+            Dim startLocation = "Union Station"
+            Dim endLocation = "Toronto Metropolitan University"
             Dim schedulingEvent = New UserCalendarEvent(My.Resources.OwnerProfile, "Jane Doe", "owner",
                                                 "Tesla Model 3", "Blue", 5,
-                                                 startDate, endDate)
+                                                 startDate, endDate, startLocation, endLocation)
             bookingEvent = New UserCalendarEvent(My.Resources.RiderProfile, "John Smith", "rider",
                                                  "Tesla Model 3", "Blue", 5,
-                                                 startDate, endDate)
+                                                 startDate, endDate, startLocation, endLocation)
             bookingEvent.OwnerFound("Jane Doe", My.Resources.OwnerProfile)
 
             Me.devWindow.AddAvailability(schedulingEvent)
@@ -118,45 +120,20 @@
 
         ' If no current booking
         If (bookingEvent Is Nothing) Then
-            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, New Date.Now(), New Date.Now(), bookingEvent)
-
-            ' Disable
-            Me.routeForm.DisableForm()
-
-            ' Error
-            Me.routeForm.ShowError()
-
-            ' Don't show car
-            Me.routeForm.ChangeMap(My.Resources.the_map)
+            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me, Me.devWindow, New Date.Now(), bookingEvent)
 
             ' Owner with booking
         ElseIf (Me.user = "owner" And bookingEvent.GetCarOwnerName = "Jane Doe") Then
-            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent.GetEndDate, bookingEvent)
-
-            ' Disable
-            Me.routeForm.DisableForm()
-
-            ' Start --> Recall Car
-            Me.routeForm.btnStart.Enabled = True
-            Me.routeForm.btnStart.Text = "Recall Car"
+            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent)
 
             'Rider
         ElseIf Me.user = "rider" Then
-            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent.GetEndDate, bookingEvent)
+            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent)
 
             ' Owner without booking
         Else
-            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent.GetEndDate, bookingEvent)
+            Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent)
 
-            ' Disable
-            Me.routeForm.DisableForm()
-
-            ' Don't show car
-            Me.routeForm.ChangeMap(My.Resources.the_map)
-
-            ' Start --> Recall Car
-            Me.routeForm.btnStart.Enabled = True
-            Me.routeForm.btnStart.Text = "Recall Car"
         End If
 
         Me.Hide()

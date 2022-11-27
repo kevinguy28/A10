@@ -33,6 +33,7 @@ Partial Class CalendarConfirmForm
         Me.btnConfirm = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.lblUser = New System.Windows.Forms.Label()
+        Me.lblRepeat = New System.Windows.Forms.Label()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -173,11 +174,22 @@ Partial Class CalendarConfirmForm
         Me.lblUser.Text = "lblUser"
         Me.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'lblRepeat
+        '
+        Me.lblRepeat.BackColor = System.Drawing.SystemColors.Control
+        Me.lblRepeat.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblRepeat.Location = New System.Drawing.Point(12, 192)
+        Me.lblRepeat.Name = "lblRepeat"
+        Me.lblRepeat.Size = New System.Drawing.Size(283, 39)
+        Me.lblRepeat.TabIndex = 38
+        Me.lblRepeat.Text = "lblRepeat"
+        '
         'CalendarConfirmForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(304, 336)
+        Me.Controls.Add(Me.lblRepeat)
         Me.Controls.Add(Me.lblUser)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnConfirm)
@@ -208,4 +220,5 @@ Partial Class CalendarConfirmForm
     Friend WithEvents btnConfirm As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents lblUser As Label
+    Friend WithEvents lblRepeat As Label
 End Class

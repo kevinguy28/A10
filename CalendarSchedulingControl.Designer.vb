@@ -29,6 +29,8 @@ Partial Class CalendarSchedulingControl
         Me.lblStartLeft = New System.Windows.Forms.Label()
         Me.tmrMouseHold = New System.Windows.Forms.Timer(Me.components)
         Me.flPanel = New System.Windows.Forms.FlowLayoutPanel()
+        Me.lblRepeatLeft = New System.Windows.Forms.Label()
+        Me.lblRepeatRight = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblEndRight
@@ -79,12 +81,32 @@ Partial Class CalendarSchedulingControl
         Me.flPanel.Size = New System.Drawing.Size(100, 100)
         Me.flPanel.TabIndex = 7
         '
+        'lblRepeatLeft
+        '
+        Me.lblRepeatLeft.BackColor = System.Drawing.Color.DarkGray
+        Me.lblRepeatLeft.Location = New System.Drawing.Point(3, 119)
+        Me.lblRepeatLeft.Name = "lblRepeatLeft"
+        Me.lblRepeatLeft.Size = New System.Drawing.Size(5, 50)
+        Me.lblRepeatLeft.TabIndex = 9
+        Me.lblRepeatLeft.Text = "  "
+        '
+        'lblRepeatRight
+        '
+        Me.lblRepeatRight.BackColor = System.Drawing.Color.DarkGray
+        Me.lblRepeatRight.Location = New System.Drawing.Point(15, 119)
+        Me.lblRepeatRight.Name = "lblRepeatRight"
+        Me.lblRepeatRight.Size = New System.Drawing.Size(5, 50)
+        Me.lblRepeatRight.TabIndex = 8
+        Me.lblRepeatRight.Text = "  "
+        '
         'CalendarSchedulingControl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.White
+        Me.Controls.Add(Me.lblRepeatLeft)
+        Me.Controls.Add(Me.lblRepeatRight)
         Me.Controls.Add(Me.flPanel)
         Me.Controls.Add(Me.lblStartLeft)
         Me.Controls.Add(Me.lblEndLeft)
@@ -102,4 +124,6 @@ Partial Class CalendarSchedulingControl
     Friend WithEvents lblStartLeft As Label
     Friend WithEvents tmrMouseHold As Timer
     Friend WithEvents flPanel As FlowLayoutPanel
+    Friend WithEvents lblRepeatLeft As Label
+    Friend WithEvents lblRepeatRight As Label
 End Class

@@ -24,7 +24,7 @@ Partial Class RouteForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.pbRoute = New System.Windows.Forms.PictureBox()
-        Me.btnStart = New System.Windows.Forms.Button()
+        Me.btnBook = New System.Windows.Forms.Button()
         Me.lblStartPrompt = New System.Windows.Forms.Label()
         Me.lblDes = New System.Windows.Forms.Label()
         Me.cmbxStart = New System.Windows.Forms.ComboBox()
@@ -39,18 +39,12 @@ Partial Class RouteForm
         Me.imgStartHourDown = New System.Windows.Forms.PictureBox()
         Me.imgStartMinuteDown = New System.Windows.Forms.PictureBox()
         Me.imgStartAmPmDown = New System.Windows.Forms.PictureBox()
-        Me.imgEndAmPmDown = New System.Windows.Forms.PictureBox()
-        Me.imgEndMinuteDown = New System.Windows.Forms.PictureBox()
-        Me.imgEndHourDown = New System.Windows.Forms.PictureBox()
-        Me.imgEndAmPmUp = New System.Windows.Forms.PictureBox()
-        Me.imgEndMinuteUp = New System.Windows.Forms.PictureBox()
-        Me.imgEndHourUp = New System.Windows.Forms.PictureBox()
-        Me.lblAmPmEnd = New System.Windows.Forms.Label()
-        Me.lblMinuteEnd = New System.Windows.Forms.Label()
-        Me.lblEndColon = New System.Windows.Forms.Label()
-        Me.lblHourEnd = New System.Windows.Forms.Label()
         Me.tmrMouseHold = New System.Windows.Forms.Timer(Me.components)
         Me.lblError = New System.Windows.Forms.Label()
+        Me.lblEta = New System.Windows.Forms.Label()
+        Me.txtEta = New System.Windows.Forms.TextBox()
+        Me.lblPrice = New System.Windows.Forms.Label()
+        Me.txtPrice = New System.Windows.Forms.TextBox()
         CType(Me.pbRoute, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgStartHourUp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgStartMinuteUp, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,12 +52,6 @@ Partial Class RouteForm
         CType(Me.imgStartHourDown, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgStartMinuteDown, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgStartAmPmDown, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgEndAmPmDown, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgEndMinuteDown, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgEndHourDown, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgEndAmPmUp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgEndMinuteUp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgEndHourUp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pbRoute
@@ -77,24 +65,24 @@ Partial Class RouteForm
         Me.pbRoute.TabIndex = 0
         Me.pbRoute.TabStop = False
         '
-        'btnStart
+        'btnBook
         '
-        Me.btnStart.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
-        Me.btnStart.Enabled = False
-        Me.btnStart.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
-        Me.btnStart.FlatAppearance.BorderSize = 0
-        Me.btnStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.btnStart.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStart.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnStart.ForeColor = System.Drawing.Color.White
-        Me.btnStart.Location = New System.Drawing.Point(153, 764)
-        Me.btnStart.Name = "btnStart"
-        Me.btnStart.Size = New System.Drawing.Size(179, 35)
-        Me.btnStart.TabIndex = 13
-        Me.btnStart.TabStop = False
-        Me.btnStart.Text = "Start"
-        Me.btnStart.UseVisualStyleBackColor = False
+        Me.btnBook.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnBook.Enabled = False
+        Me.btnBook.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnBook.FlatAppearance.BorderSize = 0
+        Me.btnBook.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.btnBook.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.btnBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBook.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnBook.ForeColor = System.Drawing.Color.White
+        Me.btnBook.Location = New System.Drawing.Point(153, 764)
+        Me.btnBook.Name = "btnBook"
+        Me.btnBook.Size = New System.Drawing.Size(179, 35)
+        Me.btnBook.TabIndex = 13
+        Me.btnBook.TabStop = False
+        Me.btnBook.Text = "Book"
+        Me.btnBook.UseVisualStyleBackColor = False
         '
         'lblStartPrompt
         '
@@ -125,7 +113,7 @@ Partial Class RouteForm
         Me.cmbxStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbxStart.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.cmbxStart.FormattingEnabled = True
-        Me.cmbxStart.Items.AddRange(New Object() {"Toronto Metropolitan University"})
+        Me.cmbxStart.Items.AddRange(New Object() {"CN Tower", "Toronto Metropolitan University", "Union Station", "University of Toronto"})
         Me.cmbxStart.Location = New System.Drawing.Point(30, 491)
         Me.cmbxStart.Name = "cmbxStart"
         Me.cmbxStart.Size = New System.Drawing.Size(425, 33)
@@ -136,7 +124,7 @@ Partial Class RouteForm
         Me.cmbxEnd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbxEnd.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.cmbxEnd.FormattingEnabled = True
-        Me.cmbxEnd.Items.AddRange(New Object() {"University of Toronto"})
+        Me.cmbxEnd.Items.AddRange(New Object() {"CN Tower", "Toronto Metropolitan University", "Union Station", "University of Toronto"})
         Me.cmbxEnd.Location = New System.Drawing.Point(30, 639)
         Me.cmbxEnd.Name = "cmbxEnd"
         Me.cmbxEnd.Size = New System.Drawing.Size(425, 33)
@@ -256,120 +244,6 @@ Partial Class RouteForm
         Me.imgStartAmPmDown.TabIndex = 27
         Me.imgStartAmPmDown.TabStop = False
         '
-        'imgEndAmPmDown
-        '
-        Me.imgEndAmPmDown.BackColor = System.Drawing.Color.White
-        Me.imgEndAmPmDown.Image = Global.A10.My.Resources.Resources.arrow_down_neutral
-        Me.imgEndAmPmDown.Location = New System.Drawing.Point(284, 724)
-        Me.imgEndAmPmDown.Name = "imgEndAmPmDown"
-        Me.imgEndAmPmDown.Size = New System.Drawing.Size(25, 25)
-        Me.imgEndAmPmDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.imgEndAmPmDown.TabIndex = 37
-        Me.imgEndAmPmDown.TabStop = False
-        '
-        'imgEndMinuteDown
-        '
-        Me.imgEndMinuteDown.BackColor = System.Drawing.Color.White
-        Me.imgEndMinuteDown.Image = Global.A10.My.Resources.Resources.arrow_down_neutral
-        Me.imgEndMinuteDown.Location = New System.Drawing.Point(227, 724)
-        Me.imgEndMinuteDown.Name = "imgEndMinuteDown"
-        Me.imgEndMinuteDown.Size = New System.Drawing.Size(25, 25)
-        Me.imgEndMinuteDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.imgEndMinuteDown.TabIndex = 36
-        Me.imgEndMinuteDown.TabStop = False
-        '
-        'imgEndHourDown
-        '
-        Me.imgEndHourDown.BackColor = System.Drawing.Color.White
-        Me.imgEndHourDown.Image = Global.A10.My.Resources.Resources.arrow_down_neutral
-        Me.imgEndHourDown.Location = New System.Drawing.Point(170, 724)
-        Me.imgEndHourDown.Name = "imgEndHourDown"
-        Me.imgEndHourDown.Size = New System.Drawing.Size(25, 25)
-        Me.imgEndHourDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.imgEndHourDown.TabIndex = 35
-        Me.imgEndHourDown.TabStop = False
-        '
-        'imgEndAmPmUp
-        '
-        Me.imgEndAmPmUp.BackColor = System.Drawing.Color.White
-        Me.imgEndAmPmUp.Image = Global.A10.My.Resources.Resources.arrow_up_neutral
-        Me.imgEndAmPmUp.Location = New System.Drawing.Point(284, 675)
-        Me.imgEndAmPmUp.Name = "imgEndAmPmUp"
-        Me.imgEndAmPmUp.Size = New System.Drawing.Size(25, 25)
-        Me.imgEndAmPmUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.imgEndAmPmUp.TabIndex = 34
-        Me.imgEndAmPmUp.TabStop = False
-        '
-        'imgEndMinuteUp
-        '
-        Me.imgEndMinuteUp.BackColor = System.Drawing.Color.White
-        Me.imgEndMinuteUp.Image = Global.A10.My.Resources.Resources.arrow_up_neutral
-        Me.imgEndMinuteUp.Location = New System.Drawing.Point(227, 675)
-        Me.imgEndMinuteUp.Name = "imgEndMinuteUp"
-        Me.imgEndMinuteUp.Size = New System.Drawing.Size(25, 25)
-        Me.imgEndMinuteUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.imgEndMinuteUp.TabIndex = 33
-        Me.imgEndMinuteUp.TabStop = False
-        '
-        'imgEndHourUp
-        '
-        Me.imgEndHourUp.BackColor = System.Drawing.Color.White
-        Me.imgEndHourUp.Image = Global.A10.My.Resources.Resources.arrow_up_neutral
-        Me.imgEndHourUp.Location = New System.Drawing.Point(170, 675)
-        Me.imgEndHourUp.Name = "imgEndHourUp"
-        Me.imgEndHourUp.Size = New System.Drawing.Size(25, 25)
-        Me.imgEndHourUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.imgEndHourUp.TabIndex = 32
-        Me.imgEndHourUp.TabStop = False
-        '
-        'lblAmPmEnd
-        '
-        Me.lblAmPmEnd.BackColor = System.Drawing.Color.White
-        Me.lblAmPmEnd.Font = New System.Drawing.Font("Segoe UI Semibold", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblAmPmEnd.Location = New System.Drawing.Point(275, 696)
-        Me.lblAmPmEnd.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblAmPmEnd.Name = "lblAmPmEnd"
-        Me.lblAmPmEnd.Size = New System.Drawing.Size(45, 30)
-        Me.lblAmPmEnd.TabIndex = 31
-        Me.lblAmPmEnd.Text = "am"
-        Me.lblAmPmEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblMinuteEnd
-        '
-        Me.lblMinuteEnd.BackColor = System.Drawing.Color.White
-        Me.lblMinuteEnd.Font = New System.Drawing.Font("Segoe UI Semibold", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblMinuteEnd.Location = New System.Drawing.Point(222, 696)
-        Me.lblMinuteEnd.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblMinuteEnd.Name = "lblMinuteEnd"
-        Me.lblMinuteEnd.Size = New System.Drawing.Size(37, 30)
-        Me.lblMinuteEnd.TabIndex = 30
-        Me.lblMinuteEnd.Text = "00"
-        Me.lblMinuteEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblEndColon
-        '
-        Me.lblEndColon.BackColor = System.Drawing.Color.White
-        Me.lblEndColon.Font = New System.Drawing.Font("Segoe UI Semibold", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblEndColon.Location = New System.Drawing.Point(202, 696)
-        Me.lblEndColon.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblEndColon.Name = "lblEndColon"
-        Me.lblEndColon.Size = New System.Drawing.Size(20, 30)
-        Me.lblEndColon.TabIndex = 29
-        Me.lblEndColon.Text = ":"
-        Me.lblEndColon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblHourEnd
-        '
-        Me.lblHourEnd.BackColor = System.Drawing.Color.White
-        Me.lblHourEnd.Font = New System.Drawing.Font("Segoe UI Semibold", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblHourEnd.Location = New System.Drawing.Point(165, 696)
-        Me.lblHourEnd.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblHourEnd.Name = "lblHourEnd"
-        Me.lblHourEnd.Size = New System.Drawing.Size(37, 30)
-        Me.lblHourEnd.TabIndex = 28
-        Me.lblHourEnd.Text = "00"
-        Me.lblHourEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'tmrMouseHold
         '
         Me.tmrMouseHold.Interval = 10
@@ -386,6 +260,48 @@ Partial Class RouteForm
         Me.lblError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lblError.Visible = False
         '
+        'lblEta
+        '
+        Me.lblEta.AutoSize = True
+        Me.lblEta.BackColor = System.Drawing.Color.White
+        Me.lblEta.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblEta.Location = New System.Drawing.Point(30, 681)
+        Me.lblEta.Name = "lblEta"
+        Me.lblEta.Size = New System.Drawing.Size(226, 25)
+        Me.lblEta.TabIndex = 39
+        Me.lblEta.Text = "Estimated Time of Arrival:"
+        Me.lblEta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtEta
+        '
+        Me.txtEta.Enabled = False
+        Me.txtEta.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txtEta.Location = New System.Drawing.Point(262, 678)
+        Me.txtEta.Name = "txtEta"
+        Me.txtEta.Size = New System.Drawing.Size(193, 32)
+        Me.txtEta.TabIndex = 40
+        '
+        'lblPrice
+        '
+        Me.lblPrice.AutoSize = True
+        Me.lblPrice.BackColor = System.Drawing.Color.White
+        Me.lblPrice.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblPrice.Location = New System.Drawing.Point(198, 719)
+        Me.lblPrice.Name = "lblPrice"
+        Me.lblPrice.Size = New System.Drawing.Size(58, 25)
+        Me.lblPrice.TabIndex = 41
+        Me.lblPrice.Text = "Price:"
+        Me.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtPrice
+        '
+        Me.txtPrice.Enabled = False
+        Me.txtPrice.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txtPrice.Location = New System.Drawing.Point(262, 716)
+        Me.txtPrice.Name = "txtPrice"
+        Me.txtPrice.Size = New System.Drawing.Size(193, 32)
+        Me.txtPrice.TabIndex = 42
+        '
         'RouteForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -393,17 +309,11 @@ Partial Class RouteForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.txtPrice)
+        Me.Controls.Add(Me.lblPrice)
+        Me.Controls.Add(Me.txtEta)
+        Me.Controls.Add(Me.lblEta)
         Me.Controls.Add(Me.lblError)
-        Me.Controls.Add(Me.imgEndAmPmDown)
-        Me.Controls.Add(Me.imgEndMinuteDown)
-        Me.Controls.Add(Me.imgEndHourDown)
-        Me.Controls.Add(Me.imgEndAmPmUp)
-        Me.Controls.Add(Me.imgEndMinuteUp)
-        Me.Controls.Add(Me.imgEndHourUp)
-        Me.Controls.Add(Me.lblAmPmEnd)
-        Me.Controls.Add(Me.lblMinuteEnd)
-        Me.Controls.Add(Me.lblEndColon)
-        Me.Controls.Add(Me.lblHourEnd)
         Me.Controls.Add(Me.imgStartAmPmDown)
         Me.Controls.Add(Me.imgStartMinuteDown)
         Me.Controls.Add(Me.imgStartHourDown)
@@ -418,7 +328,7 @@ Partial Class RouteForm
         Me.Controls.Add(Me.cmbxStart)
         Me.Controls.Add(Me.lblDes)
         Me.Controls.Add(Me.lblStartPrompt)
-        Me.Controls.Add(Me.btnStart)
+        Me.Controls.Add(Me.btnBook)
         Me.Controls.Add(Me.pbRoute)
         Me.DoubleBuffered = True
         Me.Margin = New System.Windows.Forms.Padding(2)
@@ -431,18 +341,13 @@ Partial Class RouteForm
         CType(Me.imgStartHourDown, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgStartMinuteDown, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgStartAmPmDown, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgEndAmPmDown, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgEndMinuteDown, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgEndHourDown, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgEndAmPmUp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgEndMinuteUp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgEndHourUp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents pbRoute As PictureBox
-    Friend WithEvents btnStart As Button
+    Friend WithEvents btnBook As Button
     Friend WithEvents lblStartPrompt As Label
     Friend WithEvents lblDes As Label
     Friend WithEvents cmbxStart As ComboBox
@@ -457,16 +362,10 @@ Partial Class RouteForm
     Friend WithEvents imgStartHourDown As PictureBox
     Friend WithEvents imgStartMinuteDown As PictureBox
     Friend WithEvents imgStartAmPmDown As PictureBox
-    Friend WithEvents imgEndAmPmDown As PictureBox
-    Friend WithEvents imgEndMinuteDown As PictureBox
-    Friend WithEvents imgEndHourDown As PictureBox
-    Friend WithEvents imgEndAmPmUp As PictureBox
-    Friend WithEvents imgEndMinuteUp As PictureBox
-    Friend WithEvents imgEndHourUp As PictureBox
-    Friend WithEvents lblAmPmEnd As Label
-    Friend WithEvents lblMinuteEnd As Label
-    Friend WithEvents lblEndColon As Label
-    Friend WithEvents lblHourEnd As Label
     Friend WithEvents tmrMouseHold As Timer
     Friend WithEvents lblError As Label
+    Friend WithEvents lblEta As Label
+    Friend WithEvents txtEta As TextBox
+    Friend WithEvents lblPrice As Label
+    Friend WithEvents txtPrice As TextBox
 End Class
