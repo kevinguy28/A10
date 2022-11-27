@@ -4,6 +4,7 @@
     'Notification
     Dim callForm As CallForm
     Dim cancelBooking As ExitCarForm
+    Dim riderRebook As RescheduleNotification
 
     Public Sub New(user As String, Scenario As Integer, previousForm As CarForm, homeForm As HomeForm, devForm As DevForm)
 
@@ -47,15 +48,20 @@
 
     Private Sub btnTow_Click(sender As Object, e As EventArgs) Handles btnTow.Click
 
+        ' Call Form (Owner)
+
         Me.callForm = New CallForm(Me.user, Me.scenario, Me.devWindow)
         Me.devWindow.OpenPopup(Me.user, Me.callForm)
 
-        ' Removes current bookings
-        Dim availability = Me.devWindow.GetCurrentSchedule()
-        Me.devWindow.RemoveAvailability(availability)
+        ' Removes current bookings (Owner)
+        'Dim availability = Me.devWindow.GetCurrentSchedule()
+        'Me.devWindow.RemoveAvailability(availability)
 
         Me.cancelBooking = New ExitCarForm(Me.user, Me.scenario, Me.devWindow)
         Me.cancelBooking.lblMessage.Text = "All bookings have been canceled!"
         Me.devWindow.OpenPopup("owner", Me.cancelBooking)
+
+        Me.riderRebook = New RescheduleNotification("rider", Me.scenario, Me.devWindow, Me.homeWindow)
+        Me.riderRebook.Show()
     End Sub
 End Class

@@ -58,43 +58,51 @@ Partial Class CarCameraForm
         '
         'btnFrontInterior
         '
-        Me.btnFrontInterior.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnFrontInterior.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnFrontInterior.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnFrontInterior.ForeColor = System.Drawing.Color.White
         Me.btnFrontInterior.Location = New System.Drawing.Point(86, 541)
         Me.btnFrontInterior.Name = "btnFrontInterior"
         Me.btnFrontInterior.Size = New System.Drawing.Size(131, 89)
         Me.btnFrontInterior.TabIndex = 2
         Me.btnFrontInterior.Text = "Front Interior"
-        Me.btnFrontInterior.UseVisualStyleBackColor = True
+        Me.btnFrontInterior.UseVisualStyleBackColor = False
         '
         'btnBackInterior
         '
-        Me.btnBackInterior.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnBackInterior.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnBackInterior.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnBackInterior.ForeColor = System.Drawing.Color.White
         Me.btnBackInterior.Location = New System.Drawing.Point(267, 541)
         Me.btnBackInterior.Name = "btnBackInterior"
         Me.btnBackInterior.Size = New System.Drawing.Size(131, 89)
         Me.btnBackInterior.TabIndex = 3
         Me.btnBackInterior.Text = "Back Interior"
-        Me.btnBackInterior.UseVisualStyleBackColor = True
+        Me.btnBackInterior.UseVisualStyleBackColor = False
         '
         'btnFrontExterior
         '
-        Me.btnFrontExterior.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnFrontExterior.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnFrontExterior.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnFrontExterior.ForeColor = System.Drawing.Color.White
         Me.btnFrontExterior.Location = New System.Drawing.Point(86, 658)
         Me.btnFrontExterior.Name = "btnFrontExterior"
         Me.btnFrontExterior.Size = New System.Drawing.Size(131, 89)
         Me.btnFrontExterior.TabIndex = 4
         Me.btnFrontExterior.Text = "Front Exterior"
-        Me.btnFrontExterior.UseVisualStyleBackColor = True
+        Me.btnFrontExterior.UseVisualStyleBackColor = False
         '
         'btnBackExterior
         '
-        Me.btnBackExterior.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnBackExterior.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnBackExterior.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnBackExterior.ForeColor = System.Drawing.Color.White
         Me.btnBackExterior.Location = New System.Drawing.Point(267, 658)
         Me.btnBackExterior.Name = "btnBackExterior"
         Me.btnBackExterior.Size = New System.Drawing.Size(131, 89)
         Me.btnBackExterior.TabIndex = 5
         Me.btnBackExterior.Text = "Back Exterior"
-        Me.btnBackExterior.UseVisualStyleBackColor = True
+        Me.btnBackExterior.UseVisualStyleBackColor = False
         '
         'Label1
         '
