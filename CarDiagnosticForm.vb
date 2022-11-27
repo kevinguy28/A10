@@ -3,6 +3,7 @@
 
     'Notification
     Dim callForm As CallForm
+    Dim cancelBooking As ExitCarForm
 
     Public Sub New(user As String, Scenario As Integer, previousForm As CarForm, homeForm As HomeForm, devForm As DevForm)
 
@@ -45,7 +46,16 @@
     End Sub
 
     Private Sub btnTow_Click(sender As Object, e As EventArgs) Handles btnTow.Click
+
         Me.callForm = New CallForm(Me.user, Me.scenario, Me.devWindow)
         Me.devWindow.OpenPopup(Me.user, Me.callForm)
+
+        ' Removes current bookings
+        Dim availability = Me.devWindow.GetCurrentSchedule()
+        Me.devWindow.RemoveAvailability(availability)
+
+        Me.cancelBooking = New ExitCarForm(Me.user, Me.scenario, Me.devWindow)
+        Me.cancelBooking.lblMessage.Text = "All bookings have been canceled!"
+        Me.devWindow.OpenPopup("owner", Me.cancelBooking)
     End Sub
 End Class
