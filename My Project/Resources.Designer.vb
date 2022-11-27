@@ -573,6 +573,26 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property in_back() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("in_back", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property in_front() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("in_front", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property keypad() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("keypad", resourceCulture)
@@ -646,6 +666,26 @@ Namespace My.Resources
         Friend ReadOnly Property nocall() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("nocall", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property out_back() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("out_back", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property out_front() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("out_front", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
