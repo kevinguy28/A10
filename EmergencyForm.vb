@@ -8,6 +8,7 @@
     Dim riderAccidentNotification As AccidentNotification
     Dim riderIntrusionNotification As IntrusionAlertForm
     Dim riderTechProblemNotification As TechAlertForm
+    Dim riderExpelNotification As ExitCarForm
 
     Public Sub New(user As String, scenario As Integer, previousForm As CarForm, homeForm As HomeForm, devForm As DevForm)
 
@@ -27,7 +28,13 @@
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.btnBack)
 
-        If Me.user = "owner" Then : Me.btnStop.Visible = False : Me.lblStop.Visible = False : End If
+        If Me.user = "owner" Then
+            'Me.btnStop_Expel.Visible = False
+            'Me.lblStop_Expel.Visible = False
+            Me.lblStop_Expel.Text = "Expel Rider"
+        Else
+            Me.lblStop_Expel.Text = "Request Stop"
+        End If
     End Sub
 
     Private Sub btnAccident_Click(sender As Object, e As EventArgs) Handles btnAccident.Click
@@ -45,8 +52,13 @@
         Me.devWindow.OpenPopup("rider", Me.riderIntrusionNotification)
     End Sub
 
-    Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
-        Dim riderNotification As New CarStopForm("rider", Me.scenario, Me.homeWindow, Me.devWindow)
-        Me.devWindow.OpenPopup(Me.user, riderNotification)
+    Private Sub btnStop_Expel_Click(sender As Object, e As EventArgs) Handles btnStop_Expel.Click
+        If Me.user = "rider" Then
+            Dim riderNotification As New CarStopForm("rider", Me.scenario, Me.homeWindow, Me.devWindow)
+            Me.devWindow.OpenPopup(Me.user, riderNotification)
+        Else
+            Me.riderExpelNotification = New ExitCarForm("rider", Me.scenario, Me.devWindow)
+            Me.devWindow.OpenPopup("rider", Me.riderExpelNotification)
+        End If
     End Sub
 End Class

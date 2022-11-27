@@ -7,6 +7,9 @@ Public Class CarFeatureForm
     Shared fanStength As Integer = 1
     Shared fanIntake As Integer = 1
 
+    ' Child
+    Dim carCamera As CarCameraForm
+
     Public Sub New(user As String, scenario As Integer, previousForm As CarForm, homeForm As HomeForm, devForm As DevForm)
 
         ' This call is required by the designer.
@@ -32,6 +35,7 @@ Public Class CarFeatureForm
                 Me.Text = "Car Owner Car Features"
             Case "rider"
                 Me.Text = "Car Rider Car Features"
+                Me.btnCamera.Visible = False
         End Select
 
         Me.lblFanStrength.Text = fanStength : Me.lblAirIntakeNumber.Text = fanIntake
@@ -157,5 +161,10 @@ Public Class CarFeatureForm
             btnOpenTrunk.Text = "Open trunk"
         End If
         Me.ResumeLayout()
+    End Sub
+
+    Private Sub btnCamera_Click(sender As Object, e As EventArgs) Handles btnCamera.Click
+        carCamera = New CarCameraForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow)
+        carCamera.Show()
     End Sub
 End Class

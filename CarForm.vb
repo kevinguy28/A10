@@ -83,27 +83,6 @@ Public Class CarForm
         Return False
     End Function
 
-    ' -----------------
-    ' --- Emergency ---
-    ' -----------------
-    'Private Sub btnEmergency_Click(sender As Object, e As EventArgs) Handles btnEmergency_.Click
-    '    If Me.DisabledClick(True) Then Exit Sub
-    '    Me.riderAccidentNotification = New AccidentNotification("rider", Me.scenario, Me.devWindow, True)
-    '    Me.devWindow.OpenPopup("rider", Me.riderAccidentNotification)
-
-    '    ' Tech
-
-    '    'If Me.DisabledClick(True) Then Exit Sub
-    '    'Me.riderTechProblemNotification = New TechAlertForm("rider", Me.scenario, Me.devWindow, Me.homeWindow, Me.previousWindow, Me, True)
-    '    'Me.devWindow.OpenPopup("rider", Me.riderTechProblemNotification)
-
-    '    ' Intrusion
-
-    '    'If Me.DisabledClick(True) Then Exit Sub
-    '    'Me.riderIntrusionNotification = New IntrusionAlertForm("rider", Me.scenario, Me.devWindow, True)
-    '    'Me.devWindow.OpenPopup("rider", Me.riderIntrusionNotification)
-    'End Sub
-
     '------------
     '--- Stop ---
     '------------

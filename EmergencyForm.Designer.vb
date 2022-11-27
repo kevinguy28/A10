@@ -29,8 +29,8 @@ Partial Class EmergencyForm
         Me.btnTechProblem = New System.Windows.Forms.Button()
         Me.btnIntrusion = New System.Windows.Forms.Button()
         Me.btnAccident = New System.Windows.Forms.Button()
-        Me.lblStop = New System.Windows.Forms.Label()
-        Me.btnStop = New System.Windows.Forms.Button()
+        Me.lblStop_Expel = New System.Windows.Forms.Label()
+        Me.btnStop_Expel = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblDiagnostic
@@ -111,31 +111,31 @@ Partial Class EmergencyForm
         Me.btnAccident.TabStop = False
         Me.btnAccident.UseVisualStyleBackColor = True
         '
-        'lblStop
+        'lblStop_Expel
         '
-        Me.lblStop.BackColor = System.Drawing.Color.White
-        Me.lblStop.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblStop.Location = New System.Drawing.Point(252, 422)
-        Me.lblStop.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblStop.Name = "lblStop"
-        Me.lblStop.Size = New System.Drawing.Size(179, 38)
-        Me.lblStop.TabIndex = 33
-        Me.lblStop.Text = "Request Stop"
-        Me.lblStop.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.lblStop_Expel.BackColor = System.Drawing.Color.White
+        Me.lblStop_Expel.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblStop_Expel.Location = New System.Drawing.Point(252, 422)
+        Me.lblStop_Expel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblStop_Expel.Name = "lblStop_Expel"
+        Me.lblStop_Expel.Size = New System.Drawing.Size(179, 38)
+        Me.lblStop_Expel.TabIndex = 33
+        Me.lblStop_Expel.Text = "Request Stop"
+        Me.lblStop_Expel.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'btnStop
+        'btnStop_Expel
         '
-        Me.btnStop.BackColor = System.Drawing.Color.White
-        Me.btnStop.BackgroundImage = Global.A10.My.Resources.Resources.car_media_neutral
-        Me.btnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnStop.FlatAppearance.BorderSize = 0
-        Me.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStop.Location = New System.Drawing.Point(267, 463)
-        Me.btnStop.Name = "btnStop"
-        Me.btnStop.Size = New System.Drawing.Size(150, 150)
-        Me.btnStop.TabIndex = 32
-        Me.btnStop.TabStop = False
-        Me.btnStop.UseVisualStyleBackColor = True
+        Me.btnStop_Expel.BackColor = System.Drawing.Color.White
+        Me.btnStop_Expel.BackgroundImage = Global.A10.My.Resources.Resources.car_media_neutral
+        Me.btnStop_Expel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnStop_Expel.FlatAppearance.BorderSize = 0
+        Me.btnStop_Expel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStop_Expel.Location = New System.Drawing.Point(267, 463)
+        Me.btnStop_Expel.Name = "btnStop_Expel"
+        Me.btnStop_Expel.Size = New System.Drawing.Size(150, 150)
+        Me.btnStop_Expel.TabIndex = 32
+        Me.btnStop_Expel.TabStop = False
+        Me.btnStop_Expel.UseVisualStyleBackColor = True
         '
         'EmergencyForm
         '
@@ -144,8 +144,8 @@ Partial Class EmergencyForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(484, 961)
-        Me.Controls.Add(Me.lblStop)
-        Me.Controls.Add(Me.btnStop)
+        Me.Controls.Add(Me.lblStop_Expel)
+        Me.Controls.Add(Me.btnStop_Expel)
         Me.Controls.Add(Me.lblDiagnostic)
         Me.Controls.Add(Me.lblCarMedia)
         Me.Controls.Add(Me.lblAccident)
@@ -165,6 +165,6 @@ Partial Class EmergencyForm
     Friend WithEvents btnTechProblem As Button
     Friend WithEvents btnIntrusion As Button
     Friend WithEvents btnAccident As Button
-    Friend WithEvents lblStop As Label
-    Friend WithEvents btnStop As Button
+    Friend WithEvents lblStop_Expel As Label
+    Friend WithEvents btnStop_Expel As Button
 End Class
