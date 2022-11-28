@@ -77,14 +77,16 @@ Public Class CarMediaForm
         If Me.devWindow.GetConnectedPhone = 0 Then
             Me.devWindow.UpdateConnectedPhone(1)
             lblConnected.Visible = True : pbPause.Visible = True : pbPlay.Visible = True : lblSongStatus.Visible = True : lblSongTitle.Visible = True
-            btnConnectPhone.Text = "Disconnect Phone" : lblSongStatus.Text = "Playing"
+            btnConnectPhone.Text = "Disconnect Phone"
             btnConnectPhone.BackColor = Color.IndianRed
+            lblSongStatus.Text = "Paused"
         Else
             Me.devWindow.UpdateConnectedPhone(0)
             lblConnected.Visible = False : pbPause.Visible = False : pbPlay.Visible = False : lblSongStatus.Visible = False : lblSongTitle.Visible = False
-            btnConnectPhone.Text = "Connect Phone" : lblSongStatus.Text = "Paused"
+            btnConnectPhone.Text = "Connect Phone"
             btnConnectPhone.BackColor = Color.RoyalBlue
             My.Computer.Audio.Stop()
+            Me.devWindow.UpdateAudioPlaying(0)
         End If
     End Sub
 
@@ -98,20 +100,29 @@ Public Class CarMediaForm
         End If
         If Me.devWindow.GetConnectedPhone = 0 Then
             lblConnected.Visible = False : pbPause.Visible = False : pbPlay.Visible = False : lblSongStatus.Visible = False : lblSongTitle.Visible = False
-            btnConnectPhone.Text = "Connect Phone" : lblSongStatus.Text = "Paused"
+            btnConnectPhone.Text = "Connect Phone"
             btnConnectPhone.BackColor = Color.RoyalBlue
         Else
             lblConnected.Visible = True : pbPause.Visible = True : pbPlay.Visible = True : lblSongStatus.Visible = True : lblSongTitle.Visible = True
-            btnConnectPhone.Text = "Disconnect Phone" : lblSongStatus.Text = "Playing"
+            btnConnectPhone.Text = "Disconnect Phone"
             btnConnectPhone.BackColor = Color.IndianRed
+        End If
+        If Me.devWindow.GetAudioPlaying = 0 Then
+            lblSongStatus.Text = "Paused"
+        Else
+            lblSongStatus.Text = "Playing"
         End If
         Me.ResumeLayout()
     End Sub
     Private Sub pbPlay_Click(sender As Object, e As EventArgs) Handles pbPlay.Click
         My.Computer.Audio.Play(My.Resources.house_of_cards, AudioPlayMode.Background)
+        lblSongStatus.Text = "Playing"
+        Me.devWindow.UpdateAudioPlaying(1)
     End Sub
 
     Private Sub pbPause_Click(sender As Object, e As EventArgs) Handles pbPause.Click
         My.Computer.Audio.Stop()
+        lblSongStatus.Text = "Paused"
+        Me.devWindow.UpdateAudioPlaying(0)
     End Sub
 End Class

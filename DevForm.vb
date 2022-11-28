@@ -44,6 +44,7 @@ Public Class DevForm
     Dim speakerVolume = 1
     Dim speakersOnOff = 0
     Dim connectedPhone = 0
+    Dim audioPlaying = 0
 
 
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -981,6 +982,14 @@ Public Class DevForm
 
     Public Function GetCarCondition()
         Return Me.carCondition
+    End Function
+
+    Public Sub UpdateAudioPlaying(state As Integer)
+        Me.audioPlaying = state
+    End Sub
+
+    Public Function GetAudioPlaying()
+        Return Me.audioPlaying
     End Function
 
 

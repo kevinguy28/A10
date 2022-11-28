@@ -143,6 +143,7 @@ Partial Class CarMediaForm
         '
         'pbPlay
         '
+        Me.pbPlay.BackColor = System.Drawing.Color.Transparent
         Me.pbPlay.Image = Global.A10.My.Resources.Resources.play
         Me.pbPlay.Location = New System.Drawing.Point(113, 589)
         Me.pbPlay.Name = "pbPlay"
@@ -154,7 +155,8 @@ Partial Class CarMediaForm
         '
         'pbPause
         '
-        Me.pbPause.Image = Global.A10.My.Resources.Resources.pause1
+        Me.pbPause.BackColor = System.Drawing.Color.Transparent
+        Me.pbPause.Image = Global.A10.My.Resources.Resources.pause
         Me.pbPause.Location = New System.Drawing.Point(310, 589)
         Me.pbPause.Name = "pbPause"
         Me.pbPause.Size = New System.Drawing.Size(54, 51)
