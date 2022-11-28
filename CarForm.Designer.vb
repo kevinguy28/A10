@@ -141,7 +141,7 @@ Partial Class CarForm
         'btnEmergency
         '
         Me.btnEmergency.BackColor = System.Drawing.Color.White
-        Me.btnEmergency.BackgroundImage = Global.A10.My.Resources.Resources.emergency
+        Me.btnEmergency.BackgroundImage = Global.A10.My.Resources.Resources.emergency_transparent
         Me.btnEmergency.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnEmergency.FlatAppearance.BorderSize = 0
         Me.btnEmergency.FlatStyle = System.Windows.Forms.FlatStyle.Flat
