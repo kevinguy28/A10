@@ -36,9 +36,11 @@ Public Class ChatForm
             Case "owner"
                 Me.Text = "Car Owner Chat"
                 Me.lblUser.Text = "Car Rider:"
+                Me.imgUser.Image = My.Resources.OwnerProfile
             Case "rider"
                 Me.Text = "Car Rider Chat"
                 Me.lblUser.Text = "Car Owner:"
+                Me.imgUser.Image = My.Resources.RiderProfile
         End Select
 
         ' Add Title and Home button
@@ -71,10 +73,18 @@ Public Class ChatForm
             Exit Sub
         End If
 
+        Dim otherEvent As UserCalendarEvent
+        Select Case Me.user
+            Case "owner"
+                otherEvent = Me.userEvent.GetBooking
+            Case "rider"
+                otherEvent = Me.userEvent.GetAvailability
+        End Select
+
         'Profile
-        Me.imgProfilePicture.Image = Me.userEvent.GetProfilePicture()
-        Me.lblName.Text = Me.userEvent.GetName
-        Me.imgRating.Image = Me.userEvent.GetRatingImg
+        Me.imgProfilePicture.Image = otherEvent.GetProfilePicture()
+        Me.lblName.Text = otherEvent.GetName
+        Me.imgRating.Image = otherEvent.GetRatingImg
 
         ' Start timer
         Me.tmrCheckChat.Start()
@@ -84,6 +94,12 @@ Public Class ChatForm
         Dim profilePicture
         Dim username
         Dim message = Me.txtChatMessage.Text
+
+        ' No blanks
+        If message = "" Then
+            Exit Sub
+        End If
+
         Select Case Me.user
             Case "owner"
                 profilePicture = My.Resources.OwnerProfile

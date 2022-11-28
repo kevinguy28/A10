@@ -34,16 +34,18 @@ Partial Class ChatForm
         Me.imgRating = New System.Windows.Forms.PictureBox()
         Me.lblName = New System.Windows.Forms.Label()
         Me.imgProfilePicture = New System.Windows.Forms.PictureBox()
+        Me.imgUser = New System.Windows.Forms.PictureBox()
         CType(Me.imgRating, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgUser, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtChatMessage
         '
         Me.txtChatMessage.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.txtChatMessage.Location = New System.Drawing.Point(39, 724)
+        Me.txtChatMessage.Location = New System.Drawing.Point(77, 724)
         Me.txtChatMessage.Name = "txtChatMessage"
-        Me.txtChatMessage.Size = New System.Drawing.Size(407, 32)
+        Me.txtChatMessage.Size = New System.Drawing.Size(369, 32)
         Me.txtChatMessage.TabIndex = 1
         '
         'btnSubmit
@@ -146,6 +148,16 @@ Partial Class ChatForm
         Me.imgProfilePicture.TabIndex = 43
         Me.imgProfilePicture.TabStop = False
         '
+        'imgUser
+        '
+        Me.imgUser.BackColor = System.Drawing.Color.White
+        Me.imgUser.Location = New System.Drawing.Point(39, 724)
+        Me.imgUser.Name = "imgUser"
+        Me.imgUser.Size = New System.Drawing.Size(32, 32)
+        Me.imgUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.imgUser.TabIndex = 47
+        Me.imgUser.TabStop = False
+        '
         'ChatForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -153,6 +165,7 @@ Partial Class ChatForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.imgUser)
         Me.Controls.Add(Me.lblUser)
         Me.Controls.Add(Me.imgRating)
         Me.Controls.Add(Me.lblName)
@@ -168,6 +181,7 @@ Partial Class ChatForm
         Me.Text = "ChatForm"
         CType(Me.imgRating, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.imgUser, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -183,4 +197,5 @@ Partial Class ChatForm
     Friend WithEvents imgRating As PictureBox
     Friend WithEvents lblName As Label
     Friend WithEvents imgProfilePicture As PictureBox
+    Friend WithEvents imgUser As PictureBox
 End Class
