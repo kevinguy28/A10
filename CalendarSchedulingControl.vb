@@ -209,6 +209,7 @@ Public Class CalendarSchedulingControl
         Else
             Me.startTime = userEvent.GetStartDate
             Me.endTime = userEvent.GetEndDate
+            Me.changedEndTime = True
         End If
 
         Me.startMinute = 0

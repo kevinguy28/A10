@@ -67,16 +67,17 @@
 
     Public Sub ConfirmClicked()
         ' Remove previous booking if there
-        If Me.previousEvent IsNot Nothing Then
-            Me.devWindow.RemoveAvailability(Me.previousEvent)
-        End If
+        'If Me.previousEvent IsNot Nothing Then
+        '    Me.devWindow.RemoveAvailability(Me.previousEvent)
+        'End If
 
         'Add booking
         Dim startDate = Me.schedulingEvent.GetStartDate
         Dim endDate = Me.schedulingEvent.GetEndDate
         Dim clash = New List(Of UserCalendarEvent)
         Select Case Me.repeat
-            Case ""
+            Case "Never"
+                Me.AddAvailabilityToList(startDate, endDate)
             Case "Daily"
                 Do Until endDate.CompareTo(Me.repeatTime) >= 0
                     Me.AddAvailabilityToList(startDate, endDate)
@@ -179,6 +180,13 @@
             Me.devWindow.AddAvailability(schdle)
             Me.conflictIndex += 1
             Me.AddAvailability()
+            Exit Sub
+        End If
+
+        'Trip ongoing
+        If Me.devWindow.IsOngoing(booking) Then
+            Dim ongoingForm = New TripOngoingForm(Me.user, Me.scenario, Me, Me.devWindow, prevSchdle)
+            Me.devWindow.OpenPopup(Me.user, ongoingForm)
             Exit Sub
         End If
 

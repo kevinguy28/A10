@@ -786,6 +786,52 @@ Public Class DevForm
         Return Me.currentSchedule
     End Function
 
+    Public Function IsOngoing(userEvent As UserCalendarEvent) As Boolean
+        Dim newStart = New Date.Now()
+        Dim newEnd = newStart.AddMinutes(1)
+        ' Prevent overlap between consecutive bookings
+        newEnd = newEnd.AddSeconds(-1)
+
+        Dim oldStart = userEvent.GetStartDate
+        Dim oldEnd = userEvent.GetEndDate
+        ' Prevent overlap between consecutive bookings
+        oldEnd = oldEnd.AddSeconds(-1)
+
+        ' New | ⬛⬛⬛⬛   |
+        ' Old |   ⬛⬛⬛⬛ |
+        'newEnd later then oldStart
+        'newEnd earlier than oldEnd
+        If Me.LaterThan(newEnd, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+            Return True
+        End If
+
+        ' New |   ⬛⬛⬛⬛ |
+        ' Old | ⬛⬛⬛⬛   |
+        'newStart later than oldStart
+        'newStart earlier than oldEnd
+        If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newStart, oldEnd) Then
+            Return True
+        End If
+
+        ' New |  ⬛⬛  |
+        ' Old | ⬛⬛⬛⬛ |
+        'newStart later than oldStart
+        'newEnd earlier than oldEnd
+        If Me.LaterThan(newStart, oldStart) AndAlso Me.EarlierThan(newEnd, oldEnd) Then
+            Return True
+        End If
+
+        ' New | ⬛⬛⬛⬛ |
+        ' Old |  ⬛⬛  |
+        'newStart earlier than oldStart
+        'newEnd later than oldEnd
+        If Me.EarlierThan(newStart, oldStart) AndAlso Me.LaterThan(newEnd, oldEnd) Then
+            Return True
+        End If
+
+        Return False
+    End Function
+
     ' ------------------
     ' --- Car Moving ---
     ' ------------------

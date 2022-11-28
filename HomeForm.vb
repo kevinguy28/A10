@@ -67,6 +67,7 @@
                                                  "Tesla Model 3", "Blue", 5,
                                                  startDate, endDate, startLocation, endLocation)
             bookingEvent.OwnerFound("Jane Doe", My.Resources.OwnerProfile)
+            bookingEvent.SetAvailability(schedulingEvent)
 
             Me.devWindow.AddAvailability(schedulingEvent)
             Me.devWindow.AddBooking(bookingEvent)
