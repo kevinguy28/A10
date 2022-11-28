@@ -1,7 +1,10 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿Imports System.Diagnostics.Eventing.Reader
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class ChatForm
     Inherits AppForm
+
+    Dim userEvent As UserCalendarEvent
 
     Dim colourHover = Color.FromArgb(127, 242, 229)
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
@@ -19,14 +22,23 @@ Public Class ChatForm
         Me.previousWindow = previousForm
         Me.homeWindow = previousForm
         Me.devWindow = devForm
+
+        Select Case Me.user
+            Case "owner"
+                Me.userEvent = Me.devWindow.GetCurrentSchedule
+            Case "rider"
+                Me.userEvent = Me.devWindow.GetCurrentBooking
+        End Select
     End Sub
 
     Private Sub ChatForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Select Case Me.user
             Case "owner"
                 Me.Text = "Car Owner Chat"
+                Me.lblUser.Text = "Car Rider:"
             Case "rider"
                 Me.Text = "Car Rider Chat"
+                Me.lblUser.Text = "Car Owner:"
         End Select
 
         ' Add Title and Home button
@@ -52,6 +64,17 @@ Public Class ChatForm
         Me.lstView.SmallImageList = Me.imgList
         Me.lstView.HeaderStyle = ColumnHeaderStyle.Nonclickable
         Me.lstView.LabelWrap = True
+
+        If (Me.userEvent Is Nothing) OrElse ((Me.userEvent.GetCarOwnerName <> "Jane Doe") AndAlso (Me.userEvent.GetCarRiderName <> "John Smith")) Then
+            Me.ShowError()
+            Me.DisableForm()
+            Exit Sub
+        End If
+
+        'Profile
+        Me.imgProfilePicture.Image = Me.userEvent.GetProfilePicture()
+        Me.lblName.Text = Me.userEvent.GetName
+        Me.imgRating.Image = Me.userEvent.GetRatingImg
 
         ' Start timer
         Me.tmrCheckChat.Start()
@@ -97,5 +120,34 @@ Public Class ChatForm
 
         Me.lstView.ResumeLayout()
         Me.ResumeLayout()
+    End Sub
+
+    ' -----------------
+    ' --- Functions ---
+    ' -----------------
+
+    Public Sub DisableForm()
+        Me.btnSubmit.Enabled = False
+        Me.txtChatMessage.Enabled = False
+
+        Me.lblPrompt.Visible = False
+        Me.lblUser.Visible = False
+        Me.lblName.Visible = False
+        Me.imgProfilePicture.Visible = False
+        Me.imgRating.Visible = False
+    End Sub
+
+    Public Sub ShowError()
+        ' lblError
+        Select Case Me.user
+            Case "owner"
+                Me.lblError.Text = "You need to accept a booking request"
+                Me.lblError.Visible = True
+                Me.lblError.BringToFront()
+            Case "rider"
+                Me.lblError.Text = "You need to add a booking"
+                Me.lblError.Visible = True
+                Me.lblError.BringToFront()
+        End Select
     End Sub
 End Class

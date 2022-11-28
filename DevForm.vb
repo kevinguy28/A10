@@ -284,8 +284,13 @@ Public Class DevForm
     End Function
 
     Public Sub RemoveAvailability(availability As UserCalendarEvent)
-        availability.GetBooking.SetAvailability(Nothing)
-        availability.GetBooking.OwnerRemove()
+        Dim booking = availability.GetBooking
+
+        If booking IsNot Nothing Then
+            booking.SetAvailability(Nothing)
+            booking.OwnerRemove()
+            Me.RemoveBooking(booking)
+        End If
         availability.SetBooking(Nothing)
         availability.RiderRemove()
         Me.ownerAvailabilityList.Remove(availability)
@@ -565,15 +570,12 @@ Public Class DevForm
     End Function
 
     Public Sub RemoveBooking(booking As UserCalendarEvent)
-        For Each ownerEvent As UserCalendarEvent In Me.ownerAvailabilityList
+        Dim availability = booking.GetAvailability
 
-            If ownerEvent.GetName = booking.GetCarOwnerName AndAlso ownerEvent.GetCar = booking.GetColour _
-                AndAlso Me.LaterThan(booking.GetStartDate, ownerEvent.GetStartDate) AndAlso Me.EarlierThan(booking.GetEndDate, ownerEvent.GetEndDate) Then
-
-                ownerEvent.RiderRemove()
-                Exit For
-            End If
-        Next
+        If availability IsNot Nothing Then
+            availability.RiderRemove()
+            booking.SetAvailability(Nothing)
+        End If
 
         Me.riderBookingList.Remove(booking)
     End Sub

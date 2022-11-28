@@ -102,6 +102,7 @@
         Me.carDiagnostic = New CarDiagnosticForm(Me.user, Me.scenario, Me.carForm, Me.homeWindow, Me.devWindow)
 
         Me.carDiagnostic.Show()
+        Me.previousForm.SetCurrentForm(Me.carDiagnostic)
 
         'Me.OpenOwnerForm()
 

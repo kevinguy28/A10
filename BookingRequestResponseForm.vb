@@ -21,10 +21,7 @@
         Me.devWindow = devWindow
         Me.bookingEvent = bookingEvent
         Me.response = response
-    End Sub
 
-    Private Sub BookingRequestResponseFormvb_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Text = "Car Rider Booking Request"
         Select Case Me.response
             Case "accept"
                 Me.lblPrompt.Text = "This booking request" & vbCrLf & "has been accepted"
@@ -37,6 +34,10 @@
                 Me.btnCancel.Visible = True
                 Me.btnCheck.Visible = True
         End Select
+    End Sub
+
+    Private Sub BookingRequestResponseFormvb_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Text = "Car Rider Booking Request"
 
         Me.lblUser.Text = "Car Owner:"
         Me.imgProfilePicture.Image = Me.bookingEvent.GetCarOwnerProfilePicture

@@ -32,7 +32,7 @@ Public Class AppForm
         Me.Dispose()
     End Sub
 
-    Protected Sub SetCurrentForm(form As AppForm)
+    Public Sub SetCurrentForm(form As AppForm)
         If (user = "owner") Then
             Me.devWindow.SetCurrentOwnerForm(form)
         ElseIf (user = "rider") Then
@@ -184,6 +184,9 @@ Public Class AppForm
     End Sub
 
     Public Sub DimScreen()
+        If dimOverlay.Visible = True Then
+            Exit Sub
+        End If
         Dim clientBitmap As New Bitmap(Me.ClientSize.Width, Me.ClientSize.Height)
         Using bitmap As New Bitmap(DevForm.GetFormWidth, DevForm.GetFormHeight)
             Me.DrawToBitmap(bitmap, New Rectangle(Point.Empty, New Drawing.Size(DevForm.GetFormWidth, DevForm.GetFormHeight)))

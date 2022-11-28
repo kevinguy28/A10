@@ -36,6 +36,9 @@ Public Class CalendarSchedulingControl
     Dim repeatMonth As Integer
     Dim repeatYear As Integer
 
+    ' Scroll
+    Dim vScroll = 0
+
     ' Height Change
     Dim addedHeight = 472
 
@@ -868,6 +871,10 @@ Public Class CalendarSchedulingControl
     End Sub
 
     Private Sub AddControls()
+
+        'Scroll
+        Dim vScroll = Me.VerticalScroll.Value
+
         Me.SuspendLayout()
         Me.flPanel.Controls.Clear()
 
@@ -991,14 +998,27 @@ Public Class CalendarSchedulingControl
         ' Next
         Me.flPanel.Controls.Add(Me.btnNext)
 
+        'Scroll
+        If Me.vScroll > Me.VerticalScroll.Maximum Then
+            Me.VerticalScroll.Value = Me.VerticalScroll.Maximum
+        ElseIf Me.vScroll < Me.VerticalScroll.Minimum Then
+            Me.VerticalScroll.Value = Me.VerticalScroll.Minimum
+        Else
+            Me.VerticalScroll.Value = Me.vScroll
+        End If
+
         Me.flPanel.ResumeLayout(True)
         Me.ResumeLayout(True)
+
     End Sub
 
     ' -----------------
     ' --- Functions ---
     ' -----------------
     Private Sub UpdateFormSize(change As Integer)
+        'Scroll
+        Dim vScroll = Me.VerticalScroll.Value
+
         Dim changeHeight = addedHeight * change
 
         Me.Height += changeHeight
@@ -1075,6 +1095,15 @@ Public Class CalendarSchedulingControl
             Me.lblRepeatLeft.Height += changeHeight
             Me.lblRepeatRight.Height += changeHeight
             bdrRptHghtChanged = Not bdrRptHghtChanged
+        End If
+
+        'Scroll
+        If Me.vScroll > Me.VerticalScroll.Maximum Then
+            Me.VerticalScroll.Value = Me.VerticalScroll.Maximum
+        ElseIf Me.vScroll < Me.VerticalScroll.Minimum Then
+            Me.VerticalScroll.Value = Me.VerticalScroll.Minimum
+        Else
+            Me.VerticalScroll.Value = Me.vScroll
         End If
 
     End Sub
@@ -1673,6 +1702,14 @@ Public Class CalendarSchedulingControl
         Else
             Me.VerticalScroll.Value -= e.Delta
         End If
+        Me.vScroll = Me.VerticalScroll.Value
     End Sub
 
+    Private Sub flPanel_MouseWheel(sender As Object, e As MouseEventArgs) Handles flPanel.MouseWheel
+        Me.vScroll = Me.VerticalScroll.Value
+    End Sub
+
+    Private Sub flPanel_Scroll(sender As Object, e As ScrollEventArgs) Handles flPanel.Scroll
+        Me.vScroll = Me.VerticalScroll.Value
+    End Sub
 End Class
