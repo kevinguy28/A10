@@ -76,14 +76,15 @@ Public Class CarMediaForm
     Private Sub btnConnectPhone_Click(sender As Object, e As EventArgs) Handles btnConnectPhone.Click
         If Me.devWindow.GetConnectedPhone = 0 Then
             Me.devWindow.UpdateConnectedPhone(1)
-            lblConnected.Visible = True
-            btnConnectPhone.Text = "Disconnect Phone"
+            lblConnected.Visible = True : pbPause.Visible = True : pbPlay.Visible = True : lblSongStatus.Visible = True : lblSongTitle.Visible = True
+            btnConnectPhone.Text = "Disconnect Phone" : lblSongStatus.Text = "Playing"
             btnConnectPhone.BackColor = Color.IndianRed
         Else
             Me.devWindow.UpdateConnectedPhone(0)
-            lblConnected.Visible = False
-            btnConnectPhone.Text = "Connect Phone"
+            lblConnected.Visible = False : pbPause.Visible = False : pbPlay.Visible = False : lblSongStatus.Visible = False : lblSongTitle.Visible = False
+            btnConnectPhone.Text = "Connect Phone" : lblSongStatus.Text = "Paused"
             btnConnectPhone.BackColor = Color.RoyalBlue
+            My.Computer.Audio.Stop()
         End If
     End Sub
 
@@ -96,16 +97,21 @@ Public Class CarMediaForm
             btnSpeakersToggle.BackgroundImage = My.Resources.toggle_off
         End If
         If Me.devWindow.GetConnectedPhone = 0 Then
-            lblConnected.Visible = False
-            btnConnectPhone.Text = "Connect Phone"
-            lblConnected.Visible = False
+            lblConnected.Visible = False : pbPause.Visible = False : pbPlay.Visible = False : lblSongStatus.Visible = False : lblSongTitle.Visible = False
+            btnConnectPhone.Text = "Connect Phone" : lblSongStatus.Text = "Paused"
             btnConnectPhone.BackColor = Color.RoyalBlue
         Else
-            lblConnected.Visible = True
-            btnConnectPhone.Text = "Disconnect Phone"
-            lblConnected.Visible = True
+            lblConnected.Visible = True : pbPause.Visible = True : pbPlay.Visible = True : lblSongStatus.Visible = True : lblSongTitle.Visible = True
+            btnConnectPhone.Text = "Disconnect Phone" : lblSongStatus.Text = "Playing"
             btnConnectPhone.BackColor = Color.IndianRed
         End If
         Me.ResumeLayout()
+    End Sub
+    Private Sub pbPlay_Click(sender As Object, e As EventArgs) Handles pbPlay.Click
+        My.Computer.Audio.Play(My.Resources.house_of_cards, AudioPlayMode.Background)
+    End Sub
+
+    Private Sub pbPause_Click(sender As Object, e As EventArgs) Handles pbPause.Click
+        My.Computer.Audio.Stop()
     End Sub
 End Class

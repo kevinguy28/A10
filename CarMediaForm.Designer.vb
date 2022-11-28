@@ -32,6 +32,12 @@ Partial Class CarMediaForm
         Me.btnConnectPhone = New System.Windows.Forms.Button()
         Me.tmrSync = New System.Windows.Forms.Timer(Me.components)
         Me.lblConnected = New System.Windows.Forms.Label()
+        Me.pbPlay = New System.Windows.Forms.PictureBox()
+        Me.pbPause = New System.Windows.Forms.PictureBox()
+        Me.lblSongTitle = New System.Windows.Forms.Label()
+        Me.lblSongStatus = New System.Windows.Forms.Label()
+        CType(Me.pbPlay, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbPause, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblSpeakers
@@ -111,7 +117,7 @@ Partial Class CarMediaForm
         '
         Me.btnConnectPhone.BackColor = System.Drawing.Color.RoyalBlue
         Me.btnConnectPhone.Font = New System.Drawing.Font("Segoe UI Semibold", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnConnectPhone.Location = New System.Drawing.Point(125, 512)
+        Me.btnConnectPhone.Location = New System.Drawing.Point(125, 463)
         Me.btnConnectPhone.Name = "btnConnectPhone"
         Me.btnConnectPhone.Size = New System.Drawing.Size(234, 60)
         Me.btnConnectPhone.TabIndex = 6
@@ -127,13 +133,61 @@ Partial Class CarMediaForm
         Me.lblConnected.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblConnected.BackColor = System.Drawing.Color.Transparent
         Me.lblConnected.Font = New System.Drawing.Font("Segoe UI Semibold", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblConnected.Location = New System.Drawing.Point(82, 619)
+        Me.lblConnected.Location = New System.Drawing.Point(82, 544)
         Me.lblConnected.Name = "lblConnected"
         Me.lblConnected.Size = New System.Drawing.Size(320, 31)
         Me.lblConnected.TabIndex = 7
         Me.lblConnected.Text = "iPhone X Connected"
         Me.lblConnected.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lblConnected.Visible = False
+        '
+        'pbPlay
+        '
+        Me.pbPlay.Image = Global.A10.My.Resources.Resources.play
+        Me.pbPlay.Location = New System.Drawing.Point(113, 589)
+        Me.pbPlay.Name = "pbPlay"
+        Me.pbPlay.Size = New System.Drawing.Size(54, 51)
+        Me.pbPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pbPlay.TabIndex = 10
+        Me.pbPlay.TabStop = False
+        Me.pbPlay.Visible = False
+        '
+        'pbPause
+        '
+        Me.pbPause.Image = Global.A10.My.Resources.Resources.pause1
+        Me.pbPause.Location = New System.Drawing.Point(310, 589)
+        Me.pbPause.Name = "pbPause"
+        Me.pbPause.Size = New System.Drawing.Size(54, 51)
+        Me.pbPause.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pbPause.TabIndex = 11
+        Me.pbPause.TabStop = False
+        Me.pbPause.Visible = False
+        '
+        'lblSongTitle
+        '
+        Me.lblSongTitle.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblSongTitle.BackColor = System.Drawing.Color.Transparent
+        Me.lblSongTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblSongTitle.Location = New System.Drawing.Point(49, 654)
+        Me.lblSongTitle.Name = "lblSongTitle"
+        Me.lblSongTitle.Size = New System.Drawing.Size(386, 52)
+        Me.lblSongTitle.TabIndex = 12
+        Me.lblSongTitle.Text = "BTS - House Of Cards"
+        Me.lblSongTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblSongTitle.Visible = False
+        '
+        'lblSongStatus
+        '
+        Me.lblSongStatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblSongStatus.BackColor = System.Drawing.Color.Transparent
+        Me.lblSongStatus.Font = New System.Drawing.Font("Segoe UI Semibold", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblSongStatus.Location = New System.Drawing.Point(192, 600)
+        Me.lblSongStatus.Name = "lblSongStatus"
+        Me.lblSongStatus.Size = New System.Drawing.Size(100, 28)
+        Me.lblSongStatus.TabIndex = 13
+        Me.lblSongStatus.Text = "Paused"
+        Me.lblSongStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblSongStatus.Visible = False
         '
         'CarMediaForm
         '
@@ -142,6 +196,10 @@ Partial Class CarMediaForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.lblSongStatus)
+        Me.Controls.Add(Me.lblSongTitle)
+        Me.Controls.Add(Me.pbPause)
+        Me.Controls.Add(Me.pbPlay)
         Me.Controls.Add(Me.lblConnected)
         Me.Controls.Add(Me.btnVolumeUp)
         Me.Controls.Add(Me.btnConnectPhone)
@@ -153,6 +211,8 @@ Partial Class CarMediaForm
         Me.DoubleBuffered = True
         Me.Name = "CarMediaForm"
         Me.Text = "CarMediaForm"
+        CType(Me.pbPlay, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbPause, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -167,4 +227,8 @@ Partial Class CarMediaForm
     Friend WithEvents btnConnectPhone As Button
     Friend WithEvents tmrSync As Timer
     Friend WithEvents lblConnected As Label
+    Friend WithEvents pbPlay As PictureBox
+    Friend WithEvents pbPause As PictureBox
+    Friend WithEvents lblSongTitle As Label
+    Friend WithEvents lblSongStatus As Label
 End Class
