@@ -7,6 +7,9 @@
 
     Dim bookingEvent As UserCalendarEvent
 
+    Dim cancelBooking As ExitCarForm
+    Dim riderRebook As RescheduleNotification
+
     Public Sub New(user As String, scenario As Integer, homeWindow As HomeForm, devWindow As DevForm, bookingEvent As UserCalendarEvent)
 
         ' This call is required by the designer.
@@ -69,6 +72,13 @@
         Me.homeWindow.Show()
         Me.devWindow.SetCurrentOwnerForm(Me.homeWindow)
         Me.homeWindow.CloseAllChildren()
+
+        Me.cancelBooking = New ExitCarForm(Me.user, Me.scenario, Me.devWindow)
+        Me.cancelBooking.lblMessage.Text = "All bookings have been canceled!"
+        Me.devWindow.OpenPopup("owner", Me.cancelBooking)
+
+        Me.riderRebook = New RescheduleNotification("rider", Me.scenario, Me.devWindow, Me.homeWindow)
+        Me.riderRebook.Show()
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
