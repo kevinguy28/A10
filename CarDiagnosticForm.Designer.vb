@@ -26,6 +26,9 @@ Partial Class CarDiagnosticForm
         Me.lbDiagnostic = New System.Windows.Forms.ListBox()
         Me.btnRun = New System.Windows.Forms.Button()
         Me.btnTow = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.pbBattery = New System.Windows.Forms.PictureBox()
+        CType(Me.pbBattery, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblCondition
@@ -84,6 +87,28 @@ Partial Class CarDiagnosticForm
         Me.btnTow.Text = "Request a tow"
         Me.btnTow.UseVisualStyleBackColor = False
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Location = New System.Drawing.Point(45, 454)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(161, 37)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Car Battery:"
+        '
+        'pbBattery
+        '
+        Me.pbBattery.BackColor = System.Drawing.Color.Transparent
+        Me.pbBattery.Image = Global.A10.My.Resources.Resources.full_battery
+        Me.pbBattery.Location = New System.Drawing.Point(84, 494)
+        Me.pbBattery.Name = "pbBattery"
+        Me.pbBattery.Size = New System.Drawing.Size(317, 150)
+        Me.pbBattery.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pbBattery.TabIndex = 7
+        Me.pbBattery.TabStop = False
+        '
         'CarDiagnosticForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -91,6 +116,8 @@ Partial Class CarDiagnosticForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.pbBattery)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnTow)
         Me.Controls.Add(Me.btnRun)
         Me.Controls.Add(Me.lbDiagnostic)
@@ -98,6 +125,7 @@ Partial Class CarDiagnosticForm
         Me.DoubleBuffered = True
         Me.Name = "CarDiagnosticForm"
         Me.Text = "CarDiagnosticForm"
+        CType(Me.pbBattery, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -107,4 +135,6 @@ Partial Class CarDiagnosticForm
     Friend WithEvents lbDiagnostic As ListBox
     Friend WithEvents btnRun As Button
     Friend WithEvents btnTow As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents pbBattery As PictureBox
 End Class

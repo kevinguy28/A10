@@ -118,4 +118,8 @@ Public Class CarStopForm
         Me.Dispose()
     End Sub
 
+    Private Sub btnCancel_Click_1(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Me.devWindow.ClosePopup(Me.user)
+        Me.Dispose()
+    End Sub
 End Class

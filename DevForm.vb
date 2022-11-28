@@ -30,6 +30,9 @@ Public Class DevForm
     ' Route
     Dim carMoving As Boolean = False
 
+    ' Car Diagnostic
+    Dim carCondition = 1
+
     ' Car Features
     Dim fanIntake = 1
     Dim fanStrength = 1
@@ -967,6 +970,19 @@ Public Class DevForm
     Public Function GetChatHistory() As List(Of ChatMessage)
         Return Me.chatHistory
     End Function
+
+    ' -------------------
+    ' --- Car Diagno. ---
+    ' -------------------
+
+    Public Sub UpdateCarCondition(state As Integer)
+        Me.carCondition = state
+    End Sub
+
+    Public Function GetCarCondition()
+        Return Me.carCondition
+    End Function
+
 
     ' -------------------
     ' --- Car Feature ---
