@@ -72,7 +72,7 @@ Partial Class EmergencyForm
         'btnTechProblem
         '
         Me.btnTechProblem.BackColor = System.Drawing.Color.White
-        Me.btnTechProblem.BackgroundImage = Global.A10.My.Resources.Resources.diagnostic3
+        Me.btnTechProblem.BackgroundImage = Global.A10.My.Resources.Resources.tech
         Me.btnTechProblem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnTechProblem.FlatAppearance.BorderSize = 0
         Me.btnTechProblem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -86,7 +86,7 @@ Partial Class EmergencyForm
         'btnIntrusion
         '
         Me.btnIntrusion.BackColor = System.Drawing.Color.White
-        Me.btnIntrusion.BackgroundImage = Global.A10.My.Resources.Resources.car_media_neutral
+        Me.btnIntrusion.BackgroundImage = Global.A10.My.Resources.Resources.intrusion
         Me.btnIntrusion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnIntrusion.FlatAppearance.BorderSize = 0
         Me.btnIntrusion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -100,7 +100,7 @@ Partial Class EmergencyForm
         'btnAccident
         '
         Me.btnAccident.BackColor = System.Drawing.Color.White
-        Me.btnAccident.BackgroundImage = Global.A10.My.Resources.Resources.fan_neutral
+        Me.btnAccident.BackgroundImage = Global.A10.My.Resources.Resources.accident_pic
         Me.btnAccident.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnAccident.FlatAppearance.BorderSize = 0
         Me.btnAccident.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -126,7 +126,7 @@ Partial Class EmergencyForm
         'btnStop_Expel
         '
         Me.btnStop_Expel.BackColor = System.Drawing.Color.White
-        Me.btnStop_Expel.BackgroundImage = Global.A10.My.Resources.Resources.car_media_neutral
+        Me.btnStop_Expel.BackgroundImage = Global.A10.My.Resources.Resources._stop
         Me.btnStop_Expel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnStop_Expel.FlatAppearance.BorderSize = 0
         Me.btnStop_Expel.FlatStyle = System.Windows.Forms.FlatStyle.Flat

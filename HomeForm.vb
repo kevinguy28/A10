@@ -133,7 +133,6 @@
             ' Owner without booking
         Else
             Me.routeForm = New RouteForm(Me.user, Me.scenario, Me, Me, Me.devWindow, bookingEvent.GetStartDate, bookingEvent)
-
         End If
 
         Me.Hide()
@@ -225,7 +224,6 @@
     End Sub
 
     ' Relates to scenario 4, updatiung route background image
-
     Public Sub changeMap(theImage As Bitmap)
         Me.routeBackgroundImage = theImage
     End Sub

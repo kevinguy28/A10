@@ -62,26 +62,26 @@ Public Class ChooseStationForm
 
     Private Sub rb2_Click(sender As Object, e As EventArgs) Handles rb2.Click
         Me.pbMap.Image = My.Resources.the_map_rb2
-        'Me.homeWindow.changeMap(My.Resources.the_map_rb2)
+        'Me.devWindow.GetOwnerHomeForm.changeMap(My.Resources.the_map_rb2)
     End Sub
     Private Sub rb3_Click(sender As Object, e As EventArgs) Handles rb3.Click
         Me.pbMap.Image = My.Resources.the_map_rb3
-        'Me.homeWindow.changeMap(My.Resources.the_map_rb3)
+        'Me.devWindow.GetOwnerHomeForm.changeMap(My.Resources.the_map_rb3)
     End Sub
 
     Private Sub rb4_Click(sender As Object, e As EventArgs) Handles rb4.Click
         Me.pbMap.Image = My.Resources.the_map_rb4
-        'Me.homeWindow.changeMap(My.Resources.the_map_rb4)
+        'Me.devWindow.GetOwnerHomeForm.changeMap(My.Resources.the_map_rb4)
     End Sub
 
     Private Sub rb5_Click(sender As Object, e As EventArgs) Handles rb5.Click
         Me.pbMap.Image = My.Resources.the_map_rb5
-        'Me.homeWindow.changeMap(My.Resources.the_map_rb5)
+        'Me.devWindow.GetOwnerHomeForm.changeMap(My.Resources.the_map_rb5)
     End Sub
 
     Private Sub rb6_Click(sender As Object, e As EventArgs) Handles rb6.Click
         Me.pbMap.Image = My.Resources.the_map_rb6
-        'Me.homeWindow.changeMap(My.Resources.the_map_rb6)
+        'Me.devWindow.GetOwnerHomeForm.changeMapp(My.Resources.the_map_rb6)
     End Sub
 
     Private Sub rb_MouseEnter(sender As Object, e As EventArgs) Handles rb1.MouseEnter, rb2.MouseEnter, rb3.MouseEnter, rb4.MouseEnter, rb5.MouseEnter, rb6.MouseEnter
