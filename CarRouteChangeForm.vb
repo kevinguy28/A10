@@ -24,6 +24,8 @@
     End Sub
 
     Private Sub CarRouteChangeFormvb_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.lblPrice.Text = ""
+
         Select Case Me.user
             Case "owner"
                 Me.Text = "Car Owner Route Change"
@@ -31,7 +33,7 @@
                 Me.lblPrompt.Text = "Your car's rider" & vbCrLf & "has changed their route."
                 Me.imgProfilePicture.Image = bookingEvent.GetProfilePicture
                 Me.lblName.Text = bookingEvent.GetName
-                Me.lblPrice.Text = "Earnings: $11"
+                Me.lblPrice.Text = "Earnings: $"
 
                 Me.btnConfirm.Visible = False
                 Me.btnCancel.Visible = False
@@ -42,7 +44,7 @@
                 Me.lblPrompt.Text = "Are you sure you" & vbCrLf & "want to set this route?"
                 Me.imgProfilePicture.Image = bookingEvent.GetCarOwnerProfilePicture
                 Me.lblName.Text = bookingEvent.GetCarOwnerName
-                Me.lblPrice.Text = "Cost: $11"
+                Me.lblPrice.Text = "Price: $"
 
                 Me.btnConfirm.Visible = True
                 Me.btnCancel.Visible = True
@@ -54,6 +56,10 @@
         Dim startTime = Format(Me.bookingEvent.GetStartDate, "ddd d MMM yyyy") & " at " & Format(Me.bookingEvent.GetStartDate, "h:mm tt")
         Dim endTime = Format(Me.bookingEvent.GetEndDate, "ddd d MMM yyyy") & " at " & Format(Me.bookingEvent.GetEndDate, "h:mm tt")
         Me.lblTime.Text = startTime & vbCrLf & endTime
+
+        Me.lblLocation.Text = Me.bookingEvent.GetStartLocation & vbCrLf & Me.bookingEvent.GetEndLocation
+
+        Me.lblPrice.Text += "" & Me.devWindow.GetCost(Me.bookingEvent.GetStartLocation, Me.bookingEvent.GetEndLocation)
 
     End Sub
 
@@ -85,7 +91,7 @@
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(358, 504)
+        Me.Size = New Size(358, 490)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

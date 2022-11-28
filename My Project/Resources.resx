@@ -121,9 +121,6 @@
   <data name="arrow_up_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_up_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="call" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\call.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="emergency_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\emergency_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,9 +136,6 @@
   <data name="fan_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fan hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="emergency" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\emergency.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ArrowLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ArrowLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -156,9 +150,6 @@
   </data>
   <data name="the_map_rb2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\the_map_rb2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="diagnostic4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\diagnostic4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrow_down_press" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_down_press.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -189,9 +180,6 @@
   </data>
   <data name="in_back" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\in_back.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="endCall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\endCall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrow_up_neutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_up_neutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,9 +229,6 @@
   <data name="StarThree" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StarThree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="nocall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\nocall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="the_map_rb1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\the_map_rb1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -255,12 +240,6 @@
   </data>
   <data name="Home" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fan_neutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fan_neutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="emergency_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\emergency_new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Phone___Form" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Phone - Form.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -298,9 +277,6 @@
   <data name="the_map_rb5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\the_map_rb5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="low_battery" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\low_battery.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="the_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\the_map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -328,17 +304,11 @@
   <data name="car_media_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\car_media_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="accident_pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\accident_pic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Calendar___Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Calendar - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="StarFive" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StarFive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="diagnostic3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\diagnostic3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Calender" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Calender.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -363,9 +333,6 @@
   </data>
   <data name="Map___Press" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map - Press.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="emergency_transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\emergency_transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="the_map_rb3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\the_map_rb3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -414,5 +381,65 @@
   </data>
   <data name="intrusion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\intrusion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="accident_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\accident_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="accident_neutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\accident_neutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="accident_press" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\accident_press.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="carfeatures_neutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\carfeatures_neutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="diagnostic_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\diagnostic_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="diagnostic_neutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\diagnostic_neutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="diagnostic_press" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\diagnostic_press.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emergency_neutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emergency_neutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emergency_press" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emergency_press.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="expelrider_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\expelrider_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="expelrider_neutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\expelrider_neutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="expelrider_press" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\expelrider_press.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="intrusion_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\intrusion_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="intrusion_neutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\intrusion_neutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="intrusion_press" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\intrusion_press.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="out_back1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\out_back.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="out_front1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\out_front.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="techproblem_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\techproblem_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="techproblem_neutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\techproblem_neutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="techproblem_press" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\techproblem_press.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

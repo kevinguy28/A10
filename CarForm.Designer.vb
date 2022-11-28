@@ -36,11 +36,11 @@ Partial Class CarForm
         'btnCarFeatures
         '
         Me.btnCarFeatures.BackColor = System.Drawing.Color.White
-        Me.btnCarFeatures.BackgroundImage = Global.A10.My.Resources.Resources.fan_neutral
+        Me.btnCarFeatures.BackgroundImage = Global.A10.My.Resources.Resources.carfeatures_neutral
         Me.btnCarFeatures.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnCarFeatures.FlatAppearance.BorderSize = 0
         Me.btnCarFeatures.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCarFeatures.Location = New System.Drawing.Point(68, 258)
+        Me.btnCarFeatures.Location = New System.Drawing.Point(74, 317)
         Me.btnCarFeatures.Name = "btnCarFeatures"
         Me.btnCarFeatures.Size = New System.Drawing.Size(150, 150)
         Me.btnCarFeatures.TabIndex = 4
@@ -54,7 +54,7 @@ Partial Class CarForm
         Me.btnCarMedia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnCarMedia.FlatAppearance.BorderSize = 0
         Me.btnCarMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCarMedia.Location = New System.Drawing.Point(268, 258)
+        Me.btnCarMedia.Location = New System.Drawing.Point(260, 317)
         Me.btnCarMedia.Name = "btnCarMedia"
         Me.btnCarMedia.Size = New System.Drawing.Size(150, 150)
         Me.btnCarMedia.TabIndex = 5
@@ -64,11 +64,14 @@ Partial Class CarForm
         'btnDiagnostic
         '
         Me.btnDiagnostic.BackColor = System.Drawing.Color.White
-        Me.btnDiagnostic.BackgroundImage = Global.A10.My.Resources.Resources.diagnostic3
+        Me.btnDiagnostic.BackgroundImage = Global.A10.My.Resources.Resources.diagnostic_neutral
         Me.btnDiagnostic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnDiagnostic.FlatAppearance.BorderSize = 0
+        Me.btnDiagnostic.FlatAppearance.CheckedBackColor = System.Drawing.Color.White
+        Me.btnDiagnostic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.btnDiagnostic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnDiagnostic.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDiagnostic.Location = New System.Drawing.Point(68, 476)
+        Me.btnDiagnostic.Location = New System.Drawing.Point(74, 533)
         Me.btnDiagnostic.Name = "btnDiagnostic"
         Me.btnDiagnostic.Size = New System.Drawing.Size(150, 150)
         Me.btnDiagnostic.TabIndex = 6
@@ -79,7 +82,7 @@ Partial Class CarForm
         '
         Me.lblCarFeatures.BackColor = System.Drawing.Color.White
         Me.lblCarFeatures.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblCarFeatures.Location = New System.Drawing.Point(68, 217)
+        Me.lblCarFeatures.Location = New System.Drawing.Point(74, 277)
         Me.lblCarFeatures.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblCarFeatures.Name = "lblCarFeatures"
         Me.lblCarFeatures.Size = New System.Drawing.Size(150, 38)
@@ -91,7 +94,7 @@ Partial Class CarForm
         '
         Me.lblCarMedia.BackColor = System.Drawing.Color.White
         Me.lblCarMedia.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblCarMedia.Location = New System.Drawing.Point(268, 217)
+        Me.lblCarMedia.Location = New System.Drawing.Point(260, 277)
         Me.lblCarMedia.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblCarMedia.Name = "lblCarMedia"
         Me.lblCarMedia.Size = New System.Drawing.Size(150, 38)
@@ -103,7 +106,7 @@ Partial Class CarForm
         '
         Me.lblDiagnostic.BackColor = System.Drawing.Color.White
         Me.lblDiagnostic.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblDiagnostic.Location = New System.Drawing.Point(68, 435)
+        Me.lblDiagnostic.Location = New System.Drawing.Point(74, 493)
         Me.lblDiagnostic.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDiagnostic.Name = "lblDiagnostic"
         Me.lblDiagnostic.Size = New System.Drawing.Size(150, 38)
@@ -117,7 +120,7 @@ Partial Class CarForm
         Me.lblError.BackColor = System.Drawing.Color.IndianRed
         Me.lblError.Font = New System.Drawing.Font("Segoe UI Semibold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblError.ForeColor = System.Drawing.Color.White
-        Me.lblError.Location = New System.Drawing.Point(195, 645)
+        Me.lblError.Location = New System.Drawing.Point(195, 733)
         Me.lblError.Margin = New System.Windows.Forms.Padding(0)
         Me.lblError.Name = "lblError"
         Me.lblError.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
@@ -130,7 +133,7 @@ Partial Class CarForm
         '
         Me.lblEmergency.BackColor = System.Drawing.Color.White
         Me.lblEmergency.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblEmergency.Location = New System.Drawing.Point(258, 435)
+        Me.lblEmergency.Location = New System.Drawing.Point(251, 493)
         Me.lblEmergency.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblEmergency.Name = "lblEmergency"
         Me.lblEmergency.Size = New System.Drawing.Size(170, 38)
@@ -141,11 +144,14 @@ Partial Class CarForm
         'btnEmergency
         '
         Me.btnEmergency.BackColor = System.Drawing.Color.White
-        Me.btnEmergency.BackgroundImage = Global.A10.My.Resources.Resources.emergency_transparent
+        Me.btnEmergency.BackgroundImage = Global.A10.My.Resources.Resources.emergency_neutral
         Me.btnEmergency.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnEmergency.FlatAppearance.BorderSize = 0
+        Me.btnEmergency.FlatAppearance.CheckedBackColor = System.Drawing.Color.White
+        Me.btnEmergency.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.btnEmergency.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnEmergency.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEmergency.Location = New System.Drawing.Point(268, 476)
+        Me.btnEmergency.Location = New System.Drawing.Point(260, 533)
         Me.btnEmergency.Name = "btnEmergency"
         Me.btnEmergency.Size = New System.Drawing.Size(150, 150)
         Me.btnEmergency.TabIndex = 24

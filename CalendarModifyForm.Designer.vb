@@ -36,6 +36,10 @@ Partial Class CalendarModifyForm
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.lblDescription = New System.Windows.Forms.Label()
         Me.btnRate = New System.Windows.Forms.Button()
+        Me.lblStartPrompt = New System.Windows.Forms.Label()
+        Me.lblEndPrompt = New System.Windows.Forms.Label()
+        Me.lblLocation = New System.Windows.Forms.Label()
+        Me.lblPrice = New System.Windows.Forms.Label()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -43,7 +47,7 @@ Partial Class CalendarModifyForm
         '
         Me.lblPrompt.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblPrompt.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblPrompt.Location = New System.Drawing.Point(9, 221)
+        Me.lblPrompt.Location = New System.Drawing.Point(9, 301)
         Me.lblPrompt.Margin = New System.Windows.Forms.Padding(0)
         Me.lblPrompt.Name = "lblPrompt"
         Me.lblPrompt.Size = New System.Drawing.Size(346, 50)
@@ -139,7 +143,7 @@ Partial Class CalendarModifyForm
         Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancel.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnCancel.ForeColor = System.Drawing.Color.White
-        Me.btnCancel.Location = New System.Drawing.Point(132, 329)
+        Me.btnCancel.Location = New System.Drawing.Point(132, 409)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(100, 40)
         Me.btnCancel.TabIndex = 47
@@ -157,7 +161,7 @@ Partial Class CalendarModifyForm
         Me.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDelete.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnDelete.ForeColor = System.Drawing.Color.White
-        Me.btnDelete.Location = New System.Drawing.Point(252, 274)
+        Me.btnDelete.Location = New System.Drawing.Point(252, 354)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(100, 40)
         Me.btnDelete.TabIndex = 46
@@ -175,7 +179,7 @@ Partial Class CalendarModifyForm
         Me.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEdit.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnEdit.ForeColor = System.Drawing.Color.White
-        Me.btnEdit.Location = New System.Drawing.Point(12, 274)
+        Me.btnEdit.Location = New System.Drawing.Point(12, 354)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(100, 40)
         Me.btnEdit.TabIndex = 45
@@ -197,7 +201,7 @@ Partial Class CalendarModifyForm
         Me.lblDescription.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblDescription.BackColor = System.Drawing.Color.Transparent
         Me.lblDescription.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblDescription.Location = New System.Drawing.Point(45, -281)
+        Me.lblDescription.Location = New System.Drawing.Point(45, -241)
         Me.lblDescription.Name = "lblDescription"
         Me.lblDescription.Size = New System.Drawing.Size(191, 52)
         Me.lblDescription.TabIndex = 43
@@ -220,11 +224,58 @@ Partial Class CalendarModifyForm
         Me.btnRate.Text = "Rate"
         Me.btnRate.UseVisualStyleBackColor = False
         '
+        'lblStartPrompt
+        '
+        Me.lblStartPrompt.AutoSize = True
+        Me.lblStartPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblStartPrompt.Location = New System.Drawing.Point(12, 192)
+        Me.lblStartPrompt.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblStartPrompt.Name = "lblStartPrompt"
+        Me.lblStartPrompt.Size = New System.Drawing.Size(44, 21)
+        Me.lblStartPrompt.TabIndex = 64
+        Me.lblStartPrompt.Text = "start:"
+        '
+        'lblEndPrompt
+        '
+        Me.lblEndPrompt.AutoSize = True
+        Me.lblEndPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblEndPrompt.Location = New System.Drawing.Point(17, 213)
+        Me.lblEndPrompt.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblEndPrompt.Name = "lblEndPrompt"
+        Me.lblEndPrompt.Size = New System.Drawing.Size(39, 21)
+        Me.lblEndPrompt.TabIndex = 63
+        Me.lblEndPrompt.Text = "end:"
+        '
+        'lblLocation
+        '
+        Me.lblLocation.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLocation.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblLocation.Location = New System.Drawing.Point(56, 192)
+        Me.lblLocation.Name = "lblLocation"
+        Me.lblLocation.Size = New System.Drawing.Size(296, 42)
+        Me.lblLocation.TabIndex = 62
+        Me.lblLocation.Text = "lblLocation"
+        '
+        'lblPrice
+        '
+        Me.lblPrice.BackColor = System.Drawing.SystemColors.Control
+        Me.lblPrice.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblPrice.Location = New System.Drawing.Point(9, 249)
+        Me.lblPrice.Name = "lblPrice"
+        Me.lblPrice.Size = New System.Drawing.Size(343, 30)
+        Me.lblPrice.TabIndex = 61
+        Me.lblPrice.Text = "lblPrice"
+        Me.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'CalendarModifyForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(364, 381)
+        Me.ClientSize = New System.Drawing.Size(364, 461)
+        Me.Controls.Add(Me.lblStartPrompt)
+        Me.Controls.Add(Me.lblEndPrompt)
+        Me.Controls.Add(Me.lblLocation)
+        Me.Controls.Add(Me.lblPrice)
         Me.Controls.Add(Me.btnRate)
         Me.Controls.Add(Me.lblPrompt)
         Me.Controls.Add(Me.lblFromPrompt)
@@ -261,4 +312,8 @@ Partial Class CalendarModifyForm
     Friend WithEvents lblTitle As Label
     Friend WithEvents lblDescription As Label
     Friend WithEvents btnRate As Button
+    Friend WithEvents lblStartPrompt As Label
+    Friend WithEvents lblEndPrompt As Label
+    Friend WithEvents lblLocation As Label
+    Friend WithEvents lblPrice As Label
 End Class

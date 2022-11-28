@@ -45,7 +45,7 @@ Partial Class CarStopForm
         Me.lblDescription.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblDescription.Location = New System.Drawing.Point(45, -302)
         Me.lblDescription.Name = "lblDescription"
-        Me.lblDescription.Size = New System.Drawing.Size(191, 52)
+        Me.lblDescription.Size = New System.Drawing.Size(211, 52)
         Me.lblDescription.TabIndex = 15
         Me.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -54,7 +54,7 @@ Partial Class CarStopForm
         Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblTitle.Location = New System.Drawing.Point(12, 9)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(340, 45)
+        Me.lblTitle.Size = New System.Drawing.Size(360, 45)
         Me.lblTitle.TabIndex = 22
         Me.lblTitle.Text = "lblTitle"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -70,7 +70,7 @@ Partial Class CarStopForm
         Me.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnOk.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnOk.ForeColor = System.Drawing.Color.White
-        Me.btnOk.Location = New System.Drawing.Point(132, 287)
+        Me.btnOk.Location = New System.Drawing.Point(142, 287)
         Me.btnOk.Name = "btnOk"
         Me.btnOk.Size = New System.Drawing.Size(100, 40)
         Me.btnOk.TabIndex = 34
@@ -88,7 +88,7 @@ Partial Class CarStopForm
         Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancel.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnCancel.ForeColor = System.Drawing.Color.White
-        Me.btnCancel.Location = New System.Drawing.Point(252, 287)
+        Me.btnCancel.Location = New System.Drawing.Point(272, 287)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(100, 40)
         Me.btnCancel.TabIndex = 33
@@ -197,7 +197,7 @@ Partial Class CarStopForm
         Me.lblPrompt.Location = New System.Drawing.Point(9, 234)
         Me.lblPrompt.Margin = New System.Windows.Forms.Padding(0)
         Me.lblPrompt.Name = "lblPrompt"
-        Me.lblPrompt.Size = New System.Drawing.Size(346, 50)
+        Me.lblPrompt.Size = New System.Drawing.Size(363, 50)
         Me.lblPrompt.TabIndex = 42
         Me.lblPrompt.Text = "lblPrompt"
         Me.lblPrompt.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -207,7 +207,7 @@ Partial Class CarStopForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(364, 339)
+        Me.ClientSize = New System.Drawing.Size(384, 339)
         Me.Controls.Add(Me.lblPrompt)
         Me.Controls.Add(Me.lblFromPrompt)
         Me.Controls.Add(Me.lblToPrompt)

@@ -164,7 +164,15 @@ Public Class CarFeatureForm
     End Sub
 
     Private Sub btnCamera_Click(sender As Object, e As EventArgs) Handles btnCamera.Click
+        Me.Hide()
         carCamera = New CarCameraForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow)
         carCamera.Show()
     End Sub
+
+    Public Overridable Sub CloseAllChildren()
+        If (Me.carCamera IsNot Nothing) Then
+            Me.carCamera.CloseAllForms()
+        End If
+    End Sub
+
 End Class

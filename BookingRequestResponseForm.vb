@@ -34,6 +34,9 @@
                 Me.btnCancel.Visible = True
                 Me.btnCheck.Visible = True
         End Select
+
+        Me.Form_Resize(Nothing, Nothing)
+        Me.Form_LocationChanged(Nothing, Nothing)
     End Sub
 
     Private Sub BookingRequestResponseFormvb_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -48,8 +51,8 @@
         Dim endTime = Format(Me.bookingEvent.GetEndDate, "ddd d MMM yyyy") & " at " & Format(Me.bookingEvent.GetEndDate, "h:mm tt")
         Me.lblTime.Text = startTime & vbCrLf & endTime
 
-        Me.Form_Resize(Nothing, Nothing)
-        Me.Form_LocationChanged(Nothing, Nothing)
+        Me.lblLocation.Text = Me.bookingEvent.GetStartLocation & vbCrLf & Me.bookingEvent.GetEndLocation
+
     End Sub
 
     ' ----------------
@@ -65,7 +68,7 @@
     End Sub
 
     Private Sub btnCheck_Click(sender As Object, e As EventArgs) Handles btnCheck.Click
-        Me.bookingForm = New CalendarCarSelectForm("rider", Me.scenario, Me.homeWindow, Me.homeWindow, Me.devWindow, Me.bookingEvent.GetStartDate, Me.bookingEvent.GetEndDate)
+        Me.bookingForm = New CalendarCarSelectForm("rider", Me.scenario, Me.homeWindow, Me.homeWindow, Me.devWindow, Me.bookingEvent.GetStartDate)
         Me.devWindow.SetCurrentRiderForm(Me.bookingForm)
         Me.bookingForm.Show()
         Me.Close()
@@ -76,7 +79,7 @@
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(320, 375)
+        Me.Size = New Size(320, 420)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

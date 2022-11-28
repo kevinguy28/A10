@@ -22,15 +22,22 @@ Public Class BookingRequestForm
         Me.devWindow = devWindow
         Me.bookingEvent = bookingEvent
 
+        Me.Form_Resize(Nothing, Nothing)
+        Me.Form_LocationChanged(Nothing, Nothing)
+
     End Sub
 
     Private Sub BookingRequestForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Me.lblPrice.Text = ""
+
         Select Case Me.user
             Case "owner"
                 Me.Text = "Car Owner"
+                Me.lblPrice.Text += "Earnings: $"
             Case "rider"
                 Me.Text = "Car Rider"
+                Me.lblPrice.Text += "Price: $"
         End Select
 
         Me.lblPrompt.Text = "This user wants to book your" & vbCrLf & Me.bookingEvent.GetColour & " " & Me.bookingEvent.GetCar
@@ -43,8 +50,9 @@ Public Class BookingRequestForm
         Dim endTime = Format(Me.bookingEvent.GetEndDate, "ddd d MMM yyyy") & " at " & Format(Me.bookingEvent.GetEndDate, "h:mm tt")
         Me.lblTime.Text = startTime & vbCrLf & endTime
 
-        Me.Form_Resize(Nothing, Nothing)
-        Me.Form_LocationChanged(Nothing, Nothing)
+        Me.lblLocation.Text = Me.bookingEvent.GetStartLocation & vbCrLf & Me.bookingEvent.GetEndLocation
+
+        Me.lblPrice.Text += "" & Me.devWindow.GetCost(Me.bookingEvent.GetStartLocation, Me.bookingEvent.GetEndLocation)
     End Sub
 
     ' ----------------
@@ -73,7 +81,7 @@ Public Class BookingRequestForm
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(320, 360)
+        Me.Size = New Size(340, 470)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

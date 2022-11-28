@@ -33,6 +33,10 @@ Partial Class BookingRequestForm
         Me.btnDeny = New System.Windows.Forms.Button()
         Me.btnAccept = New System.Windows.Forms.Button()
         Me.lblUser = New System.Windows.Forms.Label()
+        Me.lblStartPrompt = New System.Windows.Forms.Label()
+        Me.lblEndPrompt = New System.Windows.Forms.Label()
+        Me.lblLocation = New System.Windows.Forms.Label()
+        Me.lblPrice = New System.Windows.Forms.Label()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgRating, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -132,7 +136,7 @@ Partial Class BookingRequestForm
         Me.btnDeny.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDeny.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnDeny.ForeColor = System.Drawing.Color.White
-        Me.btnDeny.Location = New System.Drawing.Point(192, 269)
+        Me.btnDeny.Location = New System.Drawing.Point(212, 379)
         Me.btnDeny.Name = "btnDeny"
         Me.btnDeny.Size = New System.Drawing.Size(100, 40)
         Me.btnDeny.TabIndex = 22
@@ -150,7 +154,7 @@ Partial Class BookingRequestForm
         Me.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAccept.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnAccept.ForeColor = System.Drawing.Color.White
-        Me.btnAccept.Location = New System.Drawing.Point(12, 269)
+        Me.btnAccept.Location = New System.Drawing.Point(12, 379)
         Me.btnAccept.Name = "btnAccept"
         Me.btnAccept.Size = New System.Drawing.Size(100, 40)
         Me.btnAccept.TabIndex = 21
@@ -169,11 +173,60 @@ Partial Class BookingRequestForm
         Me.lblUser.Text = "lblUser"
         Me.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'lblStartPrompt
+        '
+        Me.lblStartPrompt.AutoSize = True
+        Me.lblStartPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblStartPrompt.Location = New System.Drawing.Point(34, 243)
+        Me.lblStartPrompt.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblStartPrompt.Name = "lblStartPrompt"
+        Me.lblStartPrompt.Size = New System.Drawing.Size(44, 21)
+        Me.lblStartPrompt.TabIndex = 60
+        Me.lblStartPrompt.Text = "start:"
+        '
+        'lblEndPrompt
+        '
+        Me.lblEndPrompt.AutoSize = True
+        Me.lblEndPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblEndPrompt.Location = New System.Drawing.Point(39, 264)
+        Me.lblEndPrompt.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblEndPrompt.Name = "lblEndPrompt"
+        Me.lblEndPrompt.Size = New System.Drawing.Size(39, 21)
+        Me.lblEndPrompt.TabIndex = 59
+        Me.lblEndPrompt.Text = "end:"
+        '
+        'lblLocation
+        '
+        Me.lblLocation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblLocation.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLocation.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblLocation.Location = New System.Drawing.Point(78, 243)
+        Me.lblLocation.Name = "lblLocation"
+        Me.lblLocation.Size = New System.Drawing.Size(246, 42)
+        Me.lblLocation.TabIndex = 58
+        Me.lblLocation.Text = "lblLocation" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Toronto Metropolitan University"
+        '
+        'lblPrice
+        '
+        Me.lblPrice.BackColor = System.Drawing.SystemColors.Control
+        Me.lblPrice.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblPrice.Location = New System.Drawing.Point(31, 300)
+        Me.lblPrice.Name = "lblPrice"
+        Me.lblPrice.Size = New System.Drawing.Size(273, 30)
+        Me.lblPrice.TabIndex = 57
+        Me.lblPrice.Text = "lblPrice"
+        Me.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'BookingRequestForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(304, 321)
+        Me.ClientSize = New System.Drawing.Size(324, 431)
+        Me.Controls.Add(Me.lblStartPrompt)
+        Me.Controls.Add(Me.lblEndPrompt)
+        Me.Controls.Add(Me.lblLocation)
+        Me.Controls.Add(Me.lblPrice)
         Me.Controls.Add(Me.lblUser)
         Me.Controls.Add(Me.btnDeny)
         Me.Controls.Add(Me.btnAccept)
@@ -205,4 +258,8 @@ Partial Class BookingRequestForm
     Friend WithEvents btnDeny As Button
     Friend WithEvents btnAccept As Button
     Friend WithEvents lblUser As Label
+    Friend WithEvents lblStartPrompt As Label
+    Friend WithEvents lblEndPrompt As Label
+    Friend WithEvents lblLocation As Label
+    Friend WithEvents lblPrice As Label
 End Class

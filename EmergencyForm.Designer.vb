@@ -37,7 +37,7 @@ Partial Class EmergencyForm
         '
         Me.lblDiagnostic.BackColor = System.Drawing.Color.White
         Me.lblDiagnostic.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblDiagnostic.Location = New System.Drawing.Point(46, 422)
+        Me.lblDiagnostic.Location = New System.Drawing.Point(60, 492)
         Me.lblDiagnostic.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDiagnostic.Name = "lblDiagnostic"
         Me.lblDiagnostic.Size = New System.Drawing.Size(188, 38)
@@ -49,7 +49,7 @@ Partial Class EmergencyForm
         '
         Me.lblCarMedia.BackColor = System.Drawing.Color.White
         Me.lblCarMedia.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblCarMedia.Location = New System.Drawing.Point(267, 204)
+        Me.lblCarMedia.Location = New System.Drawing.Point(260, 277)
         Me.lblCarMedia.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblCarMedia.Name = "lblCarMedia"
         Me.lblCarMedia.Size = New System.Drawing.Size(150, 38)
@@ -61,7 +61,7 @@ Partial Class EmergencyForm
         '
         Me.lblAccident.BackColor = System.Drawing.Color.White
         Me.lblAccident.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblAccident.Location = New System.Drawing.Point(67, 204)
+        Me.lblAccident.Location = New System.Drawing.Point(74, 277)
         Me.lblAccident.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblAccident.Name = "lblAccident"
         Me.lblAccident.Size = New System.Drawing.Size(150, 38)
@@ -72,11 +72,14 @@ Partial Class EmergencyForm
         'btnTechProblem
         '
         Me.btnTechProblem.BackColor = System.Drawing.Color.White
-        Me.btnTechProblem.BackgroundImage = Global.A10.My.Resources.Resources.tech
+        Me.btnTechProblem.BackgroundImage = Global.A10.My.Resources.Resources.techproblem_neutral
         Me.btnTechProblem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnTechProblem.FlatAppearance.BorderSize = 0
+        Me.btnTechProblem.FlatAppearance.CheckedBackColor = System.Drawing.Color.White
+        Me.btnTechProblem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.btnTechProblem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnTechProblem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnTechProblem.Location = New System.Drawing.Point(67, 463)
+        Me.btnTechProblem.Location = New System.Drawing.Point(74, 533)
         Me.btnTechProblem.Name = "btnTechProblem"
         Me.btnTechProblem.Size = New System.Drawing.Size(150, 150)
         Me.btnTechProblem.TabIndex = 28
@@ -86,11 +89,14 @@ Partial Class EmergencyForm
         'btnIntrusion
         '
         Me.btnIntrusion.BackColor = System.Drawing.Color.White
-        Me.btnIntrusion.BackgroundImage = Global.A10.My.Resources.Resources.intrusion
+        Me.btnIntrusion.BackgroundImage = Global.A10.My.Resources.Resources.intrusion_neutral
         Me.btnIntrusion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnIntrusion.FlatAppearance.BorderSize = 0
+        Me.btnIntrusion.FlatAppearance.CheckedBackColor = System.Drawing.Color.White
+        Me.btnIntrusion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.btnIntrusion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnIntrusion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnIntrusion.Location = New System.Drawing.Point(267, 245)
+        Me.btnIntrusion.Location = New System.Drawing.Point(260, 317)
         Me.btnIntrusion.Name = "btnIntrusion"
         Me.btnIntrusion.Size = New System.Drawing.Size(150, 150)
         Me.btnIntrusion.TabIndex = 27
@@ -100,11 +106,14 @@ Partial Class EmergencyForm
         'btnAccident
         '
         Me.btnAccident.BackColor = System.Drawing.Color.White
-        Me.btnAccident.BackgroundImage = Global.A10.My.Resources.Resources.accident_pic
+        Me.btnAccident.BackgroundImage = Global.A10.My.Resources.Resources.accident_neutral
         Me.btnAccident.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnAccident.FlatAppearance.BorderSize = 0
+        Me.btnAccident.FlatAppearance.CheckedBackColor = System.Drawing.Color.White
+        Me.btnAccident.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.btnAccident.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnAccident.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAccident.Location = New System.Drawing.Point(67, 245)
+        Me.btnAccident.Location = New System.Drawing.Point(74, 317)
         Me.btnAccident.Name = "btnAccident"
         Me.btnAccident.Size = New System.Drawing.Size(150, 150)
         Me.btnAccident.TabIndex = 26
@@ -115,7 +124,7 @@ Partial Class EmergencyForm
         '
         Me.lblStop_Expel.BackColor = System.Drawing.Color.White
         Me.lblStop_Expel.Font = New System.Drawing.Font("Segoe UI Semibold", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblStop_Expel.Location = New System.Drawing.Point(252, 422)
+        Me.lblStop_Expel.Location = New System.Drawing.Point(252, 492)
         Me.lblStop_Expel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblStop_Expel.Name = "lblStop_Expel"
         Me.lblStop_Expel.Size = New System.Drawing.Size(179, 38)
@@ -126,11 +135,14 @@ Partial Class EmergencyForm
         'btnStop_Expel
         '
         Me.btnStop_Expel.BackColor = System.Drawing.Color.White
-        Me.btnStop_Expel.BackgroundImage = Global.A10.My.Resources.Resources._stop
+        Me.btnStop_Expel.BackgroundImage = Global.A10.My.Resources.Resources.expelrider_neutral
         Me.btnStop_Expel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnStop_Expel.FlatAppearance.BorderSize = 0
+        Me.btnStop_Expel.FlatAppearance.CheckedBackColor = System.Drawing.Color.White
+        Me.btnStop_Expel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.btnStop_Expel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnStop_Expel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStop_Expel.Location = New System.Drawing.Point(267, 463)
+        Me.btnStop_Expel.Location = New System.Drawing.Point(260, 533)
         Me.btnStop_Expel.Name = "btnStop_Expel"
         Me.btnStop_Expel.Size = New System.Drawing.Size(150, 150)
         Me.btnStop_Expel.TabIndex = 32

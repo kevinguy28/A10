@@ -22,7 +22,10 @@ Public Class RouteForm
     Dim previousBooking As UserCalendarEvent
 
     ' Children
-    Dim confirmForm As CarRouteChangeForm
+    Dim confirmForm As CalendarConfirmForm
+    Dim requestForm As BookingRequestForm
+    Dim responseForm As BookingRequestResponseForm
+    Dim changeForm As CarRouteChangeForm
     Dim recallForm As CarRecallForm
 
     Public Sub New(user As String, scenario As Integer, previousWindow As AppForm, homeWindow As HomeForm, devWindow As DevForm, startDate As Date, bookingEvent As UserCalendarEvent, Optional previousBooking As UserCalendarEvent = Nothing)
@@ -76,8 +79,6 @@ Public Class RouteForm
             Me.btnBook.Text = "Recall Car"
         End If
 
-        Me.UpdateLabels()
-
         ' If no current booking
         If Me.bookingEvent Is Nothing Then
             ' Disable
@@ -94,6 +95,12 @@ Public Class RouteForm
 
         'Rider
         If Me.user = "rider" Then
+            If Me.bookingEvent.GetStartLocation <> "" Then
+                Me.btnBook.Text = "Change"
+            Else
+                Me.CreateBackButton()
+                Me.Controls.Add(Me.btnBack)
+            End If
             Exit Sub
         End If
 
@@ -127,31 +134,9 @@ Public Class RouteForm
     ' --- Functions ---
     ' -----------------
 
-    Private Sub UpdateLabels()
-        Me.lblHourStart.Text = Format(Me.startTime, "hh")
-        Me.lblMinuteStart.Text = Format(Me.startTime, "mm")
-        Me.lblAmPmStart.Text = Format(Me.startTime, "tt").ToLower
-    End Sub
-
     Public Sub DisableForm()
-        ' Disable Combo Box
         Me.cmbxStart.Enabled = False
         Me.cmbxEnd.Enabled = False
-
-        ' Disable Up
-        Me.imgStartHourUp.Enabled = False
-        Me.imgStartHourDown.Enabled = False
-        Me.imgStartMinuteUp.Enabled = False
-        Me.imgStartMinuteDown.Enabled = False
-        Me.imgStartAmPmUp.Enabled = False
-        Me.imgStartAmPmDown.Enabled = False
-
-        ' Grey Out Time
-        Dim disableColour = Color.Gray
-        Me.lblHourStart.ForeColor = disableColour
-        Me.lblMinuteStart.ForeColor = disableColour
-        Me.lblStartColon.ForeColor = disableColour
-        Me.lblAmPmStart.ForeColor = disableColour
     End Sub
 
     Public Sub ShowError()
@@ -172,184 +157,86 @@ Public Class RouteForm
         Me.pbRoute.BackgroundImage = newMap
     End Sub
 
+    Public Sub ConfirmClicked()
+        ' Remove previous booking if there
+        If Me.previousBooking IsNot Nothing Then
+            Me.devWindow.RemoveBooking(Me.previousBooking)
+        End If
+
+        Me.Close()
+        Me.homeWindow.Show()
+        Me.SetCurrentForm(Me.homeWindow)
+
+        ' Send request to Owner
+        If Me.bookingEvent.GetCarOwnerName = "Jane Doe" Then
+            Me.requestForm = New BookingRequestForm("owner", Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent)
+            Me.devWindow.OpenPopup("owner", Me.requestForm)
+        Else
+            Me.responseForm = New BookingRequestResponseForm(Me.user, Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent, "accept")
+            Me.devWindow.OpenPopup(Me.user, Me.responseForm)
+            'Add booking
+            Me.devWindow.AddBooking(Me.bookingEvent)
+        End If
+
+        Me.homeWindow.CloseAllChildren()
+    End Sub
+
+    Public Sub CancelClicked()
+
+    End Sub
+
+    Public Overrides Sub CloseAllChildren()
+        If (Me.confirmForm IsNot Nothing) Then
+            Me.confirmForm.Dispose()
+        End If
+
+        If (Me.requestForm IsNot Nothing) Then
+            Me.requestForm.Dispose()
+        End If
+
+        If (Me.responseForm IsNot Nothing) Then
+            Me.responseForm.Dispose()
+        End If
+
+        If (Me.changeForm IsNot Nothing) Then
+            Me.changeForm.Dispose()
+        End If
+
+        If (Me.recallForm IsNot Nothing) Then
+            Me.recallForm.Dispose()
+        End If
+    End Sub
+
     ' --------------
     ' --- Button ---
     ' --------------
-
-    Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnBook.Click
+    Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
         Select Case Me.user
             Case "owner"
                 Me.recallForm = New CarRecallForm(Me.user, Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent)
                 Me.devWindow.OpenPopup(Me.user, Me.recallForm)
             Case "rider"
-                Me.confirmForm = New CarRouteChangeForm(Me.user, Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent)
-                Me.devWindow.OpenPopup(Me.user, Me.confirmForm)
+                ' Add Booking
+                If Me.bookingEvent.GetStartLocation = "" Then
+                    Me.bookingEvent.SetLocations(Me.cmbxStart.Text, Me.cmbxEnd.Text)
+                    Dim eta = Me.devWindow.GetETA(Me.cmbxStart.Text, Me.cmbxEnd.Text)
+                    Me.bookingEvent.SetEndDate(Me.bookingEvent.GetStartDate.AddMinutes(eta))
+
+                    Me.confirmForm = New CalendarConfirmForm(Me.bookingEvent, Me.user, Me.devWindow)
+                    Me.confirmForm.SetBookingForm(Me)
+
+                    Me.devWindow.OpenPopup(Me.user, Me.confirmForm)
+                    Exit Sub
+                End If
+                ' Change Route
+                Me.changeForm = New CarRouteChangeForm(Me.user, Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent)
+                Me.devWindow.OpenPopup(Me.user, Me.changeForm)
         End Select
     End Sub
 
-    ' -------------------
-    ' --- Time Change ---
-    ' -------------------
-
-    Private Sub UpdateMinute(minuteChange As Integer)
-        Dim hourChng = 0
-
-        Dim newMinute = Me.startMinute + minuteChange
-        If newMinute <= -1 Then
-            ' Minus hour
-            newMinute = newMinute + 60
-            hourChng = -1
-        ElseIf newMinute >= 60 Then
-            ' Plus Hour
-            newMinute = newMinute - 60
-            hourChng = 1
-        End If
-
-        Me.startMinute = newMinute
-        Me.startTime = New Date(Me.startYear, Me.startMonth, Me.startDay, Me.startHour, Me.startMinute, 0)
-        changedStartTime = True
-
-        If hourChng <> 0 Then
-            Me.UpdateHour(hourChng)
-        End If
-
-        Me.UpdateLabels()
-    End Sub
-    Private Sub UpdateHour(hourChange As Integer)
-        Dim newHour = Me.startHour + hourChange
-        If newHour <= -1 Then
-            ' Jump Forward
-            newHour = 23
-        ElseIf newHour >= 24 Then
-            ' Jump Back
-            newHour = 0
-        End If
-
-        Me.startHour = newHour
-        Me.startTime = New Date(Me.startYear, Me.startMonth, Me.startDay, Me.startHour, Me.startMinute, 0)
-        changedStartTime = True
-
-        Me.UpdateLabels()
-    End Sub
-
-    ' ------------------------
-    ' --- Time Arrow Click ---
-    ' ------------------------
-
-    Private Sub imgTime_Click(sender As Object, e As EventArgs) Handles _
-        imgStartHourUp.Click, imgStartMinuteUp.Click, imgStartHourDown.Click,
-        imgStartMinuteDown.Click, imgStartAmPmUp.Click, imgStartAmPmDown.Click
-
-        Dim imgCur = CType(sender, PictureBox)
-
-        If (imgCur Is imgStartHourUp) Then
-            Me.UpdateHour(1)
-
-        ElseIf (imgCur Is imgStartMinuteUp) Then
-            Me.UpdateMinute(1)
-
-        ElseIf (imgCur Is imgStartHourDown) Then
-            Me.UpdateHour(-1)
-
-        ElseIf (imgCur Is imgStartMinuteDown) Then
-            Me.UpdateMinute(-1)
-
-        ElseIf (imgCur Is imgStartAmPmUp) Then
-            If Me.startHour >= 12 Then
-                Me.UpdateHour(-12)
-            Else
-                Me.UpdateHour(12)
-            End If
-
-        ElseIf (imgCur Is imgStartAmPmDown) Then
-            If Me.startHour >= 12 Then
-                Me.UpdateHour(-12)
-            Else
-                Me.UpdateHour(12)
-            End If
-
-        End If
-    End Sub
-
-    ' -----------------------
-    ' --- Time Arrow Hold ---
-    ' -----------------------
-
-    Private Sub imgTime_MouseDown(sender As Object, e As MouseEventArgs) Handles _
-        imgStartHourUp.MouseDown, imgStartMinuteUp.MouseDown, imgStartHourDown.MouseDown, imgStartMinuteDown.MouseDown
-
-        Me.mouseHoldSec = 0
-        Me.mouseHoldImg = CType(sender, PictureBox)
-        Me.tmrMouseHold.Start()
-    End Sub
-
-    Private Sub imgTime_MouseUp(sender As Object, e As MouseEventArgs) Handles _
-        imgStartHourUp.MouseUp, imgStartMinuteUp.MouseUp, imgStartHourDown.MouseUp, imgStartMinuteDown.MouseUp
-
-        Me.mouseHoldSec = 0
-        Me.mouseHoldImg = Nothing
-        Me.tmrMouseHold.Stop()
-    End Sub
-
-    Private Sub tmrMouseHold_Tick(sender As Object, e As EventArgs) Handles tmrMouseHold.Tick
-        If Me.mouseHoldSec = 30 Then
-            Me.mouseHoldSec = 0
-
-            Dim imgCur = Me.mouseHoldImg, PictureBox
-            Dim hourChng = 6
-            Dim minChng = 10
-
-            If (imgCur Is imgStartHourUp) Then
-                Me.UpdateHour(hourChng)
-
-            ElseIf (imgCur Is imgStartMinuteUp) Then
-                Me.UpdateMinute(minChng)
-
-            ElseIf (imgCur Is imgStartHourDown) Then
-                Me.UpdateHour(-hourChng)
-
-            ElseIf (imgCur Is imgStartMinuteDown) Then
-                Me.UpdateMinute(-minChng)
-
-            End If
-
-        Else
-            Me.mouseHoldSec += 1
-        End If
-    End Sub
-
-    ' ------------------------
-    ' --- Time Arrow Hover ---
-    ' ------------------------
-
-    Private Sub btnTime_MouseEnter(sender As Object, e As EventArgs) Handles _
-        imgStartHourUp.MouseEnter, imgStartMinuteUp.MouseEnter, imgStartHourDown.MouseEnter,
-        imgStartMinuteDown.MouseEnter, imgStartAmPmUp.MouseEnter, imgStartAmPmDown.MouseEnter
-
-        Dim imgCur = CType(sender, PictureBox)
-
-        If (imgCur Is imgStartHourUp) Or (imgCur Is imgStartMinuteUp) Or (imgCur Is imgStartAmPmUp) Then
-            imgCur.Image = My.Resources.arrow_up_hover
-
-        ElseIf (imgCur Is imgStartHourDown) Or (imgCur Is imgStartMinuteDown) Or (imgCur Is imgStartAmPmDown) Then
-            imgCur.Image = My.Resources.arrow_down_hover
-        End If
-    End Sub
-
-    Private Sub btnStartHourUp_MouseLeave(sender As Object, e As EventArgs) Handles _
-        imgStartHourUp.MouseLeave, imgStartMinuteUp.MouseLeave, imgStartHourDown.MouseLeave,
-        imgStartMinuteDown.MouseLeave, imgStartAmPmUp.MouseLeave, imgStartAmPmDown.MouseLeave
-
-        Dim imgCur = CType(sender, PictureBox)
-
-        If (imgCur Is imgStartHourUp) Or (imgCur Is imgStartMinuteUp) Or (imgCur Is imgStartAmPmUp) Then
-            imgCur.Image = My.Resources.arrow_up_neutral
-
-        ElseIf (imgCur Is imgStartHourDown) Or (imgCur Is imgStartMinuteDown) Or (imgCur Is imgStartAmPmDown) Then
-            imgCur.Image = My.Resources.arrow_down_neutral
-
-        End If
-    End Sub
+    ' -----------------
+    ' --- Locations ---
+    ' -----------------
 
     Private Sub cmbx_TextChanged(sender As Object, e As EventArgs) Handles cmbxStart.TextChanged, cmbxEnd.TextChanged
         If Me.cmbxStart.Text <> "" And Me.cmbxEnd.Text <> "" Then
@@ -358,4 +245,5 @@ Public Class RouteForm
             Me.txtPrice.Text = "$" & Me.devWindow.GetCost(Me.cmbxStart.Text, Me.cmbxEnd.Text)
         End If
     End Sub
+
 End Class

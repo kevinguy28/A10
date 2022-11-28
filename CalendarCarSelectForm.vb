@@ -7,7 +7,6 @@ Public Class CalendarCarSelectForm
     Inherits AppForm
 
     Dim dateStart As Date
-    Dim dateEnd As Date
 
     Dim carAvailability As List(Of UserCalendarEvent)
     Dim itemList As List(Of CarListControl)
@@ -21,16 +20,17 @@ Public Class CalendarCarSelectForm
     Dim previousEvent As UserCalendarEvent
 
     ' Children
-    Dim confirmForm As CalendarConfirmForm
-    Dim requestForm As BookingRequestForm
-    Dim responseForm As BookingRequestResponseForm
+    'Dim confirmForm As CalendarConfirmForm
+    'Dim requestForm As BookingRequestForm
+    'Dim responseForm As BookingRequestResponseForm
+    Dim routeWindow As RouteForm
 
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
 
     ' Error Shake
     Dim WithEvents backgroundWorker As BackgroundWorker
 
-    Public Sub New(user As String, scenario As Integer, previousForm As AppForm, HomeForm As HomeForm, DevForm As DevForm, dateStart As Date, dateEnd As Date, Optional previousEvent As UserCalendarEvent = Nothing)
+    Public Sub New(user As String, scenario As Integer, previousForm As AppForm, HomeForm As HomeForm, DevForm As DevForm, dateStart As Date, Optional previousEvent As UserCalendarEvent = Nothing)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -49,7 +49,6 @@ Public Class CalendarCarSelectForm
 
         ' Date
         Me.dateStart = dateStart
-        Me.dateEnd = dateEnd
     End Sub
 
     Private Sub CalendarCarSelect_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -70,11 +69,11 @@ Public Class CalendarCarSelectForm
         Me.Controls.Add(Me.btnBack)
 
         Dim startTime = Format(dateStart, "ddd d MMM yyyy") & " at " & Format(dateStart, "h:mm tt")
-        Dim endTime = Format(dateEnd, "ddd d MMM yyyy") & " at " & Format(dateEnd, "h:mm tt")
+        Dim endTime = Format(dateStart.AddMinutes(10), "ddd d MMM yyyy") & " at " & Format(dateStart.AddMinutes(10), "h:mm tt")
         Me.lblTime.Text = startTime & vbCrLf & endTime
 
         ' Availability
-        Me.carAvailability = Me.devWindow.GetAllAvailabilities(Me.dateStart, Me.dateEnd)
+        Me.carAvailability = Me.devWindow.GetAllAvailabilities(Me.dateStart, Me.dateStart.AddMinutes(10))
         If Me.carAvailability.Count <> 0 Then
             Me.avbltyExists = True
         End If
@@ -142,20 +141,9 @@ Public Class CalendarCarSelectForm
     Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
         Me.bookingEvent = New UserCalendarEvent(My.Resources.RiderProfile, "John Smith", "rider",
                                                 Me.selectedEvent.GetCar, Me.selectedEvent.GetColour, Me.selectedEvent.GetRatingInt,
-                                                dateStart, dateEnd)
+                                                Me.dateStart, Me.dateStart.AddMinutes(10))
+
         Me.bookingEvent.OwnerFound(Me.selectedEvent.GetName, Me.selectedEvent.GetProfilePicture)
-
-        Me.confirmForm = New CalendarConfirmForm(Me.bookingEvent, Me.user, Me.devWindow)
-        Me.confirmForm.SetBookingForm(Me)
-
-        Me.devWindow.OpenPopup(Me.user, Me.confirmForm)
-    End Sub
-
-    Public Sub ConfirmClicked()
-        ' Remove previous booking if there
-        If Me.previousEvent IsNot Nothing Then
-            Me.devWindow.RemoveBooking(Me.previousEvent)
-        End If
 
         'Check for conflict
         Dim err = Me.devWindow.CheckRiderBookingConflict(Me.bookingEvent.GetStartDate, Me.bookingEvent.GetEndDate)
@@ -166,31 +154,15 @@ Public Class CalendarCarSelectForm
             Exit Sub
         End If
 
-        Me.Close()
-        Me.homeWindow.Show()
-        Me.SetCurrentForm(Me.homeWindow)
-
-        ' Send request to Owner
-        If Me.bookingEvent.GetCarOwnerName = "Jane Doe" Then
-            Me.requestForm = New BookingRequestForm("owner", Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent)
-            Me.devWindow.OpenPopup("owner", Me.requestForm)
-        Else
-            Me.responseForm = New BookingRequestResponseForm(Me.user, Me.scenario, Me.homeWindow, Me.devWindow, Me.bookingEvent, "accept")
-            Me.devWindow.OpenPopup(Me.user, Me.responseForm)
-            'Add booking
-            Me.devWindow.AddBooking(Me.bookingEvent)
-        End If
-
-        Me.homeWindow.CloseAllChildren()
-    End Sub
-
-    Public Sub CancelClicked()
-
+        Me.routeWindow = New RouteForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, Me.dateStart, Me.bookingEvent, Me.previousEvent)
+        Me.Hide()
+        Me.SetCurrentForm(Me.routeWindow)
+        Me.routeWindow.Show()
     End Sub
 
     Public Overrides Sub CloseAllChildren()
-        If (Me.confirmForm IsNot Nothing) Then
-            Me.confirmForm.Dispose()
+        If (Me.routeWindow IsNot Nothing) Then
+            Me.routeWindow.Dispose()
         End If
     End Sub
 

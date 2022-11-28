@@ -1,7 +1,7 @@
 ﻿Public Class CalendarConfirmForm
 
     ' Parents
-    Dim bookingForm As CalendarCarSelectForm
+    Dim bookingForm As RouteForm
     Dim schedulingForm As CalendarSchedulingForm
 
     Dim user As String
@@ -51,15 +51,22 @@
         Dim endTime = Format(usrEvent.GetEndDate, "ddd d MMM yyyy") & " at " & Format(usrEvent.GetEndDate, "h:mm tt")
         Me.lblTime.Text = startTime & vbCrLf & endTime
 
+        Me.lblLocation.Text = Me.usrEvent.GetStartLocation & vbCrLf & Me.usrEvent.GetEndLocation
+
         ' Repeat
-        If Me.repeat <> "" Then
-            Me.lblRepeat.Text = Me.repeat & " until " & Format(Me.repeatTime, "dddd d MMMM yyyy")
-        Else
-            Me.lblRepeat.Text = ""
-        End If
+        Select Case Me.user
+            Case "owner"
+                If Me.repeat <> "" AndAlso Me.repeat <> "Never" Then
+                    Me.lblRepeat.Text = Me.repeat & " until " & Format(Me.repeatTime, "dddd d MMMM yyyy")
+                Else
+                    Me.lblRepeat.Text = ""
+                End If
+            Case "rider"
+                Me.lblRepeat.Text = "Price: $" & Me.devWindow.GetCost(Me.usrEvent.GetStartLocation, Me.usrEvent.GetEndLocation)
+        End Select
     End Sub
 
-    Public Sub SetBookingForm(bookingForm As CalendarCarSelectForm)
+    Public Sub SetBookingForm(bookingForm As RouteForm)
         Me.bookingForm = bookingForm
     End Sub
 
@@ -94,7 +101,7 @@
     ' -------------------------
 
     Private Sub CalendarCarConfirmForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(320, 375)
+        Me.Size = New Size(320, 460)
     End Sub
 
     Private Sub CalendarCarConfirmForm_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

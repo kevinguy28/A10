@@ -6,7 +6,7 @@
     Dim cancelBooking As ExitCarForm
     Dim riderRebook As RescheduleNotification
 
-    Public Sub New(user As String, Scenario As Integer, previousForm As CarForm, homeForm As HomeForm, devForm As DevForm)
+    Public Sub New(user As String, Scenario As Integer, previousForm As AppForm, homeForm As HomeForm, devForm As DevForm)
 
         ' This call is required by the designer.
         InitializeComponent()

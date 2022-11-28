@@ -94,7 +94,7 @@ Public Class CarStopForm
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(380, 378)
+        Me.Size = New Size(400, 378)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

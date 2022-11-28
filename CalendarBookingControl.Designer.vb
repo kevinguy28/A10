@@ -24,8 +24,6 @@ Partial Class CalendarBookingControl
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.flPanel = New System.Windows.Forms.FlowLayoutPanel()
-        Me.lblEndRight = New System.Windows.Forms.Label()
-        Me.lblEndLeft = New System.Windows.Forms.Label()
         Me.lblStartRight = New System.Windows.Forms.Label()
         Me.lblStartLeft = New System.Windows.Forms.Label()
         Me.tmrMouseHold = New System.Windows.Forms.Timer(Me.components)
@@ -38,22 +36,6 @@ Partial Class CalendarBookingControl
         Me.flPanel.Name = "flPanel"
         Me.flPanel.Size = New System.Drawing.Size(100, 100)
         Me.flPanel.TabIndex = 7
-        '
-        'lblEndRight
-        '
-        Me.lblEndRight.BackColor = System.Drawing.Color.DarkGray
-        Me.lblEndRight.Location = New System.Drawing.Point(15, 60)
-        Me.lblEndRight.Name = "lblEndRight"
-        Me.lblEndRight.Size = New System.Drawing.Size(5, 50)
-        Me.lblEndRight.TabIndex = 2
-        '
-        'lblEndLeft
-        '
-        Me.lblEndLeft.BackColor = System.Drawing.Color.DarkGray
-        Me.lblEndLeft.Location = New System.Drawing.Point(3, 60)
-        Me.lblEndLeft.Name = "lblEndLeft"
-        Me.lblEndLeft.Size = New System.Drawing.Size(5, 50)
-        Me.lblEndLeft.TabIndex = 3
         '
         'lblStartRight
         '
@@ -79,11 +61,8 @@ Partial Class CalendarBookingControl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.White
-        Me.Controls.Add(Me.lblEndRight)
-        Me.Controls.Add(Me.lblEndLeft)
         Me.Controls.Add(Me.lblStartRight)
         Me.Controls.Add(Me.lblStartLeft)
         Me.Controls.Add(Me.flPanel)
@@ -95,7 +74,5 @@ Partial Class CalendarBookingControl
     Friend WithEvents flPanel As FlowLayoutPanel
     Friend WithEvents lblStartLeft As Label
     Friend WithEvents lblStartRight As Label
-    Friend WithEvents lblEndLeft As Label
-    Friend WithEvents lblEndRight As Label
     Friend WithEvents tmrMouseHold As Timer
 End Class

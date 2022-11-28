@@ -68,6 +68,10 @@ Public Class CarForm
         If (Me.carDiagnostic IsNot Nothing) Then
             Me.carDiagnostic.CloseAllForms()
         End If
+
+        If (Me.carEmergency IsNot Nothing) Then
+            Me.carEmergency.CloseAllForms()
+        End If
     End Sub
 
     Private Function DisabledClick(disableOwner As Boolean)
@@ -116,7 +120,7 @@ Public Class CarForm
     End Sub
 
     Private Sub btnCarFeatures_MouseLeave(sender As Object, e As EventArgs) Handles btnCarFeatures.MouseLeave
-        btnCarFeatures.BackgroundImage = My.Resources.fan_neutral
+        btnCarFeatures.BackgroundImage = My.Resources.carfeatures_neutral
 
     End Sub
 
@@ -162,11 +166,19 @@ Public Class CarForm
     End Sub
 
     Private Sub btnDiagnostic_MouseEnter(sender As Object, e As EventArgs) Handles btnDiagnostic.MouseEnter
-        btnDiagnostic.BackgroundImage = My.Resources.diagnostic4
+        btnDiagnostic.BackgroundImage = My.Resources.diagnostic_hover
     End Sub
 
     Private Sub btnDiagnostic_MouseLeave(sender As Object, e As EventArgs) Handles btnDiagnostic.MouseLeave
-        btnDiagnostic.BackgroundImage = My.Resources.diagnostic3
+        btnDiagnostic.BackgroundImage = My.Resources.diagnostic_neutral
+    End Sub
+
+    Private Sub btnDiagnostic_MouseUp(sender As Object, e As MouseEventArgs) Handles btnDiagnostic.MouseUp
+        btnDiagnostic.BackgroundImage = My.Resources.diagnostic_hover
+    End Sub
+
+    Private Sub btnDiagnostic_MouseDown(sender As Object, e As MouseEventArgs) Handles btnDiagnostic.MouseDown
+        btnDiagnostic.BackgroundImage = My.Resources.diagnostic_press
     End Sub
 
     '------------------
@@ -179,6 +191,22 @@ Public Class CarForm
         Me.carEmergency = New EmergencyForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow)
         Me.carEmergency.Show()
         Me.SetCurrentForm(Me.carEmergency)
+    End Sub
+
+    Private Sub btnEmergency_MouseDown(sender As Object, e As MouseEventArgs) Handles btnEmergency.MouseDown
+        btnEmergency.BackgroundImage = My.Resources.emergency_press
+    End Sub
+
+    Private Sub btnEmergency_MouseUp(sender As Object, e As MouseEventArgs) Handles btnEmergency.MouseUp
+        btnEmergency.BackgroundImage = My.Resources.emergency_hover
+    End Sub
+
+    Private Sub btnEmergency_MouseEnter(sender As Object, e As EventArgs) Handles btnEmergency.MouseEnter
+        btnEmergency.BackgroundImage = My.Resources.emergency_hover
+    End Sub
+
+    Private Sub btnEmergency_MouseLeave(sender As Object, e As EventArgs) Handles btnEmergency.MouseLeave
+        btnEmergency.BackgroundImage = My.Resources.emergency_neutral
     End Sub
 
     ' -------------
@@ -226,4 +254,5 @@ Public Class CarForm
         End Try
 
     End Sub
+
 End Class

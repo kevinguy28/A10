@@ -45,8 +45,6 @@
         Me.lblTime.Text = startTime & vbCrLf & endTime
 
         Me.lblLocation.Text = otherEvent.GetStartLocation & vbCrLf & otherEvent.GetEndLocation
-
-        Me.lblEta.Text = "ETA: " & Me.devWindow.GetETA(otherEvent.GetStartLocation, otherEvent.GetEndLocation) & " minutes"
     End Sub
 
     ' ------------------------

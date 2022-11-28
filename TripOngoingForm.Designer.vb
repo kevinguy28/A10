@@ -33,7 +33,6 @@ Partial Class TripOngoingForm
         Me.lblName = New System.Windows.Forms.Label()
         Me.imgProfilePicture = New System.Windows.Forms.PictureBox()
         Me.lblTitle = New System.Windows.Forms.Label()
-        Me.lblEta = New System.Windows.Forms.Label()
         Me.lblStartPrompt = New System.Windows.Forms.Label()
         Me.lblEndPrompt = New System.Windows.Forms.Label()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -45,7 +44,7 @@ Partial Class TripOngoingForm
         Me.lblLocation.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblLocation.Location = New System.Drawing.Point(56, 194)
         Me.lblLocation.Name = "lblLocation"
-        Me.lblLocation.Size = New System.Drawing.Size(239, 39)
+        Me.lblLocation.Size = New System.Drawing.Size(239, 42)
         Me.lblLocation.TabIndex = 50
         Me.lblLocation.Text = "lblLocation"
         '
@@ -73,7 +72,7 @@ Partial Class TripOngoingForm
         Me.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnOk.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnOk.ForeColor = System.Drawing.Color.White
-        Me.btnOk.Location = New System.Drawing.Point(102, 361)
+        Me.btnOk.Location = New System.Drawing.Point(102, 326)
         Me.btnOk.Name = "btnOk"
         Me.btnOk.Size = New System.Drawing.Size(100, 40)
         Me.btnOk.TabIndex = 47
@@ -85,7 +84,7 @@ Partial Class TripOngoingForm
         Me.lblPrompt.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblPrompt.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblPrompt.Location = New System.Drawing.Point(15, 308)
+        Me.lblPrompt.Location = New System.Drawing.Point(15, 273)
         Me.lblPrompt.Name = "lblPrompt"
         Me.lblPrompt.Size = New System.Drawing.Size(275, 50)
         Me.lblPrompt.TabIndex = 46
@@ -167,17 +166,6 @@ Partial Class TripOngoingForm
         Me.lblTitle.Text = "Trip Ongoing"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'lblEta
-        '
-        Me.lblEta.AutoSize = True
-        Me.lblEta.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblEta.Location = New System.Drawing.Point(9, 246)
-        Me.lblEta.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblEta.Name = "lblEta"
-        Me.lblEta.Size = New System.Drawing.Size(48, 21)
-        Me.lblEta.TabIndex = 51
-        Me.lblEta.Text = "lblEta"
-        '
         'lblStartPrompt
         '
         Me.lblStartPrompt.AutoSize = True
@@ -204,10 +192,9 @@ Partial Class TripOngoingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(304, 411)
+        Me.ClientSize = New System.Drawing.Size(304, 376)
         Me.Controls.Add(Me.lblStartPrompt)
         Me.Controls.Add(Me.lblEndPrompt)
-        Me.Controls.Add(Me.lblEta)
         Me.Controls.Add(Me.lblLocation)
         Me.Controls.Add(Me.lblUser)
         Me.Controls.Add(Me.btnOk)
@@ -238,7 +225,6 @@ Partial Class TripOngoingForm
     Friend WithEvents lblName As Label
     Friend WithEvents imgProfilePicture As PictureBox
     Friend WithEvents lblTitle As Label
-    Friend WithEvents lblEta As Label
     Friend WithEvents lblStartPrompt As Label
     Friend WithEvents lblEndPrompt As Label
 End Class

@@ -11,14 +11,16 @@
 
     Private Sub CarCameraForm_load(sender As Object, e As EventArgs) Handles Me.Load
         Me.SetBackground()
+        Me.CreateTitleLabel("Car Camera")
         Me.CreateHomeButton()
         Me.CreateBackButton()
+        Me.Controls.Add(Me.lblTitle)
         Me.Controls.Add(Me.btnHome)
         Me.Controls.Add(Me.btnBack)
 
         Me.SetLocation()
 
-        Me.Text = "Car Camera View"
+        Me.Text = "Car Owner Camera View"
     End Sub
 
     Private Sub btnFrontInterior_Click(sender As Object, e As EventArgs) Handles btnFrontInterior.Click

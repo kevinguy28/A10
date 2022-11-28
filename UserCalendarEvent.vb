@@ -26,7 +26,7 @@
     Dim booking As UserCalendarEvent
     Dim availability As UserCalendarEvent
 
-    Public Sub New(profilePicture As Image, userName As String, userType As String, carName As String, carColour As String, userRating As Integer, startDate As Date, endDate As Date, Optional startLocation As String = "", Optional endLocation As String = "")
+    Public Sub New(profilePicture As Image, userName As String, userType As String, carName As String, carColour As String, userRating As Integer, startDate As Date, Optional endDate As Date = Nothing, Optional startLocation As String = "", Optional endLocation As String = "")
         Me.profilePic = profilePicture
         Me.userName = userName
         Me.userType = userType
@@ -78,6 +78,10 @@
     Public Sub SetLocations(startLocation As String, endLocation As String)
         Me.startLocation = startLocation
         Me.endLocation = endLocation
+    End Sub
+
+    Public Sub SetEndDate(newDate As Date)
+        Me.endDate = newDate
     End Sub
 
     Public Function GetProfilePicture() As Bitmap

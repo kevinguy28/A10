@@ -138,7 +138,7 @@ Partial Class CalendarCarSelectForm
         Me.btnBook.Name = "btnBook"
         Me.btnBook.Size = New System.Drawing.Size(300, 60)
         Me.btnBook.TabIndex = 12
-        Me.btnBook.Text = "Book"
+        Me.btnBook.Text = "Select Route"
         Me.btnBook.UseVisualStyleBackColor = True
         '
         'lblTop

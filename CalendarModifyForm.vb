@@ -25,6 +25,8 @@
 
     Private Sub CalendarModify_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Me.lblPrice.Text = ""
+
         Select Case Me.user
             Case "owner"
                 'Labels
@@ -46,6 +48,7 @@
                     'Booking
                     Me.imgProfilePicture.Image = userEvent.GetCarRiderProfilePicture
                     Me.lblName.Text = userEvent.GetCarRiderName
+                    Me.lblPrice.Text = "Earnings: $" & Me.devWindow.GetCost(Me.userEvent.GetStartLocation, Me.userEvent.GetEndLocation)
                 End If
 
             Case "rider"
@@ -58,6 +61,7 @@
                 'Booking
                 Me.imgProfilePicture.Image = userEvent.GetCarOwnerProfilePicture
                 Me.lblName.Text = userEvent.GetCarOwnerName
+                Me.lblPrice.Text = "Price: $" & Me.devWindow.GetCost(Me.userEvent.GetStartLocation, Me.userEvent.GetEndLocation)
         End Select
 
         'Booking / Schedule
@@ -66,6 +70,9 @@
         Dim startTime = Format(Me.userEvent.GetStartDate, "ddd d MMM yyyy") & " at " & Format(Me.userEvent.GetStartDate, "h:mm tt")
         Dim endTime = Format(Me.userEvent.GetEndDate, "ddd d MMM yyyy") & " at " & Format(Me.userEvent.GetEndDate, "h:mm tt")
         Me.lblTime.Text = startTime & vbCrLf & endTime
+
+        Me.lblLocation.Text = Me.userEvent.GetStartLocation & vbCrLf & Me.userEvent.GetEndLocation
+
     End Sub
 
     ' ---------------
@@ -97,7 +104,7 @@
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(380, 420)
+        Me.Size = New Size(380, 500)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

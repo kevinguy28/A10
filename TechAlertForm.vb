@@ -11,7 +11,6 @@
     ' Opened
     Shared mainOpened = False
     Shared ownerOpened = False
-    Public Shared emergencyOpened = False
     Dim carDiagnostic As CarDiagnosticForm
     Dim previousForm As AppForm
     Dim carForm As CarForm
@@ -41,7 +40,6 @@
     End Sub
 
 
-
     ' -----------------
     ' --- Functions ---
     ' -----------------
@@ -51,24 +49,12 @@
             TechAlertForm.ownerOpened = True
             TechAlertForm.ownerTechForm = New TechAlertForm("owner", Me.scenario, Me.devWindow, Me.homeWindow, Me.previousForm, Me.carForm)
             TechAlertForm.ownerTechForm.Text = "Car Owner Accident"
-            'TechAlertForm.ownerAccidentForm.denyButton.Visible = False
-            'TechAlertForm.ownerAccidentForm.confirmButton.Visible = False
-            'TechAlertForm.ownerAccidentForm.btnConfirm.Visible = True
             Me.devWindow.OpenPopup("owner", ownerTechForm)
         End If
     End Sub
 
-    'Private Sub OpenEmergencyForm()
-    '    If Not TechAlertForm.emergencyOpened Then
-    '        TechAlertForm.mainTechForm.Close()
-    '        TechAlertForm.emergencyOpened = True
-    '        TechAlertForm.emergencyContactForm = New TechAlertForm("rider", Me.scenario, DevForm)
-    '        Me.devWindow.OpenPopup("rider", TechAlertForm)
-    '    End If
-    'End Sub
-
     Public Shared Sub CloseAllForms()
-        If (Not mainOpened) AndAlso (Not ownerOpened) AndAlso (Not emergencyOpened) Then
+        If (Not mainOpened) AndAlso (Not ownerOpened) Then
 
             If (TechAlertForm.ownerTechForm IsNot Nothing) Then
                 TechAlertForm.ownerTechForm.Dispose()
@@ -80,15 +66,9 @@
                 TechAlertForm.mainTechForm = Nothing
             End If
 
-            'If (TechAlertForm.emergencyContactForm IsNot Nothing) Then
-            '    TechAlertForm.emergencyContactForm.Dispose()
-            '    TechAlertForm.emergencyContactForm = Nothing
-            'End If
-
             ' Opened
             mainOpened = False
             ownerOpened = False
-            emergencyOpened = False
 
         End If
     End Sub
@@ -99,31 +79,25 @@
 
     Private Sub btnDiagnostic_Click(sender As Object, e As EventArgs) Handles btnDiagnostic.Click
         Me.Hide()
-        Me.carDiagnostic = New CarDiagnosticForm(Me.user, Me.scenario, Me.carForm, Me.homeWindow, Me.devWindow)
+        Dim ownerHome As HomeForm = Me.devWindow.GetOwnerHomeForm
+        Me.carDiagnostic = New CarDiagnosticForm("owner", Me.scenario, ownerHome, ownerHome, Me.devWindow)
 
+        Me.devWindow.ClosePopup(Me.user)
+        ownerHome.CloseAllChildren()
+        ownerHome.Hide()
         Me.carDiagnostic.Show()
-        Me.previousForm.SetCurrentForm(Me.carDiagnostic)
+        Me.devWindow.SetCurrentOwnerForm(Me.carDiagnostic)
 
-        'Me.OpenOwnerForm()
-
-        'TechAlertForm.ownerTechForm.lblAccident.Text = "The accident was confirmed!"
-        'TechAlertForm.ownerTechForm.lblMessage.BringToFront()
-        'TechAlertForm.ownerTechForm.lblMessage.Text = "Contact the rider for more information."
-
-        'Me.OpenEmergencyForm()
         Me.Close()
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        'Me.OpenOwnerForm()
-
-        'TechAlertForm.ownerTechForm.lblAccident.Text = "The accident was a false alarm!"
-
-        'TechAlertForm.mainTechForm.Close()
+        Me.devWindow.ClosePopup(Me.user)
         Me.Close()
     End Sub
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
+        Me.devWindow.ClosePopup(Me.user)
         Me.Close()
     End Sub
 
@@ -158,7 +132,6 @@
         If Me Is TechAlertForm.ownerTechForm Then
             TechAlertForm.ownerOpened = False
         End If
-        Me.devWindow.ClosePopup(Me.user)
         TechAlertForm.CloseAllForms()
     End Sub
 End Class
