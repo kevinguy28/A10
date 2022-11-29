@@ -138,9 +138,11 @@ Public Class CarFeatureForm
         If Me.devWindow.GetToggleTrunk = 0 Then
             Me.devWindow.UpdateToggleTrunk(1)
             btnOpenTrunk.Text = "Close trunk"
+            Me.pbCar.Image = My.Resources.trunk_open
         Else
             Me.devWindow.UpdateToggleTrunk(0)
             btnOpenTrunk.Text = "Open trunk"
+            Me.pbCar.Image = My.Resources.trunk_close
         End If
     End Sub
 
@@ -157,8 +159,10 @@ Public Class CarFeatureForm
 
         If Me.devWindow.GetToggleTrunk = 1 Then
             btnOpenTrunk.Text = "Close trunk"
+            Me.pbCar.Image = My.Resources.trunk_open
         Else
             btnOpenTrunk.Text = "Open trunk"
+            Me.pbCar.Image = My.Resources.trunk_close
         End If
         Me.ResumeLayout()
     End Sub

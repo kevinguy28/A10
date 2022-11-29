@@ -19,6 +19,11 @@
         Me.devWindow = devForm
     End Sub
     Private Sub CarDiagnosticForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        If Me.scenario = 4 Then
+            Me.pbBattery.Image = My.Resources.LowBattery
+        End If
+
         Select Case Me.user
             Case "owner"
                 Me.Text = "Car Owner Car Diagnostic"
@@ -38,7 +43,7 @@
 
     Private Sub btnRun_Click(sender As Object, e As EventArgs) Handles btnRun.Click
         For i As Integer = 0 To 6
-            If Me.scenario = 2 And (i = 0 Or i = 1 Or i = 3) Then
+            If (Me.scenario = 2 Or Me.devWindow.GetCarCondition = 0) And (i = 0 Or i = 1 Or i = 3) Then
                 Me.lbDiagnostic.Items(i) = Me.lbDiagnostic.Items(i) + "Damaged"
             Else
                 Me.lbDiagnostic.Items(i) = Me.lbDiagnostic.Items(i) + "Good"

@@ -73,6 +73,7 @@
     Private Sub btnTechProblem_Click(sender As Object, e As EventArgs) Handles btnTechProblem.Click
         Me.riderTechProblemNotification = New TechAlertForm("rider", Me.scenario, Me.devWindow, Me.homeWindow, Me, Me.previousWindow, True)
         Me.devWindow.OpenPopup("rider", Me.riderTechProblemNotification)
+        Me.devWindow.UpdateCarCondition(0)
     End Sub
 
     Private Sub btnTechProblem_MouseDown(sender As Object, e As MouseEventArgs) Handles btnTechProblem.MouseDown

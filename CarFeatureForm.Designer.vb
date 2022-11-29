@@ -38,6 +38,8 @@ Partial Class CarFeatureForm
         Me.btnToggleWindows = New System.Windows.Forms.Button()
         Me.tmrUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.btnCamera = New System.Windows.Forms.Button()
+        Me.pbCar = New System.Windows.Forms.PictureBox()
+        CType(Me.pbCar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblAirIntakeNumber
@@ -227,6 +229,16 @@ Partial Class CarFeatureForm
         Me.btnCamera.Text = "View Cameras"
         Me.btnCamera.UseVisualStyleBackColor = True
         '
+        'pbCar
+        '
+        Me.pbCar.Image = Global.A10.My.Resources.Resources.trunk_close
+        Me.pbCar.Location = New System.Drawing.Point(302, 460)
+        Me.pbCar.Name = "pbCar"
+        Me.pbCar.Size = New System.Drawing.Size(145, 78)
+        Me.pbCar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.pbCar.TabIndex = 30
+        Me.pbCar.TabStop = False
+        '
         'CarFeatureForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -234,6 +246,7 @@ Partial Class CarFeatureForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone___Form
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.pbCar)
         Me.Controls.Add(Me.btnCamera)
         Me.Controls.Add(Me.lblAirIntakeNumber)
         Me.Controls.Add(Me.btnAirIntakeUp)
@@ -252,6 +265,7 @@ Partial Class CarFeatureForm
         Me.Name = "CarFeatureForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "w"
+        CType(Me.pbCar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -272,4 +286,5 @@ Partial Class CarFeatureForm
     Friend WithEvents btnToggleWindows As Button
     Friend WithEvents tmrUpdate As Timer
     Friend WithEvents btnCamera As Button
+    Friend WithEvents pbCar As PictureBox
 End Class

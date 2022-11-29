@@ -30,6 +30,9 @@ Public Class DevForm
     ' Route
     Dim carMoving As Boolean = False
 
+    ' Car Diagnostic
+    Dim carCondition = 1
+
     ' Car Features
     Dim fanIntake = 1
     Dim fanStrength = 1
@@ -41,6 +44,7 @@ Public Class DevForm
     Dim speakerVolume = 1
     Dim speakersOnOff = 0
     Dim connectedPhone = 0
+    Dim audioPlaying = 0
 
 
     Private Sub DevForm_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -967,6 +971,27 @@ Public Class DevForm
     Public Function GetChatHistory() As List(Of ChatMessage)
         Return Me.chatHistory
     End Function
+
+    ' -------------------
+    ' --- Car Diagno. ---
+    ' -------------------
+
+    Public Sub UpdateCarCondition(state As Integer)
+        Me.carCondition = state
+    End Sub
+
+    Public Function GetCarCondition()
+        Return Me.carCondition
+    End Function
+
+    Public Sub UpdateAudioPlaying(state As Integer)
+        Me.audioPlaying = state
+    End Sub
+
+    Public Function GetAudioPlaying()
+        Return Me.audioPlaying
+    End Function
+
 
     ' -------------------
     ' --- Car Feature ---
