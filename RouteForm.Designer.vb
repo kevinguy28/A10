@@ -23,7 +23,7 @@ Partial Class RouteForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.pbRoute = New System.Windows.Forms.PictureBox()
-        Me.btnBook = New System.Windows.Forms.Button()
+        Me.btnStart = New System.Windows.Forms.Button()
         Me.lblStartPrompt = New System.Windows.Forms.Label()
         Me.lblDes = New System.Windows.Forms.Label()
         Me.cmbxStart = New System.Windows.Forms.ComboBox()
@@ -47,24 +47,24 @@ Partial Class RouteForm
         Me.pbRoute.TabIndex = 0
         Me.pbRoute.TabStop = False
         '
-        'btnBook
+        'btnStart
         '
-        Me.btnBook.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
-        Me.btnBook.Enabled = False
-        Me.btnBook.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
-        Me.btnBook.FlatAppearance.BorderSize = 0
-        Me.btnBook.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.btnBook.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.btnBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBook.Font = New System.Drawing.Font("Segoe UI Semibold", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnBook.ForeColor = System.Drawing.Color.White
-        Me.btnBook.Location = New System.Drawing.Point(92, 716)
-        Me.btnBook.Name = "btnBook"
-        Me.btnBook.Size = New System.Drawing.Size(300, 60)
-        Me.btnBook.TabIndex = 13
-        Me.btnBook.TabStop = False
-        Me.btnBook.Text = "Book"
-        Me.btnBook.UseVisualStyleBackColor = False
+        Me.btnStart.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnStart.Enabled = False
+        Me.btnStart.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnStart.FlatAppearance.BorderSize = 0
+        Me.btnStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.btnStart.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStart.Font = New System.Drawing.Font("Segoe UI Semibold", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnStart.ForeColor = System.Drawing.Color.White
+        Me.btnStart.Location = New System.Drawing.Point(92, 716)
+        Me.btnStart.Name = "btnStart"
+        Me.btnStart.Size = New System.Drawing.Size(300, 60)
+        Me.btnStart.TabIndex = 13
+        Me.btnStart.TabStop = False
+        Me.btnStart.Text = "Start"
+        Me.btnStart.UseVisualStyleBackColor = False
         '
         'lblStartPrompt
         '
@@ -182,7 +182,7 @@ Partial Class RouteForm
         Me.Controls.Add(Me.cmbxStart)
         Me.Controls.Add(Me.lblDes)
         Me.Controls.Add(Me.lblStartPrompt)
-        Me.Controls.Add(Me.btnBook)
+        Me.Controls.Add(Me.btnStart)
         Me.Controls.Add(Me.pbRoute)
         Me.DoubleBuffered = True
         Me.Margin = New System.Windows.Forms.Padding(2)
@@ -195,7 +195,7 @@ Partial Class RouteForm
     End Sub
 
     Friend WithEvents pbRoute As PictureBox
-    Friend WithEvents btnBook As Button
+    Friend WithEvents btnStart As Button
     Friend WithEvents lblStartPrompt As Label
     Friend WithEvents lblDes As Label
     Friend WithEvents cmbxStart As ComboBox

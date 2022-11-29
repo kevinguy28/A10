@@ -29,7 +29,7 @@
         Select Case Me.user
             Case "owner"
                 Me.Text = "Car Owner Route Change"
-                Me.lblTitle.Text = "Your Car Is Moving"
+                Me.lblTitle.Text = "Route Changed"
                 Me.lblPrompt.Text = "Your car's rider" & vbCrLf & "has changed their route."
                 Me.imgProfilePicture.Image = bookingEvent.GetProfilePicture
                 Me.lblName.Text = bookingEvent.GetName

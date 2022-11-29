@@ -62,6 +62,9 @@ Partial Class CarMediaForm
         Me.btnVolumeDown.BackgroundImage = Global.A10.My.Resources.Resources.arrow_down_neutral
         Me.btnVolumeDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnVolumeDown.FlatAppearance.BorderSize = 0
+        Me.btnVolumeDown.FlatAppearance.CheckedBackColor = System.Drawing.Color.White
+        Me.btnVolumeDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.btnVolumeDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnVolumeDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVolumeDown.Location = New System.Drawing.Point(246, 371)
         Me.btnVolumeDown.Name = "btnVolumeDown"
@@ -75,6 +78,9 @@ Partial Class CarMediaForm
         Me.btnVolumeUp.BackgroundImage = Global.A10.My.Resources.Resources.arrow_up_neutral
         Me.btnVolumeUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnVolumeUp.FlatAppearance.BorderSize = 0
+        Me.btnVolumeUp.FlatAppearance.CheckedBackColor = System.Drawing.Color.White
+        Me.btnVolumeUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.btnVolumeUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnVolumeUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVolumeUp.Location = New System.Drawing.Point(356, 371)
         Me.btnVolumeUp.Name = "btnVolumeUp"
@@ -84,14 +90,14 @@ Partial Class CarMediaForm
         '
         'lblVolumeNumber
         '
-        Me.lblVolumeNumber.AutoSize = True
         Me.lblVolumeNumber.BackColor = System.Drawing.Color.White
         Me.lblVolumeNumber.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblVolumeNumber.Location = New System.Drawing.Point(306, 371)
+        Me.lblVolumeNumber.Location = New System.Drawing.Point(302, 371)
         Me.lblVolumeNumber.Name = "lblVolumeNumber"
-        Me.lblVolumeNumber.Size = New System.Drawing.Size(38, 46)
+        Me.lblVolumeNumber.Size = New System.Drawing.Size(48, 46)
         Me.lblVolumeNumber.TabIndex = 4
         Me.lblVolumeNumber.Text = "1"
+        Me.lblVolumeNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnSpeakersToggle
         '
@@ -99,6 +105,9 @@ Partial Class CarMediaForm
         Me.btnSpeakersToggle.BackgroundImage = Global.A10.My.Resources.Resources.toggle_off
         Me.btnSpeakersToggle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnSpeakersToggle.FlatAppearance.BorderSize = 0
+        Me.btnSpeakersToggle.FlatAppearance.CheckedBackColor = System.Drawing.Color.White
+        Me.btnSpeakersToggle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.btnSpeakersToggle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnSpeakersToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSpeakersToggle.Location = New System.Drawing.Point(310, 265)
         Me.btnSpeakersToggle.Name = "btnSpeakersToggle"
@@ -109,8 +118,14 @@ Partial Class CarMediaForm
         '
         'btnConnectPhone
         '
-        Me.btnConnectPhone.BackColor = System.Drawing.Color.RoyalBlue
+        Me.btnConnectPhone.BackColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnConnectPhone.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(197, Byte), Integer))
+        Me.btnConnectPhone.FlatAppearance.BorderSize = 0
+        Me.btnConnectPhone.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.btnConnectPhone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.btnConnectPhone.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnConnectPhone.Font = New System.Drawing.Font("Segoe UI Semibold", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnConnectPhone.ForeColor = System.Drawing.Color.White
         Me.btnConnectPhone.Location = New System.Drawing.Point(125, 512)
         Me.btnConnectPhone.Name = "btnConnectPhone"
         Me.btnConnectPhone.Size = New System.Drawing.Size(234, 60)

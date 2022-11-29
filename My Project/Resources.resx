@@ -211,14 +211,8 @@
   <data name="ArrowDown___White" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ArrowDown - White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="LowBattery" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LowBattery.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tech" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tech.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="StarFull" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StarFull.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -283,9 +277,6 @@
   <data name="StarFour" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StarFour.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="car1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\car1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ArrowUp___Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ArrowUp - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -309,9 +300,6 @@
   </data>
   <data name="StarFive" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StarFive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Calender" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Calender.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CallStop_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CallStop Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -379,9 +367,6 @@
   <data name="StarOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StarOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="intrusion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\intrusion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="accident_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\accident_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -426,6 +411,12 @@
   </data>
   <data name="intrusion_press" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\intrusion_press.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Minus___Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Minus - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="out_back1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\out_back.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

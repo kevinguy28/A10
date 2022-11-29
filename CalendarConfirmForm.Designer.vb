@@ -37,6 +37,8 @@ Partial Class CalendarConfirmForm
         Me.lblStartPrompt = New System.Windows.Forms.Label()
         Me.lblEndPrompt = New System.Windows.Forms.Label()
         Me.lblLocation = New System.Windows.Forms.Label()
+        Me.lblStopsPrompt = New System.Windows.Forms.Label()
+        Me.lblStops = New System.Windows.Forms.Label()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -120,7 +122,7 @@ Partial Class CalendarConfirmForm
         Me.lblPrompt.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblPrompt.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblPrompt.Location = New System.Drawing.Point(15, 316)
+        Me.lblPrompt.Location = New System.Drawing.Point(15, 356)
         Me.lblPrompt.Name = "lblPrompt"
         Me.lblPrompt.Size = New System.Drawing.Size(275, 50)
         Me.lblPrompt.TabIndex = 15
@@ -139,7 +141,7 @@ Partial Class CalendarConfirmForm
         Me.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnConfirm.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnConfirm.ForeColor = System.Drawing.Color.White
-        Me.btnConfirm.Location = New System.Drawing.Point(12, 369)
+        Me.btnConfirm.Location = New System.Drawing.Point(12, 409)
         Me.btnConfirm.Name = "btnConfirm"
         Me.btnConfirm.Size = New System.Drawing.Size(100, 40)
         Me.btnConfirm.TabIndex = 16
@@ -158,7 +160,7 @@ Partial Class CalendarConfirmForm
         Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancel.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnCancel.ForeColor = System.Drawing.Color.White
-        Me.btnCancel.Location = New System.Drawing.Point(192, 369)
+        Me.btnCancel.Location = New System.Drawing.Point(192, 409)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(100, 40)
         Me.btnCancel.TabIndex = 17
@@ -181,9 +183,9 @@ Partial Class CalendarConfirmForm
         '
         Me.lblRepeat.BackColor = System.Drawing.SystemColors.Control
         Me.lblRepeat.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblRepeat.Location = New System.Drawing.Point(12, 244)
+        Me.lblRepeat.Location = New System.Drawing.Point(9, 287)
         Me.lblRepeat.Name = "lblRepeat"
-        Me.lblRepeat.Size = New System.Drawing.Size(283, 39)
+        Me.lblRepeat.Size = New System.Drawing.Size(283, 21)
         Me.lblRepeat.TabIndex = 38
         Me.lblRepeat.Text = "lblRepeat"
         '
@@ -219,11 +221,34 @@ Partial Class CalendarConfirmForm
         Me.lblLocation.TabIndex = 61
         Me.lblLocation.Text = "lblLocation" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Toronto Metropolitan University"
         '
+        'lblStopsPrompt
+        '
+        Me.lblStopsPrompt.AutoSize = True
+        Me.lblStopsPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblStopsPrompt.Location = New System.Drawing.Point(6, 234)
+        Me.lblStopsPrompt.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblStopsPrompt.Name = "lblStopsPrompt"
+        Me.lblStopsPrompt.Size = New System.Drawing.Size(50, 21)
+        Me.lblStopsPrompt.TabIndex = 65
+        Me.lblStopsPrompt.Text = "stops:"
+        '
+        'lblStops
+        '
+        Me.lblStops.BackColor = System.Drawing.SystemColors.Control
+        Me.lblStops.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblStops.Location = New System.Drawing.Point(56, 234)
+        Me.lblStops.Name = "lblStops"
+        Me.lblStops.Size = New System.Drawing.Size(239, 42)
+        Me.lblStops.TabIndex = 64
+        Me.lblStops.Text = "lblStops" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Toronto Metropolitan University"
+        '
         'CalendarConfirmForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(304, 421)
+        Me.ClientSize = New System.Drawing.Size(304, 461)
+        Me.Controls.Add(Me.lblStopsPrompt)
+        Me.Controls.Add(Me.lblStops)
         Me.Controls.Add(Me.lblStartPrompt)
         Me.Controls.Add(Me.lblEndPrompt)
         Me.Controls.Add(Me.lblLocation)
@@ -262,4 +287,6 @@ Partial Class CalendarConfirmForm
     Friend WithEvents lblStartPrompt As Label
     Friend WithEvents lblEndPrompt As Label
     Friend WithEvents lblLocation As Label
+    Friend WithEvents lblStopsPrompt As Label
+    Friend WithEvents lblStops As Label
 End Class

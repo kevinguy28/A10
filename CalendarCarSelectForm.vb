@@ -20,10 +20,7 @@ Public Class CalendarCarSelectForm
     Dim previousEvent As UserCalendarEvent
 
     ' Children
-    'Dim confirmForm As CalendarConfirmForm
-    'Dim requestForm As BookingRequestForm
-    'Dim responseForm As BookingRequestResponseForm
-    Dim routeWindow As RouteForm
+    Dim routeWindow As CalendarRouteForm
 
     Dim colourNeutral = Color.FromArgb(151, 203, 197)
 
@@ -154,7 +151,7 @@ Public Class CalendarCarSelectForm
             Exit Sub
         End If
 
-        Me.routeWindow = New RouteForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, Me.dateStart, Me.bookingEvent, Me.previousEvent)
+        Me.routeWindow = New CalendarRouteForm(Me.user, Me.scenario, Me, Me.homeWindow, Me.devWindow, Me.dateStart, Me.bookingEvent, Me.previousEvent)
         Me.Hide()
         Me.SetCurrentForm(Me.routeWindow)
         Me.routeWindow.Show()

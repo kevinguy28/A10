@@ -10,7 +10,9 @@ Public Class BookingRequestForm
     Dim bookingEvent As UserCalendarEvent
     Dim responseForm As BookingRequestResponseForm
 
-    Public Sub New(user As String, scenario As Integer, homeWindow As HomeForm, devWindow As DevForm, bookingEvent As UserCalendarEvent)
+    Dim stopArr() As String = Nothing
+
+    Public Sub New(user As String, scenario As Integer, homeWindow As HomeForm, devWindow As DevForm, bookingEvent As UserCalendarEvent, Optional stopArr() As String = Nothing)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -21,6 +23,8 @@ Public Class BookingRequestForm
         Me.homeWindow = homeWindow
         Me.devWindow = devWindow
         Me.bookingEvent = bookingEvent
+
+        Me.stopArr = stopArr
 
         Me.Form_Resize(Nothing, Nothing)
         Me.Form_LocationChanged(Nothing, Nothing)
@@ -46,12 +50,27 @@ Public Class BookingRequestForm
         Me.lblName.Text = Me.bookingEvent.GetName
         Me.imgRating.Image = Me.bookingEvent.GetRatingImg
 
+        ' Time
         Dim startTime = Format(Me.bookingEvent.GetStartDate, "ddd d MMM yyyy") & " at " & Format(Me.bookingEvent.GetStartDate, "h:mm tt")
         Dim endTime = Format(Me.bookingEvent.GetEndDate, "ddd d MMM yyyy") & " at " & Format(Me.bookingEvent.GetEndDate, "h:mm tt")
         Me.lblTime.Text = startTime & vbCrLf & endTime
 
+        ' Location
         Me.lblLocation.Text = Me.bookingEvent.GetStartLocation & vbCrLf & Me.bookingEvent.GetEndLocation
 
+        ' Stops
+        Me.lblStops.Text = ""
+        If Me.stopArr IsNot Nothing Then
+            If (stopArr(0) = "") AndAlso (stopArr(1) = "") Then
+                lblStops.Text = "None"
+            Else
+                lblStops.Text += Me.stopArr(0)
+                lblStops.Text += vbCrLf
+                lblStops.Text += Me.stopArr(1)
+            End If
+        End If
+
+        ' Price
         Me.lblPrice.Text += "" & Me.devWindow.GetCost(Me.bookingEvent.GetStartLocation, Me.bookingEvent.GetEndLocation)
     End Sub
 
@@ -81,7 +100,7 @@ Public Class BookingRequestForm
     ' -------------------------
 
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(340, 470)
+        Me.Size = New Size(340, 500)
     End Sub
 
     Private Sub Form_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged

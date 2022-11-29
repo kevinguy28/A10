@@ -37,6 +37,8 @@ Partial Class BookingRequestForm
         Me.lblEndPrompt = New System.Windows.Forms.Label()
         Me.lblLocation = New System.Windows.Forms.Label()
         Me.lblPrice = New System.Windows.Forms.Label()
+        Me.lblStopsPrompt = New System.Windows.Forms.Label()
+        Me.lblStops = New System.Windows.Forms.Label()
         CType(Me.imgProfilePicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgRating, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -136,7 +138,7 @@ Partial Class BookingRequestForm
         Me.btnDeny.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDeny.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnDeny.ForeColor = System.Drawing.Color.White
-        Me.btnDeny.Location = New System.Drawing.Point(212, 379)
+        Me.btnDeny.Location = New System.Drawing.Point(212, 409)
         Me.btnDeny.Name = "btnDeny"
         Me.btnDeny.Size = New System.Drawing.Size(100, 40)
         Me.btnDeny.TabIndex = 22
@@ -154,7 +156,7 @@ Partial Class BookingRequestForm
         Me.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAccept.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnAccept.ForeColor = System.Drawing.Color.White
-        Me.btnAccept.Location = New System.Drawing.Point(12, 379)
+        Me.btnAccept.Location = New System.Drawing.Point(12, 409)
         Me.btnAccept.Name = "btnAccept"
         Me.btnAccept.Size = New System.Drawing.Size(100, 40)
         Me.btnAccept.TabIndex = 21
@@ -211,18 +213,41 @@ Partial Class BookingRequestForm
         '
         Me.lblPrice.BackColor = System.Drawing.SystemColors.Control
         Me.lblPrice.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblPrice.Location = New System.Drawing.Point(31, 300)
+        Me.lblPrice.Location = New System.Drawing.Point(31, 336)
         Me.lblPrice.Name = "lblPrice"
         Me.lblPrice.Size = New System.Drawing.Size(273, 30)
         Me.lblPrice.TabIndex = 57
         Me.lblPrice.Text = "lblPrice"
         Me.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'lblStopsPrompt
+        '
+        Me.lblStopsPrompt.AutoSize = True
+        Me.lblStopsPrompt.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblStopsPrompt.Location = New System.Drawing.Point(32, 285)
+        Me.lblStopsPrompt.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblStopsPrompt.Name = "lblStopsPrompt"
+        Me.lblStopsPrompt.Size = New System.Drawing.Size(50, 21)
+        Me.lblStopsPrompt.TabIndex = 67
+        Me.lblStopsPrompt.Text = "stops:"
+        '
+        'lblStops
+        '
+        Me.lblStops.BackColor = System.Drawing.SystemColors.Control
+        Me.lblStops.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblStops.Location = New System.Drawing.Point(82, 285)
+        Me.lblStops.Name = "lblStops"
+        Me.lblStops.Size = New System.Drawing.Size(242, 42)
+        Me.lblStops.TabIndex = 66
+        Me.lblStops.Text = "lblStops" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Toronto Metropolitan University"
+        '
         'BookingRequestForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(324, 431)
+        Me.ClientSize = New System.Drawing.Size(324, 461)
+        Me.Controls.Add(Me.lblStopsPrompt)
+        Me.Controls.Add(Me.lblStops)
         Me.Controls.Add(Me.lblStartPrompt)
         Me.Controls.Add(Me.lblEndPrompt)
         Me.Controls.Add(Me.lblLocation)
@@ -262,4 +287,6 @@ Partial Class BookingRequestForm
     Friend WithEvents lblEndPrompt As Label
     Friend WithEvents lblLocation As Label
     Friend WithEvents lblPrice As Label
+    Friend WithEvents lblStopsPrompt As Label
+    Friend WithEvents lblStops As Label
 End Class

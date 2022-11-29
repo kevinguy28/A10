@@ -1,15 +1,17 @@
 ﻿Public Class CalendarConfirmForm
 
     ' Parents
-    Dim bookingForm As RouteForm
+    Dim bookingForm As CalendarRouteForm
     Dim schedulingForm As CalendarSchedulingForm
 
     Dim user As String
     Dim devWindow As DevForm
     Dim usrEvent As UserCalendarEvent
 
-    Dim repeat As String
-    Dim repeatTime As Date
+    Dim repeat As String = ""
+    Dim repeatTime As Date = Nothing
+
+    Dim stopArr() As String = Nothing
 
     Public Sub New(usrEvent As UserCalendarEvent, user As String, devWindow As DevForm, Optional repeat As String = "", Optional repeatTime As Date = Nothing)
 
@@ -24,6 +26,23 @@
         Me.repeat = repeat
         Me.repeatTime = repeatTime
 
+        Me.CalendarCarConfirmForm_Resize(Nothing, Nothing)
+        Me.CalendarCarConfirmForm_LocationChanged(Nothing, Nothing)
+    End Sub
+
+    Public Sub New(usrEvent As UserCalendarEvent, user As String, devWindow As DevForm, Optional stopArr() As String = Nothing)
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        Me.usrEvent = usrEvent
+        Me.user = user
+        Me.devWindow = devWindow
+
+        Me.stopArr = stopArr
+
+        Me.CalendarCarConfirmForm_Resize(Nothing, Nothing)
         Me.CalendarCarConfirmForm_LocationChanged(Nothing, Nothing)
     End Sub
 
@@ -35,6 +54,8 @@
                 Me.lblPrompt.Text = "Are you sure you want to" & vbCrLf & "change the availability?"
                 Me.imgProfilePicture.Image = usrEvent.GetProfilePicture
                 Me.lblName.Text = usrEvent.GetName
+                Me.lblStopsPrompt.Visible = False
+                Me.lblStops.Visible = False
 
             Case "rider"
                 Me.Text = "Car Rider Confirm Booking"
@@ -47,11 +68,25 @@
         Me.lblUser.Text = "Car Owner:"
         Me.lblCar.Text = usrEvent.GetColour & " " & Me.usrEvent.GetCar
 
+        ' Time
         Dim startTime = Format(usrEvent.GetStartDate, "ddd d MMM yyyy") & " at " & Format(usrEvent.GetStartDate, "h:mm tt")
         Dim endTime = Format(usrEvent.GetEndDate, "ddd d MMM yyyy") & " at " & Format(usrEvent.GetEndDate, "h:mm tt")
         Me.lblTime.Text = startTime & vbCrLf & endTime
 
+        ' Location
         Me.lblLocation.Text = Me.usrEvent.GetStartLocation & vbCrLf & Me.usrEvent.GetEndLocation
+
+        ' Stops
+        Me.lblStops.Text = ""
+        If Me.stopArr IsNot Nothing Then
+            If (stopArr(0) = "") AndAlso (stopArr(1) = "") Then
+                lblStops.Text = "None"
+            Else
+                lblStops.Text += Me.stopArr(0)
+                lblStops.Text += vbCrLf
+                lblStops.Text += Me.stopArr(1)
+            End If
+        End If
 
         ' Repeat
         Select Case Me.user
@@ -66,7 +101,7 @@
         End Select
     End Sub
 
-    Public Sub SetBookingForm(bookingForm As RouteForm)
+    Public Sub SetBookingForm(bookingForm As CalendarRouteForm)
         Me.bookingForm = bookingForm
     End Sub
 
@@ -101,7 +136,7 @@
     ' -------------------------
 
     Private Sub CalendarCarConfirmForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Me.Size = New Size(320, 460)
+        Me.Size = New Size(320, 500)
     End Sub
 
     Private Sub CalendarCarConfirmForm_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
