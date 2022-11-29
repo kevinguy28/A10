@@ -10,6 +10,7 @@
     Dim routeForm As RouteForm
     Dim chatForm As ChatForm
     Dim routeBackgroundImage As Bitmap
+    Dim carEmergency As EmergencyForm
 
     Public Sub New(user As String, scenario As Integer, devForm As DevForm)
 
@@ -228,4 +229,24 @@
     Public Sub changeMap(theImage As Bitmap)
         Me.routeBackgroundImage = theImage
     End Sub
+
+    ' -----------------
+    ' --- Emergency ---
+    ' -----------------
+
+    Private Sub imgEmergency_Click(sender As Object, e As EventArgs) Handles imgEmergency.Click
+        Me.Hide()
+        Me.carEmergency = New EmergencyForm(Me.user, Me.scenario, Me, Me, Me.devWindow)
+        Me.carEmergency.Show()
+        Me.SetCurrentForm(Me.carEmergency)
+    End Sub
+
+    Private Sub imgEmergency_MouseEnter(sender As Object, e As EventArgs) Handles imgEmergency.MouseEnter
+        Me.imgEmergency.Image = My.Resources.EmergencyHome___Hover
+    End Sub
+
+    Private Sub imgEmergency_MouseLeave(sender As Object, e As EventArgs) Handles imgEmergency.MouseLeave
+        Me.imgEmergency.Image = My.Resources.EmergencyHome
+    End Sub
+
 End Class

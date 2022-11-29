@@ -33,8 +33,10 @@ Partial Class HomeForm
         Me.lblChat = New System.Windows.Forms.Label()
         Me.imgAvatar = New System.Windows.Forms.PictureBox()
         Me.lblName = New System.Windows.Forms.Label()
+        Me.imgEmergency = New System.Windows.Forms.PictureBox()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgAvatar, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgEmergency, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'imgLogo
@@ -176,6 +178,17 @@ Partial Class HomeForm
         Me.lblName.TabIndex = 23
         Me.lblName.Text = "Name"
         '
+        'imgEmergency
+        '
+        Me.imgEmergency.BackColor = System.Drawing.Color.White
+        Me.imgEmergency.Image = Global.A10.My.Resources.Resources.EmergencyHome
+        Me.imgEmergency.Location = New System.Drawing.Point(23, 819)
+        Me.imgEmergency.Name = "imgEmergency"
+        Me.imgEmergency.Size = New System.Drawing.Size(75, 75)
+        Me.imgEmergency.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.imgEmergency.TabIndex = 24
+        Me.imgEmergency.TabStop = False
+        '
         'HomeForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -183,6 +196,7 @@ Partial Class HomeForm
         Me.BackgroundImage = Global.A10.My.Resources.Resources.Phone
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(484, 961)
+        Me.Controls.Add(Me.imgEmergency)
         Me.Controls.Add(Me.lblName)
         Me.Controls.Add(Me.imgAvatar)
         Me.Controls.Add(Me.lblChat)
@@ -200,6 +214,7 @@ Partial Class HomeForm
         Me.Text = "HomeForm"
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgAvatar, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.imgEmergency, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -216,4 +231,5 @@ Partial Class HomeForm
     Friend WithEvents lblChat As Label
     Friend WithEvents imgAvatar As PictureBox
     Friend WithEvents lblName As Label
+    Friend WithEvents imgEmergency As PictureBox
 End Class

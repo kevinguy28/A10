@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class CarMediaForm
     Inherits AppForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class CarMediaForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.lblSpeakers = New System.Windows.Forms.Label()
@@ -131,7 +131,6 @@ Partial Class CarMediaForm
         Me.btnConnectPhone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.btnConnectPhone.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnConnectPhone.Font = New System.Drawing.Font("Segoe UI Semibold", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnConnectPhone.ForeColor = System.Drawing.Color.White
         Me.btnConnectPhone.Location = New System.Drawing.Point(125, 463)
         Me.btnConnectPhone.Name = "btnConnectPhone"
         Me.btnConnectPhone.Size = New System.Drawing.Size(234, 60)

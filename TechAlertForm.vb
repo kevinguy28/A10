@@ -13,14 +13,13 @@
     Shared ownerOpened = False
     Dim carDiagnostic As CarDiagnosticForm
     Dim previousForm As AppForm
-    Dim carForm As CarForm
 
-    Public Sub New(user As String, scenario As Integer, devForm As DevForm, homeWindow As HomeForm, previousForm As AppForm, carForm As CarForm, Optional mainForm As Boolean = False)
+    Public Sub New(user As String, scenario As Integer, devForm As DevForm, homeWindow As HomeForm, previousForm As AppForm, Optional mainForm As Boolean = False)
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Me.user = user : Me.scenario = scenario : Me.devWindow = devForm : Me.homeWindow = homeWindow : Me.previousForm = previousForm : Me.carForm = carForm
+        Me.user = user : Me.scenario = scenario : Me.devWindow = devForm : Me.homeWindow = homeWindow : Me.previousForm = previousForm
 
         If mainForm Then
             TechAlertForm.mainTechForm = Me
@@ -47,7 +46,7 @@
     Private Sub OpenOwnerForm()
         If Not TechAlertForm.ownerOpened Then
             TechAlertForm.ownerOpened = True
-            TechAlertForm.ownerTechForm = New TechAlertForm("owner", Me.scenario, Me.devWindow, Me.homeWindow, Me.previousForm, Me.carForm)
+            TechAlertForm.ownerTechForm = New TechAlertForm("owner", Me.scenario, Me.devWindow, Me.homeWindow, Me.previousForm)
             TechAlertForm.ownerTechForm.Text = "Car Owner Accident"
             Me.devWindow.OpenPopup("owner", ownerTechForm)
         End If
