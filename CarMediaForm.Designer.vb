@@ -131,12 +131,8 @@ Partial Class CarMediaForm
         Me.btnConnectPhone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.btnConnectPhone.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnConnectPhone.Font = New System.Drawing.Font("Segoe UI Semibold", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-<<<<<<< HEAD
         Me.btnConnectPhone.ForeColor = System.Drawing.Color.White
-        Me.btnConnectPhone.Location = New System.Drawing.Point(125, 512)
-=======
         Me.btnConnectPhone.Location = New System.Drawing.Point(125, 463)
->>>>>>> 5d11a59256202e509f1018832c6900d0e139fb83
         Me.btnConnectPhone.Name = "btnConnectPhone"
         Me.btnConnectPhone.Size = New System.Drawing.Size(234, 60)
         Me.btnConnectPhone.TabIndex = 6
