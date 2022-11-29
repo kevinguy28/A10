@@ -86,6 +86,16 @@ Public Class DevForm
         Me.temperature = 12
         Me.toggleWindow = 0
 
+        ' Reset Car Media
+
+        Me.speakerVolume = 1
+        Me.speakersOnOff = 0
+        Me.connectedPhone = 0
+        Me.audioPlaying = 0
+
+        ' Reset Car Diagnostic
+        Me.carCondition = 1
+
         ' Open new windows
         Dim scenario = CType(sender, Button).Tag
         Me.ownerWindow = New HomeForm("owner", CType(sender, Button).Tag, Me)
